@@ -1,25 +1,24 @@
 name: scenarioshelf
-description: "TRPG通過シナリオ記録サービス"
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
+publish_to: none
+description: TRPG通過シナリオ記録サービス
 
-environment:
+environment: 
   sdk: '>=3.2.3 <4.0.0'
 
-dependencies:
-  flutter:
-    sdk: flutter
-
+dependencies: 
   cupertino_icons: 1.0.2
+  flutter: 
+    sdk: flutter
 
 dev_dependencies:
-  flutter_test:
+  flutter_test: 
     sdk: flutter
-
-  flutter_lints: 2.0.0
   build_runner: 2.4.7
+  flutter_lints: 2.0.0
+  very_good_analysis: 5.1.0
   flutter_oss_licenses: 2.0.1
-
-flutter:
-
+  import_sorter: 4.6.0
+  
+flutter: 
   uses-material-design: true
