@@ -19,6 +19,23 @@ dev_dependencies:
   very_good_analysis: 5.1.0
   flutter_oss_licenses: 2.0.1
   import_sorter: 4.6.0
+
+  # build_runner の実行コマンド
+  # fvm flutter packages pub run build_runner build --delete-conflicting-outputs
+
+  # oss_licenses.dart の生成コマンド（パッケージを追加したら実行する）
+  # fvm flutter pub run flutter_oss_licenses:generate.dart -o lib/constant/oss_licenses.dart
   
 flutter: 
   uses-material-design: true
+
+import_sorter:
+  comments: false
+  ignored_files:
+    - \/lib\/*\/*.freezed.dart
+    - \/lib\/*\/*.g.dart
+    - \/lib\/*\/oss_licenses.dart
+    - \/lib\/*\/firebase_options.dart
+
+  # 実行コマンド
+  # fvm flutter pub run import_sorter:main
