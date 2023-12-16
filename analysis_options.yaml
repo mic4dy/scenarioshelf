@@ -10,10 +10,11 @@ linter:
     sort_pub_dependencies: false
 
 analyzer:
+  plugins:
+    - custom_lint
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "**/oss_licenses.dart"
-    - "**/firebase_options.dart"
   errors:
     invalid_annotation_target: ignore
