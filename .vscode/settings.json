@@ -1,5 +1,6 @@
 {
   "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "dart.lineLength": 140,
   "search.exclude": {
     "/lib/proto": true,
     "**.freezed.dart": true,
@@ -9,7 +10,7 @@
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "editor.rulers": [
-      160
+      140
     ],
     "editor.selectionHighlight": false,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
@@ -20,6 +21,7 @@
     "editor.formatOnPaste": true
   },
   "cSpell.words": [
+    "etags",
     "pubspec",
     "scenarioshelf",
     "TRPG"

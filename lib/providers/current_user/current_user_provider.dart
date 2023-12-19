@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 import 'package:scenarioshelf/repositories/firebase/auth/firebase_auth_repository.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
@@ -9,7 +10,7 @@ part 'current_user_provider.g.dart';
 @Riverpod(keepAlive: true)
 class CurrentUser extends _$CurrentUser {
   late final FirebaseAuthAPI _authRepository;
-  
+
   @override
   FutureOr<User?> build() {
     _authRepository = ref.read(firebaseAuthRepositoryProvider);

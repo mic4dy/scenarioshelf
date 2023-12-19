@@ -1,10 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
+
+import 'package:scenarioshelf/constants/themes/app_color.dart';
 import 'package:scenarioshelf/repositories/firebase/firebase_options.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/logger.dart';
@@ -44,6 +48,16 @@ class Scenarioshelf extends ConsumerWidget {
 
     return MaterialApp.router(
       title: 'Scenarioshelf',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: AppColor.material.light,
+        textTheme: GoogleFonts.ibmPlexSansJpTextTheme(),
+      ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: AppColor.material.dark,
+        textTheme: GoogleFonts.ibmPlexSansJpTextTheme(),
+      ),
       routerConfig: router,
       debugShowCheckedModeBanner: false,
     );
