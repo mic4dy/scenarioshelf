@@ -1,7 +1,29 @@
 {
-    "cSpell.words": [
-        "pubspec",
-        "scenarioshelf",
-        "TRPG"
-    ]
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "dart.lineLength": 140,
+  "search.exclude": {
+    "/lib/proto": true,
+    "**.freezed.dart": true,
+    "pubspec.lock": true
+  },
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      140
+    ],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off",
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnPaste": true
+  },
+  "cSpell.words": [
+    "etags",
+    "pubspec",
+    "scenarioshelf",
+    "TRPG"
+  ]
 }
