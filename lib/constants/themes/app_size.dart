@@ -24,5 +24,9 @@ class ShapeSize {
 }
 
 class IconSize {
-  static const double snackbar = 16;
+  static const double banner = 16;
+}
+
+class ElevationSize {
+  static const double banner = 4;
 }

@@ -7,7 +7,7 @@ import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_provider.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
-import 'package:scenarioshelf/views/components/acknowledgements/app_snackbar.dart';
+import 'package:scenarioshelf/views/components/acknowledgements/app_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 
 class BootPage extends ConsumerWidget {
@@ -18,20 +18,16 @@ class BootPage extends ConsumerWidget {
     final size = MediaQuery.of(context).size;
 
     ref.listen(currentUserProvider, (previous, next) {
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
 
       if (next is AsyncError) {
         final Object? error = next.error;
-        final String message;
+        final String message = error is SigningException ? error.toString() : '原因不明のエラーが発生しました';
 
-        if (error is SigningException) {
-          message = error.toString();
-        } else {
-          message = '原因不明のエラーが発生しました';
-        }
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          AppSnackbar.error(content: Text(message)),
+        ScaffoldMessenger.of(context).showMaterialBanner(
+          StatusBanner.error(
+            content: Text(message),
+          ),
         );
       }
     });
@@ -73,7 +69,7 @@ class BootPage extends ConsumerWidget {
                     thickness: 0.4,
                     indent: size.width * 0.05,
                     endIndent: size.width * 0.05,
-                    height: 24,
+                    height: 12,
                   ),
                   LabeledButton.withIcon(
                     context: context,
