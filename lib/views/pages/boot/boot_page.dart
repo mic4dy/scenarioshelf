@@ -7,7 +7,7 @@ import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_provider.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
-import 'package:scenarioshelf/views/components/acknowledgements/app_banner.dart';
+import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 
 class BootPage extends ConsumerWidget {
