@@ -5,6 +5,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:scenarioshelf/providers/current_user/current_user_provider.dart';
 import 'package:scenarioshelf/views/pages/boot/boot_page.dart';
+import 'package:scenarioshelf/views/pages/signing/sign_in/sign_in_page.dart';
+import 'package:scenarioshelf/views/pages/signing/sign_up/sign_up_page.dart';
 
 part 'router.g.dart';
 part 'routes.dart';
@@ -32,11 +34,11 @@ GoRouter router(RouterRef ref) {
       ),
       GoRoute(
         path: Routes.signUp.path,
-        builder: (context, state) => const Scaffold(),
+        builder: (context, state) => const SignUpPage(),
       ),
       GoRoute(
         path: Routes.signIn.path,
-        builder: (context, state) => const Scaffold(),
+        builder: (context, state) => const SignInPage(),
       ),
       GoRoute(
         path: Routes.home.path,

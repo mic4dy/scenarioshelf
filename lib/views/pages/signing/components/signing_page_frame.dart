@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
@@ -12,10 +11,12 @@ import 'package:scenarioshelf/views/pages/signing/components/signing_password_fo
 
 class SigningPageFrame extends ConsumerWidget {
   const SigningPageFrame({
+    required this.formKey,
     required this.transactionButton,
     super.key,
   });
 
+  final GlobalKey<FormState> formKey;
   final Widget transactionButton;
 
   @override
@@ -40,7 +41,6 @@ class SigningPageFrame extends ConsumerWidget {
     });
 
     final size = MediaQuery.of(context).size;
-    final formKey = useState(GlobalKey<FormState>());
 
     return Scaffold(
       body: SafeArea(
@@ -49,7 +49,7 @@ class SigningPageFrame extends ConsumerWidget {
             horizontal: size.width * 0.1,
           ),
           child: Form(
-            key: formKey.value,
+            key: formKey,
             child: Column(
               children: [
                 const Spacer(flex: 2),

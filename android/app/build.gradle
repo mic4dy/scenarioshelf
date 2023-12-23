@@ -72,8 +72,13 @@ android {
         applicationId "com.example.scenarioshelf"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+
+        // 以下のコードだとFlutter SDKで設定が必要であり環境依存になってしまうのでハードコーディングしている
+        // SDKの直接書き換え以外の設定方法が出てくればそちらに変更でも良さそう
+        // minSdkVersion flutter.minSdkVersion
+        // targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 28
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         /// @ref https://zenn.dev/altiveinc/articles/separating-environments-in-flutter-old-edition

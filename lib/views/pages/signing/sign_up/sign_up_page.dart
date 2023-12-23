@@ -8,8 +8,8 @@ import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_page_frame.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/signing_controller.dart';
 
-class SignInPage extends HookConsumerWidget {
-  const SignInPage({super.key});
+class SignUpPage extends HookConsumerWidget {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,17 +22,15 @@ class SignInPage extends HookConsumerWidget {
         brightness: WidgetBrightness.dark,
         minimumSize: Size(size.width * 0.8 - 64, 40),
         onPressed: () async {
-          if (!formKey.value.currentState!.validate()) return;
-
           ref.invalidate(currentUserProvider);
-          await ref.read(currentUserProvider.notifier).signUpWithEmailAndPassword(
+          await ref.read(currentUserProvider.notifier).signInWithEmailAndPassword(
                 email: ref.read(signingControllerProvider).email,
                 password: ref.read(signingControllerProvider).password,
               );
 
           ref.watch(currentUserProvider).whenData((_) => ref.read(routerProvider).go(Routes.home.path));
         },
-        label: 'ログイン',
+        label: '登録',
       ),
     );
   }

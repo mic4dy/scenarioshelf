@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/signing_controller.dart';
 
-class SigningPasswordForm extends HookWidget {
+class SigningPasswordForm extends HookConsumerWidget {
   const SigningPasswordForm({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final isObscure = useState<bool>(false);
 
     return TextFormField(
+      onChanged: (password) => ref.read(signingControllerProvider.notifier).updatePassword(password),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.zero,
         floatingLabelBehavior: FloatingLabelBehavior.always,
