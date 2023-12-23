@@ -1,118 +1,61 @@
 import 'package:flutter/material.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
+import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
 
 class LabeledButton extends StatelessWidget {
   const LabeledButton({
+    required this.brightness,
     required this.onPressed,
-    required this.child,
-    this.buttonStyle,
+    required this.label,
+    this.minimumSize,
+    this.textStyle,
+    this.leading,
     super.key,
   });
 
-  factory LabeledButton.bright({
-    required BuildContext context,
-    required void Function()? onPressed,
-    required String label,
-    double? textLetterSpace,
-    Size? size,
-  }) {
-    return LabeledButton(
-      onPressed: onPressed,
-      buttonStyle: OutlinedButton.styleFrom(
-        splashFactory: NoSplash.splashFactory,
-        side: BorderSide(
-          color: Theme.of(context).colorScheme.primary,
-          width: 0.5,
-        ),
-        shape: const StadiumBorder(),
-        minimumSize: size,
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.primary,
-          letterSpacing: textLetterSpace,
-        ),
-      ),
-    );
-  }
-
-  factory LabeledButton.dark({
-    required BuildContext context,
-    required void Function()? onPressed,
-    required String label,
-    double? textLetterSpace,
-    Size? size,
-  }) {
-    return LabeledButton(
-      onPressed: onPressed,
-      buttonStyle: OutlinedButton.styleFrom(
-        splashFactory: NoSplash.splashFactory,
-        side: BorderSide(
-          color: Theme.of(context).colorScheme.primary,
-          width: 0.5,
-        ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        shape: const StadiumBorder(),
-        minimumSize: size,
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.onPrimary,
-          letterSpacing: textLetterSpace,
-        ),
-      ),
-    );
-  }
-
-  factory LabeledButton.withIcon({
-    required BuildContext context,
-    required void Function()? onPressed,
-    required Widget icon,
-    required String label,
-    double? textLetterSpace,
-    Size? size,
-  }) {
-    return LabeledButton(
-      onPressed: onPressed,
-      buttonStyle: OutlinedButton.styleFrom(
-        splashFactory: NoSplash.splashFactory,
-        side: BorderSide(
-          color: Theme.of(context).colorScheme.primary,
-          width: 0.5,
-        ),
-        shape: const StadiumBorder(),
-        minimumSize: size,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          icon,
-          const SizedBox(width: MarginSize.small),
-          Text(
-            label,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.primary,
-              letterSpacing: textLetterSpace,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
+  final WidgetBrightness brightness;
   final void Function()? onPressed;
-  final Widget child;
-  final ButtonStyle? buttonStyle;
+  final String label;
+  final Size? minimumSize;
+  final TextStyle? textStyle;
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
-      style: buttonStyle,
-      child: child,
+      style: OutlinedButton.styleFrom(
+        splashFactory: NoSplash.splashFactory,
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.primary,
+          width: 0.5,
+        ),
+        backgroundColor: switch (brightness) {
+          WidgetBrightness.dark => Theme.of(context).colorScheme.primary,
+          _ => null,
+        },
+        shape: const StadiumBorder(),
+        minimumSize: minimumSize,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (leading != null) ...[
+            leading!,
+            const SizedBox(width: MarginSize.small),
+          ],
+          Text(
+            label,
+            style: TextStyle(
+              color: switch (brightness) {
+                WidgetBrightness.light => Theme.of(context).colorScheme.primary,
+                WidgetBrightness.dark => Theme.of(context).colorScheme.onPrimary,
+              },
+            ).merge(textStyle),
+          ),
+        ],
+      ),
     );
   }
 }

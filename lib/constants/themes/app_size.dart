@@ -25,6 +25,7 @@ class ShapeSize {
 
 class IconSize {
   static const double banner = 16;
+  static const double signingForm = 18;
 }
 
 class ElevationSize {
