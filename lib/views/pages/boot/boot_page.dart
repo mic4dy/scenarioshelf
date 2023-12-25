@@ -23,7 +23,7 @@ class BootPage extends ConsumerWidget {
 
       if (next is AsyncError) {
         final Object? error = next.error;
-        final String message = error is SigningException ? error.toString() : '原因不明のエラーが発生しました';
+        final String message = error is SigningException ? error.indicate() : '原因不明のエラーが発生しました';
 
         ScaffoldMessenger.of(context).showMaterialBanner(
           StatusBanner.error(

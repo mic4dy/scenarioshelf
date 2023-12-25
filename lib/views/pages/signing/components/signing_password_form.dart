@@ -9,23 +9,30 @@ class SigningPasswordForm extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isObscure = useState<bool>(false);
+    final isObscure = useState<bool>(true);
 
     return TextFormField(
       onChanged: (password) => ref.read(signingControllerProvider.notifier).updatePassword(password),
       decoration: InputDecoration(
+        isDense: true,
         contentPadding: EdgeInsets.zero,
+        suffixIconConstraints: const BoxConstraints(),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelText: 'パスワード',
         suffixIcon: IconButton(
           padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(
+            minHeight: BoxConstraintsSize.form,
+          ),
           onPressed: () => isObscure.value = !isObscure.value,
           icon: Icon(isObscure.value ? Icons.visibility_off_outlined : Icons.visibility_outlined),
           iconSize: IconSize.signingForm,
-          splashRadius: IconSize.signingForm,
         ),
       ),
-      style: const TextStyle(
+      textAlignVertical: TextAlignVertical.center,
+      enableSuggestions: false,
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.onBackground,
         height: 1,
       ),
       keyboardType: TextInputType.visiblePassword,
@@ -39,6 +46,8 @@ class SigningPasswordForm extends HookConsumerWidget {
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+",
         ).hasMatch(password);
         if (!validPassword) return '英数字記号も用いたパスワードを設定してください';
+
+        ref.read(signingControllerProvider.notifier).updatePassword(password);
 
         return null;
       },

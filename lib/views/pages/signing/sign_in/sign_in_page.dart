@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_provider.dart';
 import 'package:scenarioshelf/router/router.dart';
@@ -20,12 +21,10 @@ class SignInPage extends HookConsumerWidget {
       formKey: formKey.value,
       transactionButton: LabeledButton(
         brightness: WidgetBrightness.dark,
-        minimumSize: Size(size.width * 0.8 - 64, 40),
+        minimumSize: Size(size.width * 0.8 - 80, 40),
         onPressed: () async {
-          if (!formKey.value.currentState!.validate()) return;
-
           ref.invalidate(currentUserProvider);
-          await ref.read(currentUserProvider.notifier).signUpWithEmailAndPassword(
+          await ref.read(currentUserProvider.notifier).signInWithEmailAndPassword(
                 email: ref.read(signingControllerProvider).email,
                 password: ref.read(signingControllerProvider).password,
               );
@@ -33,6 +32,9 @@ class SignInPage extends HookConsumerWidget {
           ref.watch(currentUserProvider).whenData((_) => ref.read(routerProvider).go(Routes.home.path));
         },
         label: 'ログイン',
+        textStyle: const TextStyle(
+          letterSpacing: MarginSize.small,
+        ),
       ),
     );
   }

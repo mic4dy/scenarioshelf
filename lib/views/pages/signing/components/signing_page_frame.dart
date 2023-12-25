@@ -32,7 +32,7 @@ class SigningPageFrame extends ConsumerWidget {
 
       if (previous is AsyncLoading && next is AsyncError) {
         final Object? error = next.error;
-        final String message = error is SigningException ? error.toString() : '原因不明のエラーが発生しました';
+        final String message = error is SigningException ? error.indicate() : '原因不明のエラーが発生しました';
 
         ScaffoldMessenger.of(context).showMaterialBanner(
           StatusBanner.error(content: Text(message)),
@@ -66,11 +66,23 @@ class SigningPageFrame extends ConsumerWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      OutlinedButton(
-                        onPressed: () => ref.read(routerProvider).pop(),
-                        child: Icon(
-                          Icons.arrow_back_sharp,
-                          color: Theme.of(context).colorScheme.primary,
+                      SizedBox.square(
+                        dimension: 40,
+                        child: OutlinedButton(
+                          onPressed: () => ref.read(routerProvider).pop(),
+                          style: OutlinedButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            shape: CircleBorder(
+                              side: BorderSide(
+                                color: Theme.of(context).colorScheme.primary,
+                                width: 0.5,
+                              ),
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.arrow_back_sharp,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ),
                       transactionButton,

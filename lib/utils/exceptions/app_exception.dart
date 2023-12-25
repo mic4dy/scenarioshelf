@@ -8,6 +8,7 @@ abstract class AppException implements Exception {
   final String? display;
 
   @override
-  // ignore: no_runtimetype_tostring
-  String toString() => '$runtimeType: ${display ?? message}';
+  String toString() => '$runtimeType: $message';
+
+  String indicate() => display ?? message;
 }
