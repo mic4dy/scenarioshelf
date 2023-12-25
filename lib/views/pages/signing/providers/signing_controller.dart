@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 import 'package:scenarioshelf/views/pages/signing/providers/states/signing_state.dart';
 
 part 'signing_controller.g.dart';
