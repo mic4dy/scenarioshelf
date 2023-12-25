@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
+import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_provider.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
@@ -18,11 +19,11 @@ class BootPage extends ConsumerWidget {
     final size = MediaQuery.of(context).size;
 
     ref.listen(currentUserProvider, (previous, next) {
-      ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+      ScaffoldMessenger.of(context).clearMaterialBanners();
 
       if (next is AsyncError) {
         final Object? error = next.error;
-        final String message = error is SigningException ? error.toString() : '原因不明のエラーが発生しました';
+        final String message = error is SigningException ? error.indicate() : '原因不明のエラーが発生しました';
 
         ScaffoldMessenger.of(context).showMaterialBanner(
           StatusBanner.error(
@@ -50,19 +51,23 @@ class BootPage extends ConsumerWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  LabeledButton.dark(
-                    context: context,
+                  LabeledButton(
+                    brightness: WidgetBrightness.dark,
+                    minimumSize: Size(size.width * 0.8, 40),
                     onPressed: () => ref.read(routerProvider).push(Routes.signUp.path),
                     label: '新規登録',
-                    textLetterSpace: MarginSize.small,
-                    size: Size(size.width * 0.8, 40),
+                    textStyle: const TextStyle(
+                      letterSpacing: MarginSize.small,
+                    ),
                   ),
-                  LabeledButton.bright(
-                    context: context,
+                  LabeledButton(
+                    brightness: WidgetBrightness.light,
+                    minimumSize: Size(size.width * 0.8, 40),
                     onPressed: () => ref.read(routerProvider).push(Routes.signIn.path),
                     label: 'ログイン',
-                    textLetterSpace: MarginSize.small,
-                    size: Size(size.width * 0.8, 40),
+                    textStyle: const TextStyle(
+                      letterSpacing: MarginSize.small,
+                    ),
                   ),
                   Divider(
                     color: Theme.of(context).colorScheme.primary,
@@ -71,17 +76,17 @@ class BootPage extends ConsumerWidget {
                     endIndent: size.width * 0.05,
                     height: 12,
                   ),
-                  LabeledButton.withIcon(
-                    context: context,
+                  LabeledButton(
+                    brightness: WidgetBrightness.light,
+                    minimumSize: Size(size.width * 0.8, 40),
                     onPressed: () async {
                       await ref.read(currentUserProvider.notifier).signInWithGoogle();
                       ref.read(currentUserProvider).whenData((_) => ref.read(routerProvider).go(Routes.home.path));
                     },
-                    icon: Assets.images.logos.googleLogo.image(
+                    label: 'Sign in with Google',
+                    leading: Assets.images.logos.googleLogo.image(
                       height: 18,
                     ),
-                    label: 'Sign in with Google',
-                    size: Size(size.width * 0.8, 40),
                   ),
                 ],
               ),

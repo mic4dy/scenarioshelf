@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'firebase_auth_repository.dart';
+part of 'signing_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$firebaseAuthRepositoryHash() =>
-    r'cd6848b1b67e8a7f682b063368f6e03ebe200690';
+String _$signingControllerHash() => r'a20f1f71b39572cdf801aace846024bd89548b54';
 
-/// See also [firebaseAuthRepository].
-@ProviderFor(firebaseAuthRepository)
-final firebaseAuthRepositoryProvider = Provider<FirebaseAuthAPI>.internal(
-  firebaseAuthRepository,
-  name: r'firebaseAuthRepositoryProvider',
+/// See also [SigningController].
+@ProviderFor(SigningController)
+final signingControllerProvider =
+    AutoDisposeNotifierProvider<SigningController, SigningState>.internal(
+  SigningController.new,
+  name: r'signingControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$firebaseAuthRepositoryHash,
+      : _$signingControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef FirebaseAuthRepositoryRef = ProviderRef<FirebaseAuthAPI>;
+typedef _$SigningController = AutoDisposeNotifier<SigningState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
