@@ -5,10 +5,10 @@ import 'package:scenarioshelf/repositories/firebase/auth/firebase_auth_repositor
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 
-part 'current_user_provider.g.dart';
+part 'current_user_controller.g.dart';
 
 @Riverpod(keepAlive: true)
-class CurrentUser extends _$CurrentUser {
+class CurrentUserController extends _$CurrentUserController {
   late final FirebaseAuthAPI _authRepository;
 
   @override

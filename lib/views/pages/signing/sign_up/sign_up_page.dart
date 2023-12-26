@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
-import 'package:scenarioshelf/providers/current_user/current_user_provider.dart';
+import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_page_frame.dart';
@@ -27,13 +27,13 @@ class SignUpPage extends HookConsumerWidget {
         onPressed: () async {
           if (!formKey.value.currentState!.validate()) return;
 
-          ref.invalidate(currentUserProvider);
-          await ref.read(currentUserProvider.notifier).signUpWithEmailAndPassword(
+          ref.invalidate(currentUserControllerProvider);
+          await ref.read(currentUserControllerProvider.notifier).signUpWithEmailAndPassword(
                 email: ref.read(signingControllerProvider).email,
                 password: ref.read(signingControllerProvider).password,
               );
 
-          ref.watch(currentUserProvider).whenData((_) => ref.read(routerProvider).go(Routes.home.path));
+          ref.watch(currentUserControllerProvider).whenData((_) => ref.read(routerProvider).go(Routes.home.path));
         },
         label: '登録',
         textStyle: const TextStyle(
