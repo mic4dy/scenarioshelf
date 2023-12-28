@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'package:scenarioshelf/constants/domains/trpg_system.dart';
 
 part 'scenario.freezed.dart';

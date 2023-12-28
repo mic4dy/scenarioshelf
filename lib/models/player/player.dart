@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'package:scenarioshelf/models/character/character.dart';
 
 part 'player.freezed.dart';
