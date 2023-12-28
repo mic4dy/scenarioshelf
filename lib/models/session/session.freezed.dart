@@ -23,7 +23,7 @@ mixin _$Session {
   DateTime get updatedAt => throw _privateConstructorUsedError;
   List<Schedule> get schedules => throw _privateConstructorUsedError;
   List<Memo> get memos => throw _privateConstructorUsedError;
-  List<Player> get otherPlayers => throw _privateConstructorUsedError;
+  List<Participant> get participants => throw _privateConstructorUsedError;
   Character? get playedCharacter => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -43,7 +43,7 @@ abstract class $SessionCopyWith<$Res> {
       DateTime updatedAt,
       List<Schedule> schedules,
       List<Memo> memos,
-      List<Player> otherPlayers,
+      List<Participant> participants,
       Character? playedCharacter});
 
   $ScenarioCopyWith<$Res> get scenario;
@@ -70,7 +70,7 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
     Object? updatedAt = null,
     Object? schedules = null,
     Object? memos = null,
-    Object? otherPlayers = null,
+    Object? participants = null,
     Object? playedCharacter = freezed,
   }) {
     return _then(_value.copyWith(
@@ -102,10 +102,10 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.memos
           : memos // ignore: cast_nullable_to_non_nullable
               as List<Memo>,
-      otherPlayers: null == otherPlayers
-          ? _value.otherPlayers
-          : otherPlayers // ignore: cast_nullable_to_non_nullable
-              as List<Player>,
+      participants: null == participants
+          ? _value.participants
+          : participants // ignore: cast_nullable_to_non_nullable
+              as List<Participant>,
       playedCharacter: freezed == playedCharacter
           ? _value.playedCharacter
           : playedCharacter // ignore: cast_nullable_to_non_nullable
@@ -149,7 +149,7 @@ abstract class _$$SessionImplCopyWith<$Res> implements $SessionCopyWith<$Res> {
       DateTime updatedAt,
       List<Schedule> schedules,
       List<Memo> memos,
-      List<Player> otherPlayers,
+      List<Participant> participants,
       Character? playedCharacter});
 
   @override
@@ -176,7 +176,7 @@ class __$$SessionImplCopyWithImpl<$Res>
     Object? updatedAt = null,
     Object? schedules = null,
     Object? memos = null,
-    Object? otherPlayers = null,
+    Object? participants = null,
     Object? playedCharacter = freezed,
   }) {
     return _then(_$SessionImpl(
@@ -208,10 +208,10 @@ class __$$SessionImplCopyWithImpl<$Res>
           ? _value._memos
           : memos // ignore: cast_nullable_to_non_nullable
               as List<Memo>,
-      otherPlayers: null == otherPlayers
-          ? _value._otherPlayers
-          : otherPlayers // ignore: cast_nullable_to_non_nullable
-              as List<Player>,
+      participants: null == participants
+          ? _value._participants
+          : participants // ignore: cast_nullable_to_non_nullable
+              as List<Participant>,
       playedCharacter: freezed == playedCharacter
           ? _value.playedCharacter
           : playedCharacter // ignore: cast_nullable_to_non_nullable
@@ -231,11 +231,11 @@ class _$SessionImpl implements _Session {
       required this.updatedAt,
       final List<Schedule> schedules = const [],
       final List<Memo> memos = const [],
-      final List<Player> otherPlayers = const [],
+      final List<Participant> participants = const [],
       this.playedCharacter})
       : _schedules = schedules,
         _memos = memos,
-        _otherPlayers = otherPlayers;
+        _participants = participants;
 
   @override
   final String id;
@@ -265,13 +265,13 @@ class _$SessionImpl implements _Session {
     return EqualUnmodifiableListView(_memos);
   }
 
-  final List<Player> _otherPlayers;
+  final List<Participant> _participants;
   @override
   @JsonKey()
-  List<Player> get otherPlayers {
-    if (_otherPlayers is EqualUnmodifiableListView) return _otherPlayers;
+  List<Participant> get participants {
+    if (_participants is EqualUnmodifiableListView) return _participants;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_otherPlayers);
+    return EqualUnmodifiableListView(_participants);
   }
 
   @override
@@ -279,7 +279,7 @@ class _$SessionImpl implements _Session {
 
   @override
   String toString() {
-    return 'Session(id: $id, userId: $userId, scenario: $scenario, createdAt: $createdAt, updatedAt: $updatedAt, schedules: $schedules, memos: $memos, otherPlayers: $otherPlayers, playedCharacter: $playedCharacter)';
+    return 'Session(id: $id, userId: $userId, scenario: $scenario, createdAt: $createdAt, updatedAt: $updatedAt, schedules: $schedules, memos: $memos, participants: $participants, playedCharacter: $playedCharacter)';
   }
 
   @override
@@ -299,7 +299,7 @@ class _$SessionImpl implements _Session {
                 .equals(other._schedules, _schedules) &&
             const DeepCollectionEquality().equals(other._memos, _memos) &&
             const DeepCollectionEquality()
-                .equals(other._otherPlayers, _otherPlayers) &&
+                .equals(other._participants, _participants) &&
             (identical(other.playedCharacter, playedCharacter) ||
                 other.playedCharacter == playedCharacter));
   }
@@ -314,7 +314,7 @@ class _$SessionImpl implements _Session {
       updatedAt,
       const DeepCollectionEquality().hash(_schedules),
       const DeepCollectionEquality().hash(_memos),
-      const DeepCollectionEquality().hash(_otherPlayers),
+      const DeepCollectionEquality().hash(_participants),
       playedCharacter);
 
   @JsonKey(ignore: true)
@@ -333,7 +333,7 @@ abstract class _Session implements Session {
       required final DateTime updatedAt,
       final List<Schedule> schedules,
       final List<Memo> memos,
-      final List<Player> otherPlayers,
+      final List<Participant> participants,
       final Character? playedCharacter}) = _$SessionImpl;
 
   @override
@@ -351,7 +351,7 @@ abstract class _Session implements Session {
   @override
   List<Memo> get memos;
   @override
-  List<Player> get otherPlayers;
+  List<Participant> get participants;
   @override
   Character? get playedCharacter;
   @override

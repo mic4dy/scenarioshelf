@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scenarioshelf/models/character/character.dart';
 import 'package:scenarioshelf/models/memo/memo.dart';
-import 'package:scenarioshelf/models/player/player.dart';
+import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/models/scenario/scenario.dart';
 import 'package:scenarioshelf/models/schedule/schedule.dart';
 
@@ -17,7 +17,7 @@ class Session with _$Session {
     required DateTime updatedAt,
     @Default([]) List<Schedule> schedules,
     @Default([]) List<Memo> memos,
-    @Default([]) List<Player> otherPlayers,
+    @Default([]) List<Participant> participants,
     Character? playedCharacter,
   }) = _Session;
 }
