@@ -14,12 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Memo _$MemoFromJson(Map<String, dynamic> json) {
+  return _Memo.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Memo {
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MemoCopyWith<Memo> get copyWith => throw _privateConstructorUsedError;
 }
@@ -108,10 +113,13 @@ class __$$MemoImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$MemoImpl implements _Memo {
   const _$MemoImpl(
       {required this.title, required this.content, this.isPublic = true});
+
+  factory _$MemoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MemoImplFromJson(json);
 
   @override
   final String title;
@@ -137,6 +145,7 @@ class _$MemoImpl implements _Memo {
                 other.isPublic == isPublic));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, title, content, isPublic);
 
@@ -145,6 +154,13 @@ class _$MemoImpl implements _Memo {
   @pragma('vm:prefer-inline')
   _$$MemoImplCopyWith<_$MemoImpl> get copyWith =>
       __$$MemoImplCopyWithImpl<_$MemoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MemoImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Memo implements Memo {
@@ -152,6 +168,8 @@ abstract class _Memo implements Memo {
       {required final String title,
       required final String content,
       final bool isPublic}) = _$MemoImpl;
+
+  factory _Memo.fromJson(Map<String, dynamic> json) = _$MemoImpl.fromJson;
 
   @override
   String get title;

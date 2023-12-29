@@ -1,5 +1,6 @@
 part of 'schedule.dart';
 
+@JsonEnum(valueField: 'id')
 enum ScheduleType {
   adjustment(id: 'adjustment', label: '候補日'),
   event(id: 'event', label: '実施日'),

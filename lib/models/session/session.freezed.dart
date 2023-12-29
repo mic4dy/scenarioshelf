@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Session _$SessionFromJson(Map<String, dynamic> json) {
+  return _Session.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Session {
   String get id => throw _privateConstructorUsedError;
@@ -22,10 +26,11 @@ mixin _$Session {
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   List<Schedule> get schedules => throw _privateConstructorUsedError;
-  List<Memo> get memos => throw _privateConstructorUsedError;
   List<Participant> get participants => throw _privateConstructorUsedError;
+  List<Memo> get memos => throw _privateConstructorUsedError;
   Character? get playedCharacter => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SessionCopyWith<Session> get copyWith => throw _privateConstructorUsedError;
 }
@@ -42,8 +47,8 @@ abstract class $SessionCopyWith<$Res> {
       DateTime createdAt,
       DateTime updatedAt,
       List<Schedule> schedules,
-      List<Memo> memos,
       List<Participant> participants,
+      List<Memo> memos,
       Character? playedCharacter});
 
   $ScenarioCopyWith<$Res> get scenario;
@@ -69,8 +74,8 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? schedules = null,
-    Object? memos = null,
     Object? participants = null,
+    Object? memos = null,
     Object? playedCharacter = freezed,
   }) {
     return _then(_value.copyWith(
@@ -98,14 +103,14 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.schedules
           : schedules // ignore: cast_nullable_to_non_nullable
               as List<Schedule>,
-      memos: null == memos
-          ? _value.memos
-          : memos // ignore: cast_nullable_to_non_nullable
-              as List<Memo>,
       participants: null == participants
           ? _value.participants
           : participants // ignore: cast_nullable_to_non_nullable
               as List<Participant>,
+      memos: null == memos
+          ? _value.memos
+          : memos // ignore: cast_nullable_to_non_nullable
+              as List<Memo>,
       playedCharacter: freezed == playedCharacter
           ? _value.playedCharacter
           : playedCharacter // ignore: cast_nullable_to_non_nullable
@@ -148,8 +153,8 @@ abstract class _$$SessionImplCopyWith<$Res> implements $SessionCopyWith<$Res> {
       DateTime createdAt,
       DateTime updatedAt,
       List<Schedule> schedules,
-      List<Memo> memos,
       List<Participant> participants,
+      List<Memo> memos,
       Character? playedCharacter});
 
   @override
@@ -175,8 +180,8 @@ class __$$SessionImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? schedules = null,
-    Object? memos = null,
     Object? participants = null,
+    Object? memos = null,
     Object? playedCharacter = freezed,
   }) {
     return _then(_$SessionImpl(
@@ -204,14 +209,14 @@ class __$$SessionImplCopyWithImpl<$Res>
           ? _value._schedules
           : schedules // ignore: cast_nullable_to_non_nullable
               as List<Schedule>,
-      memos: null == memos
-          ? _value._memos
-          : memos // ignore: cast_nullable_to_non_nullable
-              as List<Memo>,
       participants: null == participants
           ? _value._participants
           : participants // ignore: cast_nullable_to_non_nullable
               as List<Participant>,
+      memos: null == memos
+          ? _value._memos
+          : memos // ignore: cast_nullable_to_non_nullable
+              as List<Memo>,
       playedCharacter: freezed == playedCharacter
           ? _value.playedCharacter
           : playedCharacter // ignore: cast_nullable_to_non_nullable
@@ -221,7 +226,7 @@ class __$$SessionImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SessionImpl implements _Session {
   const _$SessionImpl(
       {required this.id,
@@ -230,12 +235,15 @@ class _$SessionImpl implements _Session {
       required this.createdAt,
       required this.updatedAt,
       final List<Schedule> schedules = const [],
-      final List<Memo> memos = const [],
       final List<Participant> participants = const [],
+      final List<Memo> memos = const [],
       this.playedCharacter})
       : _schedules = schedules,
-        _memos = memos,
-        _participants = participants;
+        _participants = participants,
+        _memos = memos;
+
+  factory _$SessionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SessionImplFromJson(json);
 
   @override
   final String id;
@@ -256,15 +264,6 @@ class _$SessionImpl implements _Session {
     return EqualUnmodifiableListView(_schedules);
   }
 
-  final List<Memo> _memos;
-  @override
-  @JsonKey()
-  List<Memo> get memos {
-    if (_memos is EqualUnmodifiableListView) return _memos;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_memos);
-  }
-
   final List<Participant> _participants;
   @override
   @JsonKey()
@@ -274,12 +273,21 @@ class _$SessionImpl implements _Session {
     return EqualUnmodifiableListView(_participants);
   }
 
+  final List<Memo> _memos;
+  @override
+  @JsonKey()
+  List<Memo> get memos {
+    if (_memos is EqualUnmodifiableListView) return _memos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_memos);
+  }
+
   @override
   final Character? playedCharacter;
 
   @override
   String toString() {
-    return 'Session(id: $id, userId: $userId, scenario: $scenario, createdAt: $createdAt, updatedAt: $updatedAt, schedules: $schedules, memos: $memos, participants: $participants, playedCharacter: $playedCharacter)';
+    return 'Session(id: $id, userId: $userId, scenario: $scenario, createdAt: $createdAt, updatedAt: $updatedAt, schedules: $schedules, participants: $participants, memos: $memos, playedCharacter: $playedCharacter)';
   }
 
   @override
@@ -297,13 +305,14 @@ class _$SessionImpl implements _Session {
                 other.updatedAt == updatedAt) &&
             const DeepCollectionEquality()
                 .equals(other._schedules, _schedules) &&
-            const DeepCollectionEquality().equals(other._memos, _memos) &&
             const DeepCollectionEquality()
                 .equals(other._participants, _participants) &&
+            const DeepCollectionEquality().equals(other._memos, _memos) &&
             (identical(other.playedCharacter, playedCharacter) ||
                 other.playedCharacter == playedCharacter));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -313,8 +322,8 @@ class _$SessionImpl implements _Session {
       createdAt,
       updatedAt,
       const DeepCollectionEquality().hash(_schedules),
-      const DeepCollectionEquality().hash(_memos),
       const DeepCollectionEquality().hash(_participants),
+      const DeepCollectionEquality().hash(_memos),
       playedCharacter);
 
   @JsonKey(ignore: true)
@@ -322,6 +331,13 @@ class _$SessionImpl implements _Session {
   @pragma('vm:prefer-inline')
   _$$SessionImplCopyWith<_$SessionImpl> get copyWith =>
       __$$SessionImplCopyWithImpl<_$SessionImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SessionImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Session implements Session {
@@ -332,9 +348,11 @@ abstract class _Session implements Session {
       required final DateTime createdAt,
       required final DateTime updatedAt,
       final List<Schedule> schedules,
-      final List<Memo> memos,
       final List<Participant> participants,
+      final List<Memo> memos,
       final Character? playedCharacter}) = _$SessionImpl;
+
+  factory _Session.fromJson(Map<String, dynamic> json) = _$SessionImpl.fromJson;
 
   @override
   String get id;
@@ -349,9 +367,9 @@ abstract class _Session implements Session {
   @override
   List<Schedule> get schedules;
   @override
-  List<Memo> get memos;
-  @override
   List<Participant> get participants;
+  @override
+  List<Memo> get memos;
   @override
   Character? get playedCharacter;
   @override

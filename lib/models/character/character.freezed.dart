@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Character _$CharacterFromJson(Map<String, dynamic> json) {
+  return _Character.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Character {
   String get name => throw _privateConstructorUsedError;
@@ -21,6 +25,7 @@ mixin _$Character {
   List<String> get handoutUrls => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CharacterCopyWith<Character> get copyWith =>
       throw _privateConstructorUsedError;
@@ -124,7 +129,7 @@ class __$$CharacterImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CharacterImpl implements _Character {
   const _$CharacterImpl(
       {required this.name,
@@ -132,6 +137,9 @@ class _$CharacterImpl implements _Character {
       final List<String> handoutUrls = const [],
       this.imageUrl})
       : _handoutUrls = handoutUrls;
+
+  factory _$CharacterImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CharacterImplFromJson(json);
 
   @override
   final String name;
@@ -169,6 +177,7 @@ class _$CharacterImpl implements _Character {
                 other.imageUrl == imageUrl));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, isPublic,
       const DeepCollectionEquality().hash(_handoutUrls), imageUrl);
@@ -178,6 +187,13 @@ class _$CharacterImpl implements _Character {
   @pragma('vm:prefer-inline')
   _$$CharacterImplCopyWith<_$CharacterImpl> get copyWith =>
       __$$CharacterImplCopyWithImpl<_$CharacterImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CharacterImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Character implements Character {
@@ -186,6 +202,9 @@ abstract class _Character implements Character {
       final bool isPublic,
       final List<String> handoutUrls,
       final String? imageUrl}) = _$CharacterImpl;
+
+  factory _Character.fromJson(Map<String, dynamic> json) =
+      _$CharacterImpl.fromJson;
 
   @override
   String get name;

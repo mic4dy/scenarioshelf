@@ -14,12 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
+  return _Schedule.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Schedule {
   DateTime get beginningTime => throw _privateConstructorUsedError;
   Duration get playtime => throw _privateConstructorUsedError;
   ScheduleType get type => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ScheduleCopyWith<Schedule> get copyWith =>
       throw _privateConstructorUsedError;
@@ -111,13 +116,16 @@ class __$$ScheduleImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ScheduleImpl implements _Schedule {
   const _$ScheduleImpl(
       {required this.beginningTime,
       required this.playtime,
       this.type = ScheduleType.event})
       : assert(!playtime.isNegative, 'プレイ時間が負の値になっています');
+
+  factory _$ScheduleImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ScheduleImplFromJson(json);
 
   @override
   final DateTime beginningTime;
@@ -144,6 +152,7 @@ class _$ScheduleImpl implements _Schedule {
             (identical(other.type, type) || other.type == type));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, beginningTime, playtime, type);
 
@@ -152,6 +161,13 @@ class _$ScheduleImpl implements _Schedule {
   @pragma('vm:prefer-inline')
   _$$ScheduleImplCopyWith<_$ScheduleImpl> get copyWith =>
       __$$ScheduleImplCopyWithImpl<_$ScheduleImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ScheduleImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Schedule implements Schedule {
@@ -159,6 +175,9 @@ abstract class _Schedule implements Schedule {
       {required final DateTime beginningTime,
       required final Duration playtime,
       final ScheduleType type}) = _$ScheduleImpl;
+
+  factory _Schedule.fromJson(Map<String, dynamic> json) =
+      _$ScheduleImpl.fromJson;
 
   @override
   DateTime get beginningTime;

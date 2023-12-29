@@ -18,6 +18,7 @@ dependencies:
   firebase_core: 2.24.2
   firebase_auth: 4.15.3
   google_sign_in: 6.2.1
+  cloud_firestore: 4.13.6
 
   # State Management
   flutter_hooks: 0.20.3
@@ -37,6 +38,7 @@ dev_dependencies:
   # Generator
   build_runner: 2.4.7
   freezed: 2.4.6
+  json_serializable: 6.7.1
   riverpod_generator: 2.3.9
   flutter_launcher_icons: 0.13.1
   flutter_oss_licenses: 2.0.1
