@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'session_repository.dart';
+part of 'crashlytics_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sessionRepositoryHash() => r'f9793992fb907cdaf53cb17af2e4c5d5b57af094';
+String _$crashlyticsRepositoryHash() =>
+    r'ce7d198c29f4e9e47dc7a45fd7d4660ae6303b13';
 
-/// See also [sessionRepository].
-@ProviderFor(sessionRepository)
-final sessionRepositoryProvider =
-    AutoDisposeProvider<SessionRepository>.internal(
-  sessionRepository,
-  name: r'sessionRepositoryProvider',
+/// See also [crashlyticsRepository].
+@ProviderFor(crashlyticsRepository)
+final crashlyticsRepositoryProvider = Provider<FirebaseCrashlytics>.internal(
+  crashlyticsRepository,
+  name: r'crashlyticsRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$sessionRepositoryHash,
+      : _$crashlyticsRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef SessionRepositoryRef = AutoDisposeProviderRef<SessionRepository>;
+typedef CrashlyticsRepositoryRef = ProviderRef<FirebaseCrashlytics>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

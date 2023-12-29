@@ -2,29 +2,47 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:scenarioshelf/constants/themes/app_color.dart';
+import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/firebase_options.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
   await initializeDateFormatting('ja_JP');
+  await AppTrackingTransparency.requestTrackingAuthorization();
+
   if (Firebase.apps.isEmpty) {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
   }
+
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  PlatformDispatcher.instance.onError = (error, stack) {
+    logger.e(
+      'Unhandled Platform error has occurred.',
+      error: error,
+      stackTrace: stack,
+    );
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+
   if (kDebugMode) {
     try {
       await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
@@ -36,6 +54,7 @@ Future<void> main() async {
       );
     }
   }
+
   runApp(const ProviderScope(child: Scenarioshelf()));
 }
 
@@ -45,6 +64,8 @@ class Scenarioshelf extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
+
+    ref.read(analyticsRepositoryProvider).logAppOpen();
 
     return MaterialApp.router(
       title: 'Scenarioshelf',

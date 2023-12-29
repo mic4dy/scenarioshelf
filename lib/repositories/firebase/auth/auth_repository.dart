@@ -4,12 +4,12 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:scenarioshelf/utils/logger.dart';
 
-part 'firebase_auth_repository.g.dart';
+part 'auth_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-FirebaseAuthAPI firebaseAuthRepository(FirebaseAuthRepositoryRef _) => const FirebaseAuthRepository();
+AuthRepository authRepository(AuthRepositoryRef _) => const AuthRepository();
 
-abstract interface class FirebaseAuthAPI {
+abstract interface class AuthAPI {
   Future<User> signUpWithEmailAndPassword({
     required String email,
     required String password,
@@ -23,8 +23,8 @@ abstract interface class FirebaseAuthAPI {
   Future<void> signOut();
 }
 
-class FirebaseAuthRepository implements FirebaseAuthAPI {
-  const FirebaseAuthRepository();
+class AuthRepository implements AuthAPI {
+  const AuthRepository();
 
   @override
   Future<User> signUpWithEmailAndPassword({required String email, required String password}) async {

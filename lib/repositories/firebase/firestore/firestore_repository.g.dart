@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'session_repository.dart';
+part of 'firestore_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sessionRepositoryHash() => r'f9793992fb907cdaf53cb17af2e4c5d5b57af094';
+String _$firestoreRepositoryAPIHash() =>
+    r'c2797ecf66124015867c1c76451ea52483d48c77';
 
-/// See also [sessionRepository].
-@ProviderFor(sessionRepository)
-final sessionRepositoryProvider =
-    AutoDisposeProvider<SessionRepository>.internal(
-  sessionRepository,
-  name: r'sessionRepositoryProvider',
+/// See also [FirestoreRepositoryAPI].
+@ProviderFor(FirestoreRepositoryAPI)
+final firestoreRepositoryAPIProvider =
+    NotifierProvider<FirestoreRepositoryAPI, FirebaseFirestore>.internal(
+  FirestoreRepositoryAPI.new,
+  name: r'firestoreRepositoryAPIProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$sessionRepositoryHash,
+      : _$firestoreRepositoryAPIHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef SessionRepositoryRef = AutoDisposeProviderRef<SessionRepository>;
+typedef _$FirestoreRepositoryAPI = Notifier<FirebaseFirestore>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
