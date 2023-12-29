@@ -1,3 +1,6 @@
+part of 'participant.dart';
+
+@JsonEnum(valueField: 'id')
 enum ParticipantType {
   gameMaster(id: 'gameMaster', label: 'ゲームマスター'),
   subGameMaster(id: 'subGameMaster', label: 'サブゲームマスター'),

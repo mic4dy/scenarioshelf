@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Scenario _$ScenarioFromJson(Map<String, dynamic> json) {
+  return _Scenario.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Scenario {
   TRPGSystem get system => throw _privateConstructorUsedError;
@@ -23,6 +27,7 @@ mixin _$Scenario {
   String? get kana => throw _privateConstructorUsedError;
   String? get author => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ScenarioCopyWith<Scenario> get copyWith =>
       throw _privateConstructorUsedError;
@@ -156,7 +161,7 @@ class __$$ScenarioImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ScenarioImpl implements _Scenario {
   const _$ScenarioImpl(
       {required this.system,
@@ -167,6 +172,9 @@ class _$ScenarioImpl implements _Scenario {
       this.author})
       : assert(kana == null || RegExp(r'^[ァ-ンヴー]+$').hasMatch(kana!),
             'フリガナに全角カタカナ以外の文字が含まれています');
+
+  factory _$ScenarioImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ScenarioImplFromJson(json);
 
   @override
   final TRPGSystem system;
@@ -201,6 +209,7 @@ class _$ScenarioImpl implements _Scenario {
             (identical(other.author, author) || other.author == author));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, system, name, imageUrl, storeUrl, kana, author);
@@ -210,6 +219,13 @@ class _$ScenarioImpl implements _Scenario {
   @pragma('vm:prefer-inline')
   _$$ScenarioImplCopyWith<_$ScenarioImpl> get copyWith =>
       __$$ScenarioImplCopyWithImpl<_$ScenarioImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ScenarioImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Scenario implements Scenario {
@@ -220,6 +236,9 @@ abstract class _Scenario implements Scenario {
       final String? storeUrl,
       final String? kana,
       final String? author}) = _$ScenarioImpl;
+
+  factory _Scenario.fromJson(Map<String, dynamic> json) =
+      _$ScenarioImpl.fromJson;
 
   @override
   TRPGSystem get system;

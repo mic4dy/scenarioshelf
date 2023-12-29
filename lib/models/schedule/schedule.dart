@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'schedule.freezed.dart';
+part 'schedule.g.dart';
 part 'schedule_type.dart';
 
 @freezed
@@ -11,4 +12,6 @@ class Schedule with _$Schedule {
     required Duration playtime,
     @Default(ScheduleType.event) ScheduleType type,
   }) = _Schedule;
+
+  factory Schedule.fromJson(Map<String, dynamic> json) => _$ScheduleFromJson(json);
 }

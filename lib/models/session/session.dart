@@ -7,6 +7,7 @@ import 'package:scenarioshelf/models/scenario/scenario.dart';
 import 'package:scenarioshelf/models/schedule/schedule.dart';
 
 part 'session.freezed.dart';
+part 'session.g.dart';
 
 @freezed
 class Session with _$Session {
@@ -17,8 +18,10 @@ class Session with _$Session {
     required DateTime createdAt,
     required DateTime updatedAt,
     @Default([]) List<Schedule> schedules,
-    @Default([]) List<Memo> memos,
     @Default([]) List<Participant> participants,
+    @Default([]) List<Memo> memos,
     Character? playedCharacter,
   }) = _Session;
+
+  factory Session.fromJson(Map<String, dynamic> json) => _$SessionFromJson(json);
 }

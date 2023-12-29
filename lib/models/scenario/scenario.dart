@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scenarioshelf/constants/domains/trpg_system.dart';
 
 part 'scenario.freezed.dart';
+part 'scenario.g.dart';
 
 @freezed
 class Scenario with _$Scenario {
@@ -15,4 +16,6 @@ class Scenario with _$Scenario {
     String? kana,
     String? author,
   }) = _Scenario;
+
+  factory Scenario.fromJson(Map<String, dynamic> json) => _$ScenarioFromJson(json);
 }

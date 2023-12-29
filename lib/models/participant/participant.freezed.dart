@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Participant _$ParticipantFromJson(Map<String, dynamic> json) {
+  return _Participant.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Participant {
   ParticipantType get type => throw _privateConstructorUsedError;
@@ -23,6 +27,7 @@ mixin _$Participant {
   String? get discordId => throw _privateConstructorUsedError;
   Character? get character => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ParticipantCopyWith<Participant> get copyWith =>
       throw _privateConstructorUsedError;
@@ -174,7 +179,7 @@ class __$$ParticipantImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ParticipantImpl implements _Participant {
   const _$ParticipantImpl(
       {required this.type,
@@ -183,6 +188,9 @@ class _$ParticipantImpl implements _Participant {
       this.xId,
       this.discordId,
       this.character});
+
+  factory _$ParticipantImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ParticipantImplFromJson(json);
 
   @override
   final ParticipantType type;
@@ -217,6 +225,7 @@ class _$ParticipantImpl implements _Participant {
                 other.character == character));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, type, name, userId, xId, discordId, character);
@@ -226,6 +235,13 @@ class _$ParticipantImpl implements _Participant {
   @pragma('vm:prefer-inline')
   _$$ParticipantImplCopyWith<_$ParticipantImpl> get copyWith =>
       __$$ParticipantImplCopyWithImpl<_$ParticipantImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ParticipantImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Participant implements Participant {
@@ -236,6 +252,9 @@ abstract class _Participant implements Participant {
       final String? xId,
       final String? discordId,
       final Character? character}) = _$ParticipantImpl;
+
+  factory _Participant.fromJson(Map<String, dynamic> json) =
+      _$ParticipantImpl.fromJson;
 
   @override
   ParticipantType get type;
