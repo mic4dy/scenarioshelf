@@ -1,2 +1,2 @@
-lib/**/*.g.dart linguist-generated=true
-lib/**/*.freezed.dart linguist-generated=true
+**/lib/**/*.g.dart          linguist-generated=true
+**/lib/**/*.freezed.dart    linguist-generated=true
