@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 
+import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/auth/auth_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
