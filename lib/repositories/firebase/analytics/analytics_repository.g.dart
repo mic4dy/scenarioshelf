@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'session_repository.dart';
+part of 'analytics_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sessionRepositoryHash() => r'f9793992fb907cdaf53cb17af2e4c5d5b57af094';
+String _$analyticsRepositoryHash() =>
+    r'40a1328a4838930cbdc1ec3ae7debc4c48e50ec9';
 
-/// See also [sessionRepository].
-@ProviderFor(sessionRepository)
-final sessionRepositoryProvider =
-    AutoDisposeProvider<SessionRepository>.internal(
-  sessionRepository,
-  name: r'sessionRepositoryProvider',
+/// See also [analyticsRepository].
+@ProviderFor(analyticsRepository)
+final analyticsRepositoryProvider = Provider<FirebaseAnalytics>.internal(
+  analyticsRepository,
+  name: r'analyticsRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$sessionRepositoryHash,
+      : _$analyticsRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef SessionRepositoryRef = AutoDisposeProviderRef<SessionRepository>;
+typedef AnalyticsRepositoryRef = ProviderRef<FirebaseAnalytics>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

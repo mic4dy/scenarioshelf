@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 
-import 'package:scenarioshelf/repositories/firebase/auth/firebase_auth_repository.dart';
+import 'package:scenarioshelf/repositories/firebase/auth/auth_repository.dart';
+import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 
@@ -9,11 +11,11 @@ part 'current_user_controller.g.dart';
 
 @Riverpod(keepAlive: true)
 class CurrentUserController extends _$CurrentUserController {
-  late final FirebaseAuthAPI _authRepository;
+  late final AuthAPI _authRepository;
 
   @override
   FutureOr<User?> build() {
-    _authRepository = ref.read(firebaseAuthRepositoryProvider);
+    _authRepository = ref.read(authRepositoryProvider);
 
     return _authRepository.getCurrentUser();
   }
@@ -31,12 +33,14 @@ class CurrentUserController extends _$CurrentUserController {
       );
 
       state = AsyncValue.data(user);
+      await ref.read(analyticsRepositoryProvider).logSignUp(signUpMethod: 'signUpWithEmailAndPassword');
     } on FirebaseAuthException catch (error, stack) {
       logger.e(
         'Failed to execute UserViewModel.signUpWithEmailAndPassword',
         error: error,
         stackTrace: stack,
       );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
       if (error.code == 'weak-password') {
         state = AsyncValue.error(
           const SigningException(
@@ -68,6 +72,7 @@ class CurrentUserController extends _$CurrentUserController {
         error: error,
         stackTrace: stack,
       );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
       state = AsyncValue.error(
         SigningException(
           message: error.toString(),
@@ -89,13 +94,16 @@ class CurrentUserController extends _$CurrentUserController {
         email: email,
         password: password,
       );
+
       state = AsyncValue.data(user);
+      await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithEmailAndPassword');
     } on FirebaseAuthException catch (error, stack) {
       logger.e(
         'Failed to execute UserViewModel.signInWithEmailAndPassword',
         error: error,
         stackTrace: stack,
       );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
       if (error.code == 'user-not-found') {
         state = AsyncValue.error(
           const SigningException(
@@ -127,6 +135,7 @@ class CurrentUserController extends _$CurrentUserController {
         error: error,
         stackTrace: stack,
       );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
       state = AsyncValue.error(
         SigningException(
           message: error.toString(),
@@ -142,13 +151,16 @@ class CurrentUserController extends _$CurrentUserController {
 
     try {
       final User user = await _authRepository.signInWithGoogle();
+
       state = AsyncValue.data(user);
+      await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithGoogle');
     } on Exception catch (error, stack) {
       logger.e(
         'Failed to execute UserViewModel.signInWithGoogle',
         error: error,
         stackTrace: stack,
       );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
       state = AsyncValue.error(
         const SigningException(
           message: 'Google sign-in failed (FirebaseAuthException)',

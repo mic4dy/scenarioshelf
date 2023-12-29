@@ -7,13 +7,13 @@ import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/models/scenario/scenario.dart';
 import 'package:scenarioshelf/models/schedule/schedule.dart';
 import 'package:scenarioshelf/models/session/session.dart';
-import 'package:scenarioshelf/repositories/firebase/firestore/firestore_api.dart';
+import 'package:scenarioshelf/repositories/firebase/firestore/firestore_repository.dart';
 
 part 'session_repository.g.dart';
 
 @riverpod
 SessionRepository sessionRepository(SessionRepositoryRef ref) {
-  final database = ref.read(firestoreAPIProvider).collection('sessions').withConverter(
+  final database = ref.read(firestoreRepositoryAPIProvider).collection('sessions').withConverter(
         fromFirestore: (doc, _) => Session.fromJson(doc.data()!),
         toFirestore: (session, _) => session.toJson(),
       );
