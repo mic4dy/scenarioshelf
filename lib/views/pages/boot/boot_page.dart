@@ -54,7 +54,7 @@ class BootPage extends ConsumerWidget {
                   LabeledButton(
                     brightness: WidgetBrightness.dark,
                     minimumSize: Size(size.width * 0.8, 40),
-                    onPressed: () => ref.read(routerProvider).push(Routes.signUp.path),
+                    onPressed: () => ref.read(routerProvider).push(Routes.signUp.fullPath),
                     label: '新規登録',
                     textStyle: const TextStyle(
                       letterSpacing: MarginSize.small,
@@ -63,7 +63,7 @@ class BootPage extends ConsumerWidget {
                   LabeledButton(
                     brightness: WidgetBrightness.light,
                     minimumSize: Size(size.width * 0.8, 40),
-                    onPressed: () => ref.read(routerProvider).push(Routes.signIn.path),
+                    onPressed: () => ref.read(routerProvider).push(Routes.signIn.fullPath),
                     label: 'ログイン',
                     textStyle: const TextStyle(
                       letterSpacing: MarginSize.small,

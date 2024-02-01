@@ -25,9 +25,6 @@ _$SessionImpl _$$SessionImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => Memo.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      playedCharacter: json['playedCharacter'] == null
-          ? null
-          : Character.fromJson(json['playedCharacter'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$SessionImplToJson(_$SessionImpl instance) =>
@@ -40,5 +37,4 @@ Map<String, dynamic> _$$SessionImplToJson(_$SessionImpl instance) =>
       'schedules': instance.schedules,
       'participants': instance.participants,
       'memos': instance.memos,
-      'playedCharacter': instance.playedCharacter,
     };

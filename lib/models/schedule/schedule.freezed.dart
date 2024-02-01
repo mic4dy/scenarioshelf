@@ -118,7 +118,7 @@ class __$$ScheduleImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ScheduleImpl implements _Schedule {
-  const _$ScheduleImpl(
+  _$ScheduleImpl(
       {required this.beginningTime,
       required this.playtime,
       this.type = ScheduleType.event})
@@ -171,7 +171,7 @@ class _$ScheduleImpl implements _Schedule {
 }
 
 abstract class _Schedule implements Schedule {
-  const factory _Schedule(
+  factory _Schedule(
       {required final DateTime beginningTime,
       required final Duration playtime,
       final ScheduleType type}) = _$ScheduleImpl;

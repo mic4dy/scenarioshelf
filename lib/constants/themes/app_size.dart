@@ -1,5 +1,6 @@
 class FontSize {
-  static const double label = 16;
+  static const double label = 14;
+  static const double caption = 12;
 }
 
 class MarginSize {
@@ -34,4 +35,11 @@ class ElevationSize {
 
 class BoxConstraintsSize {
   static const double form = 32;
+}
+
+class RadiusSize {
+  static const double minimum = 6;
+  static const double small = 8;
+  static const double medium = 16;
+  static const double large = 32;
 }

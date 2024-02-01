@@ -163,7 +163,7 @@ class __$$ScenarioImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ScenarioImpl implements _Scenario {
-  const _$ScenarioImpl(
+  _$ScenarioImpl(
       {required this.system,
       required this.name,
       this.imageUrl,
@@ -229,7 +229,7 @@ class _$ScenarioImpl implements _Scenario {
 }
 
 abstract class _Scenario implements Scenario {
-  const factory _Scenario(
+  factory _Scenario(
       {required final TRPGSystem system,
       required final String name,
       final String? imageUrl,

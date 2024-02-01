@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:scenarioshelf/models/character/character.dart';
 import 'package:scenarioshelf/models/memo/memo.dart';
 import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/models/scenario/scenario.dart';
@@ -20,8 +19,10 @@ class Session with _$Session {
     @Default([]) List<Schedule> schedules,
     @Default([]) List<Participant> participants,
     @Default([]) List<Memo> memos,
-    Character? playedCharacter,
   }) = _Session;
+  const Session._();
 
   factory Session.fromJson(Map<String, dynamic> json) => _$SessionFromJson(json);
+
+  String? get image => scenario.imageUrl;
 }
