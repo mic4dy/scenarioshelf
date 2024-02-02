@@ -27,7 +27,7 @@
     /** fvm */
     {
       "fileMatch": ["^fvm_config.json$"],
-      "matchStrings": ["\"flutterSdkVersion\": \"(?<datasource>.*?)\"\n"],
+      "matchStrings": ["\"flutterSdkVersion\": \"(?<currentValue>.*?)\"\n"],
       "depNameTemplate": "fvm",
       "datasourceTemplate": "flutter-version",
       "versioningTemplate": "semver",
