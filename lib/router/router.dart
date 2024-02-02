@@ -26,9 +26,9 @@ GoRouter router(RouterRef ref) {
         path: Routes.splash.path,
         name: Routes.splash.path,
         redirect: (context, state) {
-          final userState = ref.read(currentUserControllerProvider);
+          final user = ref.read(currentUserControllerProvider);
 
-          if (userState is AsyncData && userState.value != null) {
+          if (user != null) {
             return Routes.home.path;
           }
 

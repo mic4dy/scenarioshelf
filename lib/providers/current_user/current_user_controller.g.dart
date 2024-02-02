@@ -7,12 +7,12 @@ part of 'current_user_controller.dart';
 // **************************************************************************
 
 String _$currentUserControllerHash() =>
-    r'cffcae99834b1c6631eefcc8bb0a8ff7704a72be';
+    r'767fd150f3c3a78d8492f3d1ea4fb5e88b2ce83f';
 
 /// See also [CurrentUserController].
 @ProviderFor(CurrentUserController)
 final currentUserControllerProvider =
-    AsyncNotifierProvider<CurrentUserController, User?>.internal(
+    NotifierProvider<CurrentUserController, User?>.internal(
   CurrentUserController.new,
   name: r'currentUserControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final currentUserControllerProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$CurrentUserController = AsyncNotifier<User?>;
+typedef _$CurrentUserController = Notifier<User?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

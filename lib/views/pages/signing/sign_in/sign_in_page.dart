@@ -26,12 +26,9 @@ class SignInPage extends HookConsumerWidget {
         minimumSize: Size(size.width * 0.8 - 80, 40),
         onPressed: () async {
           ref.invalidate(currentUserControllerProvider);
-          await ref.read(currentUserControllerProvider.notifier).signInWithEmailAndPassword(
-                email: ref.read(signingControllerProvider).email,
-                password: ref.read(signingControllerProvider).password,
-              );
+          await ref.read(signingControllerProvider.notifier).signInWithEmailAndPassword();
 
-          ref.watch(currentUserControllerProvider).whenData((_) => ref.read(routerProvider).go(Routes.home.path));
+          ref.read(routerProvider).go(Routes.home.path);
         },
         label: 'ログイン',
         textStyle: const TextStyle(
