@@ -4,12 +4,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
-import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_email_form.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_password_form.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/signing_controller.dart';
 
 class SigningPageFrame extends ConsumerWidget {
   const SigningPageFrame({
@@ -23,7 +23,7 @@ class SigningPageFrame extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(currentUserControllerProvider, (previous, next) {
+    ref.listen(signingControllerProvider, (previous, next) {
       ScaffoldMessenger.of(context).clearMaterialBanners();
 
       if (previous is AsyncData && next is AsyncLoading) {
