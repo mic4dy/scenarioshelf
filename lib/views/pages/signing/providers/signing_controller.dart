@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/auth/auth_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
-
 import 'package:scenarioshelf/views/pages/signing/providers/states/signing_state.dart';
 
 part 'signing_controller.g.dart';
