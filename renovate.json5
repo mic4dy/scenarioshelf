@@ -22,6 +22,18 @@
     "pub",
   ],
 
+  /** カスタムマネージャー */
+  "regexManagers": [
+    /** fvm */
+    {
+      "fileMatch": ["^fvm_config.json$"],
+      "matchStrings": ["\"flutterSdkVersion\": \"(?<datasource>.*?)\"\n"],
+      "depNameTemplate": "fvm",
+      "datasourceTemplate": "flutter-version",
+      "versioningTemplate": "semver",
+    },
+  ],
+
   /** カスタムルール */
   "packageRules": [
     /** Flutter/Dart */
@@ -32,6 +44,7 @@
         "flutter_localizations",
         "flutter_test",
         "dart",
+        "fvm",
       ],
     },
     /** Firebase */
@@ -44,6 +57,7 @@
         "firebase_remote_config",
         "firebase_crashlytics",
         "firebase_analytics",
+        "firebase_auth",
         "firebase_core",
         "firebase_dynamic_links",
         "firebase_messaging",
@@ -60,6 +74,7 @@
         "firebase_remote_config",
         "firebase_crashlytics",
         "firebase_analytics",
+        "firebase_auth",
         "firebase_core",
         "firebase_dynamic_links",
         "firebase_messaging",
