@@ -28,12 +28,9 @@ class SignUpPage extends HookConsumerWidget {
           if (!formKey.value.currentState!.validate()) return;
 
           ref.invalidate(currentUserControllerProvider);
-          await ref.read(currentUserControllerProvider.notifier).signUpWithEmailAndPassword(
-                email: ref.read(signingControllerProvider).email,
-                password: ref.read(signingControllerProvider).password,
-              );
+          await ref.read(signingControllerProvider.notifier).signUpWithEmailAndPassword();
 
-          ref.watch(currentUserControllerProvider).whenData((_) => ref.read(routerProvider).go(Routes.home.path));
+          ref.read(routerProvider).go(Routes.home.path);
         },
         label: '登録',
         textStyle: const TextStyle(
