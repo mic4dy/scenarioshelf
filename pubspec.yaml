@@ -40,18 +40,18 @@ dev_dependencies:
   
   # Generator
   build_runner: 2.4.8
-  freezed: 2.4.6
+  freezed: 2.4.7
   json_serializable: 6.7.1
-  riverpod_generator: 2.3.10
+  riverpod_generator: 2.3.11
   flutter_launcher_icons: 0.13.1
   flutter_oss_licenses: 2.0.1
   flutter_gen_runner: 5.4.0
   
   # Linter
   flutter_lints: 3.0.1
-  custom_lint: 0.5.11
+  custom_lint: 0.6.0
   very_good_analysis: 5.1.0
-  riverpod_lint: 2.3.8
+  riverpod_lint: 2.3.9
   
   # Other
   import_sorter: 4.6.0
