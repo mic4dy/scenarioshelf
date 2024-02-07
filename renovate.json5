@@ -1,17 +1,30 @@
 {
+  /** このファイルの入力補完を有効化 */
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+
+  /** 依存設定 */
   extends: [
     'config:recommended',
   ],
+
+  /** タイムゾーン */
   timezone: 'Asia/Tokyo',
+
+  /** 実行日時設定 */
   schedule: [
+    /** 毎週月曜の早朝 */
     'before 4am on Monday',
   ],
+
+  /** 監視対象のライブラリ群 */
   enabledManagers: [
     'github-actions',
     'pub',
   ],
+
+  /** カスタムマネージャー */
   customManagers: [
+    /** fvm */
     {
       customType: 'regex',
       fileMatch: [
@@ -25,7 +38,10 @@
       versioningTemplate: 'semver',
     },
   ],
+
+  /** カスタムルール */
   packageRules: [
+    /** Flutter/Dart */
     {
       groupName: 'Flutter/Dart Packages',
       matchPackageNames: [
@@ -36,6 +52,8 @@
         'fvm',
       ],
     },
+
+    /** Firebase */
     {
       groupName: 'Firebase Packages',
       matchPackageNames: [
@@ -51,6 +69,8 @@
         'firebase_messaging',
       ],
     },
+
+    /** マイナーアップデート */
     {
       groupName: 'All minor and patch dependencies',
       matchUpdateTypes: [
@@ -72,14 +92,25 @@
         'flutter_localizations',
         'flutter_test',
         'dart',
+        'fvm',
       ],
     },
   ],
+
+  /** PRの時間あたり上限数 */
   prHourlyLimit: 0,
+
+  /** PRの同時上限数 */
   prConcurrentLimit: 0,
+
+  /** PRにつけるラベル */
   labels: [
     'Type: Renovate',
   ],
+
+  /** このファイルのマイグレーションPRを発行するか */
   configMigration: true,
+
+  /** DependencyDashboardを有効にするか */
   dependencyDashboard: false,
 }
