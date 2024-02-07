@@ -13,37 +13,32 @@ class HomePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(currentUserControllerProvider);
+
+    if (user == null) {
+      return _notSignedInBanner();
+    }
+
     return Scaffold(
-      body: ref.watch(currentUserControllerProvider).maybeWhen(
-            data: (user) {
-              if (user == null) {
-                return _notSignedInBanner();
-              }
+      body: FutureBuilder(
+        future: ref.read(sessionRepositoryProvider).list(userId: user.uid),
+        builder: (_, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (_, index) {
+                final session = snapshot.data![index];
 
-              return FutureBuilder(
-                future: ref.read(sessionRepositoryProvider).list(userId: user.uid),
-                builder: (_, snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (_, index) {
-                        final session = snapshot.data![index];
+                return SessionTile(
+                  session: session,
+                );
+              },
+            );
+          }
 
-                        return SessionTile(
-                          session: session,
-                        );
-                      },
-                    );
-                  }
-
-                  // TODO: Shimmer Widget
-                  return const SizedBox.shrink();
-                },
-              );
-            },
-            error: (error, stackTrace) => _notSignedInBanner(),
-            orElse: SizedBox.shrink,
-          ),
+          // TODO: Shimmer Widget
+          return const SizedBox.shrink();
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => ref.read(routerProvider).push(Routes.record.fullPath),
       ),
