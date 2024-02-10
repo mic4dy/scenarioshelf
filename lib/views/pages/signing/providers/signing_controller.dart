@@ -19,6 +19,8 @@ class SigningController extends _$SigningController {
 
   @override
   FutureOr<SigningState> build() {
+    _authRepository = ref.read(authRepositoryProvider);
+
     return const SigningState();
   }
 

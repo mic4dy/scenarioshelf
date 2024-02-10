@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart' show TargetPlatform, defaultTargetPlatf
 
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 
-import 'package:scenarioshelf/utils/enviroment.dart';
+import 'package:scenarioshelf/utils/environment.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///

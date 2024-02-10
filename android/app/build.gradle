@@ -77,7 +77,7 @@ android {
         // SDKの直接書き換え以外の設定方法が出てくればそちらに変更でも良さそう
         // minSdkVersion flutter.minSdkVersion
         // targetSdkVersion flutter.targetSdkVersion
-        minSdkVersion 28
+        minSdkVersion 30
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
