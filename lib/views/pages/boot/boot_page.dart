@@ -9,7 +9,7 @@ import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
-import 'package:scenarioshelf/views/pages/signing/providers/signing_controller.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
 
 class BootPage extends ConsumerWidget {
   const BootPage({super.key});

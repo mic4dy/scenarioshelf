@@ -9,7 +9,7 @@ import 'package:scenarioshelf/repositories/firebase/auth/auth_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
-import 'package:scenarioshelf/views/pages/signing/providers/states/signing_state.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/signing/states/signing_state.dart';
 
 part 'signing_controller.g.dart';
 
@@ -45,7 +45,7 @@ class SigningController extends _$SigningController {
         ref.read(currentUserControllerProvider.notifier).update(user);
 
         state = AsyncValue.data(data);
-        unawaited(ref.read(analyticsRepositoryProvider).logSignUp(signUpMethod: 'signUpWithEmailAndPassword'));
+        await ref.read(analyticsRepositoryProvider).logSignUp(signUpMethod: 'signUpWithEmailAndPassword');
       } on FirebaseAuthException catch (error, stack) {
         logger.e(
           'Failed to execute UserViewModel.signUpWithEmailAndPassword',

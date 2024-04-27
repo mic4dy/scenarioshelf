@@ -30,7 +30,6 @@
 .pub-cache/
 .pub/
 /build/
-.fvm/flutter_sdk
 
 # Symbolication related
 app.*.symbols
@@ -107,3 +106,6 @@ coverage/
 **/android/**/google-services.json
 **/ios/**/GoogleService-Info.plist
 **/android/app/src/main/res/mipmap*/
+
+# FVM Version Cache
+.fvm/

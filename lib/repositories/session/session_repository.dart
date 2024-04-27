@@ -73,7 +73,9 @@ class SessionRepository implements SessionRepositoryAPI {
   }
 
   @override
-  Future<List<Session>> list({required String userId}) async {
+  Future<List<Session>> list({
+    required String userId,
+  }) async {
     final query = await database.where('userId', isEqualTo: userId).get();
 
     return query.docs.map((doc) => doc.data()).toList();

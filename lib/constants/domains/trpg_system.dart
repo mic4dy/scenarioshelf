@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+@JsonEnum(valueField: 'id')
 enum TRPGSystem {
   mm(
     id: 'mm',

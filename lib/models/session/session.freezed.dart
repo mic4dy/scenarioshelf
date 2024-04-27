@@ -23,7 +23,9 @@ mixin _$Session {
   String get id => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   Scenario get scenario => throw _privateConstructorUsedError;
+  @DateTimeTimestampConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
+  @DateTimeTimestampConverter()
   DateTime get updatedAt => throw _privateConstructorUsedError;
   List<Schedule> get schedules => throw _privateConstructorUsedError;
   List<Participant> get participants => throw _privateConstructorUsedError;
@@ -43,8 +45,8 @@ abstract class $SessionCopyWith<$Res> {
       {String id,
       String userId,
       Scenario scenario,
-      DateTime createdAt,
-      DateTime updatedAt,
+      @DateTimeTimestampConverter() DateTime createdAt,
+      @DateTimeTimestampConverter() DateTime updatedAt,
       List<Schedule> schedules,
       List<Participant> participants,
       List<Memo> memos});
@@ -130,8 +132,8 @@ abstract class _$$SessionImplCopyWith<$Res> implements $SessionCopyWith<$Res> {
       {String id,
       String userId,
       Scenario scenario,
-      DateTime createdAt,
-      DateTime updatedAt,
+      @DateTimeTimestampConverter() DateTime createdAt,
+      @DateTimeTimestampConverter() DateTime updatedAt,
       List<Schedule> schedules,
       List<Participant> participants,
       List<Memo> memos});
@@ -204,8 +206,8 @@ class _$SessionImpl extends _Session {
       {required this.id,
       required this.userId,
       required this.scenario,
-      required this.createdAt,
-      required this.updatedAt,
+      @DateTimeTimestampConverter() required this.createdAt,
+      @DateTimeTimestampConverter() required this.updatedAt,
       final List<Schedule> schedules = const [],
       final List<Participant> participants = const [],
       final List<Memo> memos = const []})
@@ -224,8 +226,10 @@ class _$SessionImpl extends _Session {
   @override
   final Scenario scenario;
   @override
+  @DateTimeTimestampConverter()
   final DateTime createdAt;
   @override
+  @DateTimeTimestampConverter()
   final DateTime updatedAt;
   final List<Schedule> _schedules;
   @override
@@ -311,8 +315,8 @@ abstract class _Session extends Session {
       {required final String id,
       required final String userId,
       required final Scenario scenario,
-      required final DateTime createdAt,
-      required final DateTime updatedAt,
+      @DateTimeTimestampConverter() required final DateTime createdAt,
+      @DateTimeTimestampConverter() required final DateTime updatedAt,
       final List<Schedule> schedules,
       final List<Participant> participants,
       final List<Memo> memos}) = _$SessionImpl;
@@ -327,8 +331,10 @@ abstract class _Session extends Session {
   @override
   Scenario get scenario;
   @override
+  @DateTimeTimestampConverter()
   DateTime get createdAt;
   @override
+  @DateTimeTimestampConverter()
   DateTime get updatedAt;
   @override
   List<Schedule> get schedules;

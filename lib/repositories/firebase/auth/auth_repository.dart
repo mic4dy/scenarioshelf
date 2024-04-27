@@ -35,7 +35,7 @@ class AuthRepository implements AuthAPI {
 
     if (credential.user == null) throw FirebaseAuthException(code: 'user-not-found');
 
-    logger.i('Signed Up With Email and Password');
+    logger.i('Signed Up with Email and Password');
     return credential.user!;
   }
 
@@ -48,7 +48,7 @@ class AuthRepository implements AuthAPI {
 
     if (credential.user == null) throw FirebaseAuthException(code: 'user-not-found');
 
-    logger.i('Signed In With Email and Password');
+    logger.i('Signed In with Email and Password');
     return credential.user!;
   }
 
@@ -64,7 +64,7 @@ class AuthRepository implements AuthAPI {
 
     if (credential.user == null) throw FirebaseAuthException(code: 'user-not-found');
 
-    logger.i('Signed In With Google Account');
+    logger.i('Signed In with Google Account');
     return credential.user!;
   }
 

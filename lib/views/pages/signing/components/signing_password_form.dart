@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
-import 'package:scenarioshelf/views/pages/signing/providers/signing_controller.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
 
 class SigningPasswordForm extends HookConsumerWidget {
   const SigningPasswordForm({super.key});
@@ -25,6 +25,7 @@ class SigningPasswordForm extends HookConsumerWidget {
           padding: EdgeInsets.zero,
           constraints: const BoxConstraints(
             minHeight: BoxConstraintsSize.form,
+            minWidth: BoxConstraintsSize.form,
           ),
           onPressed: () => isObscure.value = !isObscure.value,
           icon: Icon(isObscure.value ? Icons.visibility_off_outlined : Icons.visibility_outlined),

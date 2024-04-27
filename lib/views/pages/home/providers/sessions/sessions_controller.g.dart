@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'current_user_controller.dart';
+part of 'sessions_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$currentUserControllerHash() =>
-    r'a666b230f5dd763cdb61f9548886189571b8fe9c';
+String _$sessionControllerHash() => r'6ff3fc46268ecf95413be7b25652c01b45d6ae51';
 
-/// See also [CurrentUserController].
-@ProviderFor(CurrentUserController)
-final currentUserControllerProvider =
-    NotifierProvider<CurrentUserController, User?>.internal(
-  CurrentUserController.new,
-  name: r'currentUserControllerProvider',
+/// See also [sessionController].
+@ProviderFor(sessionController)
+final sessionControllerProvider =
+    AutoDisposeFutureProvider<List<Session>>.internal(
+  sessionController,
+  name: r'sessionControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$currentUserControllerHash,
+      : _$sessionControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$CurrentUserController = Notifier<User?>;
+typedef SessionControllerRef = AutoDisposeFutureProviderRef<List<Session>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
