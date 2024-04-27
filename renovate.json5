@@ -1,6 +1,6 @@
 {
   /** このファイルの入力補完を有効化 */
-  schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  '$schema': 'https://docs.renovatebot.com/renovate-schema.json',
 
   /** 依存設定 */
   extends: [
@@ -16,41 +16,29 @@
     'before 4am on Monday',
   ],
 
+  /** カスタムマネージャー */
+  customManagers: [
+    /** fvm */
+    {
+      depNameTemplate: 'flutter-version-manager',
+      customType: 'regex',
+      fileMatch: [
+        '^.fvmrc$',
+      ],
+      matchStrings: [
+        '"flutter": "(?<currentValue>.*?)"',
+      ],
+      datasourceTemplate: 'flutter-version',
+      versioningTemplate: 'semver',
+      packageNameTemplate: 'flutter',
+    },
+  ],
+
   /** 監視対象のライブラリ群 */
   enabledManagers: [
     'github-actions',
     'pub',
-    'fvm',
   ],
-
-  /** FVMマネージャーのオーバーライド */
-  'fvm': {
-    enabled: true,
-    fileMatch: [
-      '^.fvmrc$',
-    ],
-    matchStrings: [
-      '"flutter": "(?<currentValue>.*?)"',
-    ],
-  },
-
-  /** カスタムマネージャー */
-  // customManagers: [
-  //   /** fvm */
-  //   {
-  //     customType: 'regex',
-  //     packageNameTemplate: 'fvm',
-  //     fileMatch: [
-  //       '^.fvmrc$',
-  //     ],
-  //     matchStrings: [
-  //       '"flutter": "(?<currentValue>.*?)"',
-  //     ],
-  //     datasourceTemplate: 'flutter-version',
-  //     versioningTemplate: 'semver',
-  //     depNameTemplate: 'flutter',
-  //   },
-  // ],
 
   /** カスタムルール */
   packageRules: [
@@ -62,7 +50,6 @@
         'flutter_localizations',
         'flutter_test',
         'dart',
-        'fvm',
       ],
     },
 
