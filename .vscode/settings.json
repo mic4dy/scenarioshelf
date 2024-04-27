@@ -1,5 +1,5 @@
 {
-  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "dart.flutterSdkPath": ".fvm/versions/3.16.3",
   "dart.lineLength": 140,
   "search.exclude": {
     "/lib/proto": true,
@@ -22,6 +22,7 @@
   },
   "cSpell.words": [
     "etags",
+    "micady",
     "pubspec",
     "scenarioshelf",
     "shinobi",

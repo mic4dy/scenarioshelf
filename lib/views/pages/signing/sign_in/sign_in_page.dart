@@ -9,7 +9,7 @@ import 'package:scenarioshelf/providers/current_user/current_user_controller.dar
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_page_frame.dart';
-import 'package:scenarioshelf/views/pages/signing/providers/signing_controller.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
 
 class SignInPage extends HookConsumerWidget {
   const SignInPage({super.key});

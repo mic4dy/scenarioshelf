@@ -6,6 +6,7 @@ class StatusBanner extends MaterialBanner {
   StatusBanner({
     required Widget content,
     super.leading,
+    List<Widget>? actions,
     bool isVisibleClosedButton = true,
     super.key,
   }) : super(
@@ -15,20 +16,21 @@ class StatusBanner extends MaterialBanner {
             right: MarginSize.medium,
           ),
           elevation: ElevationSize.banner,
-          actions: [
-            if (isVisibleClosedButton)
-              Builder(
-                builder: (context) => IconButton(
-                  onPressed: () => ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
-                  icon: Icon(
-                    Icons.close,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-              )
-            else
-              const SizedBox.shrink(),
-          ],
+          actions: actions ??
+              [
+                if (isVisibleClosedButton)
+                  Builder(
+                    builder: (context) => IconButton(
+                      onPressed: () => ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
+                      icon: Icon(
+                        Icons.close,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                  )
+                else
+                  const SizedBox.shrink(),
+              ],
           content: Builder(
             builder: (context) {
               return DefaultTextStyle.merge(
@@ -77,6 +79,7 @@ class StatusBanner extends MaterialBanner {
 
   factory StatusBanner.error({
     required Widget content,
+    List<Widget>? actions,
   }) =>
       StatusBanner(
         leading: Builder(
@@ -85,6 +88,7 @@ class StatusBanner extends MaterialBanner {
             color: Theme.of(context).colorScheme.error,
           ),
         ),
+        actions: actions,
         content: content,
       );
 }

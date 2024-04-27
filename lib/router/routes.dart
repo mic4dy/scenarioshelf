@@ -3,11 +3,24 @@ part of 'router.dart';
 enum Routes {
   splash(path: '/path'),
   boot(path: '/boot'),
-  signUp(path: '/signUp'),
-  signIn(path: '/signIn'),
-  home(path: '/home');
+  signUp(path: 'signUp', parent: boot),
+  signIn(path: 'signIn', parent: boot),
+  home(path: '/home'),
+  record(path: '/record');
 
-  const Routes({required this.path});
+  const Routes({
+    required this.path,
+    this.parent,
+  });
 
   final String path;
+  final Routes? parent;
+
+  String get fullPath {
+    if (parent != null) {
+      return '${parent!.fullPath}/$path';
+    }
+
+    return path;
+  }
 }

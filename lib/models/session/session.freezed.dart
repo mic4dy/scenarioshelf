@@ -23,12 +23,13 @@ mixin _$Session {
   String get id => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   Scenario get scenario => throw _privateConstructorUsedError;
+  @DateTimeTimestampConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
+  @DateTimeTimestampConverter()
   DateTime get updatedAt => throw _privateConstructorUsedError;
   List<Schedule> get schedules => throw _privateConstructorUsedError;
   List<Participant> get participants => throw _privateConstructorUsedError;
   List<Memo> get memos => throw _privateConstructorUsedError;
-  Character? get playedCharacter => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,15 +45,13 @@ abstract class $SessionCopyWith<$Res> {
       {String id,
       String userId,
       Scenario scenario,
-      DateTime createdAt,
-      DateTime updatedAt,
+      @DateTimeTimestampConverter() DateTime createdAt,
+      @DateTimeTimestampConverter() DateTime updatedAt,
       List<Schedule> schedules,
       List<Participant> participants,
-      List<Memo> memos,
-      Character? playedCharacter});
+      List<Memo> memos});
 
   $ScenarioCopyWith<$Res> get scenario;
-  $CharacterCopyWith<$Res>? get playedCharacter;
 }
 
 /// @nodoc
@@ -76,7 +75,6 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
     Object? schedules = null,
     Object? participants = null,
     Object? memos = null,
-    Object? playedCharacter = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -111,10 +109,6 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.memos
           : memos // ignore: cast_nullable_to_non_nullable
               as List<Memo>,
-      playedCharacter: freezed == playedCharacter
-          ? _value.playedCharacter
-          : playedCharacter // ignore: cast_nullable_to_non_nullable
-              as Character?,
     ) as $Val);
   }
 
@@ -123,18 +117,6 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
   $ScenarioCopyWith<$Res> get scenario {
     return $ScenarioCopyWith<$Res>(_value.scenario, (value) {
       return _then(_value.copyWith(scenario: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CharacterCopyWith<$Res>? get playedCharacter {
-    if (_value.playedCharacter == null) {
-      return null;
-    }
-
-    return $CharacterCopyWith<$Res>(_value.playedCharacter!, (value) {
-      return _then(_value.copyWith(playedCharacter: value) as $Val);
     });
   }
 }
@@ -150,17 +132,14 @@ abstract class _$$SessionImplCopyWith<$Res> implements $SessionCopyWith<$Res> {
       {String id,
       String userId,
       Scenario scenario,
-      DateTime createdAt,
-      DateTime updatedAt,
+      @DateTimeTimestampConverter() DateTime createdAt,
+      @DateTimeTimestampConverter() DateTime updatedAt,
       List<Schedule> schedules,
       List<Participant> participants,
-      List<Memo> memos,
-      Character? playedCharacter});
+      List<Memo> memos});
 
   @override
   $ScenarioCopyWith<$Res> get scenario;
-  @override
-  $CharacterCopyWith<$Res>? get playedCharacter;
 }
 
 /// @nodoc
@@ -182,7 +161,6 @@ class __$$SessionImplCopyWithImpl<$Res>
     Object? schedules = null,
     Object? participants = null,
     Object? memos = null,
-    Object? playedCharacter = freezed,
   }) {
     return _then(_$SessionImpl(
       id: null == id
@@ -217,30 +195,26 @@ class __$$SessionImplCopyWithImpl<$Res>
           ? _value._memos
           : memos // ignore: cast_nullable_to_non_nullable
               as List<Memo>,
-      playedCharacter: freezed == playedCharacter
-          ? _value.playedCharacter
-          : playedCharacter // ignore: cast_nullable_to_non_nullable
-              as Character?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SessionImpl implements _Session {
+class _$SessionImpl extends _Session {
   const _$SessionImpl(
       {required this.id,
       required this.userId,
       required this.scenario,
-      required this.createdAt,
-      required this.updatedAt,
+      @DateTimeTimestampConverter() required this.createdAt,
+      @DateTimeTimestampConverter() required this.updatedAt,
       final List<Schedule> schedules = const [],
       final List<Participant> participants = const [],
-      final List<Memo> memos = const [],
-      this.playedCharacter})
+      final List<Memo> memos = const []})
       : _schedules = schedules,
         _participants = participants,
-        _memos = memos;
+        _memos = memos,
+        super._();
 
   factory _$SessionImpl.fromJson(Map<String, dynamic> json) =>
       _$$SessionImplFromJson(json);
@@ -252,8 +226,10 @@ class _$SessionImpl implements _Session {
   @override
   final Scenario scenario;
   @override
+  @DateTimeTimestampConverter()
   final DateTime createdAt;
   @override
+  @DateTimeTimestampConverter()
   final DateTime updatedAt;
   final List<Schedule> _schedules;
   @override
@@ -283,11 +259,8 @@ class _$SessionImpl implements _Session {
   }
 
   @override
-  final Character? playedCharacter;
-
-  @override
   String toString() {
-    return 'Session(id: $id, userId: $userId, scenario: $scenario, createdAt: $createdAt, updatedAt: $updatedAt, schedules: $schedules, participants: $participants, memos: $memos, playedCharacter: $playedCharacter)';
+    return 'Session(id: $id, userId: $userId, scenario: $scenario, createdAt: $createdAt, updatedAt: $updatedAt, schedules: $schedules, participants: $participants, memos: $memos)';
   }
 
   @override
@@ -307,9 +280,7 @@ class _$SessionImpl implements _Session {
                 .equals(other._schedules, _schedules) &&
             const DeepCollectionEquality()
                 .equals(other._participants, _participants) &&
-            const DeepCollectionEquality().equals(other._memos, _memos) &&
-            (identical(other.playedCharacter, playedCharacter) ||
-                other.playedCharacter == playedCharacter));
+            const DeepCollectionEquality().equals(other._memos, _memos));
   }
 
   @JsonKey(ignore: true)
@@ -323,8 +294,7 @@ class _$SessionImpl implements _Session {
       updatedAt,
       const DeepCollectionEquality().hash(_schedules),
       const DeepCollectionEquality().hash(_participants),
-      const DeepCollectionEquality().hash(_memos),
-      playedCharacter);
+      const DeepCollectionEquality().hash(_memos));
 
   @JsonKey(ignore: true)
   @override
@@ -340,17 +310,17 @@ class _$SessionImpl implements _Session {
   }
 }
 
-abstract class _Session implements Session {
+abstract class _Session extends Session {
   const factory _Session(
       {required final String id,
       required final String userId,
       required final Scenario scenario,
-      required final DateTime createdAt,
-      required final DateTime updatedAt,
+      @DateTimeTimestampConverter() required final DateTime createdAt,
+      @DateTimeTimestampConverter() required final DateTime updatedAt,
       final List<Schedule> schedules,
       final List<Participant> participants,
-      final List<Memo> memos,
-      final Character? playedCharacter}) = _$SessionImpl;
+      final List<Memo> memos}) = _$SessionImpl;
+  const _Session._() : super._();
 
   factory _Session.fromJson(Map<String, dynamic> json) = _$SessionImpl.fromJson;
 
@@ -361,8 +331,10 @@ abstract class _Session implements Session {
   @override
   Scenario get scenario;
   @override
+  @DateTimeTimestampConverter()
   DateTime get createdAt;
   @override
+  @DateTimeTimestampConverter()
   DateTime get updatedAt;
   @override
   List<Schedule> get schedules;
@@ -370,8 +342,6 @@ abstract class _Session implements Session {
   List<Participant> get participants;
   @override
   List<Memo> get memos;
-  @override
-  Character? get playedCharacter;
   @override
   @JsonKey(ignore: true)
   _$$SessionImplCopyWith<_$SessionImpl> get copyWith =>

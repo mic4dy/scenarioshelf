@@ -8,7 +8,7 @@ part 'scenario.g.dart';
 @freezed
 class Scenario with _$Scenario {
   @Assert(r"kana == null || RegExp(r'^[ァ-ンヴー]+$').hasMatch(kana!)", 'フリガナに全角カタカナ以外の文字が含まれています')
-  const factory Scenario({
+  factory Scenario({
     required TRPGSystem system,
     required String name,
     String? imageUrl,

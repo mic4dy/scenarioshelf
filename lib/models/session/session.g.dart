@@ -11,8 +11,10 @@ _$SessionImpl _$$SessionImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       userId: json['userId'] as String,
       scenario: Scenario.fromJson(json['scenario'] as Map<String, dynamic>),
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      createdAt: const DateTimeTimestampConverter()
+          .fromJson(json['createdAt'] as Timestamp),
+      updatedAt: const DateTimeTimestampConverter()
+          .fromJson(json['updatedAt'] as Timestamp),
       schedules: (json['schedules'] as List<dynamic>?)
               ?.map((e) => Schedule.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -25,9 +27,6 @@ _$SessionImpl _$$SessionImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => Memo.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      playedCharacter: json['playedCharacter'] == null
-          ? null
-          : Character.fromJson(json['playedCharacter'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$SessionImplToJson(_$SessionImpl instance) =>
@@ -35,10 +34,11 @@ Map<String, dynamic> _$$SessionImplToJson(_$SessionImpl instance) =>
       'id': instance.id,
       'userId': instance.userId,
       'scenario': instance.scenario,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
+      'createdAt':
+          const DateTimeTimestampConverter().toJson(instance.createdAt),
+      'updatedAt':
+          const DateTimeTimestampConverter().toJson(instance.updatedAt),
       'schedules': instance.schedules,
       'participants': instance.participants,
       'memos': instance.memos,
-      'playedCharacter': instance.playedCharacter,
     };

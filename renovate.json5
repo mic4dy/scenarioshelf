@@ -28,10 +28,10 @@
     {
       customType: 'regex',
       fileMatch: [
-        '^fvm_config.json$',
+        '^.fvmrc$',
       ],
       matchStrings: [
-        '"flutterSdkVersion": "(?<currentValue>.*?)"\n',
+        '"flutter": "(?<currentValue>.*?)"',
       ],
       depNameTemplate: 'fvm',
       datasourceTemplate: 'flutter-version',

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:scenarioshelf/models/character/character.dart';
 import 'package:scenarioshelf/models/memo/memo.dart';
 import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/models/scenario/scenario.dart';
@@ -27,7 +26,6 @@ abstract interface class SessionRepositoryAPI {
     List<Schedule> schedules = const [],
     List<Participant> participants = const [],
     List<Memo> memos = const [],
-    Character? playedCharacter,
   });
   Future<Session> get({required String id});
   Future<List<Session>> list({required String userId});
@@ -49,7 +47,6 @@ class SessionRepository implements SessionRepositoryAPI {
     List<Schedule> schedules = const [],
     List<Participant> participants = const [],
     List<Memo> memos = const [],
-    Character? playedCharacter,
   }) async {
     final doc = database.doc();
     final session = Session(
@@ -59,7 +56,6 @@ class SessionRepository implements SessionRepositoryAPI {
       schedules: schedules,
       participants: participants,
       memos: memos,
-      playedCharacter: playedCharacter,
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     );
@@ -77,7 +73,9 @@ class SessionRepository implements SessionRepositoryAPI {
   }
 
   @override
-  Future<List<Session>> list({required String userId}) async {
+  Future<List<Session>> list({
+    required String userId,
+  }) async {
     final query = await database.where('userId', isEqualTo: userId).get();
 
     return query.docs.map((doc) => doc.data()).toList();
