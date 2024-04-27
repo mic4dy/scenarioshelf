@@ -1,6 +1,6 @@
 {
   /** このファイルの入力補完を有効化 */
-  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  '$schema': 'https://docs.renovatebot.com/renovate-schema.json',
 
   /** 依存設定 */
   extends: [
@@ -27,15 +27,16 @@
     /** fvm */
     {
       customType: 'regex',
+      packageNameTemplate: 'fvm',
       fileMatch: [
         '^.fvmrc$',
       ],
       matchStrings: [
         '"flutter": "(?<currentValue>.*?)"',
       ],
-      depNameTemplate: 'fvm',
       datasourceTemplate: 'flutter-version',
       versioningTemplate: 'semver',
+      depNameTemplate: 'flutter',
     },
   ],
 
