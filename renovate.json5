@@ -1,6 +1,6 @@
 {
   /** このファイルの入力補完を有効化 */
-  '$schema': 'https://docs.renovatebot.com/renovate-schema.json',
+  schema: 'https://docs.renovatebot.com/renovate-schema.json',
 
   /** 依存設定 */
   extends: [
@@ -20,25 +20,37 @@
   enabledManagers: [
     'github-actions',
     'pub',
+    'fvm',
   ],
 
+  /** FVMマネージャーのオーバーライド */
+  'fvm': {
+    enabled: true,
+    fileMatch: [
+      '^.fvmrc$',
+    ],
+    matchStrings: [
+      '"flutter": "(?<currentValue>.*?)"',
+    ],
+  },
+
   /** カスタムマネージャー */
-  customManagers: [
-    /** fvm */
-    {
-      customType: 'regex',
-      packageNameTemplate: 'fvm',
-      fileMatch: [
-        '^.fvmrc$',
-      ],
-      matchStrings: [
-        '"flutter": "(?<currentValue>.*?)"',
-      ],
-      datasourceTemplate: 'flutter-version',
-      versioningTemplate: 'semver',
-      depNameTemplate: 'flutter',
-    },
-  ],
+  // customManagers: [
+  //   /** fvm */
+  //   {
+  //     customType: 'regex',
+  //     packageNameTemplate: 'fvm',
+  //     fileMatch: [
+  //       '^.fvmrc$',
+  //     ],
+  //     matchStrings: [
+  //       '"flutter": "(?<currentValue>.*?)"',
+  //     ],
+  //     datasourceTemplate: 'flutter-version',
+  //     versioningTemplate: 'semver',
+  //     depNameTemplate: 'flutter',
+  //   },
+  // ],
 
   /** カスタムルール */
   packageRules: [
