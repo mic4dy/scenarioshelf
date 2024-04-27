@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 import 'package:scenarioshelf/constants/domains/sort_order.dart';
 import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/models/schedule/schedule.dart';

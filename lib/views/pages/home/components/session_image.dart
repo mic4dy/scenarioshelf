@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:scenarioshelf/constants/themes/app_size.dart';
+import 'package:scenarioshelf/views/pages/home/components/no_image.dart';
+
 // import 'package:shimmer/shimmer.dart';
 
-import 'package:scenarioshelf/constants/themes/app_size.dart';
 // import 'package:scenarioshelf/utils/logger.dart';
-import 'package:scenarioshelf/views/pages/home/components/no_image.dart';
 
 class SessionImage extends StatelessWidget {
   const SessionImage({
