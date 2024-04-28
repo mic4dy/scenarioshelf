@@ -16,31 +16,11 @@
     'before 4am on Monday',
   ],
 
-  /** カスタムマネージャー */
-  customManagers: [
-    /** fvm */
-    {
-      depNameTemplate: 'flutter-version-manager',
-      customType: 'regex',
-      fileMatch: [
-        '^.fvmrc$',
-      ],
-      matchStrings: [
-        '"flutter": "(?<currentValue>.*?)"',
-      ],
-      datasourceTemplate: 'flutter-version',
-      versioningTemplate: 'npm',
-      packageNameTemplate: 'flutter',
-      registryUrlTemplate: 'https://github.com/flutter/flutter',
-    },
-  ],
-
   /** 監視対象のライブラリ群 */
   enabledManagers: [
     'github-actions',
     'pub',
     'fvm',
-    'custom.regex',
   ],
 
   /** カスタムルール */
