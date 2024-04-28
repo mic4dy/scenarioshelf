@@ -1,12 +1,7 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.19.6",
-  "dart.lineLength": 140,
-  "search.exclude": {
-    "/lib/proto": true,
-    "**.freezed.dart": true,
-    "pubspec.lock": true
-  },
   "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "editor.rulers": [
@@ -16,9 +11,10 @@
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
     "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": "off",
-    "editor.defaultFormatter": "Dart-Code.dart-code",
-    "editor.formatOnPaste": true
+    "editor.wordBasedSuggestions": "off"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
   },
   "cSpell.words": [
     "dotenv",
@@ -29,5 +25,17 @@
     "shinobi",
     "supabase",
     "TRPG"
-  ]
+  ],
+  "dart.flutterSdkPath": ".fvm/versions/3.19.6",
+  "dart.lineLength": 140,
+  "deno.enablePaths": [
+    "supabase/functions"
+  ],
+  "deno.lint": true,
+  "deno.unstable": true,
+  "search.exclude": {
+    "**.freezed.dart": true,
+    "/lib/proto": true,
+    "pubspec.lock": true
+  }
 }
