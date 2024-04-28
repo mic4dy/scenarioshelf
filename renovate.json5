@@ -29,8 +29,9 @@
         '"flutter": "(?<currentValue>.*?)"',
       ],
       datasourceTemplate: 'flutter-version',
-      versioningTemplate: 'semver',
+      versioningTemplate: 'npm',
       packageNameTemplate: 'flutter',
+      registryUrlTemplate: 'https://github.com/flutter/flutter',
     },
   ],
 
@@ -38,6 +39,8 @@
   enabledManagers: [
     'github-actions',
     'pub',
+    'fvm',
+    'custom.regex',
   ],
 
   /** カスタムルール */
@@ -92,7 +95,6 @@
         'flutter_localizations',
         'flutter_test',
         'dart',
-        'fvm',
       ],
     },
   ],
