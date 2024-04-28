@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -15,7 +16,9 @@ import 'package:scenarioshelf/constants/themes/app_color.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/firebase_options.dart';
 import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/utils/environment.dart';
 import 'package:scenarioshelf/utils/logger.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,6 +59,17 @@ Future<void> main() async {
       );
     }
   }
+
+  final envFileName = switch (Environment.flavor) {
+    Flavor.dev => '.env.dev',
+    Flavor.stg => '.env.stg',
+    Flavor.prod => '.env.prod',
+  };
+  await dotenv.load(fileName: envFileName);
+  await Supabase.initialize(
+    url: dotenv.get('SUPABASE_URL'),
+    anonKey: dotenv.get('SUPABASE_KEY'),
+  );
 
   runApp(const ProviderScope(child: Scenarioshelf()));
 }

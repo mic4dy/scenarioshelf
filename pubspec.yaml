@@ -16,7 +16,8 @@ dependencies:
   google_fonts: 6.2.1
   shimmer: 3.0.0
 
-  # Firebase
+  # BaaS
+  supabase_flutter: 2.5.1
   firebase_core: 2.30.1
   firebase_analytics: 10.10.4
   firebase_crashlytics: 3.5.4
@@ -36,6 +37,7 @@ dependencies:
   logger: 2.2.0
   app_tracking_transparency: 2.0.5
   collection: 1.18.0
+  flutter_dotenv: 5.1.0
 
 dev_dependencies:
   flutter_test: 
@@ -65,10 +67,13 @@ dev_dependencies:
 
   # oss_licenses.dart の生成コマンド（パッケージを追加したら実行する）
   # flutter pub run flutter_oss_licenses:generate.dart -o lib/constants/oss_licenses.dart
-  
+
 flutter: 
   uses-material-design: true
   assets:
+    - .env.dev
+    - .env.stg
+    - .env.prod
     - assets/images/logos/
 
 import_sorter:

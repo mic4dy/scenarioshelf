@@ -1,5 +1,5 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.16.3",
+  "dart.flutterSdkPath": ".fvm/versions/3.19.6",
   "dart.lineLength": 140,
   "search.exclude": {
     "/lib/proto": true,
@@ -21,11 +21,13 @@
     "editor.formatOnPaste": true
   },
   "cSpell.words": [
+    "dotenv",
     "etags",
     "micady",
     "pubspec",
     "scenarioshelf",
     "shinobi",
+    "supabase",
     "TRPG"
   ]
 }
