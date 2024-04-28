@@ -39,6 +39,7 @@
   enabledManagers: [
     'github-actions',
     'pub',
+    'fvm',
     'custom.regex',
   ],
 
@@ -94,7 +95,6 @@
         'flutter_localizations',
         'flutter_test',
         'dart',
-        'fvm',
       ],
     },
   ],
