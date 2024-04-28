@@ -31,7 +31,6 @@
       datasourceTemplate: 'flutter-version',
       versioningTemplate: 'npm',
       packageNameTemplate: 'flutter',
-      registryUrlTemplate: 'https://github.com/flutter/flutter',
     },
   ],
 
@@ -39,7 +38,8 @@
   enabledManagers: [
     'github-actions',
     'pub',
-    'fvm',
+    // v3に対応するまでcustomManagersで対応
+    // 'fvm',
     'custom.regex',
   ],
 
