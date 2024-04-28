@@ -9,7 +9,7 @@ part of 'schedule.dart';
 _$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
     _$ScheduleImpl(
       beginningTime: DateTime.parse(json['beginningTime'] as String),
-      playtime: Duration(microseconds: json['playtime'] as int),
+      playtime: Duration(microseconds: (json['playtime'] as num).toInt()),
       type: $enumDecodeNullable(_$ScheduleTypeEnumMap, json['type']) ??
           ScheduleType.event,
     );
