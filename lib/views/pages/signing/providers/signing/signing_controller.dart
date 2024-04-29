@@ -1,9 +1,10 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/models/user/user.dart';
 
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
+import 'package:scenarioshelf/repositories/apis/auth_api.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/auth/auth_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';

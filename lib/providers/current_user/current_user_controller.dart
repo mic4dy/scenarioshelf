@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/models/user/user.dart';
+import 'package:scenarioshelf/repositories/apis/auth_api.dart';
 
 import 'package:scenarioshelf/repositories/firebase/auth/auth_repository.dart';
 import 'package:scenarioshelf/utils/logger.dart';
@@ -10,9 +11,10 @@ part 'current_user_controller.g.dart';
 class CurrentUserController extends _$CurrentUserController {
   @override
   User? build() {
-    final user = ref.read(authRepositoryProvider).getCurrentUser();
+    final AuthAPI repository = ref.read(authRepositoryProvider);
+    final user = repository.getCurrentUser();
     if (user != null) {
-      logger.i('Get Current User: ${user.displayName}(${user.uid})');
+      logger.i('Get Current User: ${user.name}(${user.id})');
     } else {
       logger.i('No Current User');
     }
@@ -20,9 +22,8 @@ class CurrentUserController extends _$CurrentUserController {
     return user;
   }
 
-  // ignore: use_setters_to_change_properties
   void update(User user) {
-    logger.i('Update Current User: ${user.displayName}(${user.uid})');
+    logger.i('Update Current User: ${user.name}(${user.id})');
     state = user;
   }
 }

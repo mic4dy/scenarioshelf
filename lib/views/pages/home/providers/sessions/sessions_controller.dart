@@ -21,7 +21,7 @@ FutureOr<List<Session>> sessionController(SessionControllerRef ref) async {
   }
 
   final sortProvider = ref.read(sessionsSortControllerProvider);
-  final sessions = await ref.read(sessionRepositoryProvider).list(userId: user.uid);
+  final sessions = await ref.read(sessionRepositoryProvider).list(userId: user.id);
 
   switch (sortProvider.pivot) {
     case SessionsSortPivot.scenarioName:
@@ -94,10 +94,10 @@ FutureOr<List<Session>> sessionController(SessionControllerRef ref) async {
       return sessions
         ..sort((a, b) {
           final aCharacter = a.participants
-              .firstWhereOrNull((participant) => participant.type == ParticipantType.player && participant.userId == user.uid)
+              .firstWhereOrNull((participant) => participant.type == ParticipantType.player && participant.userId == user.id)
               ?.character;
           final bCharacter = b.participants
-              .firstWhereOrNull((participant) => participant.type == ParticipantType.player && participant.userId == user.uid)
+              .firstWhereOrNull((participant) => participant.type == ParticipantType.player && participant.userId == user.id)
               ?.character;
           if (aCharacter == null && bCharacter == null) {
             return 0;
