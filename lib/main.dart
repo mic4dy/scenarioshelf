@@ -61,7 +61,7 @@ Future<void> main() async {
   }
 
   final envFileName = switch (Environment.flavor) {
-    Flavor.dev => '.env.dev',
+    Flavor.dev => '.env',
     Flavor.stg => '.env.stg',
     Flavor.prod => '.env.prod',
   };

@@ -40,6 +40,21 @@ flutter pub run import_sorter:main
 flutter pub run flutter_launcher_icons:main
 ```
 
+### Supabase
+
+コマンドの導入 : [公式ドキュメント](https://supabase.com/docs/guides/cli/getting-started)
+
+
+ローカル開発環境の立ち上げ
+```bash
+supabase start
+```
+
+ローカル開発環境の停止
+```bash
+supabase stop
+```
+
 ### その他
 
 Firebaseエミュレータの起動  
@@ -57,8 +72,8 @@ firebase emulators:start --import=./fixtures --export-on-exit
 ## 環境
 
 - 基本的にバックエンドはFirebaseに丸投げ
-- コーディング規約（Linter）は[Very Good Analysis](https://pub.dev/packages/very_good_analysis)をカスタム
-- ライブラリのバージョン管理は[Renovate](https://docs.renovatebot.com/)を利用
+- コーディング規約（Linter）は [Very Good Analysis](https://pub.dev/packages/very_good_analysis) をカスタム
+- ライブラリのバージョン管理は [Renovate](https://docs.renovatebot.com/) を利用
 - CI/CDはGitHub Actions
 
 ## ライブラリ
