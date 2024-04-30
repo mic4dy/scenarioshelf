@@ -1,2 +1,3 @@
 FLAVOR=prod
 APP_ID_SUFFIX=
+GOOGLE_AUTH_CLIENT_ID=710312653371-gt6hf38n8ibkbk63n5kc0a8qravq4q3i.apps.googleusercontent.com

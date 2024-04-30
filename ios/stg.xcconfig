@@ -1,2 +1,3 @@
 FLAVOR=stg
 APP_ID_SUFFIX=.stg
+GOOGLE_AUTH_CLIENT_ID=580165016681-k7ucrlsbch8p5jmankgeqpedavufuiu6.apps.googleusercontent.com

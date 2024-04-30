@@ -7,7 +7,7 @@ part of 'current_user_controller.dart';
 // **************************************************************************
 
 String _$currentUserControllerHash() =>
-    r'a666b230f5dd763cdb61f9548886189571b8fe9c';
+    r'698b67d8c72512bead0a5f40b94ceee2c7b5dc7d';
 
 /// See also [CurrentUserController].
 @ProviderFor(CurrentUserController)
