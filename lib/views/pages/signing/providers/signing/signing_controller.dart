@@ -49,7 +49,7 @@ class SigningController extends _$SigningController {
         await ref.read(analyticsRepositoryProvider).logSignUp(signUpMethod: 'signUpWithEmailAndPassword');
       } on SigningException catch (error, stack) {
         logger.e(
-          'Failed to execute UserViewModel.signUpWithEmailAndPassword',
+          'Failed to execute SigningController.signUpWithEmailAndPassword',
           error: error,
           stackTrace: stack,
         );
@@ -57,7 +57,7 @@ class SigningController extends _$SigningController {
         state = AsyncValue.error(error, stack);
       } on AuthException catch (error, stack) {
         logger.e(
-          'Failed to execute UserViewModel.signUpWithEmailAndPassword',
+          'Failed to execute SigningController.signUpWithEmailAndPassword',
           error: error,
           stackTrace: stack,
         );
@@ -71,7 +71,7 @@ class SigningController extends _$SigningController {
         );
       } on Exception catch (error, stack) {
         logger.e(
-          'Failed to execute UserViewModel.signUpWithEmailAndPassword',
+          'Failed to execute SigningController.signUpWithEmailAndPassword',
           error: error,
           stackTrace: stack,
         );
@@ -103,7 +103,7 @@ class SigningController extends _$SigningController {
         await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithEmailAndPassword');
       } on SigningException catch (error, stack) {
         logger.e(
-          'Failed to execute UserViewModel.signInWithEmailAndPassword',
+          'Failed to execute SigningController.signInWithEmailAndPassword',
           error: error,
           stackTrace: stack,
         );
@@ -111,7 +111,7 @@ class SigningController extends _$SigningController {
         state = AsyncValue.error(error, stack);
       } on AuthException catch (error, stack) {
         logger.e(
-          'Failed to execute UserViewModel.signInWithEmailAndPassword',
+          'Failed to execute SigningController.signInWithEmailAndPassword',
           error: error,
           stackTrace: stack,
         );
@@ -125,7 +125,7 @@ class SigningController extends _$SigningController {
         );
       } on Exception catch (error, stack) {
         logger.e(
-          'Failed to execute UserViewModel.signInWithEmailAndPassword',
+          'Failed to execute SigningController.signInWithEmailAndPassword',
           error: error,
           stackTrace: stack,
         );
@@ -154,14 +154,14 @@ class SigningController extends _$SigningController {
         await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithGoogle');
       } on Exception catch (error, stack) {
         logger.e(
-          'Failed to execute UserViewModel.signInWithGoogle',
+          'Failed to execute SigningController.signInWithGoogle',
           error: error,
           stackTrace: stack,
         );
         await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
         state = AsyncValue.error(
           const SigningException(
-            message: 'Google sign-in failed (FirebaseAuthException)',
+            message: 'Google sign-in failed',
             display: 'ログインに失敗しました',
           ),
           stack,

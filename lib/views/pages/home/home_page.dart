@@ -41,21 +41,22 @@ class HomePage extends ConsumerWidget {
     }
 
     return Scaffold(
-      body: ref.watch(sessionControllerProvider).when(
-            data: (sessions) => ListView.builder(
-              itemCount: sessions.length,
-              itemBuilder: (_, index) {
-                final session = sessions[index];
+      body: const SizedBox.shrink(),
+      // body: ref.watch(sessionControllerProvider).when(
+      //       data: (sessions) => ListView.builder(
+      //         itemCount: sessions.length,
+      //         itemBuilder: (_, index) {
+      //           final session = sessions[index];
 
-                return SessionTile(
-                  session: session,
-                );
-              },
-            ),
-            // TODO(micady): Shimmer Widget
-            error: (error, stack) => const SizedBox.shrink(),
-            loading: () => const SizedBox.shrink(),
-          ),
+      //           return SessionTile(
+      //             session: session,
+      //           );
+      //         },
+      //       ),
+      //       // TODO(micady): Shimmer Widget
+      //       error: (error, stack) => const SizedBox.shrink(),
+      //       loading: () => const SizedBox.shrink(),
+      //     ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => ref.read(routerProvider).push(Routes.record.fullPath),
       ),

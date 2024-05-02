@@ -8,6 +8,7 @@ import 'package:scenarioshelf/repositories/firebase/analytics/observer/analytics
 import 'package:scenarioshelf/views/pages/boot/boot_page.dart';
 import 'package:scenarioshelf/views/pages/home/home_page.dart';
 import 'package:scenarioshelf/views/pages/signing/sign_in/sign_in_page.dart';
+import 'package:scenarioshelf/views/pages/signing/sign_up/email_verification_page.dart';
 import 'package:scenarioshelf/views/pages/signing/sign_up/sign_up_page.dart';
 
 part 'router.g.dart';
@@ -56,6 +57,11 @@ GoRouter router(RouterRef ref) {
             builder: (context, state) => const SignInPage(),
           ),
         ],
+      ),
+      GoRoute(
+        path: Routes.emailVerification.path,
+        name: Routes.emailVerification.fullPath,
+        builder: (context, state) => const EmailVerificationPage(),
       ),
       GoRoute(
         path: Routes.home.path,

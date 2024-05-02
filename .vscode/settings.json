@@ -24,6 +24,7 @@
     "scenarioshelf",
     "shinobi",
     "supabase",
+    "svgs",
     "TRPG"
   ],
   "dart.flutterSdkPath": ".fvm/versions/3.19.6",
