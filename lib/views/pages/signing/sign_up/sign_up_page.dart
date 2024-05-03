@@ -30,7 +30,12 @@ class SignUpPage extends HookConsumerWidget {
           ref.invalidate(currentUserControllerProvider);
           await ref.read(signingControllerProvider.notifier).signUpWithEmailAndPassword();
 
-          ref.read(routerProvider).go(Routes.emailVerification.path);
+          ref.read(signingControllerProvider).whenData((_) {
+            final user = ref.read(currentUserControllerProvider);
+            if (user != null) {
+              ref.read(routerProvider).go(Routes.emailVerification.path);
+            }
+          });
         },
         label: '登録',
         textStyle: const TextStyle(

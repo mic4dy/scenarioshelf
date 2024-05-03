@@ -68,7 +68,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions androidDev = FirebaseOptions(
     apiKey: 'AIzaSyD3-T7-gwECyudvctTGqL-ZSJAd9duTg3I',
-    appId: '1:700034805800:android:d22d83c6e75b8c53fa451d',
+    appId: '1:700034805800:android:eed0450d58649e1bfa451d',
     messagingSenderId: '700034805800',
     projectId: 'scenarioshelf-dev',
     storageBucket: 'scenarioshelf-dev.appspot.com',
@@ -76,17 +76,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions iosDev = FirebaseOptions(
     apiKey: 'AIzaSyCPuXW4Hf-OiRNqkYA0ygcjljt-iXxS73Y',
-    appId: '1:700034805800:ios:b030d256fde065dafa451d',
+    appId: '1:700034805800:ios:c38d92d983ca06f5fa451d',
     messagingSenderId: '700034805800',
     projectId: 'scenarioshelf-dev',
     storageBucket: 'scenarioshelf-dev.appspot.com',
-    iosClientId: '700034805800-lupmk2ptfb8dkm7jfon8j0h1hqgfec31.apps.googleusercontent.com',
-    iosBundleId: 'com.example.scenarioshelf.dev',
+    iosClientId: '700034805800-6sa0qsspi2ue0m4brkv5mc9uc5nvmp9v.apps.googleusercontent.com',
+    iosBundleId: 'jp.scenarioshelf.dev',
   );
 
   static const FirebaseOptions androidStg = FirebaseOptions(
     apiKey: 'AIzaSyDR89KbWPJ2Mdk2rk1pW7jZLLjZiMG_x3g',
-    appId: '1:580165016681:android:aa3aeccdccf50a353556f8',
+    appId: '1:580165016681:android:2754e18bb031d5223556f8',
     messagingSenderId: '580165016681',
     projectId: 'scenarioshelf-stg',
     storageBucket: 'scenarioshelf-stg.appspot.com',
@@ -94,17 +94,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions iosStg = FirebaseOptions(
     apiKey: 'AIzaSyA9gf6NJnE8FTwOWIQ-rlZ-bCMCf1kUnDI',
-    appId: '1:580165016681:ios:80fb8379fbf951c33556f8',
+    appId: '1:580165016681:ios:4fb857f7c07671413556f8',
     messagingSenderId: '580165016681',
     projectId: 'scenarioshelf-stg',
     storageBucket: 'scenarioshelf-stg.appspot.com',
-    iosClientId: '580165016681-k7ucrlsbch8p5jmankgeqpedavufuiu6.apps.googleusercontent.com',
-    iosBundleId: 'com.example.scenarioshelf.stg',
+    iosClientId: '580165016681-rdbne9b6pcjne9p4m1r663gjrsso54i4.apps.googleusercontent.com',
+    iosBundleId: 'jp.scenarioshelf.stg',
   );
 
   static const FirebaseOptions androidProd = FirebaseOptions(
     apiKey: 'AIzaSyD3XmbTaaZn9lB-IWq0vhHkpRhKV8rAb_Q',
-    appId: '1:710312653371:android:3b2750577c6fbc6b8f621e',
+    appId: '1:710312653371:android:2ff28a53d327905c8f621e',
     messagingSenderId: '710312653371',
     projectId: 'scenarioshelf',
     storageBucket: 'scenarioshelf.appspot.com',
@@ -112,11 +112,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions iosProd = FirebaseOptions(
     apiKey: 'AIzaSyDKqaFdG-_MAS58o1relgtPVuas_hgGzlc',
-    appId: '1:710312653371:ios:d93633bb3c534d438f621e',
+    appId: '1:710312653371:ios:e14ca9ec05f6c8728f621e',
     messagingSenderId: '710312653371',
     projectId: 'scenarioshelf',
     storageBucket: 'scenarioshelf.appspot.com',
-    iosClientId: '710312653371-gt6hf38n8ibkbk63n5kc0a8qravq4q3i.apps.googleusercontent.com',
-    iosBundleId: 'com.example.scenarioshelf',
+    iosClientId: '710312653371-svtul27sale65c46ejc15hotueikv0cj.apps.googleusercontent.com',
+    iosBundleId: 'jp.scenarioshelf',
   );
 }

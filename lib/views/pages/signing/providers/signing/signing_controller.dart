@@ -65,7 +65,7 @@ class SigningController extends _$SigningController {
         state = AsyncValue.error(
           SigningException(
             message: error.message,
-            display: 'ログインに失敗しました',
+            display: 'ユーザの登録に失敗しました',
           ),
           stack,
         );

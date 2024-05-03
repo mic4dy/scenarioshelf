@@ -3,6 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:scenarioshelf/models/user/user.dart';
 import 'package:scenarioshelf/repositories/apis/auth_api.dart';
+import 'package:scenarioshelf/repositories/firebase/firebase_options.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
 
 import 'package:scenarioshelf/utils/logger.dart';
@@ -51,7 +52,7 @@ class AuthRepository implements AuthAPI {
   @override
   Future<User> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn(
-      clientId: dotenv.get('GOOGLE_AUTH_IOS_CLIENT_ID'),
+      clientId: DefaultFirebaseOptions.currentPlatform.iosClientId,
       serverClientId: dotenv.get('GOOGLE_AUTH_WEB_CLIENT_ID'),
     ).signIn();
     final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
