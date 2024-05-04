@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/repositories/apis/auth_api.dart';
@@ -10,7 +11,6 @@ import 'package:scenarioshelf/repositories/supabase/auth/auth_repository.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/signing/states/signing_state.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'signing_controller.g.dart';
 

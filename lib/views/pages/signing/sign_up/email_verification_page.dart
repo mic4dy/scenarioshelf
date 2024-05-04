@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide User;
+
 import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
+import 'package:scenarioshelf/models/user/user.dart';
+import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
+import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 
 class EmailVerificationPage extends HookConsumerWidget {
@@ -12,6 +18,18 @@ class EmailVerificationPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
+
+    useEffect(() {
+      final authStateSubscription = Supabase.instance.client.auth.onAuthStateChange.listen((data) {
+        final session = data.session;
+        if (session != null) {
+          ref.read(currentUserControllerProvider.notifier).update(User.fromSupabase(session.user));
+          ref.read(routerProvider).go(Routes.home.path);
+        }
+      });
+
+      return authStateSubscription.cancel;
+    });
 
     return Scaffold(
       body: SafeArea(

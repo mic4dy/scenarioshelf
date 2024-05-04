@@ -1,15 +1,19 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide User;
+
 import 'package:scenarioshelf/models/user/user.dart';
 import 'package:scenarioshelf/repositories/apis/auth_api.dart';
 import 'package:scenarioshelf/repositories/firebase/firebase_options.dart';
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
-
 import 'package:scenarioshelf/utils/logger.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 part 'auth_repository.g.dart';
+
+const EMAIL_REDIRECT_URL = 'io.supabase.flutterquickstart://login-callback/';
 
 @Riverpod(keepAlive: true)
 AuthRepository authRepository(AuthRepositoryRef _) => const AuthRepository();
@@ -20,7 +24,11 @@ class AuthRepository implements AuthAPI {
   @override
   Future<User> signUpWithEmailAndPassword({required String email, required String password}) async {
     final client = Supabase.instance.client;
-    final response = await client.auth.signUp(email: email, password: password);
+    final response = await client.auth.signUp(
+      email: email,
+      password: password,
+      emailRedirectTo: kIsWeb ? null : EMAIL_REDIRECT_URL,
+    );
     final user = response.user;
     if (user == null) {
       throw const SigningException(
