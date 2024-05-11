@@ -1,40 +1,40 @@
 {
   "project_info": {
-    "project_number": "710312653371",
-    "project_id": "scenarioshelf",
-    "storage_bucket": "scenarioshelf.appspot.com"
+    "project_number": "700034805800",
+    "project_id": "scenarioshelf-dev",
+    "storage_bucket": "scenarioshelf-dev.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:710312653371:android:2ff28a53d327905c8f621e",
+        "mobilesdk_app_id": "1:700034805800:android:eed0450d58649e1bfa451d",
         "android_client_info": {
-          "package_name": "jp.scenarioshelf"
+          "package_name": "jp.scenarioshelf.dev"
         }
       },
       "oauth_client": [
         {
-          "client_id": "710312653371-vd4q1um20cp332oorldn8a663sqdml14.apps.googleusercontent.com",
+          "client_id": "700034805800-m3ubl3lt9kgfdaqln2r5qelq131pujfr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD3XmbTaaZn9lB-IWq0vhHkpRhKV8rAb_Q"
+          "current_key": "AIzaSyD3-T7-gwECyudvctTGqL-ZSJAd9duTg3I"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "710312653371-vd4q1um20cp332oorldn8a663sqdml14.apps.googleusercontent.com",
+              "client_id": "700034805800-jsvmhtbr1eb1thllub1rt9mlj44e04gs.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "710312653371-svtul27sale65c46ejc15hotueikv0cj.apps.googleusercontent.com",
+              "client_id": "700034805800-34e4rn5r6mo8mdvtinrq3mcp44hleia5.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "jp.scenarioshelf"
+                "bundle_id": "com.example.scenarioshelf"
               }
             }
           ]

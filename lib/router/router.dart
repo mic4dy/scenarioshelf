@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' hide User;
-
-import 'package:scenarioshelf/models/user/user.dart';
-import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
+import 'package:scenarioshelf/views/pages/splash/splash_page.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/observer/analytics_observer.dart';
 import 'package:scenarioshelf/views/pages/boot/boot_page.dart';
 import 'package:scenarioshelf/views/pages/home/home_page.dart';
@@ -33,16 +30,7 @@ GoRouter router(RouterRef ref) {
       GoRoute(
         path: Routes.splash.path,
         name: Routes.splash.fullPath,
-        redirect: (context, state) {
-          final session = Supabase.instance.client.auth.currentSession;
-
-          if (session != null) {
-            ref.read(currentUserControllerProvider.notifier).update(User.fromSupabase(session.user));
-            return Routes.home.fullPath;
-          }
-
-          return Routes.boot.fullPath;
-        },
+        builder: (context, state) => const SplashPage(),
       ),
       GoRoute(
         path: Routes.boot.path,
