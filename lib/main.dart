@@ -15,7 +15,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/constants/themes/app_color.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
-import 'package:scenarioshelf/repositories/firebase/firebase_options.dart';
+import 'package:scenarioshelf/repositories/firebase/firebase_options/dev/firebase_options.dart' as dev_firebase_options;
+import 'package:scenarioshelf/repositories/firebase/firebase_options/stg/firebase_options.dart' as stg_firebase_options;
+import 'package:scenarioshelf/repositories/firebase/firebase_options/prod/firebase_options.dart' as prod_firebase_options;
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/environment.dart';
 import 'package:scenarioshelf/utils/logger.dart';
@@ -31,8 +33,13 @@ Future<void> main() async {
   await AppTrackingTransparency.requestTrackingAuthorization();
 
   if (Firebase.apps.isEmpty) {
+    final options = switch (Environment.flavor) {
+      Flavor.dev => dev_firebase_options.DefaultFirebaseOptions.currentPlatform,
+      Flavor.stg => stg_firebase_options.DefaultFirebaseOptions.currentPlatform,
+      Flavor.prod => prod_firebase_options.DefaultFirebaseOptions.currentPlatform,
+    };
     await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+      options: options,
     );
   }
 

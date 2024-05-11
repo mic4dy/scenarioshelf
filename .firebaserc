@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "scenarioshelf-dev",
+    "prod": "scenarioshelf",
+    "stg": "scenarioshelf-stg"
+  },
+  "targets": {},
+  "etags": {}
+}
