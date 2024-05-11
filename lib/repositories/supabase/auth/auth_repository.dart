@@ -3,11 +3,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/utils/environment.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import 'package:scenarioshelf/models/user/user.dart';
 import 'package:scenarioshelf/repositories/apis/auth_api.dart';
-import 'package:scenarioshelf/repositories/firebase/firebase_options.dart';
+import 'package:scenarioshelf/repositories/firebase/firebase_options/dev/firebase_options.dart' as dev_firebase_options;
+import 'package:scenarioshelf/repositories/firebase/firebase_options/stg/firebase_options.dart' as stg_firebase_options;
+import 'package:scenarioshelf/repositories/firebase/firebase_options/prod/firebase_options.dart' as prod_firebase_options;
 import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 
@@ -59,8 +62,13 @@ class AuthRepository implements AuthAPI {
 
   @override
   Future<User> signInWithGoogle() async {
+    final options = switch (Environment.flavor) {
+      Flavor.dev => dev_firebase_options.DefaultFirebaseOptions.currentPlatform,
+      Flavor.stg => stg_firebase_options.DefaultFirebaseOptions.currentPlatform,
+      Flavor.prod => prod_firebase_options.DefaultFirebaseOptions.currentPlatform,
+    };
     final GoogleSignInAccount? googleUser = await GoogleSignIn(
-      clientId: DefaultFirebaseOptions.currentPlatform.iosClientId,
+      clientId: options.iosClientId,
       serverClientId: dotenv.get('GOOGLE_AUTH_WEB_CLIENT_ID'),
     ).signIn();
     final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
