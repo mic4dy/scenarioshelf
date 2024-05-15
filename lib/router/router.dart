@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/views/pages/splash/splash_page.dart';
+
 import 'package:scenarioshelf/repositories/firebase/analytics/observer/analytics_observer.dart';
 import 'package:scenarioshelf/views/pages/boot/boot_page.dart';
 import 'package:scenarioshelf/views/pages/home/home_page.dart';
 import 'package:scenarioshelf/views/pages/signing/sign_in/sign_in_page.dart';
 import 'package:scenarioshelf/views/pages/signing/sign_up/email_verification_page.dart';
 import 'package:scenarioshelf/views/pages/signing/sign_up/sign_up_page.dart';
+import 'package:scenarioshelf/views/pages/splash/splash_page.dart';
 
 part 'router.g.dart';
 part 'routes.dart';
