@@ -5,6 +5,9 @@ abstract interface class AuthAPI {
     required String email,
     required String password,
   });
+  Future<void> resendConfirmEmail({
+    required String email,
+  });
   Future<User> signInWithEmailAndPassword({
     required String email,
     required String password,

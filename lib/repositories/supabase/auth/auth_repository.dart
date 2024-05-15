@@ -16,6 +16,7 @@ import 'package:scenarioshelf/utils/logger.dart';
 
 part 'auth_repository.g.dart';
 
+// ignore: constant_identifier_names
 const EMAIL_REDIRECT_URL = 'io.supabase.flutterquickstart://login-callback/';
 
 @Riverpod(keepAlive: true)
@@ -42,6 +43,22 @@ class AuthRepository implements AuthAPI {
 
     logger.i('Signed Up with Email and Password');
     return User.fromSupabase(user);
+  }
+
+  @override
+  Future<void> resendConfirmEmail({required String email}) async {
+    final client = Supabase.instance.client;
+    final response = await client.auth.resend(
+      type: OtpType.signup,
+      email: email,
+      emailRedirectTo: kIsWeb ? null : EMAIL_REDIRECT_URL,
+    );
+
+    logger
+      ..i('Resend Confirm Email')
+      ..i('Response messageId: ${response.messageId}');
+
+    return;
   }
 
   @override
@@ -108,7 +125,7 @@ class AuthRepository implements AuthAPI {
   @override
   User? getCurrentUser() {
     final client = Supabase.instance.client;
-    final user = client.auth.currentUser;
+    final user = client.auth.currentSession?.user;
     if (user == null) {
       return null;
     }

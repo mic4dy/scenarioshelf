@@ -14,7 +14,7 @@ import 'package:scenarioshelf/views/pages/signing/providers/signing/states/signi
 
 part 'signing_controller.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class SigningController extends _$SigningController {
   late final AuthAPI _authRepository;
 
@@ -76,6 +76,40 @@ class SigningController extends _$SigningController {
           stackTrace: stack,
         );
         await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+        state = AsyncValue.error(
+          SigningException(
+            message: error.toString(),
+            display: '原因不明のエラーが発生しました',
+          ),
+          stack,
+        );
+      }
+    });
+  }
+
+  Future<void> resendConfirmEmail() async {
+    state.whenData((data) async {
+      try {
+        await _authRepository.resendConfirmEmail(email: data.email);
+      } on AuthException catch (error, stack) {
+        logger.e(
+          'Failed to execute SigningController.resendConfirmEmail',
+          error: error,
+          stackTrace: stack,
+        );
+        state = AsyncValue.error(
+          SigningException(
+            message: error.toString(),
+            display: '再送に失敗しました',
+          ),
+          stack,
+        );
+      } on Exception catch (error, stack) {
+        logger.e(
+          'Failed to execute SigningController.resendConfirmEmail',
+          error: error,
+          stackTrace: stack,
+        );
         state = AsyncValue.error(
           SigningException(
             message: error.toString(),

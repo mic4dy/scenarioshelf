@@ -26,12 +26,6 @@ class SigningPageFrame extends ConsumerWidget {
     ref.listen(signingControllerProvider, (previous, next) {
       ScaffoldMessenger.of(context).clearMaterialBanners();
 
-      if (previous is AsyncData && next is AsyncLoading) {
-        ScaffoldMessenger.of(context).showMaterialBanner(
-          StatusBanner.loading(content: const Text('ユーザを登録中です')),
-        );
-      }
-
       if (previous is AsyncLoading && next is AsyncError) {
         final Object? error = next.error;
         final String message = error is SigningException ? error.indicate() : '原因不明のエラーが発生しました';

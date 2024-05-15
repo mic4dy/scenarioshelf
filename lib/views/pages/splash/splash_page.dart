@@ -16,6 +16,7 @@ class SplashPage extends HookConsumerWidget {
           final user = ref.read(currentUserControllerProvider);
           if (user != null) {
             ref.read(routerProvider).go(Routes.home.fullPath);
+            return;
           }
 
           ref.read(routerProvider).go(Routes.boot.fullPath);
