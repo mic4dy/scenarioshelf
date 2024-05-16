@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
-import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
-import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
@@ -13,7 +10,10 @@ import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
 import 'package:scenarioshelf/models/user/user.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
+import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
 
 class EmailVerificationPage extends HookConsumerWidget {
   const EmailVerificationPage({super.key});
