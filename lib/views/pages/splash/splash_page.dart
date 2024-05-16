@@ -14,10 +14,10 @@ class SplashPage extends HookConsumerWidget {
       () {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           final user = ref.read(currentUserControllerProvider);
-          if (user != null) {
-            ref.read(routerProvider).go(Routes.home.fullPath);
-            return;
-          }
+          // if (user != null) {
+          //   ref.read(routerProvider).go(Routes.home.fullPath);
+          //   return;
+          // }
 
           ref.read(routerProvider).go(Routes.boot.fullPath);
         });

@@ -1,7 +1,7 @@
 import 'package:scenarioshelf/models/user/user.dart';
 
 abstract interface class AuthAPI {
-  Future<User> signUpWithEmailAndPassword({
+  Future<User?> signUpWithEmailAndPassword({
     required String email,
     required String password,
   });

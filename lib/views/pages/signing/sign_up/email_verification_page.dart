@@ -21,15 +21,17 @@ class EmailVerificationPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(signingControllerProvider, (previous, next) {
-      ScaffoldMessenger.of(context).clearMaterialBanners();
-
       if (previous is AsyncLoading && next is AsyncError) {
+        ScaffoldMessenger.of(context).clearMaterialBanners();
+
         final Object? error = next.error;
         final String message = error is SigningException ? error.indicate() : '原因不明のエラーが発生しました';
 
         ScaffoldMessenger.of(context).showMaterialBanner(
           StatusBanner.error(content: Text(message)),
         );
+
+        ref.read(signingControllerProvider.notifier).resolve();
       }
     });
 
@@ -103,16 +105,14 @@ class EmailVerificationPage extends HookConsumerWidget {
                   LabeledButton(
                     brightness: WidgetBrightness.dark,
                     minimumSize: Size(size.width * 0.8, 40),
-                    onPressed: () {
+                    onPressed: () async {
                       ScaffoldMessenger.of(context).clearMaterialBanners();
-                      ref.invalidate(currentUserControllerProvider);
+                      await ref.read(signingControllerProvider.notifier).signInWithEmailAndPassword();
 
                       final user = ref.read(currentUserControllerProvider);
                       if (user != null) {
                         ref.read(routerProvider).go(Routes.home.fullPath);
                       }
-
-                      ref.read(routerProvider).go(Routes.signIn.fullPath);
                     },
                     label: '完了',
                     textStyle: const TextStyle(

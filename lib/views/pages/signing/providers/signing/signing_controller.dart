@@ -25,6 +25,15 @@ class SigningController extends _$SigningController {
     return const SigningState();
   }
 
+  void resolve() {
+    state.maybeWhen(
+      error: (error, stack) {
+        state = AsyncValue.data(state.valueOrNull ?? const SigningState());
+      },
+      orElse: () {},
+    );
+  }
+
   void updateEmail(String email) {
     state.whenData((data) => state = AsyncData(data.copyWith(email: email)));
   }
@@ -97,6 +106,7 @@ class SigningController extends _$SigningController {
           error: error,
           stackTrace: stack,
         );
+        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
         state = AsyncValue.error(
           SigningException(
             message: error.toString(),
@@ -110,6 +120,7 @@ class SigningController extends _$SigningController {
           error: error,
           stackTrace: stack,
         );
+        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
         state = AsyncValue.error(
           SigningException(
             message: error.toString(),
@@ -150,13 +161,25 @@ class SigningController extends _$SigningController {
           stackTrace: stack,
         );
         await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
-        state = AsyncValue.error(
-          SigningException(
-            message: error.message,
-            display: 'ログインに失敗しました',
-          ),
-          stack,
-        );
+
+        switch (error.statusCode) {
+          case '400':
+            state = AsyncValue.error(
+              SigningException(
+                message: error.message,
+                display: '認証メールの確認がされていません',
+              ),
+              stack,
+            );
+          default:
+            state = AsyncValue.error(
+              SigningException(
+                message: error.message,
+                display: 'ログインに失敗しました',
+              ),
+              stack,
+            );
+        }
       } on Exception catch (error, stack) {
         logger.e(
           'Failed to execute SigningController.signInWithEmailAndPassword',

@@ -22,8 +22,13 @@ class CurrentUserController extends _$CurrentUserController {
     return user;
   }
 
-  void update(User user) {
-    logger.i('Update Current User: ${user.name}(${user.id})');
+  void update(User? user) {
+    if (user != null) {
+      logger.i('Update Current User: ${user.name}(${user.id})');
+    } else {
+      logger.i('Reset Current User');
+    }
+
     state = user;
   }
 }

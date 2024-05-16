@@ -26,19 +26,16 @@ class AuthRepository implements AuthAPI {
   const AuthRepository();
 
   @override
-  Future<User> signUpWithEmailAndPassword({required String email, required String password}) async {
+  Future<User?> signUpWithEmailAndPassword({required String email, required String password}) async {
     final client = Supabase.instance.client;
     final response = await client.auth.signUp(
       email: email,
       password: password,
       emailRedirectTo: kIsWeb ? null : EMAIL_REDIRECT_URL,
     );
-    final user = response.user;
+    final user = response.session?.user;
     if (user == null) {
-      throw const SigningException(
-        message: 'user-not-found',
-        display: 'ユーザーが見つかりません',
-      );
+      return null;
     }
 
     logger.i('Signed Up with Email and Password');
@@ -65,7 +62,7 @@ class AuthRepository implements AuthAPI {
   Future<User> signInWithEmailAndPassword({required String email, required String password}) async {
     final client = Supabase.instance.client;
     final response = await client.auth.signInWithPassword(email: email, password: password);
-    final user = response.user;
+    final user = response.session?.user;
     if (user == null) {
       throw const SigningException(
         message: 'user-not-found',
