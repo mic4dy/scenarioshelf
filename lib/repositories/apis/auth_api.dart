@@ -1,18 +1,19 @@
+import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
 import 'package:scenarioshelf/models/user/user.dart';
 
 abstract interface class AuthAPI {
-  Future<User?> signUpWithEmailAndPassword({
+  Future<ProvisionallyRegisteredUser?> signUpWithEmailAndPassword({
     required String email,
     required String password,
   });
   Future<void> resendConfirmEmail({
     required String email,
   });
-  Future<User> signInWithEmailAndPassword({
+  Future<ProvisionallyRegisteredUser> signInWithEmailAndPassword({
     required String email,
     required String password,
   });
-  Future<User> signInWithGoogle();
+  Future<ProvisionallyRegisteredUser> signInWithGoogle();
   User? getCurrentUser();
   Future<void> signOut();
 }

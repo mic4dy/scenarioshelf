@@ -110,3 +110,9 @@ flutter_gen:
     flare_flutter: false
     rive: false
     lottie: false
+  
+  assets:
+    exclude:
+      - .env
+      - .env.stg
+      - .env.prod 

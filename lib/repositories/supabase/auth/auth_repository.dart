@@ -3,9 +3,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
+import 'package:scenarioshelf/models/user/user.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
-import 'package:scenarioshelf/models/user/user.dart';
 import 'package:scenarioshelf/repositories/apis/auth_api.dart';
 import 'package:scenarioshelf/repositories/firebase/firebase_options/dev/firebase_options.dart' as dev_firebase_options;
 import 'package:scenarioshelf/repositories/firebase/firebase_options/prod/firebase_options.dart' as prod_firebase_options;
@@ -26,7 +27,10 @@ class AuthRepository implements AuthAPI {
   const AuthRepository();
 
   @override
-  Future<User?> signUpWithEmailAndPassword({required String email, required String password}) async {
+  Future<ProvisionallyRegisteredUser?> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     final client = Supabase.instance.client;
     final response = await client.auth.signUp(
       email: email,
@@ -39,7 +43,7 @@ class AuthRepository implements AuthAPI {
     }
 
     logger.i('Signed Up with Email and Password');
-    return User.fromSupabase(user);
+    return ProvisionallyRegisteredUser.fromSupabase(user);
   }
 
   @override
@@ -59,7 +63,7 @@ class AuthRepository implements AuthAPI {
   }
 
   @override
-  Future<User> signInWithEmailAndPassword({required String email, required String password}) async {
+  Future<ProvisionallyRegisteredUser> signInWithEmailAndPassword({required String email, required String password}) async {
     final client = Supabase.instance.client;
     final response = await client.auth.signInWithPassword(email: email, password: password);
     final user = response.session?.user;
@@ -71,11 +75,11 @@ class AuthRepository implements AuthAPI {
     }
 
     logger.i('Signed In with Email and Password');
-    return User.fromSupabase(user);
+    return ProvisionallyRegisteredUser.fromSupabase(user);
   }
 
   @override
-  Future<User> signInWithGoogle() async {
+  Future<ProvisionallyRegisteredUser> signInWithGoogle() async {
     final options = switch (Environment.flavor) {
       Flavor.dev => dev_firebase_options.DefaultFirebaseOptions.currentPlatform,
       Flavor.stg => stg_firebase_options.DefaultFirebaseOptions.currentPlatform,
@@ -116,14 +120,14 @@ class AuthRepository implements AuthAPI {
     }
 
     logger.i('Signed In with Google Account');
-    return User.fromSupabase(user);
+    return ProvisionallyRegisteredUser.fromSupabase(user);
   }
 
   @override
   User? getCurrentUser() {
     final client = Supabase.instance.client;
     final user = client.auth.currentSession?.user;
-    if (user == null) {
+    if (user == null || user.appMetadata['username'] == null) {
       return null;
     }
 

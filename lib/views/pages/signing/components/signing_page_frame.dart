@@ -48,44 +48,53 @@ class SigningPageFrame extends ConsumerWidget {
             key: formKey,
             child: Column(
               children: [
-                const Spacer(flex: 2),
-                Assets.images.logos.appLogo.image(
-                  width: size.width * 0.4,
+                Expanded(
+                  child: Center(
+                    child: Assets.images.logos.appLogo.image(
+                      width: size.width * 0.4,
+                    ),
+                  ),
                 ),
-                const Spacer(flex: 2),
-                const SigningEmailForm(),
-                const SizedBox(height: MarginSize.large),
-                const SigningPasswordForm(),
-                const Spacer(flex: 2),
-                SizedBox(
-                  height: 40,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Expanded(
+                  child: Column(
                     children: [
-                      SizedBox.square(
-                        dimension: 40,
-                        child: OutlinedButton(
-                          onPressed: () => ref.read(routerProvider).pop(),
-                          style: OutlinedButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            shape: CircleBorder(
-                              side: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
-                                width: 0.5,
+                      const SizedBox(height: MarginSize.large),
+                      const SigningEmailForm(),
+                      const SizedBox(height: MarginSize.large),
+                      const SigningPasswordForm(),
+                      const Spacer(),
+                      SizedBox(
+                        height: 40,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox.square(
+                              dimension: 40,
+                              child: OutlinedButton(
+                                onPressed: () => ref.read(routerProvider).pop(),
+                                style: OutlinedButton.styleFrom(
+                                  padding: EdgeInsets.zero,
+                                  shape: CircleBorder(
+                                    side: BorderSide(
+                                      color: Theme.of(context).colorScheme.primary,
+                                      width: 0.5,
+                                    ),
+                                  ),
+                                ),
+                                child: Icon(
+                                  Icons.arrow_back_sharp,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                               ),
                             ),
-                          ),
-                          child: Icon(
-                            Icons.arrow_back_sharp,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                            transactionButton,
+                          ],
                         ),
                       ),
-                      transactionButton,
+                      const SizedBox(height: MarginSize.doubleLarge),
                     ],
                   ),
                 ),
-                const Spacer(),
               ],
             ),
           ),

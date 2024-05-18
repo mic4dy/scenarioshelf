@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
-import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/repositories/apis/auth_api.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
@@ -52,7 +53,7 @@ class SigningController extends _$SigningController {
           password: data.password,
         );
 
-        ref.read(currentUserControllerProvider.notifier).update(user);
+        ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(user);
 
         state = AsyncValue.data(data);
         await ref.read(analyticsRepositoryProvider).logSignUp(signUpMethod: 'signUpWithEmailAndPassword');
@@ -142,9 +143,17 @@ class SigningController extends _$SigningController {
           password: data.password,
         );
 
-        ref.read(currentUserControllerProvider.notifier).update(user);
+        ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(user);
 
         state = AsyncValue.data(data);
+
+        /// BUG: 非同期処理が正常に実行されない
+        ///
+        /// この関数の後に処理を書くと[_authRepository.signInWithEmailAndPassword]の内部で読んでいる
+        /// [client.auth.signInWithPassword]の処理が非同期終了せずにこの関数の後のコードが先に実行される。
+        /// ライブラリのバグっぽいので現状はこの関数内の末尾に追記することで対応している。
+        ref.read(routerProvider).go(Routes.home.fullPath);
+
         await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithEmailAndPassword');
       } on SigningException catch (error, stack) {
         logger.e(
@@ -205,7 +214,7 @@ class SigningController extends _$SigningController {
       try {
         final user = await _authRepository.signInWithGoogle();
 
-        ref.read(currentUserControllerProvider.notifier).update(user);
+        ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(user);
 
         state = AsyncValue.data(data);
         await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithGoogle');
