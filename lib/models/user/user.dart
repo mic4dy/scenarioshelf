@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+
+import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';
@@ -10,7 +11,7 @@ class User with _$User {
   const factory User({
     required String id,
     required String name,
-    String? avatarUrl,
+    required String? avatarUrl,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

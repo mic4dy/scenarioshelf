@@ -5,8 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
-import 'package:scenarioshelf/views/pages/home/components/session_tile.dart';
-import 'package:scenarioshelf/views/pages/home/providers/sessions/sessions_controller.dart';
+// import 'package:scenarioshelf/views/pages/home/components/session_tile.dart';
+// import 'package:scenarioshelf/views/pages/home/providers/sessions/sessions_controller.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});

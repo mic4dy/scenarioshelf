@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
-import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 
+import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/observer/analytics_observer.dart';
 import 'package:scenarioshelf/views/pages/boot/boot_page.dart';
 import 'package:scenarioshelf/views/pages/home/home_page.dart';
-import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
-import 'package:scenarioshelf/views/pages/signing/setup_user/setup_user_page.dart';
-import 'package:scenarioshelf/views/pages/signing/sign_in/sign_in_page.dart';
 import 'package:scenarioshelf/views/pages/signing/email_verification/email_verification_page.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
+import 'package:scenarioshelf/views/pages/signing/sign_in/sign_in_page.dart';
 import 'package:scenarioshelf/views/pages/signing/sign_up/sign_up_page.dart';
 import 'package:scenarioshelf/views/pages/splash/splash_page.dart';
+import 'package:scenarioshelf/views/pages/user_setting/setup/setup_user_page.dart';
 
 part 'router.g.dart';
 part 'routes.dart';

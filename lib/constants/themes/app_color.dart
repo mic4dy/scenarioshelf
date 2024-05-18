@@ -16,7 +16,7 @@ class _AppMaterialLight extends ColorScheme {
   const _AppMaterialLight()
       : super(
           brightness: Brightness.light,
-          primary: const Color(0xFF7c4e29),
+          primary: const Color(0xFF7C4E29),
           onPrimary: const Color(0xFFFFFFFF),
           primaryContainer: const Color(0xFFFFDCC4),
           onPrimaryContainer: const Color(0xFF2F1400),
@@ -87,7 +87,9 @@ class _AppMaterialDark extends ColorScheme {
 }
 
 class _UI {
+  final Color white = const Color(0xFFffffff);
   final Color success = const Color(0xFF00ff33);
   final Color loading = const Color(0xFFffb300);
   final Color error = const Color(0xFFff3300);
+  final Color shimmerBase = const Color(0xFFefefef);
 }

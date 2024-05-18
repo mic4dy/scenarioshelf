@@ -1,16 +1,16 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/router/router.dart';
-import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import 'package:scenarioshelf/repositories/apis/auth_api.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
 import 'package:scenarioshelf/repositories/supabase/auth/auth_repository.dart';
-import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
+import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/signing/states/signing_state.dart';
 
 part 'signing_controller.g.dart';
@@ -57,7 +57,7 @@ class SigningController extends _$SigningController {
 
         state = AsyncValue.data(data);
         await ref.read(analyticsRepositoryProvider).logSignUp(signUpMethod: 'signUpWithEmailAndPassword');
-      } on SigningException catch (error, stack) {
+      } on AppAuthException catch (error, stack) {
         logger.e(
           'Failed to execute SigningController.signUpWithEmailAndPassword',
           error: error,
@@ -73,7 +73,7 @@ class SigningController extends _$SigningController {
         );
         await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
         state = AsyncValue.error(
-          SigningException(
+          AppAuthException(
             message: error.message,
             display: 'ユーザの登録に失敗しました',
           ),
@@ -87,12 +87,16 @@ class SigningController extends _$SigningController {
         );
         await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
         state = AsyncValue.error(
-          SigningException(
+          AppAuthException(
             message: error.toString(),
             display: '原因不明のエラーが発生しました',
           ),
           stack,
         );
+      } finally {
+        if (state is AsyncLoading) {
+          state = AsyncValue.data(data);
+        }
       }
     });
   }
@@ -101,7 +105,7 @@ class SigningController extends _$SigningController {
     state.whenData((data) async {
       try {
         await _authRepository.resendConfirmEmail(email: data.email);
-      } on AuthException catch (error, stack) {
+      } on AppAuthException catch (error, stack) {
         logger.e(
           'Failed to execute SigningController.resendConfirmEmail',
           error: error,
@@ -109,7 +113,7 @@ class SigningController extends _$SigningController {
         );
         await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
         state = AsyncValue.error(
-          SigningException(
+          AppAuthException(
             message: error.toString(),
             display: '再送に失敗しました',
           ),
@@ -123,12 +127,16 @@ class SigningController extends _$SigningController {
         );
         await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
         state = AsyncValue.error(
-          SigningException(
+          AppAuthException(
             message: error.toString(),
             display: '原因不明のエラーが発生しました',
           ),
           stack,
         );
+      } finally {
+        if (state is AsyncLoading) {
+          state = AsyncValue.data(data);
+        }
       }
     });
   }
@@ -155,7 +163,7 @@ class SigningController extends _$SigningController {
         ref.read(routerProvider).go(Routes.home.fullPath);
 
         await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithEmailAndPassword');
-      } on SigningException catch (error, stack) {
+      } on AppAuthException catch (error, stack) {
         logger.e(
           'Failed to execute SigningController.signInWithEmailAndPassword',
           error: error,
@@ -174,7 +182,7 @@ class SigningController extends _$SigningController {
         switch (error.statusCode) {
           case '400':
             state = AsyncValue.error(
-              SigningException(
+              AppAuthException(
                 message: error.message,
                 display: '認証メールの確認がされていません',
               ),
@@ -182,7 +190,7 @@ class SigningController extends _$SigningController {
             );
           default:
             state = AsyncValue.error(
-              SigningException(
+              AppAuthException(
                 message: error.message,
                 display: 'ログインに失敗しました',
               ),
@@ -197,12 +205,16 @@ class SigningController extends _$SigningController {
         );
         await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
         state = AsyncValue.error(
-          SigningException(
+          AppAuthException(
             message: error.toString(),
             display: '原因不明のエラーが発生しました',
           ),
           stack,
         );
+      } finally {
+        if (state is AsyncLoading) {
+          state = AsyncValue.data(data);
+        }
       }
     });
   }
@@ -226,12 +238,16 @@ class SigningController extends _$SigningController {
         );
         await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
         state = AsyncValue.error(
-          const SigningException(
+          const AppAuthException(
             message: 'Google sign-in failed',
             display: 'ログインに失敗しました',
           ),
           stack,
         );
+      } finally {
+        if (state is AsyncLoading) {
+          state = AsyncValue.data(data);
+        }
       }
     });
   }

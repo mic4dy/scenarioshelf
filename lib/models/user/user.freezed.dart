@@ -115,7 +115,8 @@ class __$$UserImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserImpl implements _User {
-  const _$UserImpl({required this.id, required this.name, this.avatarUrl});
+  const _$UserImpl(
+      {required this.id, required this.name, required this.avatarUrl});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -165,7 +166,7 @@ abstract class _User implements User {
   const factory _User(
       {required final String id,
       required final String name,
-      final String? avatarUrl}) = _$UserImpl;
+      required final String? avatarUrl}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 

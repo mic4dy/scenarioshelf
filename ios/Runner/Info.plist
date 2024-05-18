@@ -65,6 +65,8 @@
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>収集したデータはユーザのサービス利用傾向の分析や不具合の特定など品質向上のためにのみ利用され、個人の特定に紐づく情報は収集致しません。</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>アプリでアルバムの画像を利用するためには、アルバムへのアクセス許可が必要です。</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
