@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
-import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
-import 'package:scenarioshelf/views/pages/user_setting/setup/components/setup_avatar.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
+import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
+import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/user_setting/providers/user_setting_controller.dart';
+import 'package:scenarioshelf/views/pages/user_setting/setup/components/setup_avatar.dart';
 
 class SetupUserPage extends HookConsumerWidget {
   const SetupUserPage({super.key});
