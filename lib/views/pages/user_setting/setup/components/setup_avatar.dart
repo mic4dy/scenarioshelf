@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
+
 import 'package:scenarioshelf/constants/themes/app_color.dart';
 import 'package:scenarioshelf/views/components/images/avatars/dummy_avatar.dart';
 import 'package:scenarioshelf/views/pages/user_setting/providers/user_setting_controller.dart';
-import 'package:shimmer/shimmer.dart';
 
 class SetupAvatar extends ConsumerWidget {
   const SetupAvatar({super.key});
