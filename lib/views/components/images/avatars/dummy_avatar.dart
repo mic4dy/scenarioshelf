@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
+
 import 'package:scenarioshelf/constants/themes/app_color.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/utils/converters/color_extension.dart';
 import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
 import 'package:scenarioshelf/views/components/images/avatars/boring_avatars_mode.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
-import 'package:shimmer/shimmer.dart';
 
 class DummyAvatar extends HookConsumerWidget {
   const DummyAvatar({
