@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/themes/app_color.dart';
-import 'package:scenarioshelf/constants/themes/dummy_avatar.dart';
-import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
-import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
+import 'package:scenarioshelf/views/components/images/avatars/dummy_avatar.dart';
 import 'package:scenarioshelf/views/pages/user_setting/providers/user_setting_controller.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -33,13 +30,7 @@ class SetupAvatar extends ConsumerWidget {
                 userSettingState.when(
                   data: (data) {
                     if (data.avatar == null) {
-                      final userId =
-                          ref.read(currentUserControllerProvider)?.id ?? ref.read(provisionallyRegisteredUserControllerProvider)?.id ?? '';
-
-                      return SvgPicture.network(
-                        DummyAvatar.urlWithId(id: userId),
-                        fit: BoxFit.cover,
-                      );
+                      return const DummyAvatar();
                     }
 
                     return Image.memory(
@@ -57,13 +48,7 @@ class SetupAvatar extends ConsumerWidget {
                     ),
                   ),
                   error: (_, __) {
-                    final userId =
-                        ref.read(currentUserControllerProvider)?.id ?? ref.read(provisionallyRegisteredUserControllerProvider)?.id ?? '';
-
-                    return SvgPicture.network(
-                      DummyAvatar.urlWithId(id: userId),
-                      fit: BoxFit.cover,
-                    );
+                    return const DummyAvatar();
                   },
                 ),
                 Icon(
