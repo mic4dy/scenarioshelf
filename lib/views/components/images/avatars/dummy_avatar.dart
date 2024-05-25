@@ -14,7 +14,7 @@ class DummyAvatar extends HookConsumerWidget {
   const DummyAvatar({
     this.mode = BoringAvatarsMode.beam,
     this.size = 512,
-    this.isSquare = true,
+    this.isSquare = false,
     this.colors,
     super.key,
   });

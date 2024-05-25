@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/utils/result.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import 'package:scenarioshelf/repositories/apis/auth_api.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
-import 'package:scenarioshelf/repositories/supabase/auth/auth_repository.dart';
-import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/repositories/auth/auth_repository.dart';
 import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
@@ -27,228 +27,299 @@ class SigningController extends _$SigningController {
   }
 
   void resolve() {
-    state.maybeWhen(
-      error: (error, stack) {
-        state = AsyncValue.data(state.valueOrNull ?? const SigningState());
-      },
-      orElse: () {},
-    );
+    final current = state;
+    if (current is! AsyncError) {
+      return;
+    }
+
+    state = AsyncValue.data(state.valueOrNull ?? const SigningState());
   }
 
   void updateEmail(String email) {
-    state.whenData((data) => state = AsyncData(data.copyWith(email: email)));
+    final current = state;
+    final data = current.value;
+    if (current is! AsyncData || data == null) {
+      return;
+    }
+
+    state = AsyncValue.data(data.copyWith(email: email));
   }
 
   void updatePassword(String password) {
-    state.whenData((data) => state = AsyncData(data.copyWith(password: password)));
+    final current = state;
+    final data = current.value;
+    if (current is! AsyncData || data == null) {
+      return;
+    }
+
+    state = AsyncValue.data(data.copyWith(password: password));
   }
 
-  Future<void> signUpWithEmailAndPassword() async {
-    state.whenData((data) async {
-      state = const AsyncValue.loading();
+  Future<Result> signUpWithEmailAndPassword() async {
+    final current = state;
+    final data = current.value;
+    if (current is! AsyncData || data == null) {
+      return Result.failure;
+    }
 
-      try {
-        final user = await _authRepository.signUpWithEmailAndPassword(
-          email: data.email,
-          password: data.password,
-        );
+    state = const AsyncValue.loading();
 
-        ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(user);
+    try {
+      final user = await _authRepository.signUpWithEmailAndPassword(
+        email: data.email,
+        password: data.password,
+      );
 
-        state = AsyncValue.data(data);
-        await ref.read(analyticsRepositoryProvider).logSignUp(signUpMethod: 'signUpWithEmailAndPassword');
-      } on AppAuthException catch (error, stack) {
-        logger.e(
-          'Failed to execute SigningController.signUpWithEmailAndPassword',
-          error: error,
-          stackTrace: stack,
-        );
-        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
-        state = AsyncValue.error(error, stack);
-      } on AuthException catch (error, stack) {
-        logger.e(
-          'Failed to execute SigningController.signUpWithEmailAndPassword',
-          error: error,
-          stackTrace: stack,
-        );
-        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
-        state = AsyncValue.error(
-          AppAuthException(
-            message: error.message,
-            display: 'ユーザの登録に失敗しました',
-          ),
-          stack,
-        );
-      } on Exception catch (error, stack) {
-        logger.e(
-          'Failed to execute SigningController.signUpWithEmailAndPassword',
-          error: error,
-          stackTrace: stack,
-        );
-        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
-        state = AsyncValue.error(
-          AppAuthException(
-            message: error.toString(),
-            display: '原因不明のエラーが発生しました',
-          ),
-          stack,
-        );
-      } finally {
-        if (state is AsyncLoading) {
-          state = AsyncValue.data(data);
-        }
-      }
-    });
+      ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(user);
+
+      state = AsyncValue.data(data);
+      await ref.read(analyticsRepositoryProvider).logSignUp(signUpMethod: 'signUpWithEmailAndPassword');
+
+      return Result.success;
+    } on AppAuthException catch (error, stack) {
+      logger.e(
+        'Failed to Execute SigningController.signUpWithEmailAndPassword',
+        error: error,
+        stackTrace: stack,
+      );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+      state = AsyncValue.error(error, stack);
+
+      return Result.failure;
+    } on AuthException catch (error, stack) {
+      logger.e(
+        'Failed to Execute SigningController.signUpWithEmailAndPassword',
+        error: error,
+        stackTrace: stack,
+      );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+      state = AsyncValue.error(
+        AppAuthException(
+          message: error.message,
+          display: 'ユーザの登録に失敗しました',
+        ),
+        stack,
+      );
+
+      return Result.failure;
+    } on Exception catch (error, stack) {
+      logger.e(
+        'Failed to Execute SigningController.signUpWithEmailAndPassword',
+        error: error,
+        stackTrace: stack,
+      );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+      state = AsyncValue.error(
+        AppAuthException(
+          message: error.toString(),
+          display: '原因不明のエラーが発生しました',
+        ),
+        stack,
+      );
+
+      return Result.failure;
+    }
   }
 
-  Future<void> resendConfirmEmail() async {
-    state.whenData((data) async {
-      try {
-        await _authRepository.resendConfirmEmail(email: data.email);
-      } on AppAuthException catch (error, stack) {
-        logger.e(
-          'Failed to execute SigningController.resendConfirmEmail',
-          error: error,
-          stackTrace: stack,
-        );
-        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
-        state = AsyncValue.error(
-          AppAuthException(
-            message: error.toString(),
-            display: '再送に失敗しました',
-          ),
-          stack,
-        );
-      } on Exception catch (error, stack) {
-        logger.e(
-          'Failed to execute SigningController.resendConfirmEmail',
-          error: error,
-          stackTrace: stack,
-        );
-        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
-        state = AsyncValue.error(
-          AppAuthException(
-            message: error.toString(),
-            display: '原因不明のエラーが発生しました',
-          ),
-          stack,
-        );
-      } finally {
-        if (state is AsyncLoading) {
-          state = AsyncValue.data(data);
-        }
-      }
-    });
+  Future<Result> resendConfirmEmail() async {
+    final current = state;
+    final data = current.value;
+    if (current is! AsyncData || data == null) {
+      return Result.failure;
+    }
+
+    try {
+      await _authRepository.resendConfirmEmail(email: data.email);
+      logger.i('Resend Confirm Email Success');
+
+      return Result.success;
+    } on AppAuthException catch (error, stack) {
+      logger.e(
+        'Failed to Execute SigningController.resendConfirmEmail',
+        error: error,
+        stackTrace: stack,
+      );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+      state = AsyncValue.error(
+        AppAuthException(
+          message: error.toString(),
+          display: '再送に失敗しました',
+        ),
+        stack,
+      );
+
+      return Result.failure;
+    } on Exception catch (error, stack) {
+      logger.e(
+        'Failed to Execute SigningController.resendConfirmEmail',
+        error: error,
+        stackTrace: stack,
+      );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+      state = AsyncValue.error(
+        AppAuthException(
+          message: error.toString(),
+          display: '原因不明のエラーが発生しました',
+        ),
+        stack,
+      );
+
+      return Result.failure;
+    }
   }
 
-  Future<void> signInWithEmailAndPassword() async {
-    state.whenData((data) async {
-      state = const AsyncValue.loading();
+  Future<Result> changeEmail() async {
+    final current = state;
+    final data = current.value;
+    if (current is! AsyncData || data == null) {
+      return Result.failure;
+    }
 
-      try {
-        final user = await _authRepository.signInWithEmailAndPassword(
-          email: data.email,
-          password: data.password,
-        );
+    state = const AsyncValue.loading();
 
-        ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(user);
-
-        state = AsyncValue.data(data);
-
-        /// BUG: 非同期処理が正常に実行されない
-        ///
-        /// この関数の後に処理を書くと[_authRepository.signInWithEmailAndPassword]の内部で読んでいる
-        /// [client.auth.signInWithPassword]の処理が非同期終了せずにこの関数の後のコードが先に実行される。
-        /// ライブラリのバグっぽいので現状はこの関数内の末尾に追記することで対応している。
-        ref.read(routerProvider).go(Routes.home.fullPath);
-
-        await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithEmailAndPassword');
-      } on AppAuthException catch (error, stack) {
-        logger.e(
-          'Failed to execute SigningController.signInWithEmailAndPassword',
-          error: error,
-          stackTrace: stack,
-        );
-        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
-        state = AsyncValue.error(error, stack);
-      } on AuthException catch (error, stack) {
-        logger.e(
-          'Failed to execute SigningController.signInWithEmailAndPassword',
-          error: error,
-          stackTrace: stack,
-        );
-        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
-
-        switch (error.statusCode) {
-          case '400':
-            state = AsyncValue.error(
-              AppAuthException(
-                message: error.message,
-                display: '認証メールの確認がされていません',
-              ),
-              stack,
-            );
-          default:
-            state = AsyncValue.error(
-              AppAuthException(
-                message: error.message,
-                display: 'ログインに失敗しました',
-              ),
-              stack,
-            );
-        }
-      } on Exception catch (error, stack) {
-        logger.e(
-          'Failed to execute SigningController.signInWithEmailAndPassword',
-          error: error,
-          stackTrace: stack,
-        );
-        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
-        state = AsyncValue.error(
-          AppAuthException(
-            message: error.toString(),
-            display: '原因不明のエラーが発生しました',
-          ),
-          stack,
-        );
-      } finally {
-        if (state is AsyncLoading) {
-          state = AsyncValue.data(data);
-        }
+    try {
+      final id = ref.read(provisionallyRegisteredUserControllerProvider)?.id;
+      if (id == null) {
+        return Result.failure;
       }
-    });
+
+      await _authRepository.delete(id: id);
+
+      logger.i('Delete Provisionally User Success');
+      state = AsyncValue.data(data);
+
+      return Result.success;
+    } on Exception catch (error, stack) {
+      logger.e(
+        'Failed to Execute SigningController.changeEmail',
+        error: error,
+        stackTrace: stack,
+      );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+      state = AsyncValue.error(
+        const AppAuthException(
+          message: 'User Deletion Failed',
+          display: 'ユーザの削除に失敗しました',
+        ),
+        stack,
+      );
+
+      return Result.failure;
+    }
   }
 
-  Future<void> signInWithGoogle() async {
-    state.whenData((data) async {
-      state = const AsyncValue.loading();
+  Future<Result> signInWithEmailAndPassword() async {
+    final current = state;
+    final data = current.value;
+    if (current is! AsyncData || data == null) {
+      return Result.failure;
+    }
 
-      try {
-        final user = await _authRepository.signInWithGoogle();
+    state = const AsyncValue.loading();
 
-        ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(user);
+    try {
+      final user = await _authRepository.signInWithEmailAndPassword(
+        email: data.email,
+        password: data.password,
+      );
 
-        state = AsyncValue.data(data);
-        await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithGoogle');
-      } on Exception catch (error, stack) {
-        logger.e(
-          'Failed to execute SigningController.signInWithGoogle',
-          error: error,
-          stackTrace: stack,
-        );
-        await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
-        state = AsyncValue.error(
-          const AppAuthException(
-            message: 'Google sign-in failed',
-            display: 'ログインに失敗しました',
-          ),
-          stack,
-        );
-      } finally {
-        if (state is AsyncLoading) {
-          state = AsyncValue.data(data);
-        }
+      ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(user);
+
+      await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithEmailAndPassword');
+      state = AsyncValue.data(data);
+
+      return Result.success;
+    } on AppAuthException catch (error, stack) {
+      logger.e(
+        'Failed to Execute SigningController.signInWithEmailAndPassword',
+        error: error,
+        stackTrace: stack,
+      );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+      state = AsyncValue.error(error, stack);
+
+      return Result.failure;
+    } on AuthException catch (error, stack) {
+      logger.e(
+        'Failed to Execute SigningController.signInWithEmailAndPassword',
+        error: error,
+        stackTrace: stack,
+      );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+
+      switch (error.statusCode) {
+        case '400':
+          state = AsyncValue.error(
+            AppAuthException(
+              message: error.message,
+              display: '認証メールの確認がされていません',
+            ),
+            stack,
+          );
+        default:
+          state = AsyncValue.error(
+            AppAuthException(
+              message: error.message,
+              display: 'ログインに失敗しました',
+            ),
+            stack,
+          );
       }
-    });
+
+      return Result.failure;
+    } on Exception catch (error, stack) {
+      logger.e(
+        'Failed to Execute SigningController.signInWithEmailAndPassword',
+        error: error,
+        stackTrace: stack,
+      );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+      state = AsyncValue.error(
+        AppAuthException(
+          message: error.toString(),
+          display: '原因不明のエラーが発生しました',
+        ),
+        stack,
+      );
+
+      return Result.failure;
+    }
+  }
+
+  Future<Result> signInWithGoogle() async {
+    final current = state;
+    final data = current.value;
+    if (current is! AsyncData || data == null) {
+      return Result.failure;
+    }
+
+    state = const AsyncValue.loading();
+
+    try {
+      final user = await _authRepository.signInWithGoogle();
+
+      ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(user);
+
+      state = AsyncValue.data(data);
+      await ref.read(analyticsRepositoryProvider).logLogin(loginMethod: 'signInWithGoogle');
+
+      return Result.success;
+    } on Exception catch (error, stack) {
+      logger.e(
+        'Failed to Execute SigningController.signInWithGoogle',
+        error: error,
+        stackTrace: stack,
+      );
+      await ref.read(crashlyticsRepositoryProvider).recordError(error, stack);
+      state = AsyncValue.error(
+        const AppAuthException(
+          message: 'Google Sign In Failed',
+          display: 'ログインに失敗しました',
+        ),
+        stack,
+      );
+
+      return Result.failure;
+    }
   }
 }

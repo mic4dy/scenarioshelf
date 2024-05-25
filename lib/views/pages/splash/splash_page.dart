@@ -4,30 +4,38 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
-import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
+import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
 import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 class SplashPage extends HookConsumerWidget {
   const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    useEffect(
-      () {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          final user = ref.read(currentUserControllerProvider);
-          if (user != null) {
-            ref.read(routerProvider).go(Routes.home.fullPath);
-            return;
-          }
+    useMemoized(() async {
+      final client = Supabase.instance.client;
 
+      if (client.auth.currentUser == null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           ref.read(routerProvider).go(Routes.boot.fullPath);
         });
-
         return;
-      },
-      const [],
-    );
+      }
+
+      final response = await client.auth.refreshSession();
+      final user = response.user;
+      if (user == null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          ref.read(routerProvider).go(Routes.boot.fullPath);
+        });
+        return;
+      }
+
+      ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(ProvisionallyRegisteredUser.fromSupabase(user));
+      ref.read(routerProvider).go(Routes.home.fullPath);
+    });
 
     final size = MediaQuery.of(context).size;
 

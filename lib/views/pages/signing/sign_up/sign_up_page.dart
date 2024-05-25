@@ -24,9 +24,14 @@ class SignUpPage extends HookConsumerWidget {
         brightness: WidgetBrightness.dark,
         minimumSize: Size(size.width * 0.8 - 80, 40),
         onPressed: () async {
-          if (!formKey.value.currentState!.validate()) return;
+          if (!formKey.value.currentState!.validate()) {
+            return;
+          }
 
-          await ref.read(signingControllerProvider.notifier).signUpWithEmailAndPassword();
+          final result = await ref.read(signingControllerProvider.notifier).signUpWithEmailAndPassword();
+          if (result.isFailure) {
+            return;
+          }
 
           ref.read(routerProvider).go(Routes.emailVerification.path);
         },

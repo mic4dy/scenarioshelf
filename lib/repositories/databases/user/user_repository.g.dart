@@ -1,27 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_setting_controller.dart';
+part of 'user_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userSettingControllerHash() =>
-    r'51719e5e2e145001bfb87b8a391239538ecde62e';
+String _$userRepositoryHash() => r'4e6659e9f72080cc8f5596a9732b6b26b800daee';
 
-/// See also [UserSettingController].
-@ProviderFor(UserSettingController)
-final userSettingControllerProvider = AutoDisposeAsyncNotifierProvider<
-    UserSettingController, UserSettingState>.internal(
-  UserSettingController.new,
-  name: r'userSettingControllerProvider',
+/// See also [userRepository].
+@ProviderFor(userRepository)
+final userRepositoryProvider = AutoDisposeProvider<UserRepository>.internal(
+  userRepository,
+  name: r'userRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$userSettingControllerHash,
+      : _$userRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UserSettingController = AutoDisposeAsyncNotifier<UserSettingState>;
+typedef UserRepositoryRef = AutoDisposeProviderRef<UserRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

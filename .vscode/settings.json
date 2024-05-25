@@ -28,7 +28,8 @@
     "signup",
     "supabase",
     "svgs",
-    "TRPG"
+    "TRPG",
+    "upsert"
   ],
   "dart.flutterSdkPath": ".fvm/versions/3.19.6",
   "dart.lineLength": 140,

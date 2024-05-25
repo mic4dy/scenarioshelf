@@ -1,5 +1,4 @@
 import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
-import 'package:scenarioshelf/models/user/user.dart';
 
 abstract interface class AuthAPI {
   Future<ProvisionallyRegisteredUser?> signUpWithEmailAndPassword({
@@ -14,6 +13,6 @@ abstract interface class AuthAPI {
     required String password,
   });
   Future<ProvisionallyRegisteredUser> signInWithGoogle();
-  User? getCurrentUser();
   Future<void> signOut();
+  Future<void> delete({required String id});
 }

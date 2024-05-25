@@ -82,7 +82,11 @@ class BootPage extends ConsumerWidget {
                     brightness: WidgetBrightness.light,
                     minimumSize: Size(size.width * 0.8, 40),
                     onPressed: () async {
-                      await ref.read(signingControllerProvider.notifier).signInWithGoogle();
+                      final result = await ref.read(signingControllerProvider.notifier).signInWithGoogle();
+                      if (result.isFailure) {
+                        return;
+                      }
+
                       ref.read(routerProvider).go(Routes.home.path);
                     },
                     label: 'Sign in with Google',

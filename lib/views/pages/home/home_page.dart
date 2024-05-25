@@ -54,7 +54,7 @@ class HomePage extends ConsumerWidget {
       //           );
       //         },
       //       ),
-      //       // TODO(micady): Shimmer Widget
+      //       `TODO`(micady): Shimmer Widget
       //       error: (error, stack) => const SizedBox.shrink(),
       //       loading: () => const SizedBox.shrink(),
       //     ),

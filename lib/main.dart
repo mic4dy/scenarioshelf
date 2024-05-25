@@ -46,7 +46,7 @@ Future<void> main() async {
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   PlatformDispatcher.instance.onError = (error, stack) {
     logger.e(
-      'Unhandled Platform error has occurred.',
+      'Unhandled Platform Error has Occurred.',
       error: error,
       stackTrace: stack,
     );
@@ -60,7 +60,7 @@ Future<void> main() async {
       FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
     } catch (error, stack) {
       logger.e(
-        'Firebase Auth emulator is not running.',
+        'Firebase Auth Emulator is not Running.',
         error: error,
         stackTrace: stack,
       );
@@ -75,7 +75,7 @@ Future<void> main() async {
   await dotenv.load(fileName: envFileName);
   await Supabase.initialize(
     url: dotenv.get('SUPABASE_URL'),
-    anonKey: dotenv.get('SUPABASE_KEY'),
+    anonKey: dotenv.get('SUPABASE_ANON_KEY'),
   );
 
   runApp(const ProviderScope(child: Scenarioshelf()));

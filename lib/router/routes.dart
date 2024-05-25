@@ -6,7 +6,6 @@ enum Routes {
   signUp(path: 'signUp', parent: boot),
   signIn(path: 'signIn', parent: boot),
   emailVerification(path: '/emailVerification'),
-  // homeRedirect(path: '/homeRedirect'),
   setupUser(path: '/setupUser'),
   home(path: '/home'),
   record(path: '/record');
