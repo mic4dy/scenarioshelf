@@ -1,8 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import 'package:scenarioshelf/models/user/user.dart';
 import 'package:scenarioshelf/utils/logger.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 part 'current_user_controller.g.dart';
 
