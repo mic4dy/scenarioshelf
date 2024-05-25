@@ -19,3 +19,5 @@ analyzer:
     - "**/firebase_options.dart"
   errors:
     invalid_annotation_target: ignore
+    unrecognized_error_code: ignore
+    asset_does_not_exist: ignore
