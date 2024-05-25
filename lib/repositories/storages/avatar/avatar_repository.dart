@@ -1,9 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import 'package:scenarioshelf/repositories/storages/apis/avatar_api.dart';
 import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'avatar_repository.g.dart';
 

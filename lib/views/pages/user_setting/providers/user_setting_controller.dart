@@ -7,8 +7,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/repositories/databases/apis/user_api.dart';
-import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
 import 'package:scenarioshelf/repositories/databases/user/user_repository.dart';
+import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
 import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
