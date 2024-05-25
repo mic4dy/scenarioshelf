@@ -90,6 +90,7 @@ import_sorter:
     - \/lib\/*\/*.g.dart
     - \/lib\/*\/oss_licenses.dart
     - \/lib\/*\/firebase_options.dart
+    - \/lib\/*\/gen/*
 
   # 実行コマンド
   # flutter pub run import_sorter:main
