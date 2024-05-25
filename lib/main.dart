@@ -7,14 +7,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/constants/themes/app_color.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
-import 'package:scenarioshelf/repositories/firebase/firebase_options.dart';
+import 'package:scenarioshelf/repositories/firebase/firebase_options/dev/firebase_options.dart' as dev_firebase_options;
+import 'package:scenarioshelf/repositories/firebase/firebase_options/prod/firebase_options.dart' as prod_firebase_options;
+import 'package:scenarioshelf/repositories/firebase/firebase_options/stg/firebase_options.dart' as stg_firebase_options;
 import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/utils/environment.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 
 Future<void> main() async {
@@ -28,15 +33,20 @@ Future<void> main() async {
   await AppTrackingTransparency.requestTrackingAuthorization();
 
   if (Firebase.apps.isEmpty) {
+    final options = switch (Environment.flavor) {
+      Flavor.dev => dev_firebase_options.DefaultFirebaseOptions.currentPlatform,
+      Flavor.stg => stg_firebase_options.DefaultFirebaseOptions.currentPlatform,
+      Flavor.prod => prod_firebase_options.DefaultFirebaseOptions.currentPlatform,
+    };
     await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+      options: options,
     );
   }
 
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   PlatformDispatcher.instance.onError = (error, stack) {
     logger.e(
-      'Unhandled Platform error has occurred.',
+      'Unhandled Platform Error has Occurred.',
       error: error,
       stackTrace: stack,
     );
@@ -50,12 +60,23 @@ Future<void> main() async {
       FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
     } catch (error, stack) {
       logger.e(
-        'Firebase Auth emulator is not running.',
+        'Firebase Auth Emulator is not Running.',
         error: error,
         stackTrace: stack,
       );
     }
   }
+
+  final envFileName = switch (Environment.flavor) {
+    Flavor.dev => '.env',
+    Flavor.stg => '.env.stg',
+    Flavor.prod => '.env.prod',
+  };
+  await dotenv.load(fileName: envFileName);
+  await Supabase.initialize(
+    url: dotenv.get('SUPABASE_URL'),
+    anonKey: dotenv.get('SUPABASE_ANON_KEY'),
+  );
 
   runApp(const ProviderScope(child: Scenarioshelf()));
 }

@@ -6,7 +6,7 @@ import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
 import 'package:scenarioshelf/router/router.dart';
-import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
+import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
@@ -16,22 +16,24 @@ class BootPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final size = MediaQuery.of(context).size;
-
     ref.listen(signingControllerProvider, (previous, next) {
-      ScaffoldMessenger.of(context).clearMaterialBanners();
+      if (previous is! AsyncError && next is AsyncError) {
+        ScaffoldMessenger.of(context).clearMaterialBanners();
 
-      if (next is AsyncError) {
         final Object? error = next.error;
-        final String message = error is SigningException ? error.indicate() : '原因不明のエラーが発生しました';
+        final String message = error is AppAuthException ? error.indicate() : '原因不明のエラーが発生しました';
 
         ScaffoldMessenger.of(context).showMaterialBanner(
           StatusBanner.error(
             content: Text(message),
           ),
         );
+
+        ref.read(signingControllerProvider.notifier).resolve();
       }
     });
+
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: SafeArea(
@@ -80,7 +82,11 @@ class BootPage extends ConsumerWidget {
                     brightness: WidgetBrightness.light,
                     minimumSize: Size(size.width * 0.8, 40),
                     onPressed: () async {
-                      await ref.read(signingControllerProvider.notifier).signInWithGoogle();
+                      final result = await ref.read(signingControllerProvider.notifier).signInWithGoogle();
+                      if (result.isFailure) {
+                        return;
+                      }
+
                       ref.read(routerProvider).go(Routes.home.path);
                     },
                     label: 'Sign in with Google',

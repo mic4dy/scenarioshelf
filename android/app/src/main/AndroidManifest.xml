@@ -24,6 +24,12 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="io.supabase.flutterquickstart"
+                    android:host="login-callback" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
@@ -31,5 +37,11 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- To use image_cropper package
+             https://pub.dev/packages/image_cropper -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 </manifest>

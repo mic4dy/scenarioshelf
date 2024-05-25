@@ -13,10 +13,15 @@ dependencies:
   
   # Design
   cupertino_icons: 1.0.8
+  flutter_svg: 2.0.10+1
   google_fonts: 6.2.1
+  image: 4.1.7
+  image_cropper: 6.0.0
+  image_picker: 1.1.1
   shimmer: 3.0.0
 
-  # Firebase
+  # BaaS
+  supabase_flutter: 2.5.1
   firebase_core: 2.30.1
   firebase_analytics: 10.10.4
   firebase_crashlytics: 3.5.4
@@ -29,6 +34,7 @@ dependencies:
   hooks_riverpod: 2.5.1
   riverpod_annotation: 2.3.5
   freezed_annotation: 2.4.1
+  json_annotation: 4.9.0
 
   # Other
   go_router: 14.1.0
@@ -36,6 +42,8 @@ dependencies:
   logger: 2.2.0
   app_tracking_transparency: 2.0.5
   collection: 1.18.0
+  flutter_dotenv: 5.1.0
+  change_app_package_name: ^1.1.0
 
 dev_dependencies:
   flutter_test: 
@@ -65,11 +73,15 @@ dev_dependencies:
 
   # oss_licenses.dart の生成コマンド（パッケージを追加したら実行する）
   # flutter pub run flutter_oss_licenses:generate.dart -o lib/constants/oss_licenses.dart
-  
+
 flutter: 
   uses-material-design: true
   assets:
+    - .env
+    - .env.stg
+    - .env.prod
     - assets/images/logos/
+    - assets/svgs/
 
 import_sorter:
   comments: false
@@ -101,3 +113,9 @@ flutter_gen:
     flare_flutter: false
     rive: false
     lottie: false
+  
+  assets:
+    exclude:
+      - .env
+      - .env.stg
+      - .env.prod 

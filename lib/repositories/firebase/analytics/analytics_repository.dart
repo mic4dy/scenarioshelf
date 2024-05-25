@@ -9,7 +9,7 @@ part 'analytics_repository.g.dart';
 FirebaseAnalytics analyticsRepository(AnalyticsRepositoryRef ref) {
   final analyticsRepository = FirebaseAnalytics.instance;
   ref.listen(currentUserControllerProvider, (_, next) async {
-    await analyticsRepository.setUserId(id: next?.uid);
+    await analyticsRepository.setUserId(id: next?.id);
   });
 
   return analyticsRepository;

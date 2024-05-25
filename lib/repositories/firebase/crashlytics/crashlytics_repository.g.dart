@@ -7,7 +7,7 @@ part of 'crashlytics_repository.dart';
 // **************************************************************************
 
 String _$crashlyticsRepositoryHash() =>
-    r'4d0f5545379ec4e4ddaf9765cddde2a377a18c88';
+    r'2912d17e0ad3d48cc10d16fba444e67d46725088';
 
 /// See also [crashlyticsRepository].
 @ProviderFor(crashlyticsRepository)

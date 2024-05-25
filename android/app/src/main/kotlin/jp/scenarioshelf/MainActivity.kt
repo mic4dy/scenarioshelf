@@ -1,4 +1,4 @@
-package com.example.scenarioshelf
+package jp.scenarioshelf
 
 import io.flutter.embedding.android.FlutterActivity
 

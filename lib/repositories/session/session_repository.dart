@@ -6,6 +6,7 @@ import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/models/scenario/scenario.dart';
 import 'package:scenarioshelf/models/schedule/schedule.dart';
 import 'package:scenarioshelf/models/session/session.dart';
+import 'package:scenarioshelf/repositories/apis/session_api.dart';
 import 'package:scenarioshelf/repositories/firebase/firestore/firestore_repository.dart';
 
 part 'session_repository.g.dart';
@@ -19,21 +20,7 @@ SessionRepository sessionRepository(SessionRepositoryRef ref) {
   return SessionRepository(database: database);
 }
 
-abstract interface class SessionRepositoryAPI {
-  Future<String> create({
-    required String userId,
-    required Scenario scenario,
-    List<Schedule> schedules = const [],
-    List<Participant> participants = const [],
-    List<Memo> memos = const [],
-  });
-  Future<Session> get({required String id});
-  Future<List<Session>> list({required String userId});
-  Future<String> update({required Session session});
-  Future<String> delete({required String id});
-}
-
-class SessionRepository implements SessionRepositoryAPI {
+class SessionRepository implements SessionAPI {
   const SessionRepository({
     required this.database,
   });

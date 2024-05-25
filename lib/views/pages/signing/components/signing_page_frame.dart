@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/router/router.dart';
-import 'package:scenarioshelf/utils/exceptions/signing_exception.dart';
+import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_email_form.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_password_form.dart';
@@ -24,21 +24,17 @@ class SigningPageFrame extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(signingControllerProvider, (previous, next) {
-      ScaffoldMessenger.of(context).clearMaterialBanners();
+      if (previous! is AsyncError && next is AsyncError) {
+        ScaffoldMessenger.of(context).clearMaterialBanners();
 
-      if (previous is AsyncData && next is AsyncLoading) {
-        ScaffoldMessenger.of(context).showMaterialBanner(
-          StatusBanner.loading(content: const Text('ユーザを登録中です')),
-        );
-      }
-
-      if (previous is AsyncLoading && next is AsyncError) {
         final Object? error = next.error;
-        final String message = error is SigningException ? error.indicate() : '原因不明のエラーが発生しました';
+        final String message = error is AppAuthException ? error.indicate() : '原因不明のエラーが発生しました';
 
         ScaffoldMessenger.of(context).showMaterialBanner(
           StatusBanner.error(content: Text(message)),
         );
+
+        ref.read(signingControllerProvider.notifier).resolve();
       }
     });
 
@@ -54,44 +50,53 @@ class SigningPageFrame extends ConsumerWidget {
             key: formKey,
             child: Column(
               children: [
-                const Spacer(flex: 2),
-                Assets.images.logos.appLogo.image(
-                  width: size.width * 0.4,
+                Expanded(
+                  child: Center(
+                    child: Assets.images.logos.appLogo.image(
+                      width: size.width * 0.4,
+                    ),
+                  ),
                 ),
-                const Spacer(flex: 2),
-                const SigningEmailForm(),
-                const SizedBox(height: MarginSize.large),
-                const SigningPasswordForm(),
-                const Spacer(flex: 2),
-                SizedBox(
-                  height: 40,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Expanded(
+                  child: Column(
                     children: [
-                      SizedBox.square(
-                        dimension: 40,
-                        child: OutlinedButton(
-                          onPressed: () => ref.read(routerProvider).pop(),
-                          style: OutlinedButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            shape: CircleBorder(
-                              side: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
-                                width: 0.5,
+                      const SizedBox(height: MarginSize.large),
+                      const SigningEmailForm(),
+                      const SizedBox(height: MarginSize.large),
+                      const SigningPasswordForm(),
+                      const Spacer(),
+                      SizedBox(
+                        height: 40,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox.square(
+                              dimension: 40,
+                              child: OutlinedButton(
+                                onPressed: () => ref.read(routerProvider).pop(),
+                                style: OutlinedButton.styleFrom(
+                                  padding: EdgeInsets.zero,
+                                  shape: CircleBorder(
+                                    side: BorderSide(
+                                      color: Theme.of(context).colorScheme.primary,
+                                      width: 0.5,
+                                    ),
+                                  ),
+                                ),
+                                child: Icon(
+                                  Icons.arrow_back_sharp,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                               ),
                             ),
-                          ),
-                          child: Icon(
-                            Icons.arrow_back_sharp,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                            transactionButton,
+                          ],
                         ),
                       ),
-                      transactionButton,
+                      const SizedBox(height: MarginSize.doubleLarge),
                     ],
                   ),
                 ),
-                const Spacer(),
               ],
             ),
           ),

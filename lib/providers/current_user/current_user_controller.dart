@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
-import 'package:scenarioshelf/repositories/firebase/auth/auth_repository.dart';
+import 'package:scenarioshelf/models/user/user.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 
 part 'current_user_controller.g.dart';
@@ -10,19 +10,22 @@ part 'current_user_controller.g.dart';
 class CurrentUserController extends _$CurrentUserController {
   @override
   User? build() {
-    final user = ref.read(authRepositoryProvider).getCurrentUser();
-    if (user != null) {
-      logger.i('Get Current User: ${user.displayName}(${user.uid})');
-    } else {
-      logger.i('No Current User');
+    final client = Supabase.instance.client;
+    final user = client.auth.currentSession?.user;
+    if (user == null || user.appMetadata['username'] == null) {
+      return null;
     }
 
-    return user;
+    return User.fromSupabase(user);
   }
 
-  // ignore: use_setters_to_change_properties
-  void update(User user) {
-    logger.i('Update Current User: ${user.displayName}(${user.uid})');
+  void update(User? user) {
+    if (user != null) {
+      logger.i('Update Current User: ${user.name}(${user.id})');
+    } else {
+      logger.i('Reset Current User');
+    }
+
     state = user;
   }
 }

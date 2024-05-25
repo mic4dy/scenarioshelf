@@ -9,6 +9,7 @@ class MarginSize {
   static const double little = 12;
   static const double medium = 16;
   static const double large = 32;
+  static const double doubleLarge = 64;
 }
 
 class PaddingSize {

@@ -15,7 +15,7 @@ class LabeledButton extends StatelessWidget {
   });
 
   final WidgetBrightness brightness;
-  final void Function()? onPressed;
+  final VoidCallback? onPressed;
   final String label;
   final Size? minimumSize;
   final TextStyle? textStyle;
