@@ -24,6 +24,14 @@ class SplashPage extends HookConsumerWidget {
         return;
       }
 
+      final session = client.auth.currentSession;
+      if (session == null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          ref.read(routerProvider).go(Routes.boot.fullPath);
+        });
+        return;
+      }
+
       final response = await client.auth.refreshSession();
       final user = response.user;
       if (user == null) {

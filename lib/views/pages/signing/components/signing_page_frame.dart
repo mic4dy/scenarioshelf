@@ -43,8 +43,10 @@ class SigningPageFrame extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: size.width * 0.1,
+          padding: EdgeInsets.only(
+            left: size.width * 0.1,
+            right: size.width * 0.1,
+            bottom: MarginSize.doubleLarge,
           ),
           child: Form(
             key: formKey,
@@ -93,7 +95,6 @@ class SigningPageFrame extends ConsumerWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: MarginSize.doubleLarge),
                     ],
                   ),
                 ),

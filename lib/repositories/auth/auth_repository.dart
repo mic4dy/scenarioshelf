@@ -17,7 +17,7 @@ import 'package:scenarioshelf/utils/logger.dart';
 part 'auth_repository.g.dart';
 
 // ignore: constant_identifier_names
-const EMAIL_REDIRECT_URL = 'io.supabase.flutterquickstart://login-callback/';
+const EMAIL_REDIRECT_URL = 'jp.scenarioshelf://login-callback/';
 
 @Riverpod(keepAlive: true)
 AuthRepository authRepository(AuthRepositoryRef _) => const AuthRepository();

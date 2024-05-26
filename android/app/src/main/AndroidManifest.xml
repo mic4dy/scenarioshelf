@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:scheme="io.supabase.flutterquickstart"
+                    android:scheme="jp.scenarioshelf"
                     android:host="login-callback" />
             </intent-filter>
         </activity>
