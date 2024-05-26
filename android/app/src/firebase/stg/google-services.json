@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "580165016681-k7ucrlsbch8p5jmankgeqpedavufuiu6.apps.googleusercontent.com",
+              "client_id": "580165016681-rdbne9b6pcjne9p4m1r663gjrsso54i4.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.scenarioshelf.stg"
+                "bundle_id": "jp.scenarioshelf.stg"
               }
             }
           ]

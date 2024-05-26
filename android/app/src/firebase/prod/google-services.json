@@ -27,14 +27,14 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "710312653371-0t7nukcc1bdtbbfo81v0q48uqqtinv9e.apps.googleusercontent.com",
+              "client_id": "710312653371-vd4q1um20cp332oorldn8a663sqdml14.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "710312653371-gt6hf38n8ibkbk63n5kc0a8qravq4q3i.apps.googleusercontent.com",
+              "client_id": "710312653371-svtul27sale65c46ejc15hotueikv0cj.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.scenarioshelf"
+                "bundle_id": "jp.scenarioshelf"
               }
             }
           ]
