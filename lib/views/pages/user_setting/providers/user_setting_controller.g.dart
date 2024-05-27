@@ -7,7 +7,7 @@ part of 'user_setting_controller.dart';
 // **************************************************************************
 
 String _$userSettingControllerHash() =>
-    r'51719e5e2e145001bfb87b8a391239538ecde62e';
+    r'da0ab15a18346abeb790549569203a282c2077c9';
 
 /// See also [UserSettingController].
 @ProviderFor(UserSettingController)
