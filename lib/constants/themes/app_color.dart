@@ -34,7 +34,11 @@ class _AppMaterialLight extends ColorScheme {
           onErrorContainer: const Color(0xFF410002),
           surface: const Color(0xFFFFFBFF),
           onSurface: const Color(0xFF201A17),
-          surfaceContainerHighest: const Color(0xFFF3DFD2),
+          surfaceContainerLowest: const Color(0xFFffffff),
+          surfaceContainerLow: const Color(0xFFfff1e9),
+          surfaceContainer: const Color(0xFFfbebe1),
+          surfaceContainerHigh: const Color(0xFFf5e5dc),
+          surfaceContainerHighest: const Color(0xFFf0dfd6),
           onSurfaceVariant: const Color(0xFF52443B),
           outline: const Color(0xFF84746A),
           onInverseSurface: const Color(0xFFFBEEE8),
@@ -69,7 +73,11 @@ class _AppMaterialDark extends ColorScheme {
           onErrorContainer: const Color(0xFFFFDAD6),
           surface: const Color(0xFF201A17),
           onSurface: const Color(0xFFECE0DA),
-          surfaceContainerHighest: const Color(0xFF52443B),
+          surfaceContainerLowest: const Color(0xFF140d08),
+          surfaceContainerLow: const Color(0xFF221a14),
+          surfaceContainer: const Color(0xFF261e18),
+          surfaceContainerHigh: const Color(0xFF312822),
+          surfaceContainerHighest: const Color(0xFF3c332d),
           onSurfaceVariant: const Color(0xFFD6C3B7),
           outline: const Color(0xFF9F8D82),
           onInverseSurface: const Color(0xFF201A17),
@@ -87,5 +95,6 @@ class _UI {
   final Color success = const Color(0xFF00ff33);
   final Color loading = const Color(0xFFffb300);
   final Color error = const Color(0xFFff3300);
+  final Color gray = const Color(0xFFe6e6e6);
   final Color shimmerBase = const Color(0xFFefefef);
 }

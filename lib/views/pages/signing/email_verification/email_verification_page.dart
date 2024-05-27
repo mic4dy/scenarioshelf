@@ -24,7 +24,10 @@ class EmailVerificationPage extends HookConsumerWidget {
         final String message = error is AppAuthException ? error.indicate() : '原因不明のエラーが発生しました';
 
         ScaffoldMessenger.of(context).showMaterialBanner(
-          StatusBanner.error(content: Text(message)),
+          StatusBanner.error(
+            context: context,
+            content: Text(message),
+          ),
         );
 
         ref.read(signingControllerProvider.notifier).resolve();
@@ -86,7 +89,10 @@ class EmailVerificationPage extends HookConsumerWidget {
 
                         ScaffoldMessenger.of(context).clearMaterialBanners();
                         ScaffoldMessenger.of(context).showMaterialBanner(
-                          StatusBanner.success(content: const Text('認証メールを再送しました')),
+                          StatusBanner.success(
+                            context: context,
+                            content: const Text('認証メールを再送しました'),
+                          ),
                         );
                       },
                       label: '再送',
@@ -113,6 +119,7 @@ class EmailVerificationPage extends HookConsumerWidget {
                     ),
                     LabeledButton(
                       brightness: WidgetBrightness.dark,
+                      isLoading: ref.watch(signingControllerProvider).isLoading,
                       minimumSize: Size(size.width * 0.8, 40),
                       onPressed: () async {
                         ScaffoldMessenger.of(context).clearMaterialBanners();

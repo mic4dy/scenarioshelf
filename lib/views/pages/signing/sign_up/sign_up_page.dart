@@ -22,6 +22,7 @@ class SignUpPage extends HookConsumerWidget {
       formKey: formKey.value,
       transactionButton: LabeledButton(
         brightness: WidgetBrightness.dark,
+        isLoading: ref.watch(signingControllerProvider).isLoading,
         minimumSize: Size(size.width * 0.8 - 80, 40),
         onPressed: () async {
           if (!formKey.value.currentState!.validate()) {

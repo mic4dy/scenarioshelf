@@ -26,7 +26,10 @@ class SetupUserPage extends HookConsumerWidget {
         final String message = error is UserException ? error.indicate() : '原因不明のエラーが発生しました';
 
         ScaffoldMessenger.of(context).showMaterialBanner(
-          StatusBanner.error(content: Text(message)),
+          StatusBanner.error(
+            context: context,
+            content: Text(message),
+          ),
         );
 
         ref.read(userSettingControllerProvider.notifier).resolve();
@@ -86,6 +89,7 @@ class SetupUserPage extends HookConsumerWidget {
                         height: 40,
                         child: LabeledButton(
                           brightness: WidgetBrightness.dark,
+                          isLoading: ref.watch(userSettingControllerProvider).isLoading,
                           minimumSize: Size(size.width * 0.8, 40),
                           onPressed: () async {
                             if (!formKey.value.currentState!.validate()) return;

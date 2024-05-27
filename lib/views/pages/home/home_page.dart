@@ -20,6 +20,7 @@ class HomePage extends ConsumerWidget {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         ScaffoldMessenger.of(context).showMaterialBanner(
           StatusBanner.error(
+            context: context,
             content: const Text('ログインしてください'),
             actions: [
               Consumer(

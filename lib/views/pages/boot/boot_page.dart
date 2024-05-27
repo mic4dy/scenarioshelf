@@ -11,7 +11,7 @@ import 'package:scenarioshelf/views/components/acknowledgements/status_banner.da
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
 
-class BootPage extends ConsumerWidget {
+class BootPage extends HookConsumerWidget {
   const BootPage({super.key});
 
   @override
@@ -25,6 +25,7 @@ class BootPage extends ConsumerWidget {
 
         ScaffoldMessenger.of(context).showMaterialBanner(
           StatusBanner.error(
+            context: context,
             content: Text(message),
           ),
         );
@@ -85,6 +86,10 @@ class BootPage extends ConsumerWidget {
                       final result = await ref.read(signingControllerProvider.notifier).signInWithGoogle();
                       if (result.isFailure) {
                         return;
+                      }
+
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).clearMaterialBanners();
                       }
 
                       ref.read(routerProvider).go(Routes.home.path);
