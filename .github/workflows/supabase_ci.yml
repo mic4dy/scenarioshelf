@@ -14,7 +14,7 @@ jobs:
       GOOGLE_AUTH_WEB_CLIENT_SECRET: ${{ secrets.GOOGLE_AUTH_WEB_CLIENT_SECRET }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: supabase/setup-cli@v1
         with:
