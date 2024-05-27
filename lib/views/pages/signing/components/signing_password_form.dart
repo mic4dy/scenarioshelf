@@ -35,7 +35,7 @@ class SigningPasswordForm extends HookConsumerWidget {
       textAlignVertical: TextAlignVertical.center,
       enableSuggestions: false,
       style: TextStyle(
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.onSurface,
         height: 1,
       ),
       keyboardType: TextInputType.visiblePassword,

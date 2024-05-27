@@ -21,7 +21,7 @@ class SigningEmailForm extends ConsumerWidget {
         labelText: 'メールアドレス',
       ),
       style: TextStyle(
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.onSurface,
         height: 1.2,
       ),
       keyboardType: TextInputType.emailAddress,

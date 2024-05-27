@@ -70,7 +70,7 @@ class EmailVerificationPage extends HookConsumerWidget {
                       'メール内のリンクへアクセスして\n登録を完了してください',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Theme.of(context).colorScheme.onBackground,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                       textAlign: TextAlign.center,
                     ),

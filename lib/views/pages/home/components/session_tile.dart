@@ -21,7 +21,7 @@ class SessionTile extends StatelessWidget {
       height: heightSize,
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        surfaceTintColor: Theme.of(context).colorScheme.background,
+        surfaceTintColor: Theme.of(context).colorScheme.surface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(RadiusSize.small),
         ),
