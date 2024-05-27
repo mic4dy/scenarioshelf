@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'package:scenarioshelf/constants/themes/app_color.dart';
 import 'package:scenarioshelf/views/components/images/avatars/dummy_avatar.dart';
@@ -29,28 +28,18 @@ class SetupAvatar extends ConsumerWidget {
               alignment: Alignment.center,
               fit: StackFit.expand,
               children: [
-                userSettingState.when(
-                  data: (data) {
-                    if (data.avatar == null) {
+                Builder(
+                  builder: (context) {
+                    final data = userSettingState.value;
+
+                    if (data?.avatar == null) {
                       return const DummyAvatar();
                     }
 
                     return Image.memory(
-                      data.avatar!,
+                      data!.avatar!,
                       fit: BoxFit.cover,
                     );
-                  },
-                  loading: () => Shimmer.fromColors(
-                    baseColor: AppColor.ui.shimmerBase,
-                    highlightColor: AppColor.ui.white,
-                    child: Container(
-                      height: double.infinity,
-                      width: double.infinity,
-                      color: AppColor.ui.shimmerBase,
-                    ),
-                  ),
-                  error: (_, __) {
-                    return const DummyAvatar();
                   },
                 ),
                 Icon(

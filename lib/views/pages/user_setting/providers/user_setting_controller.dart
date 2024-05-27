@@ -53,8 +53,6 @@ class UserSettingController extends _$UserSettingController {
       return;
     }
 
-    state = const AsyncValue.loading();
-
     try {
       final userId = ref.read(currentUserControllerProvider)?.id ?? ref.read(provisionallyRegisteredUserControllerProvider)?.id;
       if (userId == null) {

@@ -11,7 +11,7 @@ import 'package:scenarioshelf/views/pages/signing/components/signing_email_form.
 import 'package:scenarioshelf/views/pages/signing/components/signing_password_form.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
 
-class SigningPageFrame extends ConsumerWidget {
+class SigningPageFrame extends HookConsumerWidget {
   const SigningPageFrame({
     required this.formKey,
     required this.transactionButton,
@@ -24,14 +24,17 @@ class SigningPageFrame extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(signingControllerProvider, (previous, next) {
-      if (previous! is AsyncError && next is AsyncError) {
+      if (previous is! AsyncError && next is AsyncError) {
         ScaffoldMessenger.of(context).clearMaterialBanners();
 
         final Object? error = next.error;
         final String message = error is AppAuthException ? error.indicate() : '原因不明のエラーが発生しました';
 
         ScaffoldMessenger.of(context).showMaterialBanner(
-          StatusBanner.error(content: Text(message)),
+          StatusBanner.error(
+            context: context,
+            content: Text(message),
+          ),
         );
 
         ref.read(signingControllerProvider.notifier).resolve();

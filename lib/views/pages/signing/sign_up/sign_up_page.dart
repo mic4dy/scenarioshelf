@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
 import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_page_frame.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
@@ -22,6 +23,7 @@ class SignUpPage extends HookConsumerWidget {
       formKey: formKey.value,
       transactionButton: LabeledButton(
         brightness: WidgetBrightness.dark,
+        isLoading: ref.watch(signingControllerProvider).isLoading,
         minimumSize: Size(size.width * 0.8 - 80, 40),
         onPressed: () async {
           if (!formKey.value.currentState!.validate()) {
