@@ -64,7 +64,7 @@ class SetupUserPage extends HookConsumerWidget {
                           labelText: 'ユーザ名',
                         ),
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.onBackground,
+                          color: Theme.of(context).colorScheme.onSurface,
                           height: 1.2,
                         ),
                         keyboardType: TextInputType.name,
