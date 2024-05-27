@@ -36,13 +36,13 @@ class SessionSubtitle extends StatelessWidget {
         Icon(
           icon,
           size: 16,
-          color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
+          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
         ),
         Text(
           label ?? '-',
           style: TextStyle(
             fontSize: FontSize.caption,
-            color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
           ),
         ),
       ],
