@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
-import 'package:scenarioshelf/repositories/firebase/analytics/observer/analytics_observer.dart';
+import 'package:scenarioshelf/router/observers/log_observer.dart';
 import 'package:scenarioshelf/views/pages/boot/boot_page.dart';
 import 'package:scenarioshelf/views/pages/home/home_page.dart';
 import 'package:scenarioshelf/views/pages/signing/email_verification/email_verification_page.dart';
@@ -19,11 +19,11 @@ part 'routes.dart';
 
 @riverpod
 GoRouter router(RouterRef ref) {
-  final analyticsObserver = ref.read(analyticsObserverRepositoryProvider);
+  final logObserver = ref.read(logObserverProvider);
 
   return GoRouter(
     observers: [
-      analyticsObserver,
+      logObserver,
     ],
     initialLocation: Routes.splash.fullPath,
     routes: [
