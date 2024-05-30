@@ -1,12 +1,18 @@
--- Create a table for public profiles
+-- このマイグレーションデータがないと Auth アクセス時にエラーが吐かれる
+-- 参考 https://github.com/orgs/supabase/discussions/20722
+insert into auth.schema_migrations values ('20221208132122') on conflict do nothing;
+
+-- Profiles Table の定義
 create table profiles (
   id uuid references auth.users on delete cascade not null primary key,
-  updated_at timestamp with time zone,
   username text unique,
-  avatar_url text
+  avatar_url text,
+  updated_at timestamp with time zone default current_timestamp,
+  created_at timestamp with time zone default current_timestamp
 );
--- Set up Row Level Security (RLS)
--- See https://supabase.com/docs/guides/auth/row-level-security for more details.
+
+-- Row Level Security (RLS) の定義
+-- 参考 https://supabase.com/docs/guides/auth/row-level-security
 alter table profiles
   enable row level security;
 
@@ -19,8 +25,20 @@ create policy "Users can insert their own profile." on profiles
 create policy "Users can update own profile." on profiles
   for update using ((select auth.uid()) = id);
 
--- This trigger automatically creates a profile entry when a user signs up and updates via Supabase Auth.
--- See https://supabase.com/docs/guides/auth/managing-user-data#using-triggers for more details.
+-- Trigger の定義
+-- 共通の更新日時を設定するトリガー
+create or replace function public.update_timestamp()
+returns trigger as $$
+begin
+  new.updated_at = current_timestamp;
+  return new;
+end;
+$$ language plpgsql security definer;
+create trigger on_profiles_updated
+  before update on public.profiles
+  for each row execute procedure public.update_timestamp();
+
+-- Auth が更新されたら Profiles を更新するトリガー
 create function public.insert_in_sync_with_auth()
 returns trigger as $$
 begin
@@ -45,12 +63,11 @@ create trigger on_auth_user_updated
   after update on auth.users
   for each row execute procedure public.update_in_sync_with_auth();
 
--- Set up Storage!
+-- Avatars Storage の定義
 insert into storage.buckets (id, name, public)
   values ('avatars', 'avatars', true);
 
--- Set up access controls for storage.
--- See https://supabase.com/docs/guides/storage#policy-examples for more details.
+-- Policies の定義
 create policy "Avatar images are publicly accessible." on storage.objects
   for select using (bucket_id = 'avatars');
 
