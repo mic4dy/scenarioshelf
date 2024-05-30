@@ -33,7 +33,7 @@ class SessionTile extends StatelessWidget {
                 width: heightSize - PaddingSize.minimum * 2 - 8,
                 height: heightSize - PaddingSize.minimum * 2,
                 child: SessionImage(
-                  imageUrl: session.image,
+                  imageUrl: session.keyVisualUrl,
                 ),
               ),
               const SizedBox(width: MarginSize.small),
@@ -41,7 +41,7 @@ class SessionTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    session.scenario.name,
+                    session.scenario.title,
                     style: const TextStyle(
                       fontSize: FontSize.label,
                       fontWeight: FontWeight.bold,

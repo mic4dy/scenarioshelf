@@ -37,16 +37,16 @@ FutureOr<List<Session>> sessionController(SessionControllerRef ref) async {
           }
 
           return switch (sortProvider.order) {
-            SortOrder.asc => a.scenario.name.compareTo(b.scenario.name),
-            SortOrder.desc => b.scenario.name.compareTo(a.scenario.name),
+            SortOrder.asc => a.scenario.title.compareTo(b.scenario.title),
+            SortOrder.desc => b.scenario.title.compareTo(a.scenario.title),
           };
         });
     case SessionsSortPivot.scenarioSystem:
       return sessions
         ..sort(
           (a, b) => switch (sortProvider.order) {
-            SortOrder.asc => a.scenario.system.id.compareTo(b.scenario.system.id),
-            SortOrder.desc => b.scenario.system.id.compareTo(a.scenario.system.id),
+            SortOrder.asc => a.scenario.trpgSystem.id.compareTo(b.scenario.trpgSystem.id),
+            SortOrder.desc => b.scenario.trpgSystem.id.compareTo(a.scenario.trpgSystem.id),
           },
         );
     case SessionsSortPivot.scenarioAuthor:

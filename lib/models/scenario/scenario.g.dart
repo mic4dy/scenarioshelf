@@ -8,21 +8,21 @@ part of 'scenario.dart';
 
 _$ScenarioImpl _$$ScenarioImplFromJson(Map<String, dynamic> json) =>
     _$ScenarioImpl(
-      system: $enumDecode(_$TRPGSystemEnumMap, json['system']),
-      name: json['name'] as String,
-      imageUrl: json['imageUrl'] as String?,
-      storeUrl: json['storeUrl'] as String?,
+      trpgSystem: $enumDecode(_$TRPGSystemEnumMap, json['trpgSystem']),
+      title: json['title'] as String,
       kana: json['kana'] as String?,
+      keyVisualUrl: json['keyVisualUrl'] as String?,
+      storeUrl: json['storeUrl'] as String?,
       author: json['author'] as String?,
     );
 
 Map<String, dynamic> _$$ScenarioImplToJson(_$ScenarioImpl instance) =>
     <String, dynamic>{
-      'system': _$TRPGSystemEnumMap[instance.system]!,
-      'name': instance.name,
-      'imageUrl': instance.imageUrl,
-      'storeUrl': instance.storeUrl,
+      'trpgSystem': _$TRPGSystemEnumMap[instance.trpgSystem]!,
+      'title': instance.title,
       'kana': instance.kana,
+      'keyVisualUrl': instance.keyVisualUrl,
+      'storeUrl': instance.storeUrl,
       'author': instance.author,
     };
 

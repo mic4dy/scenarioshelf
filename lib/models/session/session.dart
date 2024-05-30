@@ -26,7 +26,7 @@ class Session with _$Session {
 
   factory Session.fromJson(Map<String, dynamic> json) => _$SessionFromJson(json);
 
-  String? get image => scenario.imageUrl;
+  String? get keyVisualUrl => scenario.keyVisualUrl;
   String? get myRole {
     final myParticipant = participants.firstWhereOrNull(
       (participant) => participant.userId == userId,
