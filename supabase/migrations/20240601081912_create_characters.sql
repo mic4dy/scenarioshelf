@@ -40,3 +40,14 @@ create policy "Users can delete own character." on characters
 create trigger on_characters_updated
   before update on public.characters
   for each row execute procedure public.update_timestamp();
+
+-- CharacterImages Storage の定義
+insert into storage.buckets (id, name, public)
+  values ('character_images', 'character_images', true);
+
+-- Policies の定義
+create policy "Character images are publicly accessible." on storage.objects
+  for select using (bucket_id = 'character_images');
+
+create policy "Anyone can upload an character image." on storage.objects
+  for insert with check (bucket_id = 'character_images');
