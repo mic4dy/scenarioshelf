@@ -8,7 +8,7 @@ class Character with _$Character {
   const factory Character({
     required String name,
     @Default(true) bool isPublic,
-    @Default([]) List<String> handoutUrls,
+    int? number,
     String? imageUrl,
   }) = _Character;
 

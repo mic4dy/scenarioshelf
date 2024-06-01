@@ -20,7 +20,7 @@ Scenario _$ScenarioFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Scenario {
-  TRPGSystem get trpgSystem => throw _privateConstructorUsedError;
+  TRPGSystem get system => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String? get kana => throw _privateConstructorUsedError;
   String? get keyVisualUrl => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $ScenarioCopyWith<$Res> {
       _$ScenarioCopyWithImpl<$Res, Scenario>;
   @useResult
   $Res call(
-      {TRPGSystem trpgSystem,
+      {TRPGSystem system,
       String title,
       String? kana,
       String? keyVisualUrl,
@@ -60,7 +60,7 @@ class _$ScenarioCopyWithImpl<$Res, $Val extends Scenario>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trpgSystem = null,
+    Object? system = null,
     Object? title = null,
     Object? kana = freezed,
     Object? keyVisualUrl = freezed,
@@ -68,9 +68,9 @@ class _$ScenarioCopyWithImpl<$Res, $Val extends Scenario>
     Object? author = freezed,
   }) {
     return _then(_value.copyWith(
-      trpgSystem: null == trpgSystem
-          ? _value.trpgSystem
-          : trpgSystem // ignore: cast_nullable_to_non_nullable
+      system: null == system
+          ? _value.system
+          : system // ignore: cast_nullable_to_non_nullable
               as TRPGSystem,
       title: null == title
           ? _value.title
@@ -105,7 +105,7 @@ abstract class _$$ScenarioImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {TRPGSystem trpgSystem,
+      {TRPGSystem system,
       String title,
       String? kana,
       String? keyVisualUrl,
@@ -124,7 +124,7 @@ class __$$ScenarioImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trpgSystem = null,
+    Object? system = null,
     Object? title = null,
     Object? kana = freezed,
     Object? keyVisualUrl = freezed,
@@ -132,9 +132,9 @@ class __$$ScenarioImplCopyWithImpl<$Res>
     Object? author = freezed,
   }) {
     return _then(_$ScenarioImpl(
-      trpgSystem: null == trpgSystem
-          ? _value.trpgSystem
-          : trpgSystem // ignore: cast_nullable_to_non_nullable
+      system: null == system
+          ? _value.system
+          : system // ignore: cast_nullable_to_non_nullable
               as TRPGSystem,
       title: null == title
           ? _value.title
@@ -164,7 +164,7 @@ class __$$ScenarioImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ScenarioImpl implements _Scenario {
   _$ScenarioImpl(
-      {required this.trpgSystem,
+      {required this.system,
       required this.title,
       this.kana,
       this.keyVisualUrl,
@@ -177,7 +177,7 @@ class _$ScenarioImpl implements _Scenario {
       _$$ScenarioImplFromJson(json);
 
   @override
-  final TRPGSystem trpgSystem;
+  final TRPGSystem system;
   @override
   final String title;
   @override
@@ -191,7 +191,7 @@ class _$ScenarioImpl implements _Scenario {
 
   @override
   String toString() {
-    return 'Scenario(trpgSystem: $trpgSystem, title: $title, kana: $kana, keyVisualUrl: $keyVisualUrl, storeUrl: $storeUrl, author: $author)';
+    return 'Scenario(system: $system, title: $title, kana: $kana, keyVisualUrl: $keyVisualUrl, storeUrl: $storeUrl, author: $author)';
   }
 
   @override
@@ -199,8 +199,7 @@ class _$ScenarioImpl implements _Scenario {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ScenarioImpl &&
-            (identical(other.trpgSystem, trpgSystem) ||
-                other.trpgSystem == trpgSystem) &&
+            (identical(other.system, system) || other.system == system) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.kana, kana) || other.kana == kana) &&
             (identical(other.keyVisualUrl, keyVisualUrl) ||
@@ -213,7 +212,7 @@ class _$ScenarioImpl implements _Scenario {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, trpgSystem, title, kana, keyVisualUrl, storeUrl, author);
+      runtimeType, system, title, kana, keyVisualUrl, storeUrl, author);
 
   @JsonKey(ignore: true)
   @override
@@ -231,7 +230,7 @@ class _$ScenarioImpl implements _Scenario {
 
 abstract class _Scenario implements Scenario {
   factory _Scenario(
-      {required final TRPGSystem trpgSystem,
+      {required final TRPGSystem system,
       required final String title,
       final String? kana,
       final String? keyVisualUrl,
@@ -242,7 +241,7 @@ abstract class _Scenario implements Scenario {
       _$ScenarioImpl.fromJson;
 
   @override
-  TRPGSystem get trpgSystem;
+  TRPGSystem get system;
   @override
   String get title;
   @override

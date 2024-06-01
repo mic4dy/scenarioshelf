@@ -45,8 +45,8 @@ FutureOr<List<Session>> sessionController(SessionControllerRef ref) async {
       return sessions
         ..sort(
           (a, b) => switch (sortProvider.order) {
-            SortOrder.asc => a.scenario.trpgSystem.id.compareTo(b.scenario.trpgSystem.id),
-            SortOrder.desc => b.scenario.trpgSystem.id.compareTo(a.scenario.trpgSystem.id),
+            SortOrder.asc => a.scenario.system.id.compareTo(b.scenario.system.id),
+            SortOrder.desc => b.scenario.system.id.compareTo(a.scenario.system.id),
           },
         );
     case SessionsSortPivot.scenarioAuthor:
@@ -94,10 +94,10 @@ FutureOr<List<Session>> sessionController(SessionControllerRef ref) async {
       return sessions
         ..sort((a, b) {
           final aCharacter = a.participants
-              .firstWhereOrNull((participant) => participant.type == ParticipantType.player && participant.userId == user.id)
+              .firstWhereOrNull((participant) => participant.role == ParticipantRole.player && participant.userId == user.id)
               ?.character;
           final bCharacter = b.participants
-              .firstWhereOrNull((participant) => participant.type == ParticipantType.player && participant.userId == user.id)
+              .firstWhereOrNull((participant) => participant.role == ParticipantRole.player && participant.userId == user.id)
               ?.character;
           if (aCharacter == null && bCharacter == null) {
             return 0;

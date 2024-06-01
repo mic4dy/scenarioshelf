@@ -8,6 +8,8 @@ class Memo with _$Memo {
   const factory Memo({
     required String title,
     required String content,
+    required DateTime updatedAt,
+    required DateTime createdAt,
     @Default(true) bool isPublic,
   }) = _Memo;
 

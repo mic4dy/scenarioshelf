@@ -38,7 +38,7 @@ class SessionRepository implements SessionAPI {
     final doc = database.doc();
     final session = Session(
       id: doc.id,
-      userId: userId,
+      createdBy: userId,
       scenario: scenario,
       schedules: schedules,
       participants: participants,

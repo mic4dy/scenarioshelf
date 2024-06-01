@@ -8,7 +8,7 @@ part of 'scenario.dart';
 
 _$ScenarioImpl _$$ScenarioImplFromJson(Map<String, dynamic> json) =>
     _$ScenarioImpl(
-      trpgSystem: $enumDecode(_$TRPGSystemEnumMap, json['trpgSystem']),
+      system: $enumDecode(_$TRPGSystemEnumMap, json['system']),
       title: json['title'] as String,
       kana: json['kana'] as String?,
       keyVisualUrl: json['keyVisualUrl'] as String?,
@@ -18,7 +18,7 @@ _$ScenarioImpl _$$ScenarioImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ScenarioImplToJson(_$ScenarioImpl instance) =>
     <String, dynamic>{
-      'trpgSystem': _$TRPGSystemEnumMap[instance.trpgSystem]!,
+      'system': _$TRPGSystemEnumMap[instance.system]!,
       'title': instance.title,
       'kana': instance.kana,
       'keyVisualUrl': instance.keyVisualUrl,
@@ -36,5 +36,6 @@ const _$TRPGSystemEnumMap = {
   TRPGSystem.shinobi: 'shinobi',
   TRPGSystem.dx3rd: 'dx3rd',
   TRPGSystem.dd: 'dd',
+  TRPGSystem.sp: 'sp',
   TRPGSystem.other: 'other',
 };

@@ -4,12 +4,12 @@ import 'package:scenarioshelf/models/character/character.dart';
 
 part 'participant.freezed.dart';
 part 'participant.g.dart';
-part 'participant_type.dart';
+part 'participant_role.dart';
 
 @freezed
 class Participant with _$Participant {
   const factory Participant({
-    required ParticipantType type,
+    required ParticipantRole role,
     required String name,
     String? userId,
     String? xId,

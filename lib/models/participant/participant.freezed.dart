@@ -20,7 +20,7 @@ Participant _$ParticipantFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Participant {
-  ParticipantType get type => throw _privateConstructorUsedError;
+  ParticipantRole get role => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
   String? get xId => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $ParticipantCopyWith<$Res> {
       _$ParticipantCopyWithImpl<$Res, Participant>;
   @useResult
   $Res call(
-      {ParticipantType type,
+      {ParticipantRole role,
       String name,
       String? userId,
       String? xId,
@@ -63,7 +63,7 @@ class _$ParticipantCopyWithImpl<$Res, $Val extends Participant>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
+    Object? role = null,
     Object? name = null,
     Object? userId = freezed,
     Object? xId = freezed,
@@ -71,10 +71,10 @@ class _$ParticipantCopyWithImpl<$Res, $Val extends Participant>
     Object? character = freezed,
   }) {
     return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ParticipantType,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as ParticipantRole,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ abstract class _$$ParticipantImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ParticipantType type,
+      {ParticipantRole role,
       String name,
       String? userId,
       String? xId,
@@ -142,7 +142,7 @@ class __$$ParticipantImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
+    Object? role = null,
     Object? name = null,
     Object? userId = freezed,
     Object? xId = freezed,
@@ -150,10 +150,10 @@ class __$$ParticipantImplCopyWithImpl<$Res>
     Object? character = freezed,
   }) {
     return _then(_$ParticipantImpl(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ParticipantType,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as ParticipantRole,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -182,7 +182,7 @@ class __$$ParticipantImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ParticipantImpl implements _Participant {
   const _$ParticipantImpl(
-      {required this.type,
+      {required this.role,
       required this.name,
       this.userId,
       this.xId,
@@ -193,7 +193,7 @@ class _$ParticipantImpl implements _Participant {
       _$$ParticipantImplFromJson(json);
 
   @override
-  final ParticipantType type;
+  final ParticipantRole role;
   @override
   final String name;
   @override
@@ -207,7 +207,7 @@ class _$ParticipantImpl implements _Participant {
 
   @override
   String toString() {
-    return 'Participant(type: $type, name: $name, userId: $userId, xId: $xId, discordId: $discordId, character: $character)';
+    return 'Participant(role: $role, name: $name, userId: $userId, xId: $xId, discordId: $discordId, character: $character)';
   }
 
   @override
@@ -215,7 +215,7 @@ class _$ParticipantImpl implements _Participant {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ParticipantImpl &&
-            (identical(other.type, type) || other.type == type) &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.xId, xId) || other.xId == xId) &&
@@ -228,7 +228,7 @@ class _$ParticipantImpl implements _Participant {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, type, name, userId, xId, discordId, character);
+      Object.hash(runtimeType, role, name, userId, xId, discordId, character);
 
   @JsonKey(ignore: true)
   @override
@@ -246,7 +246,7 @@ class _$ParticipantImpl implements _Participant {
 
 abstract class _Participant implements Participant {
   const factory _Participant(
-      {required final ParticipantType type,
+      {required final ParticipantRole role,
       required final String name,
       final String? userId,
       final String? xId,
@@ -257,7 +257,7 @@ abstract class _Participant implements Participant {
       _$ParticipantImpl.fromJson;
 
   @override
-  ParticipantType get type;
+  ParticipantRole get role;
   @override
   String get name;
   @override

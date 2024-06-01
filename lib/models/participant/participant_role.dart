@@ -1,13 +1,13 @@
 part of 'participant.dart';
 
 @JsonEnum(valueField: 'id')
-enum ParticipantType {
-  gameMaster(id: 'gameMaster', label: 'ゲームマスター'),
-  subGameMaster(id: 'subGameMaster', label: 'サブゲームマスター'),
+enum ParticipantRole {
+  gameMaster(id: 'gm', label: 'ゲームマスター'),
+  subGameMaster(id: 'sgm', label: 'サブゲームマスター'),
   player(id: 'player', label: 'プレイヤー'),
   spectator(id: 'spectator', label: '観戦者');
 
-  const ParticipantType({
+  const ParticipantRole({
     required this.id,
     required this.label,
   });

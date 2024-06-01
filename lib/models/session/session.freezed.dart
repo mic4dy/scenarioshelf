@@ -21,11 +21,9 @@ Session _$SessionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Session {
   String get id => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
   Scenario get scenario => throw _privateConstructorUsedError;
-  @DateTimeTimestampConverter()
+  String get createdBy => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
-  @DateTimeTimestampConverter()
   DateTime get updatedAt => throw _privateConstructorUsedError;
   List<Schedule> get schedules => throw _privateConstructorUsedError;
   List<Participant> get participants => throw _privateConstructorUsedError;
@@ -43,10 +41,10 @@ abstract class $SessionCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String userId,
       Scenario scenario,
-      @DateTimeTimestampConverter() DateTime createdAt,
-      @DateTimeTimestampConverter() DateTime updatedAt,
+      String createdBy,
+      DateTime createdAt,
+      DateTime updatedAt,
       List<Schedule> schedules,
       List<Participant> participants,
       List<Memo> memos});
@@ -68,8 +66,8 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
     Object? scenario = null,
+    Object? createdBy = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? schedules = null,
@@ -81,14 +79,14 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
       scenario: null == scenario
           ? _value.scenario
           : scenario // ignore: cast_nullable_to_non_nullable
               as Scenario,
+      createdBy: null == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -130,10 +128,10 @@ abstract class _$$SessionImplCopyWith<$Res> implements $SessionCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String userId,
       Scenario scenario,
-      @DateTimeTimestampConverter() DateTime createdAt,
-      @DateTimeTimestampConverter() DateTime updatedAt,
+      String createdBy,
+      DateTime createdAt,
+      DateTime updatedAt,
       List<Schedule> schedules,
       List<Participant> participants,
       List<Memo> memos});
@@ -154,8 +152,8 @@ class __$$SessionImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
     Object? scenario = null,
+    Object? createdBy = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? schedules = null,
@@ -167,14 +165,14 @@ class __$$SessionImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
       scenario: null == scenario
           ? _value.scenario
           : scenario // ignore: cast_nullable_to_non_nullable
               as Scenario,
+      createdBy: null == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -204,10 +202,10 @@ class __$$SessionImplCopyWithImpl<$Res>
 class _$SessionImpl extends _Session {
   const _$SessionImpl(
       {required this.id,
-      required this.userId,
       required this.scenario,
-      @DateTimeTimestampConverter() required this.createdAt,
-      @DateTimeTimestampConverter() required this.updatedAt,
+      required this.createdBy,
+      required this.createdAt,
+      required this.updatedAt,
       final List<Schedule> schedules = const [],
       final List<Participant> participants = const [],
       final List<Memo> memos = const []})
@@ -222,14 +220,12 @@ class _$SessionImpl extends _Session {
   @override
   final String id;
   @override
-  final String userId;
-  @override
   final Scenario scenario;
   @override
-  @DateTimeTimestampConverter()
+  final String createdBy;
+  @override
   final DateTime createdAt;
   @override
-  @DateTimeTimestampConverter()
   final DateTime updatedAt;
   final List<Schedule> _schedules;
   @override
@@ -260,7 +256,7 @@ class _$SessionImpl extends _Session {
 
   @override
   String toString() {
-    return 'Session(id: $id, userId: $userId, scenario: $scenario, createdAt: $createdAt, updatedAt: $updatedAt, schedules: $schedules, participants: $participants, memos: $memos)';
+    return 'Session(id: $id, scenario: $scenario, createdBy: $createdBy, createdAt: $createdAt, updatedAt: $updatedAt, schedules: $schedules, participants: $participants, memos: $memos)';
   }
 
   @override
@@ -269,9 +265,10 @@ class _$SessionImpl extends _Session {
         (other.runtimeType == runtimeType &&
             other is _$SessionImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.scenario, scenario) ||
                 other.scenario == scenario) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -288,8 +285,8 @@ class _$SessionImpl extends _Session {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      userId,
       scenario,
+      createdBy,
       createdAt,
       updatedAt,
       const DeepCollectionEquality().hash(_schedules),
@@ -313,10 +310,10 @@ class _$SessionImpl extends _Session {
 abstract class _Session extends Session {
   const factory _Session(
       {required final String id,
-      required final String userId,
       required final Scenario scenario,
-      @DateTimeTimestampConverter() required final DateTime createdAt,
-      @DateTimeTimestampConverter() required final DateTime updatedAt,
+      required final String createdBy,
+      required final DateTime createdAt,
+      required final DateTime updatedAt,
       final List<Schedule> schedules,
       final List<Participant> participants,
       final List<Memo> memos}) = _$SessionImpl;
@@ -327,14 +324,12 @@ abstract class _Session extends Session {
   @override
   String get id;
   @override
-  String get userId;
-  @override
   Scenario get scenario;
   @override
-  @DateTimeTimestampConverter()
+  String get createdBy;
+  @override
   DateTime get createdAt;
   @override
-  @DateTimeTimestampConverter()
   DateTime get updatedAt;
   @override
   List<Schedule> get schedules;

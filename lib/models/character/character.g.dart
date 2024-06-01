@@ -10,10 +10,7 @@ _$CharacterImpl _$$CharacterImplFromJson(Map<String, dynamic> json) =>
     _$CharacterImpl(
       name: json['name'] as String,
       isPublic: json['isPublic'] as bool? ?? true,
-      handoutUrls: (json['handoutUrls'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      number: (json['number'] as num?)?.toInt(),
       imageUrl: json['imageUrl'] as String?,
     );
 
@@ -21,6 +18,6 @@ Map<String, dynamic> _$$CharacterImplToJson(_$CharacterImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'isPublic': instance.isPublic,
-      'handoutUrls': instance.handoutUrls,
+      'number': instance.number,
       'imageUrl': instance.imageUrl,
     };

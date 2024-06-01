@@ -22,7 +22,7 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
 mixin _$Character {
   String get name => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
-  List<String> get handoutUrls => throw _privateConstructorUsedError;
+  int? get number => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,8 +36,7 @@ abstract class $CharacterCopyWith<$Res> {
   factory $CharacterCopyWith(Character value, $Res Function(Character) then) =
       _$CharacterCopyWithImpl<$Res, Character>;
   @useResult
-  $Res call(
-      {String name, bool isPublic, List<String> handoutUrls, String? imageUrl});
+  $Res call({String name, bool isPublic, int? number, String? imageUrl});
 }
 
 /// @nodoc
@@ -55,7 +54,7 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
   $Res call({
     Object? name = null,
     Object? isPublic = null,
-    Object? handoutUrls = null,
+    Object? number = freezed,
     Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,10 +66,10 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
               as bool,
-      handoutUrls: null == handoutUrls
-          ? _value.handoutUrls
-          : handoutUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -87,8 +86,7 @@ abstract class _$$CharacterImplCopyWith<$Res>
       __$$CharacterImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name, bool isPublic, List<String> handoutUrls, String? imageUrl});
+  $Res call({String name, bool isPublic, int? number, String? imageUrl});
 }
 
 /// @nodoc
@@ -104,7 +102,7 @@ class __$$CharacterImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? isPublic = null,
-    Object? handoutUrls = null,
+    Object? number = freezed,
     Object? imageUrl = freezed,
   }) {
     return _then(_$CharacterImpl(
@@ -116,10 +114,10 @@ class __$$CharacterImplCopyWithImpl<$Res>
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
               as bool,
-      handoutUrls: null == handoutUrls
-          ? _value._handoutUrls
-          : handoutUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -132,11 +130,7 @@ class __$$CharacterImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CharacterImpl implements _Character {
   const _$CharacterImpl(
-      {required this.name,
-      this.isPublic = true,
-      final List<String> handoutUrls = const [],
-      this.imageUrl})
-      : _handoutUrls = handoutUrls;
+      {required this.name, this.isPublic = true, this.number, this.imageUrl});
 
   factory _$CharacterImpl.fromJson(Map<String, dynamic> json) =>
       _$$CharacterImplFromJson(json);
@@ -146,21 +140,14 @@ class _$CharacterImpl implements _Character {
   @override
   @JsonKey()
   final bool isPublic;
-  final List<String> _handoutUrls;
   @override
-  @JsonKey()
-  List<String> get handoutUrls {
-    if (_handoutUrls is EqualUnmodifiableListView) return _handoutUrls;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_handoutUrls);
-  }
-
+  final int? number;
   @override
   final String? imageUrl;
 
   @override
   String toString() {
-    return 'Character(name: $name, isPublic: $isPublic, handoutUrls: $handoutUrls, imageUrl: $imageUrl)';
+    return 'Character(name: $name, isPublic: $isPublic, number: $number, imageUrl: $imageUrl)';
   }
 
   @override
@@ -171,16 +158,15 @@ class _$CharacterImpl implements _Character {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.isPublic, isPublic) ||
                 other.isPublic == isPublic) &&
-            const DeepCollectionEquality()
-                .equals(other._handoutUrls, _handoutUrls) &&
+            (identical(other.number, number) || other.number == number) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, isPublic,
-      const DeepCollectionEquality().hash(_handoutUrls), imageUrl);
+  int get hashCode =>
+      Object.hash(runtimeType, name, isPublic, number, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -200,7 +186,7 @@ abstract class _Character implements Character {
   const factory _Character(
       {required final String name,
       final bool isPublic,
-      final List<String> handoutUrls,
+      final int? number,
       final String? imageUrl}) = _$CharacterImpl;
 
   factory _Character.fromJson(Map<String, dynamic> json) =
@@ -211,7 +197,7 @@ abstract class _Character implements Character {
   @override
   bool get isPublic;
   @override
-  List<String> get handoutUrls;
+  int? get number;
   @override
   String? get imageUrl;
   @override

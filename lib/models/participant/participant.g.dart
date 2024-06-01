@@ -8,7 +8,7 @@ part of 'participant.dart';
 
 _$ParticipantImpl _$$ParticipantImplFromJson(Map<String, dynamic> json) =>
     _$ParticipantImpl(
-      type: $enumDecode(_$ParticipantTypeEnumMap, json['type']),
+      role: $enumDecode(_$ParticipantRoleEnumMap, json['role']),
       name: json['name'] as String,
       userId: json['userId'] as String?,
       xId: json['xId'] as String?,
@@ -20,7 +20,7 @@ _$ParticipantImpl _$$ParticipantImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ParticipantImplToJson(_$ParticipantImpl instance) =>
     <String, dynamic>{
-      'type': _$ParticipantTypeEnumMap[instance.type]!,
+      'role': _$ParticipantRoleEnumMap[instance.role]!,
       'name': instance.name,
       'userId': instance.userId,
       'xId': instance.xId,
@@ -28,9 +28,9 @@ Map<String, dynamic> _$$ParticipantImplToJson(_$ParticipantImpl instance) =>
       'character': instance.character,
     };
 
-const _$ParticipantTypeEnumMap = {
-  ParticipantType.gameMaster: 'gameMaster',
-  ParticipantType.subGameMaster: 'subGameMaster',
-  ParticipantType.player: 'player',
-  ParticipantType.spectator: 'spectator',
+const _$ParticipantRoleEnumMap = {
+  ParticipantRole.gameMaster: 'gm',
+  ParticipantRole.subGameMaster: 'sgm',
+  ParticipantRole.player: 'player',
+  ParticipantRole.spectator: 'spectator',
 };

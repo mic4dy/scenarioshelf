@@ -5,7 +5,6 @@ import 'package:scenarioshelf/models/memo/memo.dart';
 import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/models/scenario/scenario.dart';
 import 'package:scenarioshelf/models/schedule/schedule.dart';
-import 'package:scenarioshelf/utils/converters/json_serializes/date_time_timestamp_converter.dart';
 
 part 'session.freezed.dart';
 part 'session.g.dart';
@@ -14,10 +13,10 @@ part 'session.g.dart';
 class Session with _$Session {
   const factory Session({
     required String id,
-    required String userId,
     required Scenario scenario,
-    @DateTimeTimestampConverter() required DateTime createdAt,
-    @DateTimeTimestampConverter() required DateTime updatedAt,
+    required String createdBy,
+    required DateTime createdAt,
+    required DateTime updatedAt,
     @Default([]) List<Schedule> schedules,
     @Default([]) List<Participant> participants,
     @Default([]) List<Memo> memos,
@@ -29,17 +28,17 @@ class Session with _$Session {
   String? get keyVisualUrl => scenario.keyVisualUrl;
   String? get myRole {
     final myParticipant = participants.firstWhereOrNull(
-      (participant) => participant.userId == userId,
+      (participant) => participant.userId == createdBy,
     );
 
     if (myParticipant == null) {
       return null;
     }
 
-    if (myParticipant.type != ParticipantType.player) {
-      return myParticipant.type.label;
+    if (myParticipant.role != ParticipantRole.player) {
+      return myParticipant.role.label;
     }
 
-    return myParticipant.character?.name ?? myParticipant.type.label;
+    return myParticipant.character?.name ?? myParticipant.role.label;
   }
 }

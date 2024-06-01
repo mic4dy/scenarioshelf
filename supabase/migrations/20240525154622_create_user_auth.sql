@@ -4,7 +4,7 @@ insert into auth.schema_migrations values ('20221208132122') on conflict do noth
 
 -- Profiles Table の定義
 create table profiles (
-  id uuid references auth.users on delete cascade not null primary key,
+  id uuid references auth.users on delete cascade primary key,
   username text unique,
   avatar_url text,
   updated_at timestamp with time zone default current_timestamp,

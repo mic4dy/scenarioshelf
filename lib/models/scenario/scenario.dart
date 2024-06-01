@@ -9,7 +9,7 @@ part 'scenario.g.dart';
 class Scenario with _$Scenario {
   @Assert(r"kana == null || RegExp(r'^[ァ-ンヴー]+$').hasMatch(kana!)", 'フリガナに全角カタカナ以外の文字が含まれています')
   factory Scenario({
-    required TRPGSystem trpgSystem,
+    required TRPGSystem system,
     required String title,
     String? kana,
     String? keyVisualUrl,
