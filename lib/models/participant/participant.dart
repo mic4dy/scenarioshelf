@@ -7,9 +7,11 @@ part 'participant.g.dart';
 part 'participant_role.dart';
 
 @freezed
+@JsonSerializable(fieldRename: FieldRename.snake)
 class Participant with _$Participant {
   const factory Participant({
-    required ParticipantRole role,
+    required String id,
+    @JsonKey(name: 'participant_role') required ParticipantRole role,
     required String name,
     String? userId,
     String? xId,

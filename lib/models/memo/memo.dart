@@ -4,8 +4,10 @@ part 'memo.freezed.dart';
 part 'memo.g.dart';
 
 @freezed
+@JsonSerializable(fieldRename: FieldRename.snake)
 class Memo with _$Memo {
   const factory Memo({
+    required String id,
     required String title,
     required String content,
     required DateTime updatedAt,

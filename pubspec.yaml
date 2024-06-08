@@ -21,6 +21,7 @@ dependencies:
   shimmer: 3.0.0
 
   # BaaS
+  uuid: 4.4.0
   supabase_flutter: 2.5.3
   firebase_core: 2.31.1
   firebase_analytics: 10.10.6

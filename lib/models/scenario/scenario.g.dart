@@ -6,23 +6,27 @@ part of 'scenario.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ScenarioImpl _$$ScenarioImplFromJson(Map<String, dynamic> json) =>
-    _$ScenarioImpl(
-      system: $enumDecode(_$TRPGSystemEnumMap, json['system']),
+Scenario _$ScenarioFromJson(Map<String, dynamic> json) => Scenario(
+      id: json['id'] as String,
+      system: $enumDecode(_$TRPGSystemEnumMap, json['trpg_system']),
       title: json['title'] as String,
+      characters: (json['characters'] as List<dynamic>)
+          .map((e) => Character.fromJson(e as Map<String, dynamic>))
+          .toList(),
       kana: json['kana'] as String?,
-      keyVisualUrl: json['keyVisualUrl'] as String?,
-      storeUrl: json['storeUrl'] as String?,
+      keyVisualUrl: json['key_visual_url'] as String?,
+      storeUrl: json['store_url'] as String?,
       author: json['author'] as String?,
     );
 
-Map<String, dynamic> _$$ScenarioImplToJson(_$ScenarioImpl instance) =>
-    <String, dynamic>{
-      'system': _$TRPGSystemEnumMap[instance.system]!,
+Map<String, dynamic> _$ScenarioToJson(Scenario instance) => <String, dynamic>{
+      'id': instance.id,
+      'trpg_system': _$TRPGSystemEnumMap[instance.system]!,
       'title': instance.title,
+      'characters': instance.characters,
       'kana': instance.kana,
-      'keyVisualUrl': instance.keyVisualUrl,
-      'storeUrl': instance.storeUrl,
+      'key_visual_url': instance.keyVisualUrl,
+      'store_url': instance.storeUrl,
       'author': instance.author,
     };
 
@@ -39,3 +43,30 @@ const _$TRPGSystemEnumMap = {
   TRPGSystem.sp: 'sp',
   TRPGSystem.other: 'other',
 };
+
+_$ScenarioImpl _$$ScenarioImplFromJson(Map<String, dynamic> json) =>
+    _$ScenarioImpl(
+      id: json['id'] as String,
+      system: $enumDecode(_$TRPGSystemEnumMap, json['trpg_system']),
+      title: json['title'] as String,
+      characters: (json['characters'] as List<dynamic>?)
+              ?.map((e) => Character.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      kana: json['kana'] as String?,
+      keyVisualUrl: json['keyVisualUrl'] as String?,
+      storeUrl: json['storeUrl'] as String?,
+      author: json['author'] as String?,
+    );
+
+Map<String, dynamic> _$$ScenarioImplToJson(_$ScenarioImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'trpg_system': _$TRPGSystemEnumMap[instance.system]!,
+      'title': instance.title,
+      'characters': instance.characters,
+      'kana': instance.kana,
+      'keyVisualUrl': instance.keyVisualUrl,
+      'storeUrl': instance.storeUrl,
+      'author': instance.author,
+    };

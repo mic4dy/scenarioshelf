@@ -6,7 +6,7 @@ import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/models/schedule/schedule.dart';
 import 'package:scenarioshelf/models/session/session.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
-import 'package:scenarioshelf/repositories/session/session_repository.dart';
+import 'package:scenarioshelf/repositories/databases/session/session_repository.dart';
 import 'package:scenarioshelf/views/pages/home/providers/sessions_sort/sessions_sort_controller.dart';
 import 'package:scenarioshelf/views/pages/home/providers/sessions_sort/sessions_sort_pivot.dart';
 
@@ -21,7 +21,7 @@ FutureOr<List<Session>> sessionController(SessionControllerRef ref) async {
   }
 
   final sortProvider = ref.read(sessionsSortControllerProvider);
-  final sessions = await ref.read(sessionRepositoryProvider).list(userId: user.id);
+  final sessions = await ref.read(sessionRepositoryProvider).listByUserId(userId: user.id);
 
   switch (sortProvider.pivot) {
     case SessionsSortPivot.scenarioName:

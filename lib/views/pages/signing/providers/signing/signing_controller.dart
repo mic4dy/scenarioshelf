@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
-import 'package:scenarioshelf/repositories/apis/auth_api.dart';
+import 'package:scenarioshelf/repositories/auth/auth_api.dart';
 import 'package:scenarioshelf/repositories/auth/auth_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';

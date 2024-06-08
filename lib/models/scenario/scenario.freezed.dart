@@ -20,8 +20,11 @@ Scenario _$ScenarioFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Scenario {
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'trpg_system')
   TRPGSystem get system => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  List<Character> get characters => throw _privateConstructorUsedError;
   String? get kana => throw _privateConstructorUsedError;
   String? get keyVisualUrl => throw _privateConstructorUsedError;
   String? get storeUrl => throw _privateConstructorUsedError;
@@ -39,8 +42,10 @@ abstract class $ScenarioCopyWith<$Res> {
       _$ScenarioCopyWithImpl<$Res, Scenario>;
   @useResult
   $Res call(
-      {TRPGSystem system,
+      {String id,
+      @JsonKey(name: 'trpg_system') TRPGSystem system,
       String title,
+      List<Character> characters,
       String? kana,
       String? keyVisualUrl,
       String? storeUrl,
@@ -60,14 +65,20 @@ class _$ScenarioCopyWithImpl<$Res, $Val extends Scenario>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? system = null,
     Object? title = null,
+    Object? characters = null,
     Object? kana = freezed,
     Object? keyVisualUrl = freezed,
     Object? storeUrl = freezed,
     Object? author = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       system: null == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -76,6 +87,10 @@ class _$ScenarioCopyWithImpl<$Res, $Val extends Scenario>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      characters: null == characters
+          ? _value.characters
+          : characters // ignore: cast_nullable_to_non_nullable
+              as List<Character>,
       kana: freezed == kana
           ? _value.kana
           : kana // ignore: cast_nullable_to_non_nullable
@@ -105,8 +120,10 @@ abstract class _$$ScenarioImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {TRPGSystem system,
+      {String id,
+      @JsonKey(name: 'trpg_system') TRPGSystem system,
       String title,
+      List<Character> characters,
       String? kana,
       String? keyVisualUrl,
       String? storeUrl,
@@ -124,14 +141,20 @@ class __$$ScenarioImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? system = null,
     Object? title = null,
+    Object? characters = null,
     Object? kana = freezed,
     Object? keyVisualUrl = freezed,
     Object? storeUrl = freezed,
     Object? author = freezed,
   }) {
     return _then(_$ScenarioImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       system: null == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -140,6 +163,10 @@ class __$$ScenarioImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      characters: null == characters
+          ? _value._characters
+          : characters // ignore: cast_nullable_to_non_nullable
+              as List<Character>,
       kana: freezed == kana
           ? _value.kana
           : kana // ignore: cast_nullable_to_non_nullable
@@ -164,22 +191,37 @@ class __$$ScenarioImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ScenarioImpl implements _Scenario {
   _$ScenarioImpl(
-      {required this.system,
+      {required this.id,
+      @JsonKey(name: 'trpg_system') required this.system,
       required this.title,
+      final List<Character> characters = const [],
       this.kana,
       this.keyVisualUrl,
       this.storeUrl,
       this.author})
       : assert(kana == null || RegExp(r'^[ァ-ンヴー]+$').hasMatch(kana!),
-            'フリガナに全角カタカナ以外の文字が含まれています');
+            'フリガナに全角カタカナ以外の文字が含まれています'),
+        _characters = characters;
 
   factory _$ScenarioImpl.fromJson(Map<String, dynamic> json) =>
       _$$ScenarioImplFromJson(json);
 
   @override
+  final String id;
+  @override
+  @JsonKey(name: 'trpg_system')
   final TRPGSystem system;
   @override
   final String title;
+  final List<Character> _characters;
+  @override
+  @JsonKey()
+  List<Character> get characters {
+    if (_characters is EqualUnmodifiableListView) return _characters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_characters);
+  }
+
   @override
   final String? kana;
   @override
@@ -191,7 +233,7 @@ class _$ScenarioImpl implements _Scenario {
 
   @override
   String toString() {
-    return 'Scenario(system: $system, title: $title, kana: $kana, keyVisualUrl: $keyVisualUrl, storeUrl: $storeUrl, author: $author)';
+    return 'Scenario(id: $id, system: $system, title: $title, characters: $characters, kana: $kana, keyVisualUrl: $keyVisualUrl, storeUrl: $storeUrl, author: $author)';
   }
 
   @override
@@ -199,8 +241,11 @@ class _$ScenarioImpl implements _Scenario {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ScenarioImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.system, system) || other.system == system) &&
             (identical(other.title, title) || other.title == title) &&
+            const DeepCollectionEquality()
+                .equals(other._characters, _characters) &&
             (identical(other.kana, kana) || other.kana == kana) &&
             (identical(other.keyVisualUrl, keyVisualUrl) ||
                 other.keyVisualUrl == keyVisualUrl) &&
@@ -212,7 +257,15 @@ class _$ScenarioImpl implements _Scenario {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, system, title, kana, keyVisualUrl, storeUrl, author);
+      runtimeType,
+      id,
+      system,
+      title,
+      const DeepCollectionEquality().hash(_characters),
+      kana,
+      keyVisualUrl,
+      storeUrl,
+      author);
 
   @JsonKey(ignore: true)
   @override
@@ -230,8 +283,10 @@ class _$ScenarioImpl implements _Scenario {
 
 abstract class _Scenario implements Scenario {
   factory _Scenario(
-      {required final TRPGSystem system,
+      {required final String id,
+      @JsonKey(name: 'trpg_system') required final TRPGSystem system,
       required final String title,
+      final List<Character> characters,
       final String? kana,
       final String? keyVisualUrl,
       final String? storeUrl,
@@ -241,9 +296,14 @@ abstract class _Scenario implements Scenario {
       _$ScenarioImpl.fromJson;
 
   @override
+  String get id;
+  @override
+  @JsonKey(name: 'trpg_system')
   TRPGSystem get system;
   @override
   String get title;
+  @override
+  List<Character> get characters;
   @override
   String? get kana;
   @override

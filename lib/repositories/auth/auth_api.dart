@@ -1,6 +1,8 @@
 import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
+import 'package:scenarioshelf/models/user/user.dart';
 
 abstract interface class AuthAPI {
+  Future<User> getCurrentUser();
   Future<ProvisionallyRegisteredUser?> signUpWithEmailAndPassword({
     required String email,
     required String password,

@@ -20,6 +20,7 @@ Memo _$MemoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Memo {
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
@@ -37,7 +38,8 @@ abstract class $MemoCopyWith<$Res> {
       _$MemoCopyWithImpl<$Res, Memo>;
   @useResult
   $Res call(
-      {String title,
+      {String id,
+      String title,
       String content,
       DateTime updatedAt,
       DateTime createdAt,
@@ -57,6 +59,7 @@ class _$MemoCopyWithImpl<$Res, $Val extends Memo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? content = null,
     Object? updatedAt = null,
@@ -64,6 +67,10 @@ class _$MemoCopyWithImpl<$Res, $Val extends Memo>
     Object? isPublic = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -96,7 +103,8 @@ abstract class _$$MemoImplCopyWith<$Res> implements $MemoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String title,
+      {String id,
+      String title,
       String content,
       DateTime updatedAt,
       DateTime createdAt,
@@ -113,6 +121,7 @@ class __$$MemoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? content = null,
     Object? updatedAt = null,
@@ -120,6 +129,10 @@ class __$$MemoImplCopyWithImpl<$Res>
     Object? isPublic = null,
   }) {
     return _then(_$MemoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -148,7 +161,8 @@ class __$$MemoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MemoImpl implements _Memo {
   const _$MemoImpl(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.content,
       required this.updatedAt,
       required this.createdAt,
@@ -157,6 +171,8 @@ class _$MemoImpl implements _Memo {
   factory _$MemoImpl.fromJson(Map<String, dynamic> json) =>
       _$$MemoImplFromJson(json);
 
+  @override
+  final String id;
   @override
   final String title;
   @override
@@ -171,7 +187,7 @@ class _$MemoImpl implements _Memo {
 
   @override
   String toString() {
-    return 'Memo(title: $title, content: $content, updatedAt: $updatedAt, createdAt: $createdAt, isPublic: $isPublic)';
+    return 'Memo(id: $id, title: $title, content: $content, updatedAt: $updatedAt, createdAt: $createdAt, isPublic: $isPublic)';
   }
 
   @override
@@ -179,6 +195,7 @@ class _$MemoImpl implements _Memo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MemoImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -191,8 +208,8 @@ class _$MemoImpl implements _Memo {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, content, updatedAt, createdAt, isPublic);
+  int get hashCode => Object.hash(
+      runtimeType, id, title, content, updatedAt, createdAt, isPublic);
 
   @JsonKey(ignore: true)
   @override
@@ -210,7 +227,8 @@ class _$MemoImpl implements _Memo {
 
 abstract class _Memo implements Memo {
   const factory _Memo(
-      {required final String title,
+      {required final String id,
+      required final String title,
       required final String content,
       required final DateTime updatedAt,
       required final DateTime createdAt,
@@ -218,6 +236,8 @@ abstract class _Memo implements Memo {
 
   factory _Memo.fromJson(Map<String, dynamic> json) = _$MemoImpl.fromJson;
 
+  @override
+  String get id;
   @override
   String get title;
   @override

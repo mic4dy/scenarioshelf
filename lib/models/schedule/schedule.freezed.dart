@@ -20,8 +20,10 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Schedule {
+  String get id => throw _privateConstructorUsedError;
   DateTime get beginningTime => throw _privateConstructorUsedError;
   Duration get playtime => throw _privateConstructorUsedError;
+  @JsonKey(name: 'schedule_type')
   ScheduleType get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +37,11 @@ abstract class $ScheduleCopyWith<$Res> {
   factory $ScheduleCopyWith(Schedule value, $Res Function(Schedule) then) =
       _$ScheduleCopyWithImpl<$Res, Schedule>;
   @useResult
-  $Res call({DateTime beginningTime, Duration playtime, ScheduleType type});
+  $Res call(
+      {String id,
+      DateTime beginningTime,
+      Duration playtime,
+      @JsonKey(name: 'schedule_type') ScheduleType type});
 }
 
 /// @nodoc
@@ -51,11 +57,16 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? beginningTime = null,
     Object? playtime = null,
     Object? type = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       beginningTime: null == beginningTime
           ? _value.beginningTime
           : beginningTime // ignore: cast_nullable_to_non_nullable
@@ -80,7 +91,11 @@ abstract class _$$ScheduleImplCopyWith<$Res>
       __$$ScheduleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime beginningTime, Duration playtime, ScheduleType type});
+  $Res call(
+      {String id,
+      DateTime beginningTime,
+      Duration playtime,
+      @JsonKey(name: 'schedule_type') ScheduleType type});
 }
 
 /// @nodoc
@@ -94,11 +109,16 @@ class __$$ScheduleImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? beginningTime = null,
     Object? playtime = null,
     Object? type = null,
   }) {
     return _then(_$ScheduleImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       beginningTime: null == beginningTime
           ? _value.beginningTime
           : beginningTime // ignore: cast_nullable_to_non_nullable
@@ -119,25 +139,28 @@ class __$$ScheduleImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ScheduleImpl implements _Schedule {
   _$ScheduleImpl(
-      {required this.beginningTime,
+      {required this.id,
+      required this.beginningTime,
       required this.playtime,
-      this.type = ScheduleType.event})
+      @JsonKey(name: 'schedule_type') this.type = ScheduleType.event})
       : assert(!playtime.isNegative, 'プレイ時間が負の値になっています');
 
   factory _$ScheduleImpl.fromJson(Map<String, dynamic> json) =>
       _$$ScheduleImplFromJson(json);
 
   @override
+  final String id;
+  @override
   final DateTime beginningTime;
   @override
   final Duration playtime;
   @override
-  @JsonKey()
+  @JsonKey(name: 'schedule_type')
   final ScheduleType type;
 
   @override
   String toString() {
-    return 'Schedule(beginningTime: $beginningTime, playtime: $playtime, type: $type)';
+    return 'Schedule(id: $id, beginningTime: $beginningTime, playtime: $playtime, type: $type)';
   }
 
   @override
@@ -145,6 +168,7 @@ class _$ScheduleImpl implements _Schedule {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ScheduleImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.beginningTime, beginningTime) ||
                 other.beginningTime == beginningTime) &&
             (identical(other.playtime, playtime) ||
@@ -154,7 +178,8 @@ class _$ScheduleImpl implements _Schedule {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, beginningTime, playtime, type);
+  int get hashCode =>
+      Object.hash(runtimeType, id, beginningTime, playtime, type);
 
   @JsonKey(ignore: true)
   @override
@@ -172,18 +197,23 @@ class _$ScheduleImpl implements _Schedule {
 
 abstract class _Schedule implements Schedule {
   factory _Schedule(
-      {required final DateTime beginningTime,
-      required final Duration playtime,
-      final ScheduleType type}) = _$ScheduleImpl;
+          {required final String id,
+          required final DateTime beginningTime,
+          required final Duration playtime,
+          @JsonKey(name: 'schedule_type') final ScheduleType type}) =
+      _$ScheduleImpl;
 
   factory _Schedule.fromJson(Map<String, dynamic> json) =
       _$ScheduleImpl.fromJson;
 
   @override
+  String get id;
+  @override
   DateTime get beginningTime;
   @override
   Duration get playtime;
   @override
+  @JsonKey(name: 'schedule_type')
   ScheduleType get type;
   @override
   @JsonKey(ignore: true)

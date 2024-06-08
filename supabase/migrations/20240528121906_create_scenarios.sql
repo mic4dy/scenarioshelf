@@ -62,11 +62,11 @@ create trigger on_scenarios_updated
 
 -- KeyVisuals Storage の定義
 insert into storage.buckets (id, name, public)
-  values ('key_visuals', 'key_visuals', true);
+  values ('scenario_key_visuals', 'scenario_key_visuals', true);
 
 -- Policies の定義
-create policy "Key visual images are publicly accessible." on storage.objects
-  for select using (bucket_id = 'key_visuals');
+create policy "Scenario key visual images are publicly accessible." on storage.objects
+  for select using (bucket_id = 'scenario_key_visuals');
 
-create policy "Anyone can upload an key visual." on storage.objects
-  for insert with check (bucket_id = 'key_visuals');
+create policy "Anyone can upload a scenario key visual." on storage.objects
+  for insert with check (bucket_id = 'scenario_key_visuals');

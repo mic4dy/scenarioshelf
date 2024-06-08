@@ -5,6 +5,7 @@ create table characters (
   number integer,
   name text not null,
   is_public boolean default true,
+  is_customized boolean default false,
   image_url text,
   updated_at timestamp with time zone default current_timestamp,
   created_at timestamp with time zone default current_timestamp
@@ -49,5 +50,5 @@ insert into storage.buckets (id, name, public)
 create policy "Character images are publicly accessible." on storage.objects
   for select using (bucket_id = 'character_images');
 
-create policy "Anyone can upload an character image." on storage.objects
+create policy "Anyone can upload a character image." on storage.objects
   for insert with check (bucket_id = 'character_images');

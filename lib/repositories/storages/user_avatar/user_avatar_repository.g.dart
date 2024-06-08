@@ -1,25 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'avatar_repository.dart';
+part of 'user_avatar_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$avatarRepositoryHash() => r'365d3e8da121e3ec709612f5cb2c4c81f904524e';
+String _$userAvatarRepositoryHash() =>
+    r'114d5983254641e6a9d7175f1b98b985a0e0c10d';
 
-/// See also [avatarRepository].
-@ProviderFor(avatarRepository)
-final avatarRepositoryProvider = AutoDisposeProvider<AvatarRepository>.internal(
-  avatarRepository,
-  name: r'avatarRepositoryProvider',
+/// See also [userAvatarRepository].
+@ProviderFor(userAvatarRepository)
+final userAvatarRepositoryProvider =
+    AutoDisposeProvider<UserAvatarRepository>.internal(
+  userAvatarRepository,
+  name: r'userAvatarRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$avatarRepositoryHash,
+      : _$userAvatarRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef AvatarRepositoryRef = AutoDisposeProviderRef<AvatarRepository>;
+typedef UserAvatarRepositoryRef = AutoDisposeProviderRef<UserAvatarRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

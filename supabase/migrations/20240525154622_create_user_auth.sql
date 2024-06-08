@@ -65,11 +65,11 @@ create trigger on_auth_user_updated
 
 -- Avatars Storage の定義
 insert into storage.buckets (id, name, public)
-  values ('avatars', 'avatars', true);
+  values ('user_avatars', 'user_avatars', true);
 
 -- Policies の定義
-create policy "Avatar images are publicly accessible." on storage.objects
-  for select using (bucket_id = 'avatars');
+create policy "User avatar images are publicly accessible." on storage.objects
+  for select using (bucket_id = 'user_avatars');
 
-create policy "Anyone can upload an avatar." on storage.objects
-  for insert with check (bucket_id = 'avatars');
+create policy "Anyone can upload an user avatar." on storage.objects
+  for insert with check (bucket_id = 'user_avatars');
