@@ -10,8 +10,8 @@ part 'session.freezed.dart';
 part 'session.g.dart';
 
 @freezed
-@JsonSerializable(fieldRename: FieldRename.snake)
 class Session with _$Session {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Session({
     required String id,
     required Scenario scenario,

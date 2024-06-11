@@ -6,14 +6,17 @@ part of 'schedule.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Schedule _$ScheduleFromJson(Map<String, dynamic> json) => Schedule(
+_$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
+    _$ScheduleImpl(
       id: json['id'] as String,
       beginningTime: DateTime.parse(json['beginning_time'] as String),
       playtime: Duration(microseconds: (json['playtime'] as num).toInt()),
-      type: $enumDecode(_$ScheduleTypeEnumMap, json['schedule_type']),
+      type: $enumDecodeNullable(_$ScheduleTypeEnumMap, json['schedule_type']) ??
+          ScheduleType.event,
     );
 
-Map<String, dynamic> _$ScheduleToJson(Schedule instance) => <String, dynamic>{
+Map<String, dynamic> _$$ScheduleImplToJson(_$ScheduleImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'beginning_time': instance.beginningTime.toIso8601String(),
       'playtime': instance.playtime.inMicroseconds,
@@ -25,20 +28,3 @@ const _$ScheduleTypeEnumMap = {
   ScheduleType.event: 'event',
   ScheduleType.available: 'available',
 };
-
-_$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
-    _$ScheduleImpl(
-      id: json['id'] as String,
-      beginningTime: DateTime.parse(json['beginningTime'] as String),
-      playtime: Duration(microseconds: (json['playtime'] as num).toInt()),
-      type: $enumDecodeNullable(_$ScheduleTypeEnumMap, json['schedule_type']) ??
-          ScheduleType.event,
-    );
-
-Map<String, dynamic> _$$ScheduleImplToJson(_$ScheduleImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'beginningTime': instance.beginningTime.toIso8601String(),
-      'playtime': instance.playtime.inMicroseconds,
-      'schedule_type': _$ScheduleTypeEnumMap[instance.type]!,
-    };

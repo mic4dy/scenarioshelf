@@ -104,7 +104,7 @@ class __$$SessionsSortStateImplCopyWithImpl<$Res>
 
 class _$SessionsSortStateImpl implements _SessionsSortState {
   const _$SessionsSortStateImpl(
-      {this.pivot = SessionsSortPivot.scenarioName,
+      {this.pivot = SessionsSortPivot.scenarioTitle,
       this.order = SortOrder.asc});
 
   @override

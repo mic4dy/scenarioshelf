@@ -198,7 +198,8 @@ class __$$SessionImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$SessionImpl extends _Session {
   const _$SessionImpl(
       {required this.id,

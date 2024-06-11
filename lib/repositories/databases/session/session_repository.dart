@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/constants/domains/sort_order.dart';
 
 import 'package:scenarioshelf/models/session/session.dart';
 import 'package:scenarioshelf/repositories/auth/auth_api.dart';
@@ -12,6 +13,7 @@ import 'package:scenarioshelf/repositories/databases/schedule/schedule_repositor
 import 'package:scenarioshelf/repositories/databases/session/new_models/new_session.dart';
 import 'package:scenarioshelf/repositories/databases/session/session_api.dart';
 import 'package:scenarioshelf/utils/result.dart';
+import 'package:scenarioshelf/views/pages/home/providers/sessions_sort/sessions_sort_pivot.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
 
 part 'session_repository.g.dart';
@@ -104,8 +106,25 @@ class SessionRepository implements SessionAPI {
   @override
   Future<List<Session>> listByUserId({
     required String userId,
+    SessionsSortPivot pivot = SessionsSortPivot.scenarioTitle,
+    SortOrder order = SortOrder.asc,
   }) async {
-    throw UnimplementedError();
+    final client = Supabase.instance.client;
+    final response = await client.from(tableName).select('''
+      *,
+      scenario:scenario_id (
+        *,
+        characters ( * )
+      ),
+      schedules ( * ),
+      memos ( * ),
+      participants (
+        *,
+        character:character_id ( * )
+      )
+    ''').eq('created_by', userId);
+
+    return response.map(Session.fromJson).toList();
   }
 
   @override

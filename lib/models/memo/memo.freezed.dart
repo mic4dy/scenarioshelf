@@ -158,7 +158,8 @@ class __$$MemoImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$MemoImpl implements _Memo {
   const _$MemoImpl(
       {required this.id,

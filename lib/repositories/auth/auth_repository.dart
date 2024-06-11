@@ -4,6 +4,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:scenarioshelf/models/user/user.dart';
+import 'package:scenarioshelf/repositories/storages/apis/user_avatar_api.dart';
+import 'package:scenarioshelf/repositories/storages/user_avatar/user_avatar_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
@@ -22,10 +24,18 @@ part 'auth_repository.g.dart';
 const EMAIL_REDIRECT_URL = 'jp.scenarioshelf://login-callback/';
 
 @Riverpod(keepAlive: true)
-AuthRepository authRepository(AuthRepositoryRef _) => const AuthRepository();
+AuthRepository authRepository(AuthRepositoryRef ref) {
+  final avatarRepository = ref.read(userAvatarRepositoryProvider);
+
+  return AuthRepository(avatarRepository: avatarRepository);
+}
 
 class AuthRepository implements AuthAPI {
-  const AuthRepository();
+  const AuthRepository({
+    required UserAvatarAPI avatarRepository,
+  }) : _avatarRepository = avatarRepository;
+
+  final UserAvatarAPI _avatarRepository;
 
   /// ログインしているユーザ情報を取得
   ///
@@ -181,6 +191,38 @@ class AuthRepository implements AuthAPI {
 
     logger.i('Signed In with Google Account');
     return ProvisionallyRegisteredUser.fromSupabase(user);
+  }
+
+  @override
+  Future<User> update({
+    String? email,
+    String? password,
+    String? username,
+    Uint8List? avatar,
+  }) async {
+    final url = (avatar != null) ? await _avatarRepository.upsert(avatar) : null;
+
+    final client = Supabase.instance.client;
+    final response = await client.auth.updateUser(
+      UserAttributes(
+        email: email,
+        password: password,
+        data: {
+          if (username != null) 'username': username,
+          if (url != null) 'avatar_url': url,
+        },
+      ),
+    );
+    final updatedUser = response.user;
+    if (updatedUser == null) {
+      throw const AppAuthException(
+        message: 'Failed to Update User',
+        display: 'ユーザ情報の更新に失敗しました',
+      );
+    }
+
+    logger.i('Updated User');
+    return User.fromSupabase(updatedUser);
   }
 
   /// サインアウト

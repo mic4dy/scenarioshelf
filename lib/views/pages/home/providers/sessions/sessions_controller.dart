@@ -24,7 +24,7 @@ FutureOr<List<Session>> sessionController(SessionControllerRef ref) async {
   final sessions = await ref.read(sessionRepositoryProvider).listByUserId(userId: user.id);
 
   switch (sortProvider.pivot) {
-    case SessionsSortPivot.scenarioName:
+    case SessionsSortPivot.scenarioTitle:
       return sessions
         ..sort((a, b) {
           if (a.scenario.kana != null && b.scenario.kana != null) {
@@ -88,30 +88,6 @@ FutureOr<List<Session>> sessionController(SessionControllerRef ref) async {
           return switch (sortProvider.order) {
             SortOrder.asc => aOldestSchedule.beginningTime.compareTo(bOldestSchedule.beginningTime),
             SortOrder.desc => bOldestSchedule.beginningTime.compareTo(aOldestSchedule.beginningTime),
-          };
-        });
-    case SessionsSortPivot.characterName:
-      return sessions
-        ..sort((a, b) {
-          final aCharacter = a.participants
-              .firstWhereOrNull((participant) => participant.role == ParticipantRole.player && participant.userId == user.id)
-              ?.character;
-          final bCharacter = b.participants
-              .firstWhereOrNull((participant) => participant.role == ParticipantRole.player && participant.userId == user.id)
-              ?.character;
-          if (aCharacter == null && bCharacter == null) {
-            return 0;
-          }
-          if (aCharacter == null) {
-            return 1;
-          }
-          if (bCharacter == null) {
-            return -1;
-          }
-
-          return switch (sortProvider.order) {
-            SortOrder.asc => aCharacter.name.compareTo(bCharacter.name),
-            SortOrder.desc => bCharacter.name.compareTo(aCharacter.name),
           };
         });
     case SessionsSortPivot.createdAt:

@@ -1,8 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/repositories/auth/auth_api.dart';
-import 'package:scenarioshelf/repositories/auth/auth_repository.dart';
+import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/repositories/storages/apis/user_avatar_api.dart';
@@ -10,24 +9,33 @@ import 'package:scenarioshelf/repositories/storages/apis/user_avatar_api.dart';
 part 'user_avatar_repository.g.dart';
 
 @riverpod
-UserAvatarRepository userAvatarRepository(UserAvatarRepositoryRef ref) {
-  final authRepository = ref.read(authRepositoryProvider);
+UserAvatarRepository userAvatarRepository(UserAvatarRepositoryRef ref) => const UserAvatarRepository();
 
-  return UserAvatarRepository(authRepository: authRepository);
-}
-
+/// ユーザのアバターを管理するRepository
 class UserAvatarRepository implements UserAvatarAPI {
-  const UserAvatarRepository({required AuthAPI authRepository}) : _authRepository = authRepository;
+  const UserAvatarRepository();
 
   static const String bucketName = 'user_avatars';
-  final AuthAPI _authRepository;
 
+  /// アバターをアップロード
+  ///
+  /// [avatar] はJPEG形式の画像データ
+  /// アバターはauth.userに紐づくため、AuthRepositoryを通してUserのIDをフォルダ名としてアップロードする
+  /// このRepositoryはAuthRepositoryから呼び出されるため、AuthRepositoryを参照すると循環参照になる
   @override
   Future<String> upsert(Uint8List avatar) async {
-    final currentUser = await _authRepository.getCurrentUser();
     final client = Supabase.instance.client;
+    final response = await client.auth.getUser();
+    final user = response.user;
+    if (user == null) {
+      throw const AppAuthException(
+        message: 'User Not Found',
+        display: 'ユーザーが見つかりません',
+      );
+    }
+
     final path = await client.storage.from(bucketName).uploadBinary(
-          '${currentUser.id}/avatar.jpeg',
+          '${user.id}/avatar.jpeg',
           avatar,
           fileOptions: const FileOptions(
             upsert: true,

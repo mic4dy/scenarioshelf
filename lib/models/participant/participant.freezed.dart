@@ -193,7 +193,8 @@ class __$$ParticipantImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$ParticipantImpl implements _Participant {
   const _$ParticipantImpl(
       {required this.id,

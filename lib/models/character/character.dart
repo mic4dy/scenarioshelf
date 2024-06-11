@@ -4,8 +4,8 @@ part 'character.freezed.dart';
 part 'character.g.dart';
 
 @freezed
-@JsonSerializable(fieldRename: FieldRename.snake)
 class Character with _$Character {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Character({
     required String id,
     required String name,

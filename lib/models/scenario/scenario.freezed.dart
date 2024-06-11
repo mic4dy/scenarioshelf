@@ -188,7 +188,8 @@ class __$$ScenarioImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$ScenarioImpl implements _Scenario {
   _$ScenarioImpl(
       {required this.id,

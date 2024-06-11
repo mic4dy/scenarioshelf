@@ -161,7 +161,8 @@ class __$$CharacterImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$CharacterImpl implements _Character {
   const _$CharacterImpl(
       {required this.id,

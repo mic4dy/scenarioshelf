@@ -1,8 +1,7 @@
 enum SessionsSortPivot {
-  scenarioName,
+  scenarioTitle,
   scenarioSystem,
   scenarioAuthor,
   schedule,
-  characterName,
   createdAt;
 }

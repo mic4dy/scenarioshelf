@@ -136,7 +136,8 @@ class __$$ScheduleImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$ScheduleImpl implements _Schedule {
   _$ScheduleImpl(
       {required this.id,
