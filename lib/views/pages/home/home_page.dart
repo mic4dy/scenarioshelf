@@ -42,7 +42,6 @@ class HomePage extends ConsumerWidget {
     }
 
     return Scaffold(
-      // body: const SizedBox.shrink(),
       body: ref.watch(sessionControllerProvider).when(
             data: (sessions) => ListView.builder(
               itemCount: sessions.length,

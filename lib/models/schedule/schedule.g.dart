@@ -10,7 +10,8 @@ _$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
     _$ScheduleImpl(
       id: json['id'] as String,
       beginningTime: DateTime.parse(json['beginning_time'] as String),
-      playtime: Duration(microseconds: (json['playtime'] as num).toInt()),
+      playtime: const DurationIntervalConverter()
+          .fromJson(json['playtime'] as String),
       type: $enumDecodeNullable(_$ScheduleTypeEnumMap, json['schedule_type']) ??
           ScheduleType.event,
     );
@@ -19,7 +20,7 @@ Map<String, dynamic> _$$ScheduleImplToJson(_$ScheduleImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'beginning_time': instance.beginningTime.toIso8601String(),
-      'playtime': instance.playtime.inMicroseconds,
+      'playtime': const DurationIntervalConverter().toJson(instance.playtime),
       'schedule_type': _$ScheduleTypeEnumMap[instance.type]!,
     };
 

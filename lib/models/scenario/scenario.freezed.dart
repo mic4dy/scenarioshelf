@@ -200,7 +200,10 @@ class _$ScenarioImpl implements _Scenario {
       this.keyVisualUrl,
       this.storeUrl,
       this.author})
-      : assert(kana == null || RegExp(r'^[ァ-ンヴー]+$').hasMatch(kana!),
+      : assert(
+            kana == null ||
+                kana == '' ||
+                RegExp(r'^[0-9a-zA-Zァ-ンヴー ]+$').hasMatch(kana!),
             'フリガナに全角カタカナ以外の文字が含まれています'),
         _characters = characters;
 

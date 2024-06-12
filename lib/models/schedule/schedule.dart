@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:scenarioshelf/utils/converters/json_serializes/duration_interval_converter.dart';
 
 part 'schedule.freezed.dart';
 part 'schedule.g.dart';
@@ -11,7 +12,7 @@ class Schedule with _$Schedule {
   factory Schedule({
     required String id,
     required DateTime beginningTime,
-    required Duration playtime,
+    @DurationIntervalConverter() required Duration playtime,
     @JsonKey(name: 'schedule_type') @Default(ScheduleType.event) ScheduleType type,
   }) = _Schedule;
 

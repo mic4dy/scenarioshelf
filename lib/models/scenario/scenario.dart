@@ -9,7 +9,7 @@ part 'scenario.g.dart';
 @freezed
 class Scenario with _$Scenario {
   @JsonSerializable(fieldRename: FieldRename.snake)
-  @Assert(r"kana == null || RegExp(r'^[ァ-ンヴー]+$').hasMatch(kana!)", 'フリガナに全角カタカナ以外の文字が含まれています')
+  @Assert(r"kana == null || kana == '' || RegExp(r'^[0-9a-zA-Zァ-ンヴー ]+$').hasMatch(kana!)", 'フリガナに全角カタカナ以外の文字が含まれています')
   factory Scenario({
     required String id,
     @JsonKey(name: 'trpg_system') required TRPGSystem system,

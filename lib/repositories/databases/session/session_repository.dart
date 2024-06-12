@@ -110,7 +110,7 @@ class SessionRepository implements SessionAPI {
     SortOrder order = SortOrder.asc,
   }) async {
     final client = Supabase.instance.client;
-    final response = await client.from(tableName).select('''
+    final response = await client.from(pivot.getViewTable(order)).select('''
       *,
       scenario:scenario_id (
         *,

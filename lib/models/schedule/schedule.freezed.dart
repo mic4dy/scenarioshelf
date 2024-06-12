@@ -22,6 +22,7 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
 mixin _$Schedule {
   String get id => throw _privateConstructorUsedError;
   DateTime get beginningTime => throw _privateConstructorUsedError;
+  @DurationIntervalConverter()
   Duration get playtime => throw _privateConstructorUsedError;
   @JsonKey(name: 'schedule_type')
   ScheduleType get type => throw _privateConstructorUsedError;
@@ -40,7 +41,7 @@ abstract class $ScheduleCopyWith<$Res> {
   $Res call(
       {String id,
       DateTime beginningTime,
-      Duration playtime,
+      @DurationIntervalConverter() Duration playtime,
       @JsonKey(name: 'schedule_type') ScheduleType type});
 }
 
@@ -94,7 +95,7 @@ abstract class _$$ScheduleImplCopyWith<$Res>
   $Res call(
       {String id,
       DateTime beginningTime,
-      Duration playtime,
+      @DurationIntervalConverter() Duration playtime,
       @JsonKey(name: 'schedule_type') ScheduleType type});
 }
 
@@ -142,7 +143,7 @@ class _$ScheduleImpl implements _Schedule {
   _$ScheduleImpl(
       {required this.id,
       required this.beginningTime,
-      required this.playtime,
+      @DurationIntervalConverter() required this.playtime,
       @JsonKey(name: 'schedule_type') this.type = ScheduleType.event})
       : assert(!playtime.isNegative, 'プレイ時間が負の値になっています');
 
@@ -154,6 +155,7 @@ class _$ScheduleImpl implements _Schedule {
   @override
   final DateTime beginningTime;
   @override
+  @DurationIntervalConverter()
   final Duration playtime;
   @override
   @JsonKey(name: 'schedule_type')
@@ -200,7 +202,7 @@ abstract class _Schedule implements Schedule {
   factory _Schedule(
           {required final String id,
           required final DateTime beginningTime,
-          required final Duration playtime,
+          @DurationIntervalConverter() required final Duration playtime,
           @JsonKey(name: 'schedule_type') final ScheduleType type}) =
       _$ScheduleImpl;
 
@@ -212,6 +214,7 @@ abstract class _Schedule implements Schedule {
   @override
   DateTime get beginningTime;
   @override
+  @DurationIntervalConverter()
   Duration get playtime;
   @override
   @JsonKey(name: 'schedule_type')

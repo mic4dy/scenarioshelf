@@ -55,6 +55,11 @@ supabase start
 supabase stop
 ```
 
+ローカルデータのdump
+```
+supabase db dump --local --data-only -f supabase/seed.sql
+```
+
 ### その他
 
 Firebaseエミュレータの起動  
