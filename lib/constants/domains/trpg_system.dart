@@ -58,6 +58,12 @@ enum TRPGSystem {
     abbr: 'D&D',
     color: Color(0xFFff7f7f),
   ),
+  sp(
+    id: 'sp',
+    name: 'ストーリープレイング',
+    abbr: 'ストプレ',
+    color: Color(0xFFffd580),
+  ),
   other(
     id: 'other',
     name: 'その他',

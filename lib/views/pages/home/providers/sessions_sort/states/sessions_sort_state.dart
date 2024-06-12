@@ -8,7 +8,7 @@ part 'sessions_sort_state.freezed.dart';
 @freezed
 class SessionsSortState with _$SessionsSortState {
   const factory SessionsSortState({
-    @Default(SessionsSortPivot.scenarioName) SessionsSortPivot pivot,
+    @Default(SessionsSortPivot.scenarioTitle) SessionsSortPivot pivot,
     @Default(SortOrder.asc) SortOrder order,
   }) = _SessionsSortState;
 }

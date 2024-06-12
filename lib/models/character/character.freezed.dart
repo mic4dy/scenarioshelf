@@ -20,9 +20,11 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Character {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
-  List<String> get handoutUrls => throw _privateConstructorUsedError;
+  bool get isCustomized => throw _privateConstructorUsedError;
+  int? get number => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +39,12 @@ abstract class $CharacterCopyWith<$Res> {
       _$CharacterCopyWithImpl<$Res, Character>;
   @useResult
   $Res call(
-      {String name, bool isPublic, List<String> handoutUrls, String? imageUrl});
+      {String id,
+      String name,
+      bool isPublic,
+      bool isCustomized,
+      int? number,
+      String? imageUrl});
 }
 
 /// @nodoc
@@ -53,12 +60,18 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? isPublic = null,
-    Object? handoutUrls = null,
+    Object? isCustomized = null,
+    Object? number = freezed,
     Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -67,10 +80,14 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
               as bool,
-      handoutUrls: null == handoutUrls
-          ? _value.handoutUrls
-          : handoutUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      isCustomized: null == isCustomized
+          ? _value.isCustomized
+          : isCustomized // ignore: cast_nullable_to_non_nullable
+              as bool,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -88,7 +105,12 @@ abstract class _$$CharacterImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name, bool isPublic, List<String> handoutUrls, String? imageUrl});
+      {String id,
+      String name,
+      bool isPublic,
+      bool isCustomized,
+      int? number,
+      String? imageUrl});
 }
 
 /// @nodoc
@@ -102,12 +124,18 @@ class __$$CharacterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? isPublic = null,
-    Object? handoutUrls = null,
+    Object? isCustomized = null,
+    Object? number = freezed,
     Object? imageUrl = freezed,
   }) {
     return _then(_$CharacterImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -116,10 +144,14 @@ class __$$CharacterImplCopyWithImpl<$Res>
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
               as bool,
-      handoutUrls: null == handoutUrls
-          ? _value._handoutUrls
-          : handoutUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      isCustomized: null == isCustomized
+          ? _value.isCustomized
+          : isCustomized // ignore: cast_nullable_to_non_nullable
+              as bool,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -129,38 +161,38 @@ class __$$CharacterImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$CharacterImpl implements _Character {
   const _$CharacterImpl(
-      {required this.name,
+      {required this.id,
+      required this.name,
       this.isPublic = true,
-      final List<String> handoutUrls = const [],
-      this.imageUrl})
-      : _handoutUrls = handoutUrls;
+      this.isCustomized = false,
+      this.number,
+      this.imageUrl});
 
   factory _$CharacterImpl.fromJson(Map<String, dynamic> json) =>
       _$$CharacterImplFromJson(json);
 
   @override
+  final String id;
+  @override
   final String name;
   @override
   @JsonKey()
   final bool isPublic;
-  final List<String> _handoutUrls;
   @override
   @JsonKey()
-  List<String> get handoutUrls {
-    if (_handoutUrls is EqualUnmodifiableListView) return _handoutUrls;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_handoutUrls);
-  }
-
+  final bool isCustomized;
+  @override
+  final int? number;
   @override
   final String? imageUrl;
 
   @override
   String toString() {
-    return 'Character(name: $name, isPublic: $isPublic, handoutUrls: $handoutUrls, imageUrl: $imageUrl)';
+    return 'Character(id: $id, name: $name, isPublic: $isPublic, isCustomized: $isCustomized, number: $number, imageUrl: $imageUrl)';
   }
 
   @override
@@ -168,19 +200,21 @@ class _$CharacterImpl implements _Character {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CharacterImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.isPublic, isPublic) ||
                 other.isPublic == isPublic) &&
-            const DeepCollectionEquality()
-                .equals(other._handoutUrls, _handoutUrls) &&
+            (identical(other.isCustomized, isCustomized) ||
+                other.isCustomized == isCustomized) &&
+            (identical(other.number, number) || other.number == number) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, isPublic,
-      const DeepCollectionEquality().hash(_handoutUrls), imageUrl);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, isPublic, isCustomized, number, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -198,20 +232,26 @@ class _$CharacterImpl implements _Character {
 
 abstract class _Character implements Character {
   const factory _Character(
-      {required final String name,
+      {required final String id,
+      required final String name,
       final bool isPublic,
-      final List<String> handoutUrls,
+      final bool isCustomized,
+      final int? number,
       final String? imageUrl}) = _$CharacterImpl;
 
   factory _Character.fromJson(Map<String, dynamic> json) =
       _$CharacterImpl.fromJson;
 
   @override
+  String get id;
+  @override
   String get name;
   @override
   bool get isPublic;
   @override
-  List<String> get handoutUrls;
+  bool get isCustomized;
+  @override
+  int? get number;
   @override
   String? get imageUrl;
   @override

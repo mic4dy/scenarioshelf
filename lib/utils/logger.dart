@@ -2,8 +2,13 @@ import 'package:logger/logger.dart';
 
 final logger = Logger(
   printer: PrettyPrinter(
-    methodCount: 4,
+    methodCount: 0,
     lineLength: 150,
-    printTime: true,
+    noBoxingByDefault: true,
+    excludeBox: {
+      Level.warning: false,
+      Level.error: false,
+      Level.fatal: false,
+    },
   ),
 );

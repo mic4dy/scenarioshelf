@@ -8,11 +8,12 @@ part of 'participant.dart';
 
 _$ParticipantImpl _$$ParticipantImplFromJson(Map<String, dynamic> json) =>
     _$ParticipantImpl(
-      type: $enumDecode(_$ParticipantTypeEnumMap, json['type']),
+      id: json['id'] as String,
+      role: $enumDecode(_$ParticipantRoleEnumMap, json['participant_role']),
       name: json['name'] as String,
-      userId: json['userId'] as String?,
-      xId: json['xId'] as String?,
-      discordId: json['discordId'] as String?,
+      userId: json['user_id'] as String?,
+      xId: json['x_id'] as String?,
+      discordId: json['discord_id'] as String?,
       character: json['character'] == null
           ? null
           : Character.fromJson(json['character'] as Map<String, dynamic>),
@@ -20,17 +21,18 @@ _$ParticipantImpl _$$ParticipantImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ParticipantImplToJson(_$ParticipantImpl instance) =>
     <String, dynamic>{
-      'type': _$ParticipantTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'participant_role': _$ParticipantRoleEnumMap[instance.role]!,
       'name': instance.name,
-      'userId': instance.userId,
-      'xId': instance.xId,
-      'discordId': instance.discordId,
+      'user_id': instance.userId,
+      'x_id': instance.xId,
+      'discord_id': instance.discordId,
       'character': instance.character,
     };
 
-const _$ParticipantTypeEnumMap = {
-  ParticipantType.gameMaster: 'gameMaster',
-  ParticipantType.subGameMaster: 'subGameMaster',
-  ParticipantType.player: 'player',
-  ParticipantType.spectator: 'spectator',
+const _$ParticipantRoleEnumMap = {
+  ParticipantRole.gameMaster: 'gm',
+  ParticipantRole.subGameMaster: 'sgm',
+  ParticipantRole.player: 'player',
+  ParticipantRole.spectator: 'spectator',
 };

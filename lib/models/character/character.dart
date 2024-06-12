@@ -5,10 +5,13 @@ part 'character.g.dart';
 
 @freezed
 class Character with _$Character {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Character({
+    required String id,
     required String name,
     @Default(true) bool isPublic,
-    @Default([]) List<String> handoutUrls,
+    @Default(false) bool isCustomized,
+    int? number,
     String? imageUrl,
   }) = _Character;
 

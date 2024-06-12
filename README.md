@@ -55,6 +55,11 @@ supabase start
 supabase stop
 ```
 
+ローカルデータのdump
+```
+supabase db dump --local --data-only -f supabase/seed.sql
+```
+
 ### その他
 
 Firebaseエミュレータの起動  
@@ -78,5 +83,7 @@ firebase emulators:start --import=./fixtures --export-on-exit
 
 ## ライブラリ
 
+| トピック | ライブラリ |
+| --- | --- |
 | 状態管理 | Riverpod + Hooks + Freezed |
 | 遷移管理 | GoRouter |

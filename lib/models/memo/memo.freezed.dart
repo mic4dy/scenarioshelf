@@ -20,8 +20,11 @@ Memo _$MemoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Memo {
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +37,13 @@ abstract class $MemoCopyWith<$Res> {
   factory $MemoCopyWith(Memo value, $Res Function(Memo) then) =
       _$MemoCopyWithImpl<$Res, Memo>;
   @useResult
-  $Res call({String title, String content, bool isPublic});
+  $Res call(
+      {String id,
+      String title,
+      String content,
+      DateTime updatedAt,
+      DateTime createdAt,
+      bool isPublic});
 }
 
 /// @nodoc
@@ -50,11 +59,18 @@ class _$MemoCopyWithImpl<$Res, $Val extends Memo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? content = null,
+    Object? updatedAt = null,
+    Object? createdAt = null,
     Object? isPublic = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -63,6 +79,14 @@ class _$MemoCopyWithImpl<$Res, $Val extends Memo>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       isPublic: null == isPublic
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
@@ -78,7 +102,13 @@ abstract class _$$MemoImplCopyWith<$Res> implements $MemoCopyWith<$Res> {
       __$$MemoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String content, bool isPublic});
+  $Res call(
+      {String id,
+      String title,
+      String content,
+      DateTime updatedAt,
+      DateTime createdAt,
+      bool isPublic});
 }
 
 /// @nodoc
@@ -91,11 +121,18 @@ class __$$MemoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? content = null,
+    Object? updatedAt = null,
+    Object? createdAt = null,
     Object? isPublic = null,
   }) {
     return _then(_$MemoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -104,6 +141,14 @@ class __$$MemoImplCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       isPublic: null == isPublic
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
@@ -113,25 +158,37 @@ class __$$MemoImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$MemoImpl implements _Memo {
   const _$MemoImpl(
-      {required this.title, required this.content, this.isPublic = true});
+      {required this.id,
+      required this.title,
+      required this.content,
+      required this.updatedAt,
+      required this.createdAt,
+      this.isPublic = true});
 
   factory _$MemoImpl.fromJson(Map<String, dynamic> json) =>
       _$$MemoImplFromJson(json);
 
   @override
+  final String id;
+  @override
   final String title;
   @override
   final String content;
+  @override
+  final DateTime updatedAt;
+  @override
+  final DateTime createdAt;
   @override
   @JsonKey()
   final bool isPublic;
 
   @override
   String toString() {
-    return 'Memo(title: $title, content: $content, isPublic: $isPublic)';
+    return 'Memo(id: $id, title: $title, content: $content, updatedAt: $updatedAt, createdAt: $createdAt, isPublic: $isPublic)';
   }
 
   @override
@@ -139,15 +196,21 @@ class _$MemoImpl implements _Memo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MemoImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.isPublic, isPublic) ||
                 other.isPublic == isPublic));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, content, isPublic);
+  int get hashCode => Object.hash(
+      runtimeType, id, title, content, updatedAt, createdAt, isPublic);
 
   @JsonKey(ignore: true)
   @override
@@ -165,16 +228,25 @@ class _$MemoImpl implements _Memo {
 
 abstract class _Memo implements Memo {
   const factory _Memo(
-      {required final String title,
+      {required final String id,
+      required final String title,
       required final String content,
+      required final DateTime updatedAt,
+      required final DateTime createdAt,
       final bool isPublic}) = _$MemoImpl;
 
   factory _Memo.fromJson(Map<String, dynamic> json) = _$MemoImpl.fromJson;
 
   @override
+  String get id;
+  @override
   String get title;
   @override
   String get content;
+  @override
+  DateTime get updatedAt;
+  @override
+  DateTime get createdAt;
   @override
   bool get isPublic;
   @override

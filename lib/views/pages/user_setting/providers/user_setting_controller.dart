@@ -6,8 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
-import 'package:scenarioshelf/repositories/databases/apis/user_api.dart';
-import 'package:scenarioshelf/repositories/databases/user/user_repository.dart';
+import 'package:scenarioshelf/repositories/auth/auth_api.dart';
+import 'package:scenarioshelf/repositories/auth/auth_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
 import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
 import 'package:scenarioshelf/utils/logger.dart';
@@ -18,11 +18,11 @@ part 'user_setting_controller.g.dart';
 
 @riverpod
 class UserSettingController extends _$UserSettingController {
-  late final UserAPI _userRepository;
+  late final AuthAPI _authRepository;
 
   @override
   FutureOr<UserSettingState> build() {
-    _userRepository = ref.read(userRepositoryProvider);
+    _authRepository = ref.read(authRepositoryProvider);
 
     return const UserSettingState();
   }
@@ -194,8 +194,8 @@ class UserSettingController extends _$UserSettingController {
     state = const AsyncValue.loading();
 
     try {
-      final user = await _userRepository.update(
-        name: data.name,
+      final user = await _authRepository.update(
+        username: data.name,
         avatar: data.avatar,
       );
 

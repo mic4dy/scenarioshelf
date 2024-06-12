@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
-import 'package:scenarioshelf/repositories/apis/auth_api.dart';
+import 'package:scenarioshelf/repositories/auth/auth_api.dart';
 import 'package:scenarioshelf/repositories/auth/auth_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/crashlytics/crashlytics_repository.dart';
@@ -89,7 +89,7 @@ class SigningController extends _$SigningController {
     } on AuthException catch (error, stack) {
       /// Supabaseのログを見るとエラーの詳細がわかる
       ///
-      /// 以下のエラーの場合は記載のSQLを叩いたら解決する。
+      /// 以下のエラーの場合は記載のSQLを叩いたら解決する（migrationファイルに記述済み）。
       /// `running db migrations: error executing migrations/20221208132122_backfill_email_last_sign_in_at.up.sql`
       /// -> `insert into auth.schema_migrations values ('20221208132122');`
       /// https://github.com/orgs/supabase/discussions/20722

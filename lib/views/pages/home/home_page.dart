@@ -5,9 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
-
-// import 'package:scenarioshelf/views/pages/home/components/session_tile.dart';
-// import 'package:scenarioshelf/views/pages/home/providers/sessions/sessions_controller.dart';
+import 'package:scenarioshelf/views/pages/home/components/session_tile.dart';
+import 'package:scenarioshelf/views/pages/home/providers/sessions/sessions_controller.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -43,22 +42,21 @@ class HomePage extends ConsumerWidget {
     }
 
     return Scaffold(
-      body: const SizedBox.shrink(),
-      // body: ref.watch(sessionControllerProvider).when(
-      //       data: (sessions) => ListView.builder(
-      //         itemCount: sessions.length,
-      //         itemBuilder: (_, index) {
-      //           final session = sessions[index];
+      body: ref.watch(sessionControllerProvider).when(
+            data: (sessions) => ListView.builder(
+              itemCount: sessions.length,
+              itemBuilder: (_, index) {
+                final session = sessions[index];
 
-      //           return SessionTile(
-      //             session: session,
-      //           );
-      //         },
-      //       ),
-      //       `TODO`(micady): Shimmer Widget
-      //       error: (error, stack) => const SizedBox.shrink(),
-      //       loading: () => const SizedBox.shrink(),
-      //     ),
+                return SessionTile(
+                  session: session,
+                );
+              },
+            ),
+            // `TODO`(micady): Shimmer Widget
+            error: (error, stack) => const SizedBox.shrink(),
+            loading: () => const SizedBox.shrink(),
+          ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => ref.read(routerProvider).push(Routes.record.fullPath),
       ),

@@ -14,36 +14,29 @@ class SplashPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    useMemoized(() async {
-      final client = Supabase.instance.client;
-
-      if (client.auth.currentUser == null) {
+    useMemoized(
+      () async {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          ref.read(routerProvider).go(Routes.boot.fullPath);
-        });
-        return;
-      }
+          final client = Supabase.instance.client;
+          if (client.auth.currentUser == null) {
+            ref.read(routerProvider).go(Routes.boot.fullPath);
+            return;
+          }
 
-      final session = client.auth.currentSession;
-      if (session == null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          ref.read(routerProvider).go(Routes.boot.fullPath);
-        });
-        return;
-      }
+          final session = client.auth.currentSession;
+          if (session == null) {
+            ref.read(routerProvider).go(Routes.boot.fullPath);
+            return;
+          }
 
-      final response = await client.auth.refreshSession();
-      final user = response.user;
-      if (user == null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          ref.read(routerProvider).go(Routes.boot.fullPath);
+          final user = session.user;
+          ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(ProvisionallyRegisteredUser.fromSupabase(user));
+          ref.read(routerProvider).go(Routes.home.fullPath);
+          return;
         });
-        return;
-      }
-
-      ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(ProvisionallyRegisteredUser.fromSupabase(user));
-      ref.read(routerProvider).go(Routes.home.fullPath);
-    });
+      },
+      [],
+    );
 
     final size = MediaQuery.of(context).size;
 
