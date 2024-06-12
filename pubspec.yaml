@@ -27,7 +27,6 @@ dependencies:
   firebase_analytics: 11.0.1
   firebase_crashlytics: 4.0.1
   google_sign_in: 6.2.1
-  cloud_firestore: 5.0.1
 
   # State Management
   flutter_hooks: 0.20.5
