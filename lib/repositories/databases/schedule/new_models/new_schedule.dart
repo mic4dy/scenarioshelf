@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:scenarioshelf/models/schedule/schedule.dart';
 import 'package:uuid/uuid.dart';
+
+import 'package:scenarioshelf/models/schedule/schedule.dart';
 
 part 'new_schedule.freezed.dart';
 

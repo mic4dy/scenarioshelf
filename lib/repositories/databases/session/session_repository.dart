@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/constants/domains/sort_order.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
 
+import 'package:scenarioshelf/constants/domains/sort_order.dart';
 import 'package:scenarioshelf/models/session/session.dart';
 import 'package:scenarioshelf/repositories/auth/auth_api.dart';
 import 'package:scenarioshelf/repositories/auth/auth_repository.dart';
@@ -14,7 +15,6 @@ import 'package:scenarioshelf/repositories/databases/session/new_models/new_sess
 import 'package:scenarioshelf/repositories/databases/session/session_api.dart';
 import 'package:scenarioshelf/utils/result.dart';
 import 'package:scenarioshelf/views/pages/home/providers/sessions_sort/sessions_sort_pivot.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
 
 part 'session_repository.g.dart';
 

@@ -1,9 +1,10 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/repositories/databases/participant/new_models/new_participant.dart';
 import 'package:scenarioshelf/repositories/databases/participant/participant_api.dart';
 import 'package:scenarioshelf/utils/result.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'participant_repository.g.dart';
 

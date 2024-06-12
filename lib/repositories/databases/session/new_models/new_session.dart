@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 import 'package:scenarioshelf/repositories/databases/memo/new_models/new_memo.dart';
 import 'package:scenarioshelf/repositories/databases/participant/new_models/new_participant.dart';
 import 'package:scenarioshelf/repositories/databases/schedule/new_models/new_schedule.dart';
-import 'package:uuid/uuid.dart';
 
 part 'new_session.freezed.dart';
 

@@ -1,11 +1,12 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import 'package:scenarioshelf/models/character/character.dart';
 import 'package:scenarioshelf/repositories/databases/character/character_api.dart';
 import 'package:scenarioshelf/repositories/databases/character/new_models/new_character.dart';
 import 'package:scenarioshelf/repositories/storages/apis/character_image_api.dart';
 import 'package:scenarioshelf/repositories/storages/character_image/character_image_repository.dart';
 import 'package:scenarioshelf/utils/result.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'character_repository.g.dart';
 

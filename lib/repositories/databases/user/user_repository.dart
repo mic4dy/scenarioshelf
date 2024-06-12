@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 import 'package:scenarioshelf/repositories/databases/user/user_api.dart';
 
 part 'user_repository.g.dart';

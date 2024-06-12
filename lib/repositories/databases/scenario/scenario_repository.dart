@@ -1,15 +1,16 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import 'package:scenarioshelf/models/scenario/scenario.dart';
 import 'package:scenarioshelf/repositories/auth/auth_api.dart';
 import 'package:scenarioshelf/repositories/auth/auth_repository.dart';
 import 'package:scenarioshelf/repositories/databases/character/character_api.dart';
 import 'package:scenarioshelf/repositories/databases/character/character_repository.dart';
-import 'package:scenarioshelf/repositories/databases/scenario/scenario_api.dart';
 import 'package:scenarioshelf/repositories/databases/scenario/new_models/new_scenario.dart';
+import 'package:scenarioshelf/repositories/databases/scenario/scenario_api.dart';
 import 'package:scenarioshelf/repositories/storages/apis/scenario_key_visual_api.dart';
 import 'package:scenarioshelf/repositories/storages/scenario_key_visual/scenario_key_visual_repository.dart';
 import 'package:scenarioshelf/utils/result.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'scenario_repository.g.dart';
 

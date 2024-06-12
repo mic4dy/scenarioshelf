@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'package:scenarioshelf/utils/converters/json_serializes/duration_interval_converter.dart';
 
 part 'schedule.freezed.dart';
