@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:scenarioshelf/constants/domains/sort_order.dart';
 
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
-import 'package:scenarioshelf/views/pages/home/components/session_tile.dart';
-import 'package:scenarioshelf/views/pages/home/providers/sessions/sessions_controller.dart';
+import 'package:scenarioshelf/views/pages/home/components/session_list.dart';
+import 'package:scenarioshelf/views/pages/home/providers/sessions_sort/sessions_sort_pivot.dart';
 
-class HomePage extends ConsumerWidget {
+class HomePage extends HookConsumerWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(currentUserControllerProvider);
+    final pivot = useState(SessionsSortPivot.createdAt);
+    final order = useState(SortOrder.desc);
 
     if (user == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -42,21 +46,11 @@ class HomePage extends ConsumerWidget {
     }
 
     return Scaffold(
-      body: ref.watch(sessionControllerProvider).when(
-            data: (sessions) => ListView.builder(
-              itemCount: sessions.length,
-              itemBuilder: (_, index) {
-                final session = sessions[index];
-
-                return SessionTile(
-                  session: session,
-                );
-              },
-            ),
-            // `TODO`(micady): Shimmer Widget
-            error: (error, stack) => const SizedBox.shrink(),
-            loading: () => const SizedBox.shrink(),
-          ),
+      body: SessionList(
+        userId: user.id,
+        pivot: pivot.value,
+        order: order.value,
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => ref.read(routerProvider).push(Routes.record.fullPath),
       ),

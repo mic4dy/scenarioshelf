@@ -20,6 +20,15 @@ class Scenario with _$Scenario {
     String? storeUrl,
     String? author,
   }) = _Scenario;
+  const Scenario._();
 
   factory Scenario.fromJson(Map<String, dynamic> json) => _$ScenarioFromJson(json);
+
+  String get sortTitle {
+    if (kana != null && kana!.isNotEmpty) {
+      return kana!;
+    }
+
+    return title;
+  }
 }

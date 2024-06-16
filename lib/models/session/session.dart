@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -26,8 +27,7 @@ class Session with _$Session {
 
   factory Session.fromJson(Map<String, dynamic> json) => _$SessionFromJson(json);
 
-  String? get keyVisualUrl => scenario.keyVisualUrl;
-  String? get myRole {
+  String? get myRoleDisplay {
     final myParticipant = participants.firstWhereOrNull(
       (participant) => participant.userId == createdBy,
     );
@@ -41,5 +41,44 @@ class Session with _$Session {
     }
 
     return myParticipant.character?.name ?? myParticipant.role.label;
+  }
+
+  String? get eventDayDisplay {
+    final eventDays = schedules
+        .where((schedule) => schedule.type == ScheduleType.event)
+        .toList()
+        .sorted((a, b) => a.beginningTime.compareTo(b.beginningTime));
+    if (eventDays.isEmpty) {
+      return null;
+    }
+
+    if (eventDays.length == 1) {
+      final finishTime = eventDays.first.beginningTime.add(eventDays.first.playtime);
+      final startFormat = DateFormat('yyyy年M月d日 hh:mm');
+      final finishFormat = DateFormat('hh:mm');
+      return '${startFormat.format(eventDays.first.beginningTime)} ~ ${finishFormat.format(finishTime)}';
+    }
+
+    final firstDay = eventDays.first.beginningTime;
+    final lastDay = eventDays.last.beginningTime;
+
+    if (firstDay.year != lastDay.year) {
+      final dateFormat = DateFormat('yyyy年M月d日');
+      return '${dateFormat.format(firstDay)} ~ ${dateFormat.format(lastDay)}';
+    }
+    if (firstDay.month != lastDay.month) {
+      final firstDayFormat = DateFormat('yyyy年M月d日');
+      final lastDayFormat = DateFormat('M月d日');
+      return '${firstDayFormat.format(firstDay)} ~ ${lastDayFormat.format(lastDay)}';
+    }
+    if (firstDay.day != lastDay.day) {
+      final firstDayFormat = DateFormat('yyyy年M月d日');
+      final lastDayFormat = DateFormat('d日');
+      return '${firstDayFormat.format(firstDay)} ~ ${lastDayFormat.format(lastDay)}';
+    }
+
+    final startFormat = DateFormat('yyyy年M月d日 hh:mm');
+    final finishFormat = DateFormat('hh:mm');
+    return '${startFormat.format(firstDay)} ~ ${finishFormat.format(lastDay)}';
   }
 }
