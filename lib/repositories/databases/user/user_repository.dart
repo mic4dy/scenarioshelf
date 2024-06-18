@@ -1,6 +1,9 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/models/user/user.dart';
 
 import 'package:scenarioshelf/repositories/databases/user/user_api.dart';
+import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 part 'user_repository.g.dart';
 
@@ -19,6 +22,20 @@ UserRepository userRepository(UserRepositoryRef ref) {
 ///
 /// ユーザ情報のアップデートはAuthRepositoryで行う
 class UserRepository implements UserAPI {
+  @override
+  Future<User> get({required String id}) async {
+    final client = Supabase.instance.client;
+    final response = await client.from('profiles').select().eq('id', id).single();
+
+    if (response.isEmpty) {
+      throw const UserException(
+        message: 'Failed to Get User',
+        display: 'ユーザ情報の取得に失敗しました',
+      );
+    }
+
+    return User.fromJson(response);
+  }
   // const UserRepository({
   //   required AuthAPI authRepository,
   //   required UserAvatarAPI avatarRepository,

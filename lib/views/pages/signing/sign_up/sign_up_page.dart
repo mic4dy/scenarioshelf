@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
-import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/router/app_routes.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_page_frame.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
@@ -34,7 +34,11 @@ class SignUpPage extends HookConsumerWidget {
             return;
           }
 
-          ref.read(routerProvider).go(Routes.emailVerification.path);
+          if (!context.mounted) {
+            return;
+          }
+
+          const EmailVerificationRoute().go(context);
         },
         label: '登録',
         textStyle: const TextStyle(

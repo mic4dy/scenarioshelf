@@ -5,7 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
-import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/router/app_routes.dart';
+import 'package:scenarioshelf/router/routes/boot_routes/sign_up_route.dart';
 import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
@@ -110,7 +111,11 @@ class EmailVerificationPage extends HookConsumerWidget {
                           return;
                         }
 
-                        ref.read(routerProvider).go(Routes.signUp.fullPath);
+                        if (!context.mounted) {
+                          return;
+                        }
+
+                        const SignUpRoute().go(context);
                       },
                       label: '別のアドレスを登録',
                       textStyle: const TextStyle(
@@ -128,7 +133,11 @@ class EmailVerificationPage extends HookConsumerWidget {
                           return;
                         }
 
-                        ref.read(routerProvider).go(Routes.home.fullPath);
+                        if (!context.mounted) {
+                          return;
+                        }
+
+                        const HomeRoute().go(context);
                       },
                       label: '完了',
                       textStyle: const TextStyle(

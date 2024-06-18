@@ -3,9 +3,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/models/session/session.dart';
-import 'package:scenarioshelf/views/pages/home/components/session_image.dart';
-import 'package:scenarioshelf/views/pages/home/components/session_subtitle.dart';
-import 'package:scenarioshelf/views/pages/home/providers/sessions_sort/sessions_sort_controller.dart';
+import 'package:scenarioshelf/views/pages/sessions/components/session_image.dart';
+import 'package:scenarioshelf/views/pages/sessions/components/session_subtitle.dart';
+import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort/sessions_sort_controller.dart';
 
 class SessionTile extends StatelessWidget {
   const SessionTile({
@@ -26,6 +26,7 @@ class SessionTile extends StatelessWidget {
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         color: Theme.of(context).colorScheme.surface,
+        shadowColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(RadiusSize.small),
         ),
@@ -48,7 +49,8 @@ class SessionTile extends StatelessWidget {
                     session.scenario.title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurface,
                       fontSize: FontSize.label,
                       fontWeight: FontWeight.bold,
                     ),

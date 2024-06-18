@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort/sessions_sort_pivot.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
 
 import 'package:scenarioshelf/constants/domains/sort_order.dart';
@@ -14,7 +15,6 @@ import 'package:scenarioshelf/repositories/databases/schedule/schedule_repositor
 import 'package:scenarioshelf/repositories/databases/session/new_models/new_session.dart';
 import 'package:scenarioshelf/repositories/databases/session/session_api.dart';
 import 'package:scenarioshelf/utils/result.dart';
-import 'package:scenarioshelf/views/pages/home/providers/sessions_sort/sessions_sort_pivot.dart';
 
 part 'session_repository.g.dart';
 

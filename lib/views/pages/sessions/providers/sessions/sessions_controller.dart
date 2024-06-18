@@ -3,7 +3,7 @@ import 'package:scenarioshelf/constants/domains/sort_order.dart';
 
 import 'package:scenarioshelf/models/session/session.dart';
 import 'package:scenarioshelf/repositories/databases/session/session_repository.dart';
-import 'package:scenarioshelf/views/pages/home/providers/sessions_sort/sessions_sort_pivot.dart';
+import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort/sessions_sort_pivot.dart';
 
 part 'sessions_controller.g.dart';
 
