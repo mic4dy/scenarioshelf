@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort/sessions_sort_pivot.dart';
+import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort_pivot/sessions_sort_pivot.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
 
 import 'package:scenarioshelf/constants/domains/sort_order.dart';

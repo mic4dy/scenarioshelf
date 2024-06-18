@@ -6,7 +6,7 @@ part of 'sessions_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sessionControllerHash() => r'710e977325079ed02ac82df2b6a7ac588025579d';
+String _$sessionControllerHash() => r'52e4fbb290e3e6223cf4e529ce1fe81fd613b245';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -41,13 +41,9 @@ class SessionControllerFamily extends Family<AsyncValue<List<Session>>> {
   /// See also [sessionController].
   SessionControllerProvider call(
     String userId,
-    SessionsSortPivot pivot,
-    SortOrder order,
   ) {
     return SessionControllerProvider(
       userId,
-      pivot,
-      order,
     );
   }
 
@@ -57,8 +53,6 @@ class SessionControllerFamily extends Family<AsyncValue<List<Session>>> {
   ) {
     return call(
       provider.userId,
-      provider.pivot,
-      provider.order,
     );
   }
 
@@ -83,14 +77,10 @@ class SessionControllerProvider
   /// See also [sessionController].
   SessionControllerProvider(
     String userId,
-    SessionsSortPivot pivot,
-    SortOrder order,
   ) : this._internal(
           (ref) => sessionController(
             ref as SessionControllerRef,
             userId,
-            pivot,
-            order,
           ),
           from: sessionControllerProvider,
           name: r'sessionControllerProvider',
@@ -102,8 +92,6 @@ class SessionControllerProvider
           allTransitiveDependencies:
               SessionControllerFamily._allTransitiveDependencies,
           userId: userId,
-          pivot: pivot,
-          order: order,
         );
 
   SessionControllerProvider._internal(
@@ -114,13 +102,9 @@ class SessionControllerProvider
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.userId,
-    required this.pivot,
-    required this.order,
   }) : super.internal();
 
   final String userId;
-  final SessionsSortPivot pivot;
-  final SortOrder order;
 
   @override
   Override overrideWith(
@@ -136,8 +120,6 @@ class SessionControllerProvider
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         userId: userId,
-        pivot: pivot,
-        order: order,
       ),
     );
   }
@@ -149,18 +131,13 @@ class SessionControllerProvider
 
   @override
   bool operator ==(Object other) {
-    return other is SessionControllerProvider &&
-        other.userId == userId &&
-        other.pivot == pivot &&
-        other.order == order;
+    return other is SessionControllerProvider && other.userId == userId;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, userId.hashCode);
-    hash = _SystemHash.combine(hash, pivot.hashCode);
-    hash = _SystemHash.combine(hash, order.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -169,12 +146,6 @@ class SessionControllerProvider
 mixin SessionControllerRef on AutoDisposeFutureProviderRef<List<Session>> {
   /// The parameter `userId` of this provider.
   String get userId;
-
-  /// The parameter `pivot` of this provider.
-  SessionsSortPivot get pivot;
-
-  /// The parameter `order` of this provider.
-  SortOrder get order;
 }
 
 class _SessionControllerProviderElement
@@ -184,10 +155,6 @@ class _SessionControllerProviderElement
 
   @override
   String get userId => (origin as SessionControllerProvider).userId;
-  @override
-  SessionsSortPivot get pivot => (origin as SessionControllerProvider).pivot;
-  @override
-  SortOrder get order => (origin as SessionControllerProvider).order;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

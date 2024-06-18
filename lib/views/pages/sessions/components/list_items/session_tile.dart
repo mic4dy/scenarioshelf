@@ -3,9 +3,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/models/session/session.dart';
-import 'package:scenarioshelf/views/pages/sessions/components/session_image.dart';
-import 'package:scenarioshelf/views/pages/sessions/components/session_subtitle.dart';
-import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort/sessions_sort_controller.dart';
+import 'package:scenarioshelf/views/pages/sessions/components/list_items/session_tile_image.dart';
+import 'package:scenarioshelf/views/pages/sessions/components/list_items/session_tile_subtitle.dart';
+import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort_pivot/sessions_sort_pivot_controller.dart';
 
 class SessionTile extends StatelessWidget {
   const SessionTile({
@@ -37,7 +37,7 @@ class SessionTile extends StatelessWidget {
               SizedBox(
                 width: imageSize - 8,
                 height: imageSize,
-                child: SessionImage(
+                child: SessionTileImage(
                   imageUrl: session.scenario.keyVisualUrl,
                 ),
               ),
@@ -58,8 +58,8 @@ class SessionTile extends StatelessWidget {
                   const Spacer(),
                   Consumer(
                     builder: (context, ref, _) {
-                      return SessionSubtitle.sortPivot(
-                        pivot: ref.watch(sessionsSortControllerProvider).pivot,
+                      return SessionTileSubtitle.sortPivot(
+                        pivot: ref.watch(sessionsSortPivotControllerProvider),
                         session: session,
                       );
                     },

@@ -2,70 +2,70 @@ import 'package:flutter/material.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/models/session/session.dart';
-import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort/sessions_sort_pivot.dart';
+import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort_pivot/sessions_sort_pivot.dart';
 
-class SessionSubtitle extends StatelessWidget {
-  const SessionSubtitle({
+class SessionTileSubtitle extends StatelessWidget {
+  const SessionTileSubtitle({
     required this.icon,
     this.label,
     super.key,
   });
 
-  factory SessionSubtitle.scenarioTitle({
+  factory SessionTileSubtitle.scenarioTitle({
     required Session session,
   }) =>
-      SessionSubtitle(
+      SessionTileSubtitle(
         icon: Icons.translate_outlined,
         label: session.scenario.sortTitle,
       );
 
-  factory SessionSubtitle.scenarioSystem({
+  factory SessionTileSubtitle.scenarioSystem({
     required Session session,
   }) =>
-      SessionSubtitle(
+      SessionTileSubtitle(
         icon: Icons.sports_esports_outlined,
         label: session.scenario.system.name,
       );
 
-  factory SessionSubtitle.scenarioAuthor({
+  factory SessionTileSubtitle.scenarioAuthor({
     required Session session,
   }) =>
-      SessionSubtitle(
+      SessionTileSubtitle(
         icon: Icons.sports_esports_outlined,
         label: session.scenario.author,
       );
 
-  factory SessionSubtitle.myRole({
+  factory SessionTileSubtitle.myRole({
     required Session session,
   }) =>
-      SessionSubtitle(
+      SessionTileSubtitle(
         icon: Icons.face_outlined,
         label: session.myRoleDisplay,
       );
 
-  factory SessionSubtitle.schedule({
+  factory SessionTileSubtitle.schedule({
     required Session session,
   }) =>
-      SessionSubtitle(
+      SessionTileSubtitle(
         icon: Icons.calendar_month_outlined,
         label: session.eventDayDisplay,
       );
 
-  factory SessionSubtitle.sortPivot({
+  factory SessionTileSubtitle.sortPivot({
     required SessionsSortPivot pivot,
     required Session session,
   }) {
     switch (pivot) {
       case SessionsSortPivot.scenarioTitle:
-        return SessionSubtitle.scenarioTitle(session: session);
+        return SessionTileSubtitle.scenarioTitle(session: session);
       case SessionsSortPivot.scenarioSystem:
-        return SessionSubtitle.scenarioSystem(session: session);
+        return SessionTileSubtitle.scenarioSystem(session: session);
       case SessionsSortPivot.scenarioAuthor:
-        return SessionSubtitle.scenarioAuthor(session: session);
+        return SessionTileSubtitle.scenarioAuthor(session: session);
       case SessionsSortPivot.schedule:
-        return SessionSubtitle.schedule(session: session);
+        return SessionTileSubtitle.schedule(session: session);
       case SessionsSortPivot.createdAt:
-        return SessionSubtitle.myRole(session: session);
+        return SessionTileSubtitle.myRole(session: session);
     }
   }
 
