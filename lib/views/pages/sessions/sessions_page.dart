@@ -106,6 +106,7 @@ class SessionsPage extends HookConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
         onPressed: () async => const RecordRoute().push(context),
       ),
     );

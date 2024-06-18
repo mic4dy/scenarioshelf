@@ -81,11 +81,33 @@ class Scenarioshelf extends ConsumerWidget {
         useMaterial3: true,
         colorScheme: AppColor.material.light,
         textTheme: GoogleFonts.ibmPlexSansJpTextTheme(),
+        floatingActionButtonTheme: Theme.of(context).floatingActionButtonTheme.copyWith(
+              foregroundColor: AppColor.material.light.primary,
+              backgroundColor: AppColor.material.light.surface,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+                side: BorderSide(
+                  color: AppColor.material.light.primary,
+                  width: 0.5,
+                ),
+              ),
+            ),
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: AppColor.material.dark,
         textTheme: GoogleFonts.ibmPlexSansJpTextTheme(),
+        floatingActionButtonTheme: Theme.of(context).floatingActionButtonTheme.copyWith(
+              foregroundColor: AppColor.material.dark.primary,
+              backgroundColor: AppColor.material.dark.surface,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+                side: BorderSide(
+                  color: AppColor.material.dark.primary,
+                  width: 0.5,
+                ),
+              ),
+            ),
       ),
       routerConfig: router,
       debugShowCheckedModeBanner: false,
