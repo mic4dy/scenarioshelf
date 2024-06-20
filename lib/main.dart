@@ -9,6 +9,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/constants/themes/app_color.dart';
@@ -85,7 +86,7 @@ class Scenarioshelf extends ConsumerWidget {
               foregroundColor: AppColor.material.light.primary,
               backgroundColor: AppColor.material.light.surface,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(RadiusSize.medium),
                 side: BorderSide(
                   color: AppColor.material.light.primary,
                   width: 0.5,
@@ -101,7 +102,7 @@ class Scenarioshelf extends ConsumerWidget {
               foregroundColor: AppColor.material.dark.primary,
               backgroundColor: AppColor.material.dark.surface,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(RadiusSize.medium),
                 side: BorderSide(
                   color: AppColor.material.dark.primary,
                   width: 0.5,

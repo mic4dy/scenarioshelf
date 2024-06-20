@@ -4,4 +4,10 @@ import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort_pivot
 part 'sessions_sort_pivot_controller.g.dart';
 
 @riverpod
-SessionsSortPivot sessionsSortPivotController(SessionsSortPivotControllerRef ref) => SessionsSortPivot.createdAt;
+class SessionsSortPivotController extends _$SessionsSortPivotController {
+  @override
+  SessionsSortPivot build() => SessionsSortPivot.createdAt;
+
+  // ignore: use_setters_to_change_properties
+  void update(SessionsSortPivot pivot) => state = pivot;
+}

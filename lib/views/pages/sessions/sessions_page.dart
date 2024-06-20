@@ -26,8 +26,10 @@ class SessionsPage extends HookConsumerWidget {
             SessionsSortAppBar(userId: userId),
           ],
           body: RefreshIndicator(
+            displacement: 16,
             onRefresh: () => ref.refresh(SessionControllerProvider(userId).future),
             child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
               child: SafeArea(
                 top: false,
                 child: sessions.when(

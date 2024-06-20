@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
+import 'package:scenarioshelf/views/pages/sessions/components/sessions_sort_bottom_sheet.dart';
 import 'package:scenarioshelf/views/pages/sessions/providers/sessions/sessions_controller.dart';
 import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort_pivot/sessions_sort_pivot_controller.dart';
 
@@ -51,7 +52,9 @@ class SessionsSortAppBar extends ConsumerWidget {
         GestureDetector(
           onTap: () async => showModalBottomSheet(
             context: context,
-            builder: (context) => Container(),
+            useSafeArea: true,
+            backgroundColor: Theme.of(context).colorScheme.surface,
+            builder: (context) => const SessionsSortBottomSheet(),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -76,7 +79,6 @@ class SessionsSortAppBar extends ConsumerWidget {
           ),
         ),
       ],
-      // bottom: SessionSearchAppBar(),
     );
   }
 }

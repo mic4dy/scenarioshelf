@@ -6,22 +6,22 @@ part of 'sessions_sort_order_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sessionsSortOderControllerHash() =>
-    r'04db82eb45927ab34491633efd59b2903aff6448';
+String _$sessionsSortOrderControllerHash() =>
+    r'2a6506c3809a774db62f06183044c876b2336e73';
 
-/// See also [sessionsSortOderController].
-@ProviderFor(sessionsSortOderController)
-final sessionsSortOderControllerProvider =
-    AutoDisposeProvider<SortOrder>.internal(
-  sessionsSortOderController,
-  name: r'sessionsSortOderControllerProvider',
+/// See also [SessionsSortOrderController].
+@ProviderFor(SessionsSortOrderController)
+final sessionsSortOrderControllerProvider = AutoDisposeNotifierProvider<
+    SessionsSortOrderController, SortOrder>.internal(
+  SessionsSortOrderController.new,
+  name: r'sessionsSortOrderControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$sessionsSortOderControllerHash,
+      : _$sessionsSortOrderControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef SessionsSortOderControllerRef = AutoDisposeProviderRef<SortOrder>;
+typedef _$SessionsSortOrderController = AutoDisposeNotifier<SortOrder>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

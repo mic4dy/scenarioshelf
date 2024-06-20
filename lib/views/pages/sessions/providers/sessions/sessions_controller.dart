@@ -13,7 +13,7 @@ Future<List<Session>> sessionController(
   String userId,
 ) async {
   final pivot = ref.watch(sessionsSortPivotControllerProvider);
-  final order = ref.watch(sessionsSortOderControllerProvider);
+  final order = ref.watch(sessionsSortOrderControllerProvider);
 
   return ref.read(sessionRepositoryProvider).listByUserId(
         userId: userId,

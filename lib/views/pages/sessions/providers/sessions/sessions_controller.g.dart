@@ -6,7 +6,7 @@ part of 'sessions_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sessionControllerHash() => r'52e4fbb290e3e6223cf4e529ce1fe81fd613b245';
+String _$sessionControllerHash() => r'f863de303ff847fd38fbd1f149ccff9446639321';
 
 /// Copied from Dart SDK
 class _SystemHash {

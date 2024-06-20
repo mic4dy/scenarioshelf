@@ -29,8 +29,8 @@ with oldest_event_schedule as (
 )
 select sessions.*
 from sessions
-join oldest_event_schedule on sessions.id = oldest_event_schedule.session_id
-order by oldest_event_schedule.oldest_event_time desc;
+left join oldest_event_schedule on sessions.id = oldest_event_schedule.session_id
+order by COALESCE(oldest_event_schedule.oldest_event_time, '-infinity'::timestamp) desc;
 
 -- セッションの作成日時によるセッションのビュー(desc)
 create view sessions_by_created_at_desc as
