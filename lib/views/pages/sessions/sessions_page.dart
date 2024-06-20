@@ -21,26 +21,24 @@ class SessionsPage extends HookConsumerWidget {
 
     return Scaffold(
       body: Scrollbar(
-        child: NestedScrollView(
-          headerSliverBuilder: (context, _) => [
-            SessionsSortAppBar(userId: userId),
-          ],
-          body: RefreshIndicator(
-            displacement: 16,
-            onRefresh: () => ref.refresh(SessionControllerProvider(userId).future),
-            child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: SafeArea(
-                top: false,
-                child: sessions.when(
-                  data: (data) => Column(
-                    children: data.map((session) => SessionTile(session: session)).toList(),
+        child: RefreshIndicator(
+          displacement: 24,
+          edgeOffset: 64,
+          onRefresh: () => ref.refresh(SessionControllerProvider(userId).future),
+          child: sessions.when(
+            data: (data) => CustomScrollView(
+              slivers: [
+                SessionsSortAppBar(userId: userId),
+                SliverSafeArea(
+                  top: false,
+                  sliver: SliverList(
+                    delegate: SliverChildListDelegate(data.map((session) => SessionTile(session: session)).toList()),
                   ),
-                  error: (error, stack) => const SizedBox.shrink(),
-                  loading: () => const SizedBox.shrink(),
                 ),
-              ),
+              ],
             ),
+            error: (error, stack) => const SizedBox.shrink(),
+            loading: () => const SizedBox.shrink(),
           ),
         ),
       ),
