@@ -1,6 +1,6 @@
-import 'package:intl/intl.dart';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 
 import 'package:scenarioshelf/models/memo/memo.dart';
 import 'package:scenarioshelf/models/participant/participant.dart';

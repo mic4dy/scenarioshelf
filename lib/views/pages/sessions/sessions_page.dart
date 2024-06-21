@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:scenarioshelf/router/app_routes.dart';
 
+import 'package:scenarioshelf/router/app_routes.dart';
 import 'package:scenarioshelf/views/pages/sessions/components/list_items/session_tile.dart';
 import 'package:scenarioshelf/views/pages/sessions/components/sessions_sort_app_bar.dart';
 import 'package:scenarioshelf/views/pages/sessions/providers/sessions/sessions_controller.dart';

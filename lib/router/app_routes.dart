@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
-import 'package:scenarioshelf/views/pages/boot/boot_page.dart';
-import 'package:scenarioshelf/views/pages/sessions/sessions_page.dart';
 import 'package:scenarioshelf/router/routes/boot_routes/sign_in_route.dart';
 import 'package:scenarioshelf/router/routes/boot_routes/sign_up_route.dart';
+import 'package:scenarioshelf/views/pages/boot/boot_page.dart';
+import 'package:scenarioshelf/views/pages/sessions/sessions_page.dart';
 import 'package:scenarioshelf/views/pages/signing/email_verification/email_verification_page.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
 import 'package:scenarioshelf/views/pages/splash/splash_page.dart';
