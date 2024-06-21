@@ -4,7 +4,7 @@ publish_to: none
 description: TRPG通過シナリオ記録サービス
 
 environment: 
-  sdk: '>=3.2.3 <4.0.0'
+  sdk: '>=3.4.3 <4.0.0'
   flutter: '3.22.2'
 
 dependencies: 

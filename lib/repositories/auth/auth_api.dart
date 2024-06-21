@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
 import 'package:scenarioshelf/models/user/user.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 abstract interface class AuthAPI {
   Future<User> getCurrentUser();
@@ -24,5 +25,5 @@ abstract interface class AuthAPI {
     Uint8List? avatar,
   });
   Future<void> signOut();
-  Future<void> delete({required String id});
+  Future<void> delete({required ID id});
 }

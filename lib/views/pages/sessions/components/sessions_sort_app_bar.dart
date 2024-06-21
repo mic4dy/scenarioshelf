@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/views/pages/sessions/components/sessions_sort_bottom_sheet.dart';
 import 'package:scenarioshelf/views/pages/sessions/providers/sessions/sessions_controller.dart';
 import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort_pivot/sessions_sort_pivot_controller.dart';
@@ -13,7 +14,7 @@ class SessionsSortAppBar extends ConsumerWidget {
     super.key,
   });
 
-  final String userId;
+  final ID userId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

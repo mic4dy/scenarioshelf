@@ -16,29 +16,29 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewMemo {
-  String get id => throw _privateConstructorUsedError;
-  String get sessionId => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
+  ID get sessionId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, String sessionId, String title,
-            String content, bool isPublic)
+    required TResult Function(
+            ID id, ID sessionId, String title, String content, bool isPublic)
         inserting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String sessionId, String title, String content,
-            bool isPublic)?
+    TResult? Function(
+            ID id, ID sessionId, String title, String content, bool isPublic)?
         inserting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String sessionId, String title, String content,
-            bool isPublic)?
+    TResult Function(
+            ID id, ID sessionId, String title, String content, bool isPublic)?
         inserting,
     required TResult orElse(),
   }) =>
@@ -69,12 +69,7 @@ abstract class $NewMemoCopyWith<$Res> {
   factory $NewMemoCopyWith(NewMemo value, $Res Function(NewMemo) then) =
       _$NewMemoCopyWithImpl<$Res, NewMemo>;
   @useResult
-  $Res call(
-      {String id,
-      String sessionId,
-      String title,
-      String content,
-      bool isPublic});
+  $Res call({ID id, ID sessionId, String title, String content, bool isPublic});
 }
 
 /// @nodoc
@@ -100,11 +95,11 @@ class _$NewMemoCopyWithImpl<$Res, $Val extends NewMemo>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -129,12 +124,7 @@ abstract class _$$NewMemoInsertingImplCopyWith<$Res>
       __$$NewMemoInsertingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String sessionId,
-      String title,
-      String content,
-      bool isPublic});
+  $Res call({ID id, ID sessionId, String title, String content, bool isPublic});
 }
 
 /// @nodoc
@@ -158,11 +148,11 @@ class __$$NewMemoInsertingImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -190,9 +180,9 @@ class _$NewMemoInsertingImpl implements _NewMemoInserting {
       required this.isPublic});
 
   @override
-  final String id;
+  final ID id;
   @override
-  final String sessionId;
+  final ID sessionId;
   @override
   final String title;
   @override
@@ -233,8 +223,8 @@ class _$NewMemoInsertingImpl implements _NewMemoInserting {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, String sessionId, String title,
-            String content, bool isPublic)
+    required TResult Function(
+            ID id, ID sessionId, String title, String content, bool isPublic)
         inserting,
   }) {
     return inserting(id, sessionId, title, content, isPublic);
@@ -243,8 +233,8 @@ class _$NewMemoInsertingImpl implements _NewMemoInserting {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String sessionId, String title, String content,
-            bool isPublic)?
+    TResult? Function(
+            ID id, ID sessionId, String title, String content, bool isPublic)?
         inserting,
   }) {
     return inserting?.call(id, sessionId, title, content, isPublic);
@@ -253,8 +243,8 @@ class _$NewMemoInsertingImpl implements _NewMemoInserting {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String sessionId, String title, String content,
-            bool isPublic)?
+    TResult Function(
+            ID id, ID sessionId, String title, String content, bool isPublic)?
         inserting,
     required TResult orElse(),
   }) {
@@ -295,16 +285,16 @@ class _$NewMemoInsertingImpl implements _NewMemoInserting {
 
 abstract class _NewMemoInserting implements NewMemo {
   const factory _NewMemoInserting(
-      {required final String id,
-      required final String sessionId,
+      {required final ID id,
+      required final ID sessionId,
       required final String title,
       required final String content,
       required final bool isPublic}) = _$NewMemoInsertingImpl;
 
   @override
-  String get id;
+  ID get id;
   @override
-  String get sessionId;
+  ID get sessionId;
   @override
   String get title;
   @override

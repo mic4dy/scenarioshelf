@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import 'package:scenarioshelf/models/user/user.dart';
@@ -23,9 +24,9 @@ UserRepository userRepository(UserRepositoryRef ref) {
 /// ユーザ情報のアップデートはAuthRepositoryで行う
 class UserRepository implements UserAPI {
   @override
-  Future<User> get({required String id}) async {
+  Future<User> get({required ID id}) async {
     final client = Supabase.instance.client;
-    final response = await client.from('profiles').select().eq('id', id).single();
+    final response = await client.from('profiles').select().eq('id', id as String).single();
 
     if (response.isEmpty) {
       throw const UserException(

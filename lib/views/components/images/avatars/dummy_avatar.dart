@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:scenarioshelf/constants/themes/app_color.dart';
@@ -26,11 +27,11 @@ class DummyAvatar extends HookConsumerWidget {
   final bool isSquare;
   final List<Color>? colors;
 
-  String generateUrl({String? id}) {
+  String generateUrl({ID? id}) {
     const baseUrl = 'https://source.boringavatars.com';
     final colorCodes = this.colorCodes;
     final square = isSquare ? '&square' : '';
-    final idPath = id == null ? '' : '/$id';
+    final idPath = id == null ? '' : '/${id as String}';
 
     return '$baseUrl/${mode.name}/$size?colors=$colorCodes$square$idPath';
   }

@@ -21,7 +21,7 @@ ProvisionallyRegisteredUser _$ProvisionallyRegisteredUserFromJson(
 
 /// @nodoc
 mixin _$ProvisionallyRegisteredUser {
-  String get id => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
 
@@ -39,7 +39,7 @@ abstract class $ProvisionallyRegisteredUserCopyWith<$Res> {
       _$ProvisionallyRegisteredUserCopyWithImpl<$Res,
           ProvisionallyRegisteredUser>;
   @useResult
-  $Res call({String id, String? name, String? avatarUrl});
+  $Res call({ID id, String? name, String? avatarUrl});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$ProvisionallyRegisteredUserCopyWithImpl<$Res,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ abstract class _$$ProvisionallyRegisteredUserImplCopyWith<$Res>
       __$$ProvisionallyRegisteredUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String? name, String? avatarUrl});
+  $Res call({ID id, String? name, String? avatarUrl});
 }
 
 /// @nodoc
@@ -110,7 +110,7 @@ class __$$ProvisionallyRegisteredUserImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -135,7 +135,7 @@ class _$ProvisionallyRegisteredUserImpl
       _$$ProvisionallyRegisteredUserImplFromJson(json);
 
   @override
-  final String id;
+  final ID id;
   @override
   final String? name;
   @override
@@ -179,7 +179,7 @@ class _$ProvisionallyRegisteredUserImpl
 abstract class _ProvisionallyRegisteredUser
     implements ProvisionallyRegisteredUser {
   const factory _ProvisionallyRegisteredUser(
-      {required final String id,
+      {required final ID id,
       required final String? name,
       final String? avatarUrl}) = _$ProvisionallyRegisteredUserImpl;
 
@@ -187,7 +187,7 @@ abstract class _ProvisionallyRegisteredUser
       _$ProvisionallyRegisteredUserImpl.fromJson;
 
   @override
-  String get id;
+  ID get id;
   @override
   String? get name;
   @override

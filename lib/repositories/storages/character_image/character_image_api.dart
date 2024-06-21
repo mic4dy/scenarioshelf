@@ -1,9 +1,11 @@
 import 'dart:typed_data';
 
+import 'package:scenarioshelf/utils/extension_types/id.dart';
+
 // ignore: one_member_abstracts
 abstract interface class CharacterImageAPI {
   Future<String> upsert({
-    required String characterId,
+    required ID characterId,
     required Uint8List image,
   });
 }

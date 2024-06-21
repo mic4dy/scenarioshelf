@@ -16,28 +16,28 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewSchedule {
-  String get id => throw _privateConstructorUsedError;
-  String get sessionId => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
+  ID get sessionId => throw _privateConstructorUsedError;
   ScheduleType get type => throw _privateConstructorUsedError;
   DateTime get beginningTime => throw _privateConstructorUsedError;
   Duration get playtime => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, String sessionId, ScheduleType type,
+    required TResult Function(ID id, ID sessionId, ScheduleType type,
             DateTime beginningTime, Duration playtime)
         inserting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String sessionId, ScheduleType type,
+    TResult? Function(ID id, ID sessionId, ScheduleType type,
             DateTime beginningTime, Duration playtime)?
         inserting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String sessionId, ScheduleType type,
+    TResult Function(ID id, ID sessionId, ScheduleType type,
             DateTime beginningTime, Duration playtime)?
         inserting,
     required TResult orElse(),
@@ -72,8 +72,8 @@ abstract class $NewScheduleCopyWith<$Res> {
       _$NewScheduleCopyWithImpl<$Res, NewSchedule>;
   @useResult
   $Res call(
-      {String id,
-      String sessionId,
+      {ID id,
+      ID sessionId,
       ScheduleType type,
       DateTime beginningTime,
       Duration playtime});
@@ -102,11 +102,11 @@ class _$NewScheduleCopyWithImpl<$Res, $Val extends NewSchedule>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ abstract class _$$NewScheduleInsertingImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      String sessionId,
+      {ID id,
+      ID sessionId,
       ScheduleType type,
       DateTime beginningTime,
       Duration playtime});
@@ -160,11 +160,11 @@ class __$$NewScheduleInsertingImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -192,9 +192,9 @@ class _$NewScheduleInsertingImpl implements _NewScheduleInserting {
       required this.playtime});
 
   @override
-  final String id;
+  final ID id;
   @override
-  final String sessionId;
+  final ID sessionId;
   @override
   final ScheduleType type;
   @override
@@ -237,7 +237,7 @@ class _$NewScheduleInsertingImpl implements _NewScheduleInserting {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, String sessionId, ScheduleType type,
+    required TResult Function(ID id, ID sessionId, ScheduleType type,
             DateTime beginningTime, Duration playtime)
         inserting,
   }) {
@@ -247,7 +247,7 @@ class _$NewScheduleInsertingImpl implements _NewScheduleInserting {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String sessionId, ScheduleType type,
+    TResult? Function(ID id, ID sessionId, ScheduleType type,
             DateTime beginningTime, Duration playtime)?
         inserting,
   }) {
@@ -257,7 +257,7 @@ class _$NewScheduleInsertingImpl implements _NewScheduleInserting {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String sessionId, ScheduleType type,
+    TResult Function(ID id, ID sessionId, ScheduleType type,
             DateTime beginningTime, Duration playtime)?
         inserting,
     required TResult orElse(),
@@ -299,16 +299,16 @@ class _$NewScheduleInsertingImpl implements _NewScheduleInserting {
 
 abstract class _NewScheduleInserting implements NewSchedule {
   const factory _NewScheduleInserting(
-      {required final String id,
-      required final String sessionId,
+      {required final ID id,
+      required final ID sessionId,
       required final ScheduleType type,
       required final DateTime beginningTime,
       required final Duration playtime}) = _$NewScheduleInsertingImpl;
 
   @override
-  String get id;
+  ID get id;
   @override
-  String get sessionId;
+  ID get sessionId;
   @override
   ScheduleType get type;
   @override

@@ -8,7 +8,7 @@ part of 'character.dart';
 
 _$CharacterImpl _$$CharacterImplFromJson(Map<String, dynamic> json) =>
     _$CharacterImpl(
-      id: json['id'] as String,
+      id: ID.fromJson(json['id'] as String),
       name: json['name'] as String,
       isPublic: json['is_public'] as bool? ?? true,
       isCustomized: json['is_customized'] as bool? ?? false,

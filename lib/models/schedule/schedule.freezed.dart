@@ -20,7 +20,7 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Schedule {
-  String get id => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
   DateTime get beginningTime => throw _privateConstructorUsedError;
   @DurationIntervalConverter()
   Duration get playtime => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $ScheduleCopyWith<$Res> {
       _$ScheduleCopyWithImpl<$Res, Schedule>;
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       DateTime beginningTime,
       @DurationIntervalConverter() Duration playtime,
       @JsonKey(name: 'schedule_type') ScheduleType type});
@@ -67,7 +67,7 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       beginningTime: null == beginningTime
           ? _value.beginningTime
           : beginningTime // ignore: cast_nullable_to_non_nullable
@@ -93,7 +93,7 @@ abstract class _$$ScheduleImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       DateTime beginningTime,
       @DurationIntervalConverter() Duration playtime,
       @JsonKey(name: 'schedule_type') ScheduleType type});
@@ -119,7 +119,7 @@ class __$$ScheduleImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       beginningTime: null == beginningTime
           ? _value.beginningTime
           : beginningTime // ignore: cast_nullable_to_non_nullable
@@ -151,7 +151,7 @@ class _$ScheduleImpl implements _Schedule {
       _$$ScheduleImplFromJson(json);
 
   @override
-  final String id;
+  final ID id;
   @override
   final DateTime beginningTime;
   @override
@@ -200,7 +200,7 @@ class _$ScheduleImpl implements _Schedule {
 
 abstract class _Schedule implements Schedule {
   factory _Schedule(
-          {required final String id,
+          {required final ID id,
           required final DateTime beginningTime,
           @DurationIntervalConverter() required final Duration playtime,
           @JsonKey(name: 'schedule_type') final ScheduleType type}) =
@@ -210,7 +210,7 @@ abstract class _Schedule implements Schedule {
       _$ScheduleImpl.fromJson;
 
   @override
-  String get id;
+  ID get id;
   @override
   DateTime get beginningTime;
   @override

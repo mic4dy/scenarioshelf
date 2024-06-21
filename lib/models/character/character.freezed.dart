@@ -20,7 +20,7 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Character {
-  String get id => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
   bool get isCustomized => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $CharacterCopyWith<$Res> {
       _$CharacterCopyWithImpl<$Res, Character>;
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       String name,
       bool isPublic,
       bool isCustomized,
@@ -71,7 +71,7 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -105,7 +105,7 @@ abstract class _$$CharacterImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       String name,
       bool isPublic,
       bool isCustomized,
@@ -135,7 +135,7 @@ class __$$CharacterImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ class _$CharacterImpl implements _Character {
       _$$CharacterImplFromJson(json);
 
   @override
-  final String id;
+  final ID id;
   @override
   final String name;
   @override
@@ -232,7 +232,7 @@ class _$CharacterImpl implements _Character {
 
 abstract class _Character implements Character {
   const factory _Character(
-      {required final String id,
+      {required final ID id,
       required final String name,
       final bool isPublic,
       final bool isCustomized,
@@ -243,7 +243,7 @@ abstract class _Character implements Character {
       _$CharacterImpl.fromJson;
 
   @override
-  String get id;
+  ID get id;
   @override
   String get name;
   @override

@@ -12,5 +12,5 @@ class SessionsRoute extends GoRouteData {
   final String userId;
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => SessionsPage(userId: userId);
+  Widget build(BuildContext context, GoRouterState state) => SessionsPage(userId: userId as ID);
 }

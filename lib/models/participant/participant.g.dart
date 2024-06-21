@@ -8,10 +8,12 @@ part of 'participant.dart';
 
 _$ParticipantImpl _$$ParticipantImplFromJson(Map<String, dynamic> json) =>
     _$ParticipantImpl(
-      id: json['id'] as String,
+      id: ID.fromJson(json['id'] as String),
       role: $enumDecode(_$ParticipantRoleEnumMap, json['participant_role']),
       name: json['name'] as String,
-      userId: json['user_id'] as String?,
+      userId: json['user_id'] == null
+          ? null
+          : ID.fromJson(json['user_id'] as String),
       xId: json['x_id'] as String?,
       discordId: json['discord_id'] as String?,
       character: json['character'] == null

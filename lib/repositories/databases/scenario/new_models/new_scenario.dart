@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uuid/uuid.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 import 'package:scenarioshelf/constants/domains/trpg_system.dart';
 import 'package:scenarioshelf/repositories/databases/character/new_models/new_character.dart';
@@ -10,7 +10,7 @@ part 'new_scenario.freezed.dart';
 
 @freezed
 class NewScenario with _$NewScenario {
-  @Assert(r"kana == null || RegExp(r'^[ァ-ンヴー]+$').hasMatch(kana!)", 'フリガナに全角カタカナ以外の文字が含まれています')
+  @Assert(r"kana == null || kana == '' || RegExp(r'^[0-9a-zA-Zァ-ンヴー ]+$').hasMatch(kana!)", 'フリガナに全角カタカナ以外の文字が含まれています')
   factory NewScenario({
     required TRPGSystem system,
     required String title,
@@ -21,7 +21,7 @@ class NewScenario with _$NewScenario {
     String? author,
   }) {
     return NewScenario.inserting(
-      id: const Uuid().v4(),
+      id: ID.generate(),
       system: system,
       title: title,
       characters: characters,
@@ -33,7 +33,7 @@ class NewScenario with _$NewScenario {
   }
 
   const factory NewScenario.inserting({
-    required String id,
+    required ID id,
     required TRPGSystem system,
     required String title,
     required List<NewCharacter> characters,

@@ -1,10 +1,11 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/models/character/character.dart';
 import 'package:scenarioshelf/repositories/databases/character/character_api.dart';
 import 'package:scenarioshelf/repositories/databases/character/new_models/new_character.dart';
-import 'package:scenarioshelf/repositories/storages/apis/character_image_api.dart';
+import 'package:scenarioshelf/repositories/storages/character_image/character_image_api.dart';
 import 'package:scenarioshelf/repositories/storages/character_image/character_image_repository.dart';
 import 'package:scenarioshelf/utils/result.dart';
 
@@ -50,19 +51,19 @@ class CharacterRepository implements CharacterAPI {
   }
 
   @override
-  Future<Result> delete({required String id}) {
+  Future<Result> delete({required ID id}) {
     // `TODO`: implement delete
     throw UnimplementedError();
   }
 
   @override
-  Future<Character> get({required String id}) {
+  Future<Character> get({required ID id}) {
     // `TODO`: implement get
     throw UnimplementedError();
   }
 
   @override
-  Future<List<Character>> listByScenarioId({required String scenarioId}) {
+  Future<List<Character>> listByScenarioId({required ID scenarioId}) {
     // `TODO`: implement listByScenarioId
     throw UnimplementedError();
   }

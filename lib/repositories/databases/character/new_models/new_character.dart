@@ -1,14 +1,14 @@
 import 'dart:typed_data';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uuid/uuid.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'new_character.freezed.dart';
 
 @freezed
 class NewCharacter with _$NewCharacter {
   factory NewCharacter({
-    required String scenarioId,
+    required ID scenarioId,
     required String name,
     bool isPublic = true,
     bool isCustomized = false,
@@ -16,7 +16,7 @@ class NewCharacter with _$NewCharacter {
     Uint8List? image,
   }) {
     return NewCharacter.inserting(
-      id: const Uuid().v4(),
+      id: ID.generate(),
       scenarioId: scenarioId,
       name: name,
       isPublic: isPublic,
@@ -27,8 +27,8 @@ class NewCharacter with _$NewCharacter {
   }
 
   const factory NewCharacter.inserting({
-    required String id,
-    required String scenarioId,
+    required ID id,
+    required ID scenarioId,
     required String name,
     required bool isPublic,
     required bool isCustomized,

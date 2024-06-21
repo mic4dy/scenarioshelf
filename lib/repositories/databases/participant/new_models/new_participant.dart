@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uuid/uuid.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 import 'package:scenarioshelf/models/participant/participant.dart';
 
@@ -8,16 +8,16 @@ part 'new_participant.freezed.dart';
 @freezed
 class NewParticipant with _$NewParticipant {
   factory NewParticipant({
-    required String sessionId,
+    required ID sessionId,
     required ParticipantRole role,
     required String name,
-    String? userId,
+    ID? userId,
     String? xId,
     String? discordId,
     String? characterId,
   }) {
     return NewParticipant.inserting(
-      id: const Uuid().v4(),
+      id: ID.generate(),
       sessionId: sessionId,
       role: role,
       name: name,
@@ -29,11 +29,11 @@ class NewParticipant with _$NewParticipant {
   }
 
   const factory NewParticipant.inserting({
-    required String id,
-    required String sessionId,
+    required ID id,
+    required ID sessionId,
     required ParticipantRole role,
     required String name,
-    String? userId,
+    ID? userId,
     String? xId,
     String? discordId,
     String? characterId,

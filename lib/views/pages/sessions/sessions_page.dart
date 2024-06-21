@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:scenarioshelf/router/app_routes.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/views/pages/sessions/components/list_items/session_tile.dart';
 import 'package:scenarioshelf/views/pages/sessions/components/sessions_sort_app_bar.dart';
 import 'package:scenarioshelf/views/pages/sessions/providers/sessions/sessions_controller.dart';
@@ -13,7 +14,7 @@ class SessionsPage extends HookConsumerWidget {
     super.key,
   });
 
-  final String userId;
+  final ID userId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

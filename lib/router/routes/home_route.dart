@@ -18,7 +18,7 @@ class HomeRoute extends GoRouteData {
     }
 
     if (user != null) {
-      return SessionsRoute(userId: user.id).location;
+      return SessionsRoute(userId: user.id as String).location;
     }
 
     return const BootRoute().location;

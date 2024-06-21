@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewScenario {
-  String get id => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
   TRPGSystem get system => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   List<NewCharacter> get characters => throw _privateConstructorUsedError;
@@ -27,7 +27,7 @@ mixin _$NewScenario {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String id,
+            ID id,
             TRPGSystem system,
             String title,
             List<NewCharacter> characters,
@@ -41,7 +41,7 @@ mixin _$NewScenario {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String id,
+            ID id,
             TRPGSystem system,
             String title,
             List<NewCharacter> characters,
@@ -55,7 +55,7 @@ mixin _$NewScenario {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String id,
+            ID id,
             TRPGSystem system,
             String title,
             List<NewCharacter> characters,
@@ -96,7 +96,7 @@ abstract class $NewScenarioCopyWith<$Res> {
       _$NewScenarioCopyWithImpl<$Res, NewScenario>;
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       TRPGSystem system,
       String title,
       List<NewCharacter> characters,
@@ -132,7 +132,7 @@ class _$NewScenarioCopyWithImpl<$Res, $Val extends NewScenario>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       system: null == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -174,7 +174,7 @@ abstract class _$$NewScenarioImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       TRPGSystem system,
       String title,
       List<NewCharacter> characters,
@@ -208,7 +208,7 @@ class __$$NewScenarioImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       system: null == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -256,7 +256,7 @@ class _$NewScenarioImpl implements _NewScenario {
       : _characters = characters;
 
   @override
-  final String id;
+  final ID id;
   @override
   final TRPGSystem system;
   @override
@@ -322,7 +322,7 @@ class _$NewScenarioImpl implements _NewScenario {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String id,
+            ID id,
             TRPGSystem system,
             String title,
             List<NewCharacter> characters,
@@ -340,7 +340,7 @@ class _$NewScenarioImpl implements _NewScenario {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String id,
+            ID id,
             TRPGSystem system,
             String title,
             List<NewCharacter> characters,
@@ -358,7 +358,7 @@ class _$NewScenarioImpl implements _NewScenario {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String id,
+            ID id,
             TRPGSystem system,
             String title,
             List<NewCharacter> characters,
@@ -407,7 +407,7 @@ class _$NewScenarioImpl implements _NewScenario {
 
 abstract class _NewScenario implements NewScenario {
   const factory _NewScenario(
-      {required final String id,
+      {required final ID id,
       required final TRPGSystem system,
       required final String title,
       required final List<NewCharacter> characters,
@@ -417,7 +417,7 @@ abstract class _NewScenario implements NewScenario {
       final String? author}) = _$NewScenarioImpl;
 
   @override
-  String get id;
+  ID get id;
   @override
   TRPGSystem get system;
   @override

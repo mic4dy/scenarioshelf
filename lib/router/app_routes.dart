@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/router/routes/boot_routes/sign_in_route.dart';
 import 'package:scenarioshelf/router/routes/boot_routes/sign_up_route.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/views/pages/boot/boot_page.dart';
 import 'package:scenarioshelf/views/pages/sessions/sessions_page.dart';
 import 'package:scenarioshelf/views/pages/signing/email_verification/email_verification_page.dart';

@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'package:scenarioshelf/repositories/storages/apis/user_avatar_api.dart';
+import 'package:scenarioshelf/repositories/storages/user_avatar/user_avatar_api.dart';
 import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
 
 part 'user_avatar_repository.g.dart';

@@ -20,7 +20,7 @@ Memo _$MemoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Memo {
-  String get id => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $MemoCopyWith<$Res> {
       _$MemoCopyWithImpl<$Res, Memo>;
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       String title,
       String content,
       DateTime updatedAt,
@@ -70,7 +70,7 @@ class _$MemoCopyWithImpl<$Res, $Val extends Memo>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$MemoImplCopyWith<$Res> implements $MemoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       String title,
       String content,
       DateTime updatedAt,
@@ -132,7 +132,7 @@ class __$$MemoImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -173,7 +173,7 @@ class _$MemoImpl implements _Memo {
       _$$MemoImplFromJson(json);
 
   @override
-  final String id;
+  final ID id;
   @override
   final String title;
   @override
@@ -228,7 +228,7 @@ class _$MemoImpl implements _Memo {
 
 abstract class _Memo implements Memo {
   const factory _Memo(
-      {required final String id,
+      {required final ID id,
       required final String title,
       required final String content,
       required final DateTime updatedAt,
@@ -238,7 +238,7 @@ abstract class _Memo implements Memo {
   factory _Memo.fromJson(Map<String, dynamic> json) = _$MemoImpl.fromJson;
 
   @override
-  String get id;
+  ID get id;
   @override
   String get title;
   @override
