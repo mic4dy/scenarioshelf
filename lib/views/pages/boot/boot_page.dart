@@ -5,7 +5,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
-import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/router/app_routes.dart';
+import 'package:scenarioshelf/router/routes/boot_routes/sign_in_route.dart';
+import 'package:scenarioshelf/router/routes/boot_routes/sign_up_route.dart';
 import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
@@ -57,7 +59,7 @@ class BootPage extends HookConsumerWidget {
                   LabeledButton(
                     brightness: WidgetBrightness.dark,
                     minimumSize: Size(size.width * 0.8, 40),
-                    onPressed: () => ref.read(routerProvider).push(Routes.signUp.fullPath),
+                    onPressed: () async => const SignUpRoute().push(context),
                     label: '新規登録',
                     textStyle: const TextStyle(
                       letterSpacing: MarginSize.small,
@@ -66,7 +68,7 @@ class BootPage extends HookConsumerWidget {
                   LabeledButton(
                     brightness: WidgetBrightness.light,
                     minimumSize: Size(size.width * 0.8, 40),
-                    onPressed: () => ref.read(routerProvider).push(Routes.signIn.fullPath),
+                    onPressed: () async => const SignInRoute().push(context),
                     label: 'ログイン',
                     textStyle: const TextStyle(
                       letterSpacing: MarginSize.small,
@@ -88,11 +90,12 @@ class BootPage extends HookConsumerWidget {
                         return;
                       }
 
-                      if (context.mounted) {
-                        ScaffoldMessenger.of(context).clearMaterialBanners();
+                      if (!context.mounted) {
+                        return;
                       }
 
-                      ref.read(routerProvider).go(Routes.home.path);
+                      ScaffoldMessenger.of(context).clearMaterialBanners();
+                      const HomeRoute().go(context);
                     },
                     label: 'Sign in with Google',
                     leading: Assets.images.logos.googleLogo.image(

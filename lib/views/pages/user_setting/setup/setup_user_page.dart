@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
-import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/router/app_routes.dart';
 import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
@@ -97,8 +97,8 @@ class SetupUserPage extends HookConsumerWidget {
                             await ref.read(userSettingControllerProvider.notifier).setup();
 
                             final user = ref.read(currentUserControllerProvider);
-                            if (user != null) {
-                              ref.read(routerProvider).go(Routes.home.fullPath);
+                            if (user != null && context.mounted) {
+                              const HomeRoute().go(context);
                             }
                           },
                           label: '登録',

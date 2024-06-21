@@ -14,7 +14,7 @@ import 'package:scenarioshelf/repositories/databases/schedule/schedule_repositor
 import 'package:scenarioshelf/repositories/databases/session/new_models/new_session.dart';
 import 'package:scenarioshelf/repositories/databases/session/session_api.dart';
 import 'package:scenarioshelf/utils/result.dart';
-import 'package:scenarioshelf/views/pages/home/providers/sessions_sort/sessions_sort_pivot.dart';
+import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort_pivot/sessions_sort_pivot.dart';
 
 part 'session_repository.g.dart';
 

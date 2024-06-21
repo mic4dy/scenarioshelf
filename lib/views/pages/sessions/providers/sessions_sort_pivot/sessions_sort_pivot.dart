@@ -1,13 +1,15 @@
 import 'package:scenarioshelf/constants/domains/sort_order.dart';
 
 enum SessionsSortPivot {
-  scenarioTitle,
-  scenarioSystem,
-  scenarioAuthor,
-  schedule,
-  createdAt;
+  scenarioTitle(display: 'タイトル順'),
+  scenarioSystem(display: 'システム順'),
+  scenarioAuthor(display: '作者順'),
+  schedule(display: '開催日順'),
+  createdAt(display: '登録順');
 
-  const SessionsSortPivot();
+  const SessionsSortPivot({required this.display});
+
+  final String display;
 
   String getViewTable(SortOrder order) {
     switch (this) {

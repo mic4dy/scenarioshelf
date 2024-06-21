@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
-import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/router/app_routes.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_page_frame.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
@@ -29,7 +29,11 @@ class SignInPage extends HookConsumerWidget {
           ref.invalidate(currentUserControllerProvider);
           await ref.read(signingControllerProvider.notifier).signInWithEmailAndPassword();
 
-          ref.read(routerProvider).go(Routes.home.fullPath);
+          if (!context.mounted) {
+            return;
+          }
+
+          const HomeRoute().go(context);
         },
         label: 'ログイン',
         textStyle: const TextStyle(

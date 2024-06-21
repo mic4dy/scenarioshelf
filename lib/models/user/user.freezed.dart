@@ -21,6 +21,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'username')
   String get name => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
 
@@ -34,7 +35,8 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String id, String name, String? avatarUrl});
+  $Res call(
+      {String id, @JsonKey(name: 'username') String name, String? avatarUrl});
 }
 
 /// @nodoc
@@ -78,7 +80,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String? avatarUrl});
+  $Res call(
+      {String id, @JsonKey(name: 'username') String name, String? avatarUrl});
 }
 
 /// @nodoc
@@ -113,10 +116,13 @@ class __$$UserImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$UserImpl implements _User {
   const _$UserImpl(
-      {required this.id, required this.name, required this.avatarUrl});
+      {required this.id,
+      @JsonKey(name: 'username') required this.name,
+      required this.avatarUrl});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -124,6 +130,7 @@ class _$UserImpl implements _User {
   @override
   final String id;
   @override
+  @JsonKey(name: 'username')
   final String name;
   @override
   final String? avatarUrl;
@@ -165,7 +172,7 @@ class _$UserImpl implements _User {
 abstract class _User implements User {
   const factory _User(
       {required final String id,
-      required final String name,
+      @JsonKey(name: 'username') required final String name,
       required final String? avatarUrl}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -173,6 +180,7 @@ abstract class _User implements User {
   @override
   String get id;
   @override
+  @JsonKey(name: 'username')
   String get name;
   @override
   String? get avatarUrl;

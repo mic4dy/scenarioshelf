@@ -190,7 +190,7 @@ class __$$ScenarioImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$ScenarioImpl implements _Scenario {
+class _$ScenarioImpl extends _Scenario {
   _$ScenarioImpl(
       {required this.id,
       @JsonKey(name: 'trpg_system') required this.system,
@@ -205,7 +205,8 @@ class _$ScenarioImpl implements _Scenario {
                 kana == '' ||
                 RegExp(r'^[0-9a-zA-Zァ-ンヴー ]+$').hasMatch(kana!),
             'フリガナに全角カタカナ以外の文字が含まれています'),
-        _characters = characters;
+        _characters = characters,
+        super._();
 
   factory _$ScenarioImpl.fromJson(Map<String, dynamic> json) =>
       _$$ScenarioImplFromJson(json);
@@ -285,7 +286,7 @@ class _$ScenarioImpl implements _Scenario {
   }
 }
 
-abstract class _Scenario implements Scenario {
+abstract class _Scenario extends Scenario {
   factory _Scenario(
       {required final String id,
       @JsonKey(name: 'trpg_system') required final TRPGSystem system,
@@ -295,6 +296,7 @@ abstract class _Scenario implements Scenario {
       final String? keyVisualUrl,
       final String? storeUrl,
       final String? author}) = _$ScenarioImpl;
+  _Scenario._() : super._();
 
   factory _Scenario.fromJson(Map<String, dynamic> json) =
       _$ScenarioImpl.fromJson;

@@ -53,3 +53,20 @@ create policy "Users can delete own participant." on participants
 create trigger on_participants_updated
   before update on public.participants
   for each row execute procedure public.update_timestamp();
+
+-- キャラクターは依存先のシナリオのキャラのみ選べるトリガー
+create or replace function public.check_selected_scenarios_character()
+returns trigger as $$
+begin
+  if new.character_id is not null then
+    if not exists (select id from characters where id = new.character_id and scenario_id = (select scenario_id from sessions where id = new.session_id limit 1)) then
+      raise exception 'The character_id must be the character of the selected scenario.';
+    end if;
+  end if;
+  return new;
+end;
+$$ language plpgsql security definer;
+create trigger on_participants_check_selected_scenarios_character
+  before update on public.participants
+  for each row execute procedure public.check_selected_scenarios_character();
+

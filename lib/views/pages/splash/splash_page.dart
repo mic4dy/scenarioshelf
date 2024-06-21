@@ -6,7 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
-import 'package:scenarioshelf/router/router.dart';
+import 'package:scenarioshelf/router/app_routes.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
 
 class SplashPage extends HookConsumerWidget {
@@ -19,19 +19,19 @@ class SplashPage extends HookConsumerWidget {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           final client = Supabase.instance.client;
           if (client.auth.currentUser == null) {
-            ref.read(routerProvider).go(Routes.boot.fullPath);
+            const BootRoute().go(context);
             return;
           }
 
           final session = client.auth.currentSession;
           if (session == null) {
-            ref.read(routerProvider).go(Routes.boot.fullPath);
+            const BootRoute().go(context);
             return;
           }
 
           final user = session.user;
           ref.read(provisionallyRegisteredUserControllerProvider.notifier).update(ProvisionallyRegisteredUser.fromSupabase(user));
-          ref.read(routerProvider).go(Routes.home.fullPath);
+          const HomeRoute().go(context);
           return;
         });
       },
