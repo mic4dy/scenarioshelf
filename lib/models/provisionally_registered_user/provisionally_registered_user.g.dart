@@ -9,7 +9,7 @@ part of 'provisionally_registered_user.dart';
 _$ProvisionallyRegisteredUserImpl _$$ProvisionallyRegisteredUserImplFromJson(
         Map<String, dynamic> json) =>
     _$ProvisionallyRegisteredUserImpl(
-      id: json['id'] as String,
+      id: ID.fromJson(json['id'] as String),
       name: json['name'] as String?,
       avatarUrl: json['avatarUrl'] as String?,
     );

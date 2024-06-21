@@ -2,16 +2,16 @@ part of 'participant.dart';
 
 @JsonEnum(valueField: 'id')
 enum ParticipantRole {
-  gameMaster(id: 'gm', label: 'ゲームマスター'),
-  subGameMaster(id: 'sgm', label: 'サブゲームマスター'),
-  player(id: 'player', label: 'プレイヤー'),
-  spectator(id: 'spectator', label: '観戦者');
+  gameMaster(id: 'gm' as EnumID, label: 'ゲームマスター'),
+  subGameMaster(id: 'sgm' as EnumID, label: 'サブゲームマスター'),
+  player(id: 'player' as EnumID, label: 'プレイヤー'),
+  spectator(id: 'spectator' as EnumID, label: '観戦者');
 
   const ParticipantRole({
     required this.id,
     required this.label,
   });
 
-  final String id;
+  final EnumID id;
   final String label;
 }

@@ -13,6 +13,7 @@ import 'package:scenarioshelf/repositories/databases/schedule/schedule_api.dart'
 import 'package:scenarioshelf/repositories/databases/schedule/schedule_repository.dart';
 import 'package:scenarioshelf/repositories/databases/session/new_models/new_session.dart';
 import 'package:scenarioshelf/repositories/databases/session/session_api.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/utils/result.dart';
 import 'package:scenarioshelf/views/pages/sessions/providers/sessions_sort_pivot/sessions_sort_pivot.dart';
 
@@ -84,7 +85,7 @@ class SessionRepository implements SessionAPI {
   }
 
   @override
-  Future<Session> get({required String id}) async {
+  Future<Session> get({required ID id}) async {
     final client = Supabase.instance.client;
     final response = await client.from(tableName).select('''
       *,
@@ -98,14 +99,14 @@ class SessionRepository implements SessionAPI {
         *,
         character:character_id ( * )
       )
-    ''').eq('id', id).single();
+    ''').eq('id', id as String).single();
 
     return Session.fromJson(response);
   }
 
   @override
   Future<List<Session>> listByUserId({
-    required String userId,
+    required ID userId,
     SessionsSortPivot pivot = SessionsSortPivot.scenarioTitle,
     SortOrder order = SortOrder.asc,
   }) async {
@@ -122,7 +123,7 @@ class SessionRepository implements SessionAPI {
         *,
         character:character_id ( * )
       )
-    ''').eq('created_by', userId);
+    ''').eq('created_by', userId as String);
 
     return response.map(Session.fromJson).toList();
   }
@@ -133,7 +134,7 @@ class SessionRepository implements SessionAPI {
   }
 
   @override
-  Future<Result> delete({required String id}) async {
+  Future<Result> delete({required ID id}) async {
     throw UnimplementedError();
   }
 }

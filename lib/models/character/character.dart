@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:scenarioshelf/utils/extension_types/id.dart';
+
 part 'character.freezed.dart';
 part 'character.g.dart';
 
@@ -7,7 +9,7 @@ part 'character.g.dart';
 class Character with _$Character {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Character({
-    required String id,
+    required ID id,
     required String name,
     @Default(true) bool isPublic,
     @Default(false) bool isCustomized,

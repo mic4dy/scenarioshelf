@@ -9,7 +9,7 @@ part 'crashlytics_repository.g.dart';
 FirebaseCrashlytics crashlyticsRepository(CrashlyticsRepositoryRef ref) {
   final crashlyticsRepository = FirebaseCrashlytics.instance;
   ref.listen(currentUserControllerProvider, (_, next) async {
-    await crashlyticsRepository.setUserIdentifier(next?.id ?? '');
+    await crashlyticsRepository.setUserIdentifier(next?.id as String? ?? '');
   });
 
   return crashlyticsRepository;

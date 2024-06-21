@@ -8,7 +8,7 @@ part of 'schedule.dart';
 
 _$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
     _$ScheduleImpl(
-      id: json['id'] as String,
+      id: ID.fromJson(json['id'] as String),
       beginningTime: DateTime.parse(json['beginning_time'] as String),
       playtime: const DurationIntervalConverter()
           .fromJson(json['playtime'] as String),

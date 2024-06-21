@@ -16,32 +16,28 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewSession {
-  String get id => throw _privateConstructorUsedError;
-  String get scenarioId => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
+  ID get scenarioId => throw _privateConstructorUsedError;
   List<NewSchedule> get schedules => throw _privateConstructorUsedError;
   List<NewParticipant> get participants => throw _privateConstructorUsedError;
   List<NewMemo> get memos => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String id,
-            String scenarioId,
-            List<NewSchedule> schedules,
-            List<NewParticipant> participants,
-            List<NewMemo> memos)
+    required TResult Function(ID id, ID scenarioId, List<NewSchedule> schedules,
+            List<NewParticipant> participants, List<NewMemo> memos)
         inserting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String scenarioId, List<NewSchedule> schedules,
+    TResult? Function(ID id, ID scenarioId, List<NewSchedule> schedules,
             List<NewParticipant> participants, List<NewMemo> memos)?
         inserting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String scenarioId, List<NewSchedule> schedules,
+    TResult Function(ID id, ID scenarioId, List<NewSchedule> schedules,
             List<NewParticipant> participants, List<NewMemo> memos)?
         inserting,
     required TResult orElse(),
@@ -76,8 +72,8 @@ abstract class $NewSessionCopyWith<$Res> {
       _$NewSessionCopyWithImpl<$Res, NewSession>;
   @useResult
   $Res call(
-      {String id,
-      String scenarioId,
+      {ID id,
+      ID scenarioId,
       List<NewSchedule> schedules,
       List<NewParticipant> participants,
       List<NewMemo> memos});
@@ -106,11 +102,11 @@ class _$NewSessionCopyWithImpl<$Res, $Val extends NewSession>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       scenarioId: null == scenarioId
           ? _value.scenarioId
           : scenarioId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       schedules: null == schedules
           ? _value.schedules
           : schedules // ignore: cast_nullable_to_non_nullable
@@ -136,8 +132,8 @@ abstract class _$$NewSessionInsertingImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      String scenarioId,
+      {ID id,
+      ID scenarioId,
       List<NewSchedule> schedules,
       List<NewParticipant> participants,
       List<NewMemo> memos});
@@ -164,11 +160,11 @@ class __$$NewSessionInsertingImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       scenarioId: null == scenarioId
           ? _value.scenarioId
           : scenarioId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       schedules: null == schedules
           ? _value._schedules
           : schedules // ignore: cast_nullable_to_non_nullable
@@ -199,9 +195,9 @@ class _$NewSessionInsertingImpl implements _NewSessionInserting {
         _memos = memos;
 
   @override
-  final String id;
+  final ID id;
   @override
-  final String scenarioId;
+  final ID scenarioId;
   final List<NewSchedule> _schedules;
   @override
   List<NewSchedule> get schedules {
@@ -265,12 +261,8 @@ class _$NewSessionInsertingImpl implements _NewSessionInserting {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String id,
-            String scenarioId,
-            List<NewSchedule> schedules,
-            List<NewParticipant> participants,
-            List<NewMemo> memos)
+    required TResult Function(ID id, ID scenarioId, List<NewSchedule> schedules,
+            List<NewParticipant> participants, List<NewMemo> memos)
         inserting,
   }) {
     return inserting(id, scenarioId, schedules, participants, memos);
@@ -279,7 +271,7 @@ class _$NewSessionInsertingImpl implements _NewSessionInserting {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String scenarioId, List<NewSchedule> schedules,
+    TResult? Function(ID id, ID scenarioId, List<NewSchedule> schedules,
             List<NewParticipant> participants, List<NewMemo> memos)?
         inserting,
   }) {
@@ -289,7 +281,7 @@ class _$NewSessionInsertingImpl implements _NewSessionInserting {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String scenarioId, List<NewSchedule> schedules,
+    TResult Function(ID id, ID scenarioId, List<NewSchedule> schedules,
             List<NewParticipant> participants, List<NewMemo> memos)?
         inserting,
     required TResult orElse(),
@@ -331,16 +323,16 @@ class _$NewSessionInsertingImpl implements _NewSessionInserting {
 
 abstract class _NewSessionInserting implements NewSession {
   const factory _NewSessionInserting(
-      {required final String id,
-      required final String scenarioId,
+      {required final ID id,
+      required final ID scenarioId,
       required final List<NewSchedule> schedules,
       required final List<NewParticipant> participants,
       required final List<NewMemo> memos}) = _$NewSessionInsertingImpl;
 
   @override
-  String get id;
+  ID get id;
   @override
-  String get scenarioId;
+  ID get scenarioId;
   @override
   List<NewSchedule> get schedules;
   @override

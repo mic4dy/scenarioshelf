@@ -3,7 +3,8 @@ import 'dart:typed_data';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'package:scenarioshelf/repositories/storages/apis/scenario_key_visual_api.dart';
+import 'package:scenarioshelf/repositories/storages/scenario_key_visual/scenario_key_visual_api.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'scenario_key_visual_repository.g.dart';
 
@@ -17,7 +18,7 @@ class ScenarioKeyVisualRepository implements ScenarioKeyVisualAPI {
 
   @override
   Future<String> upsert({
-    required String scenarioId,
+    required ID scenarioId,
     required Uint8List keyVisual,
   }) async {
     final client = Supabase.instance.client;

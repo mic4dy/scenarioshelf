@@ -20,11 +20,11 @@ Participant _$ParticipantFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Participant {
-  String get id => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'participant_role')
   ParticipantRole get role => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String? get userId => throw _privateConstructorUsedError;
+  ID? get userId => throw _privateConstructorUsedError;
   String? get xId => throw _privateConstructorUsedError;
   String? get discordId => throw _privateConstructorUsedError;
   Character? get character => throw _privateConstructorUsedError;
@@ -42,10 +42,10 @@ abstract class $ParticipantCopyWith<$Res> {
       _$ParticipantCopyWithImpl<$Res, Participant>;
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       @JsonKey(name: 'participant_role') ParticipantRole role,
       String name,
-      String? userId,
+      ID? userId,
       String? xId,
       String? discordId,
       Character? character});
@@ -78,7 +78,7 @@ class _$ParticipantCopyWithImpl<$Res, $Val extends Participant>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -90,7 +90,7 @@ class _$ParticipantCopyWithImpl<$Res, $Val extends Participant>
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ID?,
       xId: freezed == xId
           ? _value.xId
           : xId // ignore: cast_nullable_to_non_nullable
@@ -128,10 +128,10 @@ abstract class _$$ParticipantImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       @JsonKey(name: 'participant_role') ParticipantRole role,
       String name,
-      String? userId,
+      ID? userId,
       String? xId,
       String? discordId,
       Character? character});
@@ -163,7 +163,7 @@ class __$$ParticipantImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -175,7 +175,7 @@ class __$$ParticipantImplCopyWithImpl<$Res>
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ID?,
       xId: freezed == xId
           ? _value.xId
           : xId // ignore: cast_nullable_to_non_nullable
@@ -209,14 +209,14 @@ class _$ParticipantImpl implements _Participant {
       _$$ParticipantImplFromJson(json);
 
   @override
-  final String id;
+  final ID id;
   @override
   @JsonKey(name: 'participant_role')
   final ParticipantRole role;
   @override
   final String name;
   @override
-  final String? userId;
+  final ID? userId;
   @override
   final String? xId;
   @override
@@ -266,10 +266,10 @@ class _$ParticipantImpl implements _Participant {
 
 abstract class _Participant implements Participant {
   const factory _Participant(
-      {required final String id,
+      {required final ID id,
       @JsonKey(name: 'participant_role') required final ParticipantRole role,
       required final String name,
-      final String? userId,
+      final ID? userId,
       final String? xId,
       final String? discordId,
       final Character? character}) = _$ParticipantImpl;
@@ -278,14 +278,14 @@ abstract class _Participant implements Participant {
       _$ParticipantImpl.fromJson;
 
   @override
-  String get id;
+  ID get id;
   @override
   @JsonKey(name: 'participant_role')
   ParticipantRole get role;
   @override
   String get name;
   @override
-  String? get userId;
+  ID? get userId;
   @override
   String? get xId;
   @override

@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:scenarioshelf/models/memo/memo.dart';
 import 'package:scenarioshelf/repositories/databases/memo/memo_api.dart';
 import 'package:scenarioshelf/repositories/databases/memo/new_models/new_memo.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/utils/result.dart';
 
 part 'memo_repository.g.dart';
@@ -34,19 +35,19 @@ class MemoRepository implements MemoAPI {
   }
 
   @override
-  Future<Result> delete({required String id}) {
+  Future<Result> delete({required ID id}) {
     // `TODO`: implement delete
     throw UnimplementedError();
   }
 
   @override
-  Future<Memo> get({required String id}) {
+  Future<Memo> get({required ID id}) {
     // `TODO`: implement get
     throw UnimplementedError();
   }
 
   @override
-  Future<List<Memo>> listBySessionId({required String sessionId}) {
+  Future<List<Memo>> listBySessionId({required ID sessionId}) {
     // `TODO`: implement listBySessionId
     throw UnimplementedError();
   }

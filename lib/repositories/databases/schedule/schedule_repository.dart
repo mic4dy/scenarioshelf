@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:scenarioshelf/models/schedule/schedule.dart';
 import 'package:scenarioshelf/repositories/databases/schedule/new_models/new_schedule.dart';
 import 'package:scenarioshelf/repositories/databases/schedule/schedule_api.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/utils/result.dart';
 
 part 'schedule_repository.g.dart';
@@ -33,19 +34,19 @@ class ScheduleRepository implements ScheduleAPI {
   }
 
   @override
-  Future<Result> delete({required String id}) {
+  Future<Result> delete({required ID id}) {
     // `TODO`: implement delete
     throw UnimplementedError();
   }
 
   @override
-  Future<Schedule> get({required String id}) {
+  Future<Schedule> get({required ID id}) {
     // `TODO`: implement get
     throw UnimplementedError();
   }
 
   @override
-  Future<List<Schedule>> listBySessionId({required String sessionId}) {
+  Future<List<Schedule>> listBySessionId({required ID sessionId}) {
     // `TODO`: implement listBySessionId
     throw UnimplementedError();
   }

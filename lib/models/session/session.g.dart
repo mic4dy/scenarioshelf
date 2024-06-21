@@ -8,9 +8,9 @@ part of 'session.dart';
 
 _$SessionImpl _$$SessionImplFromJson(Map<String, dynamic> json) =>
     _$SessionImpl(
-      id: json['id'] as String,
+      id: ID.fromJson(json['id'] as String),
       scenario: Scenario.fromJson(json['scenario'] as Map<String, dynamic>),
-      createdBy: json['created_by'] as String,
+      createdBy: ID.fromJson(json['created_by'] as String),
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
       schedules: (json['schedules'] as List<dynamic>?)

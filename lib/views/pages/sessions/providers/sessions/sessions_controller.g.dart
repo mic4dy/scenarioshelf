@@ -6,7 +6,7 @@ part of 'sessions_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sessionControllerHash() => r'f863de303ff847fd38fbd1f149ccff9446639321';
+String _$sessionControllerHash() => r'fcb663220b42628e46c57a7be350500d1b8d39fa';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -40,7 +40,7 @@ class SessionControllerFamily extends Family<AsyncValue<List<Session>>> {
 
   /// See also [sessionController].
   SessionControllerProvider call(
-    String userId,
+    ID userId,
   ) {
     return SessionControllerProvider(
       userId,
@@ -76,7 +76,7 @@ class SessionControllerProvider
     extends AutoDisposeFutureProvider<List<Session>> {
   /// See also [sessionController].
   SessionControllerProvider(
-    String userId,
+    ID userId,
   ) : this._internal(
           (ref) => sessionController(
             ref as SessionControllerRef,
@@ -104,7 +104,7 @@ class SessionControllerProvider
     required this.userId,
   }) : super.internal();
 
-  final String userId;
+  final ID userId;
 
   @override
   Override overrideWith(
@@ -145,7 +145,7 @@ class SessionControllerProvider
 
 mixin SessionControllerRef on AutoDisposeFutureProviderRef<List<Session>> {
   /// The parameter `userId` of this provider.
-  String get userId;
+  ID get userId;
 }
 
 class _SessionControllerProviderElement
@@ -154,7 +154,7 @@ class _SessionControllerProviderElement
   _SessionControllerProviderElement(super.provider);
 
   @override
-  String get userId => (origin as SessionControllerProvider).userId;
+  ID get userId => (origin as SessionControllerProvider).userId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

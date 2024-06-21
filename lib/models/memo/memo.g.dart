@@ -7,7 +7,7 @@ part of 'memo.dart';
 // **************************************************************************
 
 _$MemoImpl _$$MemoImplFromJson(Map<String, dynamic> json) => _$MemoImpl(
-      id: json['id'] as String,
+      id: ID.fromJson(json['id'] as String),
       title: json['title'] as String,
       content: json['content'] as String,
       updatedAt: DateTime.parse(json['updated_at'] as String),

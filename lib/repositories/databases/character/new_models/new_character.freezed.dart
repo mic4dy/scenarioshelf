@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewCharacter {
-  String get id => throw _privateConstructorUsedError;
-  String get scenarioId => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
+  ID get scenarioId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
   bool get isCustomized => throw _privateConstructorUsedError;
@@ -25,21 +25,21 @@ mixin _$NewCharacter {
   Uint8List? get image => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, String scenarioId, String name,
-            bool isPublic, bool isCustomized, int? number, Uint8List? image)
+    required TResult Function(ID id, ID scenarioId, String name, bool isPublic,
+            bool isCustomized, int? number, Uint8List? image)
         inserting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String scenarioId, String name, bool isPublic,
+    TResult? Function(ID id, ID scenarioId, String name, bool isPublic,
             bool isCustomized, int? number, Uint8List? image)?
         inserting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String scenarioId, String name, bool isPublic,
+    TResult Function(ID id, ID scenarioId, String name, bool isPublic,
             bool isCustomized, int? number, Uint8List? image)?
         inserting,
     required TResult orElse(),
@@ -74,8 +74,8 @@ abstract class $NewCharacterCopyWith<$Res> {
       _$NewCharacterCopyWithImpl<$Res, NewCharacter>;
   @useResult
   $Res call(
-      {String id,
-      String scenarioId,
+      {ID id,
+      ID scenarioId,
       String name,
       bool isPublic,
       bool isCustomized,
@@ -108,11 +108,11 @@ class _$NewCharacterCopyWithImpl<$Res, $Val extends NewCharacter>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       scenarioId: null == scenarioId
           ? _value.scenarioId
           : scenarioId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -146,8 +146,8 @@ abstract class _$$NewCharacterImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      String scenarioId,
+      {ID id,
+      ID scenarioId,
       String name,
       bool isPublic,
       bool isCustomized,
@@ -178,11 +178,11 @@ class __$$NewCharacterImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       scenarioId: null == scenarioId
           ? _value.scenarioId
           : scenarioId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -220,9 +220,9 @@ class _$NewCharacterImpl implements _NewCharacter {
       this.image});
 
   @override
-  final String id;
+  final ID id;
   @override
-  final String scenarioId;
+  final ID scenarioId;
   @override
   final String name;
   @override
@@ -269,8 +269,8 @@ class _$NewCharacterImpl implements _NewCharacter {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, String scenarioId, String name,
-            bool isPublic, bool isCustomized, int? number, Uint8List? image)
+    required TResult Function(ID id, ID scenarioId, String name, bool isPublic,
+            bool isCustomized, int? number, Uint8List? image)
         inserting,
   }) {
     return inserting(
@@ -280,7 +280,7 @@ class _$NewCharacterImpl implements _NewCharacter {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String scenarioId, String name, bool isPublic,
+    TResult? Function(ID id, ID scenarioId, String name, bool isPublic,
             bool isCustomized, int? number, Uint8List? image)?
         inserting,
   }) {
@@ -291,7 +291,7 @@ class _$NewCharacterImpl implements _NewCharacter {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String scenarioId, String name, bool isPublic,
+    TResult Function(ID id, ID scenarioId, String name, bool isPublic,
             bool isCustomized, int? number, Uint8List? image)?
         inserting,
     required TResult orElse(),
@@ -334,8 +334,8 @@ class _$NewCharacterImpl implements _NewCharacter {
 
 abstract class _NewCharacter implements NewCharacter {
   const factory _NewCharacter(
-      {required final String id,
-      required final String scenarioId,
+      {required final ID id,
+      required final ID scenarioId,
       required final String name,
       required final bool isPublic,
       required final bool isCustomized,
@@ -343,9 +343,9 @@ abstract class _NewCharacter implements NewCharacter {
       final Uint8List? image}) = _$NewCharacterImpl;
 
   @override
-  String get id;
+  ID get id;
   @override
-  String get scenarioId;
+  ID get scenarioId;
   @override
   String get name;
   @override

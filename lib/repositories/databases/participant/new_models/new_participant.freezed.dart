@@ -16,22 +16,22 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewParticipant {
-  String get id => throw _privateConstructorUsedError;
-  String get sessionId => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
+  ID get sessionId => throw _privateConstructorUsedError;
   ParticipantRole get role => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String? get userId => throw _privateConstructorUsedError;
+  ID? get userId => throw _privateConstructorUsedError;
   String? get xId => throw _privateConstructorUsedError;
   String? get discordId => throw _privateConstructorUsedError;
   String? get characterId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String id,
-            String sessionId,
+            ID id,
+            ID sessionId,
             ParticipantRole role,
             String name,
-            String? userId,
+            ID? userId,
             String? xId,
             String? discordId,
             String? characterId)
@@ -40,29 +40,15 @@ mixin _$NewParticipant {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String id,
-            String sessionId,
-            ParticipantRole role,
-            String name,
-            String? userId,
-            String? xId,
-            String? discordId,
-            String? characterId)?
+    TResult? Function(ID id, ID sessionId, ParticipantRole role, String name,
+            ID? userId, String? xId, String? discordId, String? characterId)?
         inserting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String id,
-            String sessionId,
-            ParticipantRole role,
-            String name,
-            String? userId,
-            String? xId,
-            String? discordId,
-            String? characterId)?
+    TResult Function(ID id, ID sessionId, ParticipantRole role, String name,
+            ID? userId, String? xId, String? discordId, String? characterId)?
         inserting,
     required TResult orElse(),
   }) =>
@@ -96,11 +82,11 @@ abstract class $NewParticipantCopyWith<$Res> {
       _$NewParticipantCopyWithImpl<$Res, NewParticipant>;
   @useResult
   $Res call(
-      {String id,
-      String sessionId,
+      {ID id,
+      ID sessionId,
       ParticipantRole role,
       String name,
-      String? userId,
+      ID? userId,
       String? xId,
       String? discordId,
       String? characterId});
@@ -132,11 +118,11 @@ class _$NewParticipantCopyWithImpl<$Res, $Val extends NewParticipant>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -148,7 +134,7 @@ class _$NewParticipantCopyWithImpl<$Res, $Val extends NewParticipant>
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ID?,
       xId: freezed == xId
           ? _value.xId
           : xId // ignore: cast_nullable_to_non_nullable
@@ -175,11 +161,11 @@ abstract class _$$NewParticipantInsertingImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      String sessionId,
+      {ID id,
+      ID sessionId,
       ParticipantRole role,
       String name,
-      String? userId,
+      ID? userId,
       String? xId,
       String? discordId,
       String? characterId});
@@ -210,11 +196,11 @@ class __$$NewParticipantInsertingImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -226,7 +212,7 @@ class __$$NewParticipantInsertingImplCopyWithImpl<$Res>
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ID?,
       xId: freezed == xId
           ? _value.xId
           : xId // ignore: cast_nullable_to_non_nullable
@@ -257,15 +243,15 @@ class _$NewParticipantInsertingImpl implements _NewParticipantInserting {
       this.characterId});
 
   @override
-  final String id;
+  final ID id;
   @override
-  final String sessionId;
+  final ID sessionId;
   @override
   final ParticipantRole role;
   @override
   final String name;
   @override
-  final String? userId;
+  final ID? userId;
   @override
   final String? xId;
   @override
@@ -311,11 +297,11 @@ class _$NewParticipantInsertingImpl implements _NewParticipantInserting {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String id,
-            String sessionId,
+            ID id,
+            ID sessionId,
             ParticipantRole role,
             String name,
-            String? userId,
+            ID? userId,
             String? xId,
             String? discordId,
             String? characterId)
@@ -328,15 +314,8 @@ class _$NewParticipantInsertingImpl implements _NewParticipantInserting {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String id,
-            String sessionId,
-            ParticipantRole role,
-            String name,
-            String? userId,
-            String? xId,
-            String? discordId,
-            String? characterId)?
+    TResult? Function(ID id, ID sessionId, ParticipantRole role, String name,
+            ID? userId, String? xId, String? discordId, String? characterId)?
         inserting,
   }) {
     return inserting?.call(
@@ -346,15 +325,8 @@ class _$NewParticipantInsertingImpl implements _NewParticipantInserting {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String id,
-            String sessionId,
-            ParticipantRole role,
-            String name,
-            String? userId,
-            String? xId,
-            String? discordId,
-            String? characterId)?
+    TResult Function(ID id, ID sessionId, ParticipantRole role, String name,
+            ID? userId, String? xId, String? discordId, String? characterId)?
         inserting,
     required TResult orElse(),
   }) {
@@ -396,25 +368,25 @@ class _$NewParticipantInsertingImpl implements _NewParticipantInserting {
 
 abstract class _NewParticipantInserting implements NewParticipant {
   const factory _NewParticipantInserting(
-      {required final String id,
-      required final String sessionId,
+      {required final ID id,
+      required final ID sessionId,
       required final ParticipantRole role,
       required final String name,
-      final String? userId,
+      final ID? userId,
       final String? xId,
       final String? discordId,
       final String? characterId}) = _$NewParticipantInsertingImpl;
 
   @override
-  String get id;
+  ID get id;
   @override
-  String get sessionId;
+  ID get sessionId;
   @override
   ParticipantRole get role;
   @override
   String get name;
   @override
-  String? get userId;
+  ID? get userId;
   @override
   String? get xId;
   @override

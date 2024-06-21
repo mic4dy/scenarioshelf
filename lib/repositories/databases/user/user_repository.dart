@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 import 'package:scenarioshelf/models/user/user.dart';
 import 'package:scenarioshelf/repositories/databases/user/user_api.dart';
 import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'user_repository.g.dart';
 
@@ -23,9 +24,9 @@ UserRepository userRepository(UserRepositoryRef ref) {
 /// ユーザ情報のアップデートはAuthRepositoryで行う
 class UserRepository implements UserAPI {
   @override
-  Future<User> get({required String id}) async {
+  Future<User> get({required ID id}) async {
     final client = Supabase.instance.client;
-    final response = await client.from('profiles').select().eq('id', id).single();
+    final response = await client.from('profiles').select().eq('id', id as String).single();
 
     if (response.isEmpty) {
       throw const UserException(

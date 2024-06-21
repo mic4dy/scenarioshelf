@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/repositories/databases/participant/new_models/new_participant.dart';
 import 'package:scenarioshelf/repositories/databases/participant/participant_api.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/utils/result.dart';
 
 part 'participant_repository.g.dart';
@@ -40,19 +41,19 @@ class ParticipantRepository implements ParticipantAPI {
   }
 
   @override
-  Future<Result> delete({required String id}) {
+  Future<Result> delete({required ID id}) {
     // `TODO`: implement delete
     throw UnimplementedError();
   }
 
   @override
-  Future<Participant> get({required String id}) {
+  Future<Participant> get({required ID id}) {
     // `TODO`: implement get
     throw UnimplementedError();
   }
 
   @override
-  Future<List<Participant>> listBySessionId({required String sessionId}) {
+  Future<List<Participant>> listBySessionId({required ID sessionId}) {
     // `TODO`: implement listBySessionId
     throw UnimplementedError();
   }

@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:scenarioshelf/models/character/character.dart';
+import 'package:scenarioshelf/utils/extension_types/enum_id.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'participant.freezed.dart';
 part 'participant.g.dart';
@@ -10,10 +12,10 @@ part 'participant_role.dart';
 class Participant with _$Participant {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Participant({
-    required String id,
+    required ID id,
     @JsonKey(name: 'participant_role') required ParticipantRole role,
     required String name,
-    String? userId,
+    ID? userId,
     String? xId,
     String? discordId,
     Character? character,

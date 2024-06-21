@@ -12,10 +12,11 @@ import 'package:scenarioshelf/repositories/auth/auth_api.dart';
 import 'package:scenarioshelf/repositories/firebase/firebase_options/dev/firebase_options.dart' as dev_firebase_options;
 import 'package:scenarioshelf/repositories/firebase/firebase_options/prod/firebase_options.dart' as prod_firebase_options;
 import 'package:scenarioshelf/repositories/firebase/firebase_options/stg/firebase_options.dart' as stg_firebase_options;
-import 'package:scenarioshelf/repositories/storages/apis/user_avatar_api.dart';
+import 'package:scenarioshelf/repositories/storages/user_avatar/user_avatar_api.dart';
 import 'package:scenarioshelf/repositories/storages/user_avatar/user_avatar_repository.dart';
 import 'package:scenarioshelf/utils/environment.dart';
 import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 
 part 'auth_repository.g.dart';
@@ -237,12 +238,12 @@ class AuthRepository implements AuthAPI {
   /// 退会処理やユーザ初期化前にメールアドレスを変更する際に使用する。
   /// ユーザIDを指定して削除するが、自身のユーザID以外を指定することはできない。
   @override
-  Future<void> delete({required String id}) async {
+  Future<void> delete({required ID id}) async {
     final client = SupabaseClient(
       dotenv.get('SUPABASE_URL'),
       dotenv.get('SUPABASE_SERVICE_ROLE_KEY'),
     );
-    await client.auth.admin.deleteUser(id);
+    await client.auth.admin.deleteUser(id as String);
     await client.dispose();
     logger.i('Delete User: $id Success');
   }

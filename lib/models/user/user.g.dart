@@ -7,7 +7,7 @@ part of 'user.dart';
 // **************************************************************************
 
 _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
-      id: json['id'] as String,
+      id: ID.fromJson(json['id'] as String),
       name: json['username'] as String,
       avatarUrl: json['avatar_url'] as String?,
     );

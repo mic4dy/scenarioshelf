@@ -6,6 +6,7 @@ import 'package:scenarioshelf/models/memo/memo.dart';
 import 'package:scenarioshelf/models/participant/participant.dart';
 import 'package:scenarioshelf/models/scenario/scenario.dart';
 import 'package:scenarioshelf/models/schedule/schedule.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'session.freezed.dart';
 part 'session.g.dart';
@@ -14,9 +15,9 @@ part 'session.g.dart';
 class Session with _$Session {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Session({
-    required String id,
+    required ID id,
     required Scenario scenario,
-    required String createdBy,
+    required ID createdBy,
     required DateTime createdAt,
     required DateTime updatedAt,
     @Default([]) List<Schedule> schedules,

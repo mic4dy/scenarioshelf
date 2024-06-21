@@ -20,9 +20,9 @@ Session _$SessionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Session {
-  String get id => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
   Scenario get scenario => throw _privateConstructorUsedError;
-  String get createdBy => throw _privateConstructorUsedError;
+  ID get createdBy => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   List<Schedule> get schedules => throw _privateConstructorUsedError;
@@ -40,9 +40,9 @@ abstract class $SessionCopyWith<$Res> {
       _$SessionCopyWithImpl<$Res, Session>;
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       Scenario scenario,
-      String createdBy,
+      ID createdBy,
       DateTime createdAt,
       DateTime updatedAt,
       List<Schedule> schedules,
@@ -78,7 +78,7 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       scenario: null == scenario
           ? _value.scenario
           : scenario // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
       createdBy: null == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -127,9 +127,9 @@ abstract class _$$SessionImplCopyWith<$Res> implements $SessionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       Scenario scenario,
-      String createdBy,
+      ID createdBy,
       DateTime createdAt,
       DateTime updatedAt,
       List<Schedule> schedules,
@@ -164,7 +164,7 @@ class __$$SessionImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       scenario: null == scenario
           ? _value.scenario
           : scenario // ignore: cast_nullable_to_non_nullable
@@ -172,7 +172,7 @@ class __$$SessionImplCopyWithImpl<$Res>
       createdBy: null == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -219,11 +219,11 @@ class _$SessionImpl extends _Session {
       _$$SessionImplFromJson(json);
 
   @override
-  final String id;
+  final ID id;
   @override
   final Scenario scenario;
   @override
-  final String createdBy;
+  final ID createdBy;
   @override
   final DateTime createdAt;
   @override
@@ -310,9 +310,9 @@ class _$SessionImpl extends _Session {
 
 abstract class _Session extends Session {
   const factory _Session(
-      {required final String id,
+      {required final ID id,
       required final Scenario scenario,
-      required final String createdBy,
+      required final ID createdBy,
       required final DateTime createdAt,
       required final DateTime updatedAt,
       final List<Schedule> schedules,
@@ -323,11 +323,11 @@ abstract class _Session extends Session {
   factory _Session.fromJson(Map<String, dynamic> json) = _$SessionImpl.fromJson;
 
   @override
-  String get id;
+  ID get id;
   @override
   Scenario get scenario;
   @override
-  String get createdBy;
+  ID get createdBy;
   @override
   DateTime get createdAt;
   @override

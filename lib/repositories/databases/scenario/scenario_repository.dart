@@ -8,8 +8,9 @@ import 'package:scenarioshelf/repositories/databases/character/character_api.dar
 import 'package:scenarioshelf/repositories/databases/character/character_repository.dart';
 import 'package:scenarioshelf/repositories/databases/scenario/new_models/new_scenario.dart';
 import 'package:scenarioshelf/repositories/databases/scenario/scenario_api.dart';
-import 'package:scenarioshelf/repositories/storages/apis/scenario_key_visual_api.dart';
+import 'package:scenarioshelf/repositories/storages/scenario_key_visual/scenario_key_visual_api.dart';
 import 'package:scenarioshelf/repositories/storages/scenario_key_visual/scenario_key_visual_repository.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/utils/result.dart';
 
 part 'scenario_repository.g.dart';
@@ -74,18 +75,18 @@ class ScenarioRepository implements ScenarioAPI {
   }
 
   @override
-  Future<Scenario> get({required String id}) async {
+  Future<Scenario> get({required ID id}) async {
     final client = Supabase.instance.client;
     final response = await client.from(tableName).select('''
       *,
       characters ( * )
-    ''').eq('id', id).single();
+    ''').eq('id', id as String).single();
 
     return Scenario.fromJson(response);
   }
 
   @override
-  Future<List<Scenario>> listByUserId({required String userId}) {
+  Future<List<Scenario>> listByUserId({required ID userId}) {
     // `TODO`: implement listByUserId
     throw UnimplementedError();
   }
@@ -97,7 +98,7 @@ class ScenarioRepository implements ScenarioAPI {
   }
 
   @override
-  Future<Result> delete({required String id}) {
+  Future<Result> delete({required ID id}) {
     // `TODO`: implement delete
     throw UnimplementedError();
   }

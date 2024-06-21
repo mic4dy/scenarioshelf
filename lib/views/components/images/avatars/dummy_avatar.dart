@@ -9,6 +9,7 @@ import 'package:scenarioshelf/constants/themes/app_color.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/utils/converters/color_extension.dart';
 import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/views/components/images/avatars/boring_avatars_mode.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/provisionally_registered_user/provisionally_registered_user_controller.dart';
 
@@ -26,11 +27,11 @@ class DummyAvatar extends HookConsumerWidget {
   final bool isSquare;
   final List<Color>? colors;
 
-  String generateUrl({String? id}) {
+  String generateUrl({ID? id}) {
     const baseUrl = 'https://source.boringavatars.com';
     final colorCodes = this.colorCodes;
     final square = isSquare ? '&square' : '';
-    final idPath = id == null ? '' : '/$id';
+    final idPath = id == null ? '' : '/${id as String}';
 
     return '$baseUrl/${mode.name}/$size?colors=$colorCodes$square$idPath';
   }

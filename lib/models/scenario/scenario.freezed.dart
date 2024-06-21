@@ -20,7 +20,7 @@ Scenario _$ScenarioFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Scenario {
-  String get id => throw _privateConstructorUsedError;
+  ID get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'trpg_system')
   TRPGSystem get system => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $ScenarioCopyWith<$Res> {
       _$ScenarioCopyWithImpl<$Res, Scenario>;
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       @JsonKey(name: 'trpg_system') TRPGSystem system,
       String title,
       List<Character> characters,
@@ -78,7 +78,7 @@ class _$ScenarioCopyWithImpl<$Res, $Val extends Scenario>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       system: null == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ abstract class _$$ScenarioImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {ID id,
       @JsonKey(name: 'trpg_system') TRPGSystem system,
       String title,
       List<Character> characters,
@@ -154,7 +154,7 @@ class __$$ScenarioImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ID,
       system: null == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -212,7 +212,7 @@ class _$ScenarioImpl extends _Scenario {
       _$$ScenarioImplFromJson(json);
 
   @override
-  final String id;
+  final ID id;
   @override
   @JsonKey(name: 'trpg_system')
   final TRPGSystem system;
@@ -288,7 +288,7 @@ class _$ScenarioImpl extends _Scenario {
 
 abstract class _Scenario extends Scenario {
   factory _Scenario(
-      {required final String id,
+      {required final ID id,
       @JsonKey(name: 'trpg_system') required final TRPGSystem system,
       required final String title,
       final List<Character> characters,
@@ -302,7 +302,7 @@ abstract class _Scenario extends Scenario {
       _$ScenarioImpl.fromJson;
 
   @override
-  String get id;
+  ID get id;
   @override
   @JsonKey(name: 'trpg_system')
   TRPGSystem get system;

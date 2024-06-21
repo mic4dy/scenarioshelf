@@ -8,7 +8,7 @@ part of 'scenario.dart';
 
 _$ScenarioImpl _$$ScenarioImplFromJson(Map<String, dynamic> json) =>
     _$ScenarioImpl(
-      id: json['id'] as String,
+      id: ID.fromJson(json['id'] as String),
       system: $enumDecode(_$TRPGSystemEnumMap, json['trpg_system']),
       title: json['title'] as String,
       characters: (json['characters'] as List<dynamic>?)
