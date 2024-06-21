@@ -45,6 +45,7 @@ dependencies:
 
 dependency_overrides:
   meta: 1.15.0
+  collection: 1.19.0
 
 dev_dependencies:
   flutter_test: 
