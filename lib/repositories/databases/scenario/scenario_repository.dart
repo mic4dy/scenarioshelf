@@ -1,5 +1,4 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/models/scenario/scenario.dart';
@@ -11,6 +10,7 @@ import 'package:scenarioshelf/repositories/databases/scenario/new_models/new_sce
 import 'package:scenarioshelf/repositories/databases/scenario/scenario_api.dart';
 import 'package:scenarioshelf/repositories/storages/scenario_key_visual/scenario_key_visual_api.dart';
 import 'package:scenarioshelf/repositories/storages/scenario_key_visual/scenario_key_visual_repository.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/utils/result.dart';
 
 part 'scenario_repository.g.dart';

@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
@@ -17,6 +16,7 @@ import 'package:scenarioshelf/repositories/storages/user_avatar/user_avatar_api.
 import 'package:scenarioshelf/repositories/storages/user_avatar/user_avatar_repository.dart';
 import 'package:scenarioshelf/utils/environment.dart';
 import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/utils/logger.dart';
 
 part 'auth_repository.g.dart';

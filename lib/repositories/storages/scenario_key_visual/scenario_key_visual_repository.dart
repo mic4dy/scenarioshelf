@@ -1,10 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/repositories/storages/scenario_key_visual/scenario_key_visual_api.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'scenario_key_visual_repository.g.dart';
 

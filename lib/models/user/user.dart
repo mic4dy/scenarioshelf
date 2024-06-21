@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
 
 import 'package:scenarioshelf/models/provisionally_registered_user/provisionally_registered_user.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';

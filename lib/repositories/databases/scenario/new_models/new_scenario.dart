@@ -1,10 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 import 'package:scenarioshelf/constants/domains/trpg_system.dart';
 import 'package:scenarioshelf/repositories/databases/character/new_models/new_character.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'new_scenario.freezed.dart';
 

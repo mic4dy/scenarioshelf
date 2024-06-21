@@ -1,10 +1,10 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/models/schedule/schedule.dart';
 import 'package:scenarioshelf/repositories/databases/schedule/new_models/new_schedule.dart';
 import 'package:scenarioshelf/repositories/databases/schedule/schedule_api.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/utils/result.dart';
 
 part 'schedule_repository.g.dart';

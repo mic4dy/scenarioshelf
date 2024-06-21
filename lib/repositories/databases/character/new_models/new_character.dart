@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'new_character.freezed.dart';

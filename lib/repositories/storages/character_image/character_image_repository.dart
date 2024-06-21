@@ -1,10 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/repositories/storages/character_image/character_image_api.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'character_image_repository.g.dart';
 

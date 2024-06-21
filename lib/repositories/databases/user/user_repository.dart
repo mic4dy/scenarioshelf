@@ -1,10 +1,10 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import 'package:scenarioshelf/models/user/user.dart';
 import 'package:scenarioshelf/repositories/databases/user/user_api.dart';
 import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
+import 'package:scenarioshelf/utils/extension_types/id.dart';
 
 part 'user_repository.g.dart';
 
