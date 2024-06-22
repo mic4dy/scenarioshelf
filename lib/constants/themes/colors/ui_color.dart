@@ -13,18 +13,16 @@ abstract class _UIColor {
 
 class LightUIColor extends _UIColor {
   @override
-  Color get shimmerBase => const Color(0xFFefefef);
+  Color get shimmerBase => const Color(0xFFeeeeee);
 
   @override
-  // TODO: implement shimmerHighlight
-  Color get shimmerHighlight => throw UnimplementedError();
+  Color get shimmerHighlight => const Color(0xFFffffff);
 }
 
 class DarkUIColor extends _UIColor {
   @override
-  Color get shimmerBase => const Color(0xFFefefef);
+  Color get shimmerBase => const Color(0xFF222222);
 
   @override
-  // TODO: implement shimmerHighlight
-  Color get shimmerHighlight => throw UnimplementedError();
+  Color get shimmerHighlight => const Color(0xFF333333);
 }

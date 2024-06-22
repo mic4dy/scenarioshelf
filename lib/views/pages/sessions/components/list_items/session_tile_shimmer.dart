@@ -27,8 +27,8 @@ class SessionTileShimmer extends StatelessWidget {
           borderRadius: BorderRadius.circular(RadiusSize.small),
         ),
         child: Shimmer.fromColors(
-          baseColor: Theme.of(context).colorScheme.surfaceContainerLow,
-          highlightColor: Theme.of(context).colorScheme.surface,
+          baseColor: AppColor.of(context).ui.shimmerBase,
+          highlightColor: AppColor.of(context).ui.shimmerHighlight,
           child: Padding(
             padding: const EdgeInsets.all(paddingSize),
             child: Row(
@@ -37,7 +37,7 @@ class SessionTileShimmer extends StatelessWidget {
                   width: imageSize - 8,
                   height: imageSize,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surfaceContainerLow,
+                    color: AppColor.of(context).ui.shimmerBase,
                     borderRadius: BorderRadius.circular(RadiusSize.minimum),
                   ),
                 ),
@@ -49,7 +49,7 @@ class SessionTileShimmer extends StatelessWidget {
                       width: size.width * 0.65,
                       height: FontSize.label * 1.2,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.surfaceContainerLow,
+                        color: AppColor.of(context).ui.shimmerBase,
                         borderRadius: BorderRadius.circular(FontSize.label * 1.2 / 2),
                       ),
                     ),
@@ -58,7 +58,7 @@ class SessionTileShimmer extends StatelessWidget {
                       width: size.width * 0.4,
                       height: FontSize.caption * 1.2,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.surfaceContainerLow,
+                        color: AppColor.of(context).ui.shimmerBase,
                         borderRadius: BorderRadius.circular(FontSize.caption * 1.2 / 2),
                       ),
                     ),

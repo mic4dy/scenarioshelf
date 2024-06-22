@@ -97,7 +97,6 @@ class Scenarioshelf extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Scenarioshelf',
       theme: theme,
-      darkTheme: theme,
       themeMode: ref.watch(themeModeControllerProvider),
       routerConfig: router,
       debugShowCheckedModeBanner: false,

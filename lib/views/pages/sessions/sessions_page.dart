@@ -34,14 +34,13 @@ class SessionsPage extends HookConsumerWidget {
                 top: false,
                 sliver: sessions.when(
                   data: (data) => SliverList(
-                    delegate: SliverChildListDelegate(data.map((session) => SessionTileShimmer()).toList()),
-                    // delegate: SliverChildListDelegate(data.map((session) => SessionTile(session: session)).toList()),
+                    delegate: SliverChildListDelegate(data.map((session) => SessionTile(session: session)).toList()),
                   ),
                   error: (error, stack) => const SliverToBoxAdapter(
                     child: SizedBox.shrink(),
                   ),
-                  loading: () => const SliverToBoxAdapter(
-                    child: SizedBox.shrink(),
+                  loading: () => SliverList(
+                    delegate: SliverChildListDelegate(List.generate(15, (_) => const SessionTileShimmer())),
                   ),
                 ),
               ),
