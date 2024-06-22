@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:scenarioshelf/constants/themes/colors/app_color.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:scenarioshelf/constants/themes/colors/app_color.dart';
 
 class SessionTileShimmer extends StatelessWidget {
   const SessionTileShimmer({

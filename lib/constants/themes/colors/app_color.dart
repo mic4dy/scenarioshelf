@@ -1,7 +1,9 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import 'package:scenarioshelf/providers/theme_mode/theme_mode_controller.dart';
 
 part 'material_color.dart';
