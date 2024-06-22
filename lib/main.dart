@@ -11,8 +11,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'package:scenarioshelf/constants/themes/app_color.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
+import 'package:scenarioshelf/constants/themes/colors/app_color.dart';
+import 'package:scenarioshelf/providers/theme_mode/theme_mode_controller.dart';
 import 'package:scenarioshelf/repositories/firebase/analytics/analytics_repository.dart';
 import 'package:scenarioshelf/repositories/firebase/firebase_options/dev/firebase_options.dart' as dev_firebase_options;
 import 'package:scenarioshelf/repositories/firebase/firebase_options/prod/firebase_options.dart' as prod_firebase_options;
@@ -76,40 +77,27 @@ class Scenarioshelf extends ConsumerWidget {
 
     ref.read(analyticsRepositoryProvider).logAppOpen();
 
+    final theme = ThemeData(
+      useMaterial3: true,
+      colorScheme: AppColor.of(context).material,
+      textTheme: GoogleFonts.ibmPlexSansJpTextTheme(),
+      floatingActionButtonTheme: Theme.of(context).floatingActionButtonTheme.copyWith(
+            foregroundColor: AppColor.of(context).material.primary,
+            backgroundColor: AppColor.of(context).material.surface,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(RadiusSize.medium),
+              side: BorderSide(
+                color: AppColor.of(context).material.primary,
+                width: 0.5,
+              ),
+            ),
+          ),
+    );
+
     return MaterialApp.router(
       title: 'Scenarioshelf',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: AppColor.material.light,
-        textTheme: GoogleFonts.ibmPlexSansJpTextTheme(),
-        floatingActionButtonTheme: Theme.of(context).floatingActionButtonTheme.copyWith(
-              foregroundColor: AppColor.material.light.primary,
-              backgroundColor: AppColor.material.light.surface,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(RadiusSize.medium),
-                side: BorderSide(
-                  color: AppColor.material.light.primary,
-                  width: 0.5,
-                ),
-              ),
-            ),
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: AppColor.material.dark,
-        textTheme: GoogleFonts.ibmPlexSansJpTextTheme(),
-        floatingActionButtonTheme: Theme.of(context).floatingActionButtonTheme.copyWith(
-              foregroundColor: AppColor.material.dark.primary,
-              backgroundColor: AppColor.material.dark.surface,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(RadiusSize.medium),
-                side: BorderSide(
-                  color: AppColor.material.dark.primary,
-                  width: 0.5,
-                ),
-              ),
-            ),
-      ),
+      theme: theme,
+      themeMode: ref.watch(themeModeControllerProvider),
       routerConfig: router,
       debugShowCheckedModeBanner: false,
     );
