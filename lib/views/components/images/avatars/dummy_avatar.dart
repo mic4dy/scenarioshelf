@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'package:scenarioshelf/constants/themes/app_color.dart';
+import 'package:scenarioshelf/constants/themes/colors/app_color.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/utils/converters/color_extension.dart';
 import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
@@ -74,18 +74,18 @@ class DummyAvatar extends HookConsumerWidget {
 
     if (snapshot.connectionState == ConnectionState.waiting) {
       return Shimmer.fromColors(
-        baseColor: AppColor.ui.shimmerBase,
-        highlightColor: AppColor.ui.white,
+        baseColor: AppColor.of(context).ui.shimmerBase,
+        highlightColor: AppColor.of(context).ui.white,
         child: Container(
           height: double.infinity,
           width: double.infinity,
-          color: AppColor.ui.shimmerBase,
+          color: AppColor.of(context).ui.shimmerBase,
         ),
       );
     } else if (snapshot.hasError) {
       return Expanded(
         child: ColoredBox(
-          color: AppColor.ui.shimmerBase,
+          color: AppColor.of(context).ui.shimmerBase,
         ),
       );
     }

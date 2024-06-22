@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:scenarioshelf/constants/themes/app_color.dart';
+import 'package:scenarioshelf/constants/themes/colors/app_color.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
 
@@ -31,11 +31,11 @@ class LabeledButton extends StatelessWidget {
       style: OutlinedButton.styleFrom(
         splashFactory: NoSplash.splashFactory,
         side: BorderSide(
-          color: isLoading ? AppColor.ui.gray : Theme.of(context).colorScheme.primary,
+          color: isLoading ? AppColor.of(context).ui.gray : Theme.of(context).colorScheme.primary,
           width: 0.5,
         ),
         backgroundColor: isLoading
-            ? AppColor.ui.gray
+            ? AppColor.of(context).ui.gray
             : switch (brightness) {
                 WidgetBrightness.dark => Theme.of(context).colorScheme.primary,
                 _ => null,
@@ -50,7 +50,7 @@ class LabeledButton extends StatelessWidget {
             SizedBox.square(
               dimension: 16,
               child: CircularProgressIndicator(
-                color: AppColor.ui.white,
+                color: AppColor.of(context).ui.white,
                 strokeWidth: 2,
               ),
             ),
@@ -64,7 +64,7 @@ class LabeledButton extends StatelessWidget {
             label,
             style: TextStyle(
               color: isLoading
-                  ? AppColor.ui.white
+                  ? AppColor.of(context).ui.white
                   : switch (brightness) {
                       WidgetBrightness.light => Theme.of(context).colorScheme.primary,
                       WidgetBrightness.dark => Theme.of(context).colorScheme.onPrimary,

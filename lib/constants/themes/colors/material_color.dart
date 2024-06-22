@@ -1,16 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
-
-import 'package:flutter/material.dart';
-
-class AppColor {
-  static final material = _AppMaterial();
-  static final ui = _UI();
-}
-
-class _AppMaterial {
-  final light = const _AppMaterialLight();
-  final dark = const _AppMaterialDark();
-}
+part of 'app_color.dart';
 
 class _AppMaterialLight extends ColorScheme {
   const _AppMaterialLight()
@@ -88,13 +76,4 @@ class _AppMaterialDark extends ColorScheme {
           outlineVariant: const Color(0xFF52443B),
           scrim: const Color(0xFF000000),
         );
-}
-
-class _UI {
-  final Color white = const Color(0xFFffffff);
-  final Color success = const Color(0xFF00ff33);
-  final Color loading = const Color(0xFFffb300);
-  final Color error = const Color(0xFFff3300);
-  final Color gray = const Color(0xFFe6e6e6);
-  final Color shimmerBase = const Color(0xFFefefef);
 }

@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/router/app_routes.dart';
 import 'package:scenarioshelf/utils/extension_types/id.dart';
 import 'package:scenarioshelf/views/pages/sessions/components/list_items/session_tile.dart';
+import 'package:scenarioshelf/views/pages/sessions/components/list_items/session_tile_shimmer.dart';
 import 'package:scenarioshelf/views/pages/sessions/components/sessions_sort_app_bar.dart';
 import 'package:scenarioshelf/views/pages/sessions/providers/sessions/sessions_controller.dart';
 
@@ -26,20 +27,25 @@ class SessionsPage extends HookConsumerWidget {
           displacement: 24,
           edgeOffset: 64,
           onRefresh: () => ref.refresh(SessionControllerProvider(userId).future),
-          child: sessions.when(
-            data: (data) => CustomScrollView(
-              slivers: [
-                SessionsSortAppBar(userId: userId),
-                SliverSafeArea(
-                  top: false,
-                  sliver: SliverList(
-                    delegate: SliverChildListDelegate(data.map((session) => SessionTile(session: session)).toList()),
+          child: CustomScrollView(
+            slivers: [
+              SessionsSortAppBar(userId: userId),
+              SliverSafeArea(
+                top: false,
+                sliver: sessions.when(
+                  data: (data) => SliverList(
+                    delegate: SliverChildListDelegate(data.map((session) => SessionTileShimmer()).toList()),
+                    // delegate: SliverChildListDelegate(data.map((session) => SessionTile(session: session)).toList()),
+                  ),
+                  error: (error, stack) => const SliverToBoxAdapter(
+                    child: SizedBox.shrink(),
+                  ),
+                  loading: () => const SliverToBoxAdapter(
+                    child: SizedBox.shrink(),
                   ),
                 ),
-              ],
-            ),
-            error: (error, stack) => const SizedBox.shrink(),
-            loading: () => const SizedBox.shrink(),
+              ),
+            ],
           ),
         ),
       ),
