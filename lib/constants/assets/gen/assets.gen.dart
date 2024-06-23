@@ -16,6 +16,9 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// Directory path: assets/images/empty_states
+  $AssetsImagesEmptyStatesGen get emptyStates => const $AssetsImagesEmptyStatesGen();
+
   /// Directory path: assets/images/logos
   $AssetsImagesLogosGen get logos => const $AssetsImagesLogosGen();
 }
@@ -28,6 +31,16 @@ class $AssetsSvgsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [mail];
+}
+
+class $AssetsImagesEmptyStatesGen {
+  const $AssetsImagesEmptyStatesGen();
+
+  /// File path: assets/images/empty_states/sessions_empty_state.png
+  AssetGenImage get sessionsEmptyState => const AssetGenImage('assets/images/empty_states/sessions_empty_state.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [sessionsEmptyState];
 }
 
 class $AssetsImagesLogosGen {
