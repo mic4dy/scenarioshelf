@@ -6,10 +6,6 @@ import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/constants/themes/colors/app_color.dart';
 import 'package:scenarioshelf/views/pages/sessions/components/list_items/no_image.dart';
 
-// import 'package:shimmer/shimmer.dart';
-
-// import 'package:scenarioshelf/utils/logger.dart';
-
 class SessionTileImage extends StatelessWidget {
   const SessionTileImage({
     required this.imageUrl,
@@ -39,6 +35,15 @@ class SessionTileImage extends StatelessWidget {
                   ),
                 );
               },
+              errorBuilder: (context, error, stackTrace) => NoImage(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.primary,
+                    width: 0.5,
+                  ),
+                  borderRadius: BorderRadius.circular(RadiusSize.minimum),
+                ),
+              ),
             )
           : NoImage(
               decoration: BoxDecoration(

@@ -83,7 +83,9 @@ flutter:
     - .env
     - .env.stg
     - .env.prod
+    - assets/images/
     - assets/images/logos/
+    - assets/images/empty_states/
     - assets/svgs/
 
 import_sorter:

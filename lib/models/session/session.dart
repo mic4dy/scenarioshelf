@@ -55,8 +55,8 @@ class Session with _$Session {
 
     if (eventDays.length == 1) {
       final finishTime = eventDays.first.beginningTime.add(eventDays.first.playtime);
-      final startFormat = DateFormat('yyyy年M月d日 hh:mm');
-      final finishFormat = DateFormat('hh:mm');
+      final startFormat = DateFormat('yyyy年M月d日 HH:mm', 'ja_JP');
+      final finishFormat = DateFormat('HH:mm', 'ja_JP');
       return '${startFormat.format(eventDays.first.beginningTime)} ~ ${finishFormat.format(finishTime)}';
     }
 
@@ -64,22 +64,22 @@ class Session with _$Session {
     final lastDay = eventDays.last.beginningTime;
 
     if (firstDay.year != lastDay.year) {
-      final dateFormat = DateFormat('yyyy年M月d日');
+      final dateFormat = DateFormat('yyyy年M月d日', 'ja_JP');
       return '${dateFormat.format(firstDay)} ~ ${dateFormat.format(lastDay)}';
     }
     if (firstDay.month != lastDay.month) {
-      final firstDayFormat = DateFormat('yyyy年M月d日');
-      final lastDayFormat = DateFormat('M月d日');
+      final firstDayFormat = DateFormat('yyyy年M月d日', 'ja_JP');
+      final lastDayFormat = DateFormat('M月d日', 'ja_JP');
       return '${firstDayFormat.format(firstDay)} ~ ${lastDayFormat.format(lastDay)}';
     }
     if (firstDay.day != lastDay.day) {
-      final firstDayFormat = DateFormat('yyyy年M月d日');
-      final lastDayFormat = DateFormat('d日');
+      final firstDayFormat = DateFormat('yyyy年M月d日', 'ja_JP');
+      final lastDayFormat = DateFormat('d日', 'ja_JP');
       return '${firstDayFormat.format(firstDay)} ~ ${lastDayFormat.format(lastDay)}';
     }
 
-    final startFormat = DateFormat('yyyy年M月d日 hh:mm');
-    final finishFormat = DateFormat('hh:mm');
+    final startFormat = DateFormat('yyyy年M月d日 HH:mm', 'ja_JP');
+    final finishFormat = DateFormat('HH:mm', 'ja_JP');
     return '${startFormat.format(firstDay)} ~ ${finishFormat.format(lastDay)}';
   }
 }

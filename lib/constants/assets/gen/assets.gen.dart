@@ -7,14 +7,16 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// Directory path: assets/images/empty_states
+  $AssetsImagesEmptyStatesGen get emptyStates => const $AssetsImagesEmptyStatesGen();
 
   /// Directory path: assets/images/logos
   $AssetsImagesLogosGen get logos => const $AssetsImagesLogosGen();
@@ -28,6 +30,16 @@ class $AssetsSvgsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [mail];
+}
+
+class $AssetsImagesEmptyStatesGen {
+  const $AssetsImagesEmptyStatesGen();
+
+  /// File path: assets/images/empty_states/sessions_empty_state.png
+  AssetGenImage get sessionsEmptyState => const AssetGenImage('assets/images/empty_states/sessions_empty_state.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [sessionsEmptyState];
 }
 
 class $AssetsImagesLogosGen {

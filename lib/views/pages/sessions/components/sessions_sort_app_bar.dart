@@ -57,6 +57,9 @@ class SessionsSortAppBar extends ConsumerWidget {
             context: context,
             useSafeArea: true,
             backgroundColor: Theme.of(context).colorScheme.surface,
+            routeSettings: const RouteSettings(
+              name: 'sessions-sort-bottom-sheet',
+            ),
             builder: (context) => const SessionsSortBottomSheet(),
           ),
           child: Padding(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 
 class NoImage extends HookWidget {
   const NoImage({
@@ -30,22 +31,8 @@ class NoImage extends HookWidget {
       key: key.value,
       decoration: decoration,
       child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.image_not_supported_outlined,
-              color: Theme.of(context).colorScheme.primary,
-              size: size.value.width * 0.5,
-            ),
-            Text(
-              'NO IMAGE',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                fontSize: size.value.height * 0.125,
-              ),
-            ),
-          ],
+        child: Assets.images.logos.appLogo.image(
+          width: size.value.width * 0.6,
         ),
       ),
     );
