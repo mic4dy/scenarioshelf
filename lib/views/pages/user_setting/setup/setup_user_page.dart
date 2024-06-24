@@ -8,6 +8,7 @@ import 'package:scenarioshelf/constants/themes/widget_brightness.dart';
 import 'package:scenarioshelf/providers/current_user/current_user_controller.dart';
 import 'package:scenarioshelf/router/app_routes.dart';
 import 'package:scenarioshelf/utils/exceptions/user_exception.dart';
+import 'package:scenarioshelf/utils/root_scaffold_messenger_key.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/user_setting/providers/user_setting_controller.dart';
@@ -20,12 +21,12 @@ class SetupUserPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(userSettingControllerProvider, (previous, next) {
       if (previous is! AsyncError && next is AsyncError) {
-        ScaffoldMessenger.of(context).clearMaterialBanners();
+        rootScaffoldMessengerKey.currentState?.clearMaterialBanners();
 
         final Object? error = next.error;
         final String message = error is UserException ? error.indicate() : '原因不明のエラーが発生しました';
 
-        ScaffoldMessenger.of(context).showMaterialBanner(
+        rootScaffoldMessengerKey.currentState?.showMaterialBanner(
           StatusBanner.error(
             context: context,
             content: Text(message),

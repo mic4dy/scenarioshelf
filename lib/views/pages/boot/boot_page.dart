@@ -9,6 +9,7 @@ import 'package:scenarioshelf/router/app_routes.dart';
 import 'package:scenarioshelf/router/routes/boot_routes/sign_in_route.dart';
 import 'package:scenarioshelf/router/routes/boot_routes/sign_up_route.dart';
 import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
+import 'package:scenarioshelf/utils/root_scaffold_messenger_key.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/components/buttons/labeled_button.dart';
 import 'package:scenarioshelf/views/pages/signing/providers/signing/signing_controller.dart';
@@ -20,12 +21,12 @@ class BootPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(signingControllerProvider, (previous, next) {
       if (previous is! AsyncError && next is AsyncError) {
-        ScaffoldMessenger.of(context).clearMaterialBanners();
+        rootScaffoldMessengerKey.currentState?.clearMaterialBanners();
 
         final Object? error = next.error;
         final String message = error is AppAuthException ? error.indicate() : '原因不明のエラーが発生しました';
 
-        ScaffoldMessenger.of(context).showMaterialBanner(
+        rootScaffoldMessengerKey.currentState?.showMaterialBanner(
           StatusBanner.error(
             context: context,
             content: Text(message),
@@ -94,7 +95,7 @@ class BootPage extends HookConsumerWidget {
                         return;
                       }
 
-                      ScaffoldMessenger.of(context).clearMaterialBanners();
+                      rootScaffoldMessengerKey.currentState?.clearMaterialBanners();
                       const HomeRoute().go(context);
                     },
                     label: 'Sign in with Google',

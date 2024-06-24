@@ -6,6 +6,7 @@ import 'package:scenarioshelf/constants/assets/gen/assets.gen.dart';
 import 'package:scenarioshelf/constants/themes/app_size.dart';
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/exceptions/app_auth_exception.dart';
+import 'package:scenarioshelf/utils/root_scaffold_messenger_key.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_email_form.dart';
 import 'package:scenarioshelf/views/pages/signing/components/signing_password_form.dart';
@@ -25,12 +26,12 @@ class SigningPageFrame extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(signingControllerProvider, (previous, next) {
       if (previous is! AsyncError && next is AsyncError) {
-        ScaffoldMessenger.of(context).clearMaterialBanners();
+        rootScaffoldMessengerKey.currentState?.clearMaterialBanners();
 
         final Object? error = next.error;
         final String message = error is AppAuthException ? error.indicate() : '原因不明のエラーが発生しました';
 
-        ScaffoldMessenger.of(context).showMaterialBanner(
+        rootScaffoldMessengerKey.currentState?.showMaterialBanner(
           StatusBanner.error(
             context: context,
             content: Text(message),

@@ -9,6 +9,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:scenarioshelf/utils/root_scaffold_messenger_key.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
@@ -96,6 +97,7 @@ class Scenarioshelf extends ConsumerWidget {
 
     return MaterialApp.router(
       title: 'Scenarioshelf',
+      scaffoldMessengerKey: rootScaffoldMessengerKey,
       theme: theme,
       themeMode: ref.watch(themeModeControllerProvider),
       routerConfig: router,
