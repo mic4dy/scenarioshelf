@@ -9,7 +9,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:scenarioshelf/utils/root_scaffold_messenger_key.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
@@ -22,6 +21,7 @@ import 'package:scenarioshelf/repositories/firebase/firebase_options/stg/firebas
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/environment.dart';
 import 'package:scenarioshelf/utils/logger.dart';
+import 'package:scenarioshelf/utils/root_scaffold_messenger_key.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
