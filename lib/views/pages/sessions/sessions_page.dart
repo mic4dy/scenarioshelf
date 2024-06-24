@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/router/app_routes.dart';
 import 'package:scenarioshelf/utils/exceptions/app_exception.dart';
 import 'package:scenarioshelf/utils/extension_types/id.dart';
+import 'package:scenarioshelf/utils/root_scaffold_messenger_key.dart';
 import 'package:scenarioshelf/views/components/acknowledgements/status_banner.dart';
 import 'package:scenarioshelf/views/pages/sessions/components/list_items/session_tile.dart';
 import 'package:scenarioshelf/views/pages/sessions/components/list_items/session_tile_shimmer.dart';
@@ -54,14 +55,14 @@ class SessionsPage extends HookConsumerWidget {
                     final String message = error is AppException ? error.indicate() : '原因不明のエラーが発生しました';
 
                     WidgetsBinding.instance.addPostFrameCallback((_) {
-                      ScaffoldMessenger.of(context).showMaterialBanner(
+                      rootScaffoldMessengerKey.currentState?.showMaterialBanner(
                         StatusBanner.error(
                           context: context,
                           content: Text(message),
                           actions: [
                             TextButton(
                               onPressed: () async {
-                                ScaffoldMessenger.of(context).clearMaterialBanners();
+                                rootScaffoldMessengerKey.currentState?.clearMaterialBanners();
 
                                 return await ref.refresh(SessionControllerProvider(userId).future);
                               },

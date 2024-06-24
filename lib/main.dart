@@ -21,6 +21,7 @@ import 'package:scenarioshelf/repositories/firebase/firebase_options/stg/firebas
 import 'package:scenarioshelf/router/router.dart';
 import 'package:scenarioshelf/utils/environment.dart';
 import 'package:scenarioshelf/utils/logger.dart';
+import 'package:scenarioshelf/utils/root_scaffold_messenger_key.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -96,6 +97,7 @@ class Scenarioshelf extends ConsumerWidget {
 
     return MaterialApp.router(
       title: 'Scenarioshelf',
+      scaffoldMessengerKey: rootScaffoldMessengerKey,
       theme: theme,
       themeMode: ref.watch(themeModeControllerProvider),
       routerConfig: router,

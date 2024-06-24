@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:scenarioshelf/constants/themes/app_size.dart';
+import 'package:scenarioshelf/utils/root_scaffold_messenger_key.dart';
 
 class StatusBanner extends MaterialBanner {
   StatusBanner({
@@ -22,7 +23,7 @@ class StatusBanner extends MaterialBanner {
               [
                 if (isVisibleClosedButton)
                   IconButton(
-                    onPressed: () => ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
+                    onPressed: () => rootScaffoldMessengerKey.currentState?.hideCurrentMaterialBanner(),
                     icon: Icon(
                       Icons.close,
                       color: Theme.of(context).colorScheme.primary,
