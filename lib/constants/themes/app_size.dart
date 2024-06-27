@@ -53,3 +53,7 @@ class RadiusSize {
   static const double medium = 16;
   static const double large = 32;
 }
+
+class UISize {
+  static const double appToolbarHeight = 48;
+}
