@@ -23,9 +23,9 @@ dependencies:
   # BaaS
   uuid: 4.4.0
   supabase_flutter: 2.5.6
-  firebase_core: 3.1.0
-  firebase_analytics: 11.0.1
-  firebase_crashlytics: 4.0.1
+  firebase_core: 3.2.0
+  firebase_analytics: 11.2.0
+  firebase_crashlytics: 4.0.3
   google_sign_in: 6.2.1
 
   # State Management
