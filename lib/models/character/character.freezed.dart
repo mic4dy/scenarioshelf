@@ -27,8 +27,12 @@ mixin _$Character {
   int? get number => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this Character to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Character
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CharacterCopyWith<Character> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Character
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -121,6 +127,8 @@ class __$$CharacterImplCopyWithImpl<$Res>
       _$CharacterImpl _value, $Res Function(_$CharacterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Character
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -211,12 +219,14 @@ class _$CharacterImpl implements _Character {
                 other.imageUrl == imageUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, name, isPublic, isCustomized, number, imageUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Character
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CharacterImplCopyWith<_$CharacterImpl> get copyWith =>
@@ -254,8 +264,11 @@ abstract class _Character implements Character {
   int? get number;
   @override
   String? get imageUrl;
+
+  /// Create a copy of Character
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CharacterImplCopyWith<_$CharacterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

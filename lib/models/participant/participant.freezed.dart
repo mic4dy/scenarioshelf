@@ -29,8 +29,12 @@ mixin _$Participant {
   String? get discordId => throw _privateConstructorUsedError;
   Character? get character => throw _privateConstructorUsedError;
 
+  /// Serializes this Participant to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Participant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ParticipantCopyWith<Participant> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$ParticipantCopyWithImpl<$Res, $Val extends Participant>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Participant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class _$ParticipantCopyWithImpl<$Res, $Val extends Participant>
     ) as $Val);
   }
 
+  /// Create a copy of Participant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CharacterCopyWith<$Res>? get character {
@@ -148,6 +156,8 @@ class __$$ParticipantImplCopyWithImpl<$Res>
       _$ParticipantImpl _value, $Res Function(_$ParticipantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Participant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -245,12 +255,14 @@ class _$ParticipantImpl implements _Participant {
                 other.character == character));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, role, name, userId, xId, discordId, character);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Participant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ParticipantImplCopyWith<_$ParticipantImpl> get copyWith =>
@@ -292,8 +304,11 @@ abstract class _Participant implements Participant {
   String? get discordId;
   @override
   Character? get character;
+
+  /// Create a copy of Participant
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ParticipantImplCopyWith<_$ParticipantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -25,8 +25,12 @@ mixin _$ProvisionallyRegisteredUser {
   String? get name => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this ProvisionallyRegisteredUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProvisionallyRegisteredUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProvisionallyRegisteredUserCopyWith<ProvisionallyRegisteredUser>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$ProvisionallyRegisteredUserCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProvisionallyRegisteredUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,6 +105,8 @@ class __$$ProvisionallyRegisteredUserImplCopyWithImpl<$Res>
       $Res Function(_$ProvisionallyRegisteredUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProvisionallyRegisteredUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -157,11 +165,13 @@ class _$ProvisionallyRegisteredUserImpl
                 other.avatarUrl == avatarUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, avatarUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProvisionallyRegisteredUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProvisionallyRegisteredUserImplCopyWith<_$ProvisionallyRegisteredUserImpl>
@@ -192,8 +202,11 @@ abstract class _ProvisionallyRegisteredUser
   String? get name;
   @override
   String? get avatarUrl;
+
+  /// Create a copy of ProvisionallyRegisteredUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProvisionallyRegisteredUserImplCopyWith<_$ProvisionallyRegisteredUserImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

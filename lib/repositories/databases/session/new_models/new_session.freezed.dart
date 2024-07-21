@@ -60,7 +60,9 @@ mixin _$NewSession {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewSession
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewSessionCopyWith<NewSession> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -89,6 +91,8 @@ class _$NewSessionCopyWithImpl<$Res, $Val extends NewSession>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewSession
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,6 +151,8 @@ class __$$NewSessionInsertingImplCopyWithImpl<$Res>
       $Res Function(_$NewSessionInsertingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewSession
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -251,7 +257,9 @@ class _$NewSessionInsertingImpl implements _NewSessionInserting {
       const DeepCollectionEquality().hash(_participants),
       const DeepCollectionEquality().hash(_memos));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewSession
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewSessionInsertingImplCopyWith<_$NewSessionInsertingImpl> get copyWith =>
@@ -339,8 +347,11 @@ abstract class _NewSessionInserting implements NewSession {
   List<NewParticipant> get participants;
   @override
   List<NewMemo> get memos;
+
+  /// Create a copy of NewSession
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewSessionInsertingImplCopyWith<_$NewSessionInsertingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

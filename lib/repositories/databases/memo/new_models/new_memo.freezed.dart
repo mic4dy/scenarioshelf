@@ -60,7 +60,9 @@ mixin _$NewMemo {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewMemo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewMemoCopyWith<NewMemo> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -82,6 +84,8 @@ class _$NewMemoCopyWithImpl<$Res, $Val extends NewMemo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewMemo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,6 +139,8 @@ class __$$NewMemoInsertingImplCopyWithImpl<$Res>
       $Res Function(_$NewMemoInsertingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewMemo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -213,7 +219,9 @@ class _$NewMemoInsertingImpl implements _NewMemoInserting {
   int get hashCode =>
       Object.hash(runtimeType, id, sessionId, title, content, isPublic);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewMemo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewMemoInsertingImplCopyWith<_$NewMemoInsertingImpl> get copyWith =>
@@ -301,8 +309,11 @@ abstract class _NewMemoInserting implements NewMemo {
   String get content;
   @override
   bool get isPublic;
+
+  /// Create a copy of NewMemo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewMemoInsertingImplCopyWith<_$NewMemoInsertingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

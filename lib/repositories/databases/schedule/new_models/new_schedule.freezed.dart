@@ -60,7 +60,9 @@ mixin _$NewSchedule {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewSchedule
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewScheduleCopyWith<NewSchedule> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -89,6 +91,8 @@ class _$NewScheduleCopyWithImpl<$Res, $Val extends NewSchedule>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewSchedule
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,6 +151,8 @@ class __$$NewScheduleInsertingImplCopyWithImpl<$Res>
       $Res Function(_$NewScheduleInsertingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewSchedule
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -226,7 +232,9 @@ class _$NewScheduleInsertingImpl implements _NewScheduleInserting {
   int get hashCode =>
       Object.hash(runtimeType, id, sessionId, type, beginningTime, playtime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewSchedule
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewScheduleInsertingImplCopyWith<_$NewScheduleInsertingImpl>
@@ -315,8 +323,11 @@ abstract class _NewScheduleInserting implements NewSchedule {
   DateTime get beginningTime;
   @override
   Duration get playtime;
+
+  /// Create a copy of NewSchedule
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewScheduleInsertingImplCopyWith<_$NewScheduleInsertingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
