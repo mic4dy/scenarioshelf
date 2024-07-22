@@ -27,8 +27,12 @@ mixin _$Schedule {
   @JsonKey(name: 'schedule_type')
   ScheduleType get type => throw _privateConstructorUsedError;
 
+  /// Serializes this Schedule to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Schedule
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ScheduleCopyWith<Schedule> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Schedule
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +113,8 @@ class __$$ScheduleImplCopyWithImpl<$Res>
       _$ScheduleImpl _value, $Res Function(_$ScheduleImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Schedule
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -179,12 +187,14 @@ class _$ScheduleImpl implements _Schedule {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, beginningTime, playtime, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Schedule
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ScheduleImplCopyWith<_$ScheduleImpl> get copyWith =>
@@ -219,8 +229,11 @@ abstract class _Schedule implements Schedule {
   @override
   @JsonKey(name: 'schedule_type')
   ScheduleType get type;
+
+  /// Create a copy of Schedule
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScheduleImplCopyWith<_$ScheduleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

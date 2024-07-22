@@ -30,8 +30,12 @@ mixin _$Scenario {
   String? get storeUrl => throw _privateConstructorUsedError;
   String? get author => throw _privateConstructorUsedError;
 
+  /// Serializes this Scenario to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Scenario
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ScenarioCopyWith<Scenario> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$ScenarioCopyWithImpl<$Res, $Val extends Scenario>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Scenario
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,6 +144,8 @@ class __$$ScenarioImplCopyWithImpl<$Res>
       _$ScenarioImpl _value, $Res Function(_$ScenarioImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Scenario
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -259,7 +267,7 @@ class _$ScenarioImpl extends _Scenario {
             (identical(other.author, author) || other.author == author));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -272,7 +280,9 @@ class _$ScenarioImpl extends _Scenario {
       storeUrl,
       author);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Scenario
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ScenarioImplCopyWith<_$ScenarioImpl> get copyWith =>
@@ -318,8 +328,11 @@ abstract class _Scenario extends Scenario {
   String? get storeUrl;
   @override
   String? get author;
+
+  /// Create a copy of Scenario
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScenarioImplCopyWith<_$ScenarioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

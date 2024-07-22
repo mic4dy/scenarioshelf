@@ -27,8 +27,12 @@ mixin _$Memo {
   DateTime get createdAt => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
 
+  /// Serializes this Memo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Memo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MemoCopyWith<Memo> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -56,6 +60,8 @@ class _$MemoCopyWithImpl<$Res, $Val extends Memo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Memo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,6 +124,8 @@ class __$$MemoImplCopyWithImpl<$Res>
   __$$MemoImplCopyWithImpl(_$MemoImpl _value, $Res Function(_$MemoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Memo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -207,12 +215,14 @@ class _$MemoImpl implements _Memo {
                 other.isPublic == isPublic));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, title, content, updatedAt, createdAt, isPublic);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Memo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MemoImplCopyWith<_$MemoImpl> get copyWith =>
@@ -249,8 +259,11 @@ abstract class _Memo implements Memo {
   DateTime get createdAt;
   @override
   bool get isPublic;
+
+  /// Create a copy of Memo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MemoImplCopyWith<_$MemoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

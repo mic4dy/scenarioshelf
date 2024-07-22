@@ -84,7 +84,9 @@ mixin _$NewScenario {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewScenario
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewScenarioCopyWith<NewScenario> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -116,6 +118,8 @@ class _$NewScenarioCopyWithImpl<$Res, $Val extends NewScenario>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewScenario
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -192,6 +196,8 @@ class __$$NewScenarioImplCopyWithImpl<$Res>
       _$NewScenarioImpl _value, $Res Function(_$NewScenarioImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewScenario
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -312,7 +318,9 @@ class _$NewScenarioImpl implements _NewScenario {
       storeUrl,
       author);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewScenario
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewScenarioImplCopyWith<_$NewScenarioImpl> get copyWith =>
@@ -432,8 +440,11 @@ abstract class _NewScenario implements NewScenario {
   String? get storeUrl;
   @override
   String? get author;
+
+  /// Create a copy of NewScenario
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewScenarioImplCopyWith<_$NewScenarioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

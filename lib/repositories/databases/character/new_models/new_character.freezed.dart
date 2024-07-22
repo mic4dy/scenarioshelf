@@ -62,7 +62,9 @@ mixin _$NewCharacter {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewCharacter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewCharacterCopyWith<NewCharacter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -93,6 +95,8 @@ class _$NewCharacterCopyWithImpl<$Res, $Val extends NewCharacter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewCharacter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -163,6 +167,8 @@ class __$$NewCharacterImplCopyWithImpl<$Res>
       _$NewCharacterImpl _value, $Res Function(_$NewCharacterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewCharacter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -260,7 +266,9 @@ class _$NewCharacterImpl implements _NewCharacter {
   int get hashCode => Object.hash(runtimeType, id, scenarioId, name, isPublic,
       isCustomized, number, const DeepCollectionEquality().hash(image));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewCharacter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewCharacterImplCopyWith<_$NewCharacterImpl> get copyWith =>
@@ -356,8 +364,11 @@ abstract class _NewCharacter implements NewCharacter {
   int? get number;
   @override
   Uint8List? get image;
+
+  /// Create a copy of NewCharacter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewCharacterImplCopyWith<_$NewCharacterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
