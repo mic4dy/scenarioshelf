@@ -14,7 +14,7 @@ abstract class _UIColor {
 
 class LightUIColor extends _UIColor {
   @override
-  Color get formBackground => const Color(0xFFf5f5f5);
+  Color get formBackground => const Color(0xFFf7f2f2);
 
   @override
   Color get shimmerBase => const Color(0xFFeeeeee);
@@ -25,7 +25,7 @@ class LightUIColor extends _UIColor {
 
 class DarkUIColor extends _UIColor {
   @override
-  Color get formBackground => const Color(0xFF211d1b);
+  Color get formBackground => const Color(0xFF201a17);
 
   @override
   Color get shimmerBase => const Color(0xFF222222);

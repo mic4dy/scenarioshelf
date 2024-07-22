@@ -17,7 +17,7 @@ class SignInPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.sizeOf(context);
-    final formKey = useState<GlobalKey<FormState>>(GlobalKey<FormState>());
+    final formKey = useState(GlobalKey<FormState>());
 
     return SigningPageFrame(
       formKey: formKey.value,

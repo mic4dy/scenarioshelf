@@ -38,7 +38,7 @@ class SetupUserPage extends HookConsumerWidget {
     });
 
     final size = MediaQuery.sizeOf(context);
-    final formKey = useState<GlobalKey<FormState>>(GlobalKey<FormState>());
+    final formKey = useState(GlobalKey<FormState>());
 
     return Scaffold(
       body: SafeArea(
