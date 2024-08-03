@@ -10,8 +10,10 @@ class FormContent extends StatelessWidget {
   }) : super(key: key);
 
   factory FormContent.textFormField({
+    bool isRequired = false,
     TextInputAction? textInputAction,
     String? hintText,
+    void Function(String)? onChanged,
   }) =>
       FormContent._(
         child: SizedBox(
@@ -20,33 +22,55 @@ class FormContent extends StatelessWidget {
             builder: (context) {
               final controller = useTextEditingController();
 
-              return TextFormField(
-                controller: controller,
-                textInputAction: textInputAction ?? TextInputAction.next,
-                cursorHeight: FontSize.bodyLarge,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  constraints: const BoxConstraints(
-                    minHeight: UISize.formContent - (PaddingSize.little + PaddingSize.little - 2),
+              return Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: PaddingSize.medium,
+                    child: isRequired
+                        ? Center(
+                            child: Text(
+                              '＊',
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.error,
+                                fontSize: 10,
+                              ),
+                            ),
+                          )
+                        : null,
                   ),
-                  contentPadding: const EdgeInsets.only(
-                    top: PaddingSize.little - 2,
-                    left: PaddingSize.little,
-                    right: PaddingSize.little,
-                    bottom: PaddingSize.little,
+                  Flexible(
+                    child: TextFormField(
+                      controller: controller,
+                      textInputAction: textInputAction ?? TextInputAction.next,
+                      cursorHeight: FontSize.bodyLarge,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        constraints: const BoxConstraints(
+                          minHeight: UISize.formContent - (PaddingSize.little + PaddingSize.little - 2),
+                        ),
+                        contentPadding: const EdgeInsets.only(
+                          top: PaddingSize.little - 2,
+                          // left: PaddingSize.little,
+                          right: PaddingSize.little,
+                          bottom: PaddingSize.little,
+                        ),
+                        hintText: hintText,
+                        hintStyle: TextStyle(
+                          color: AppColor.of(context).text.hintOnSurfaceContainerHighest,
+                          fontSize: FontSize.bodyLarge,
+                          letterSpacing: 1.2,
+                        ),
+                      ),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontSize: FontSize.bodyLarge,
+                        letterSpacing: 1.2,
+                      ),
+                      onChanged: onChanged,
+                    ),
                   ),
-                  hintText: hintText,
-                  hintStyle: TextStyle(
-                    color: AppColor.of(context).text.hintOnSurfaceContainerHighest,
-                    fontSize: FontSize.bodyLarge,
-                    letterSpacing: 1.2,
-                  ),
-                ),
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurface,
-                  fontSize: FontSize.bodyLarge,
-                  letterSpacing: 1.2,
-                ),
+                ],
               );
             },
           ),
