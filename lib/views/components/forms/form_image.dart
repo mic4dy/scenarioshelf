@@ -1,11 +1,9 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scenarioshelf/constants/themes/colors/app_color.dart';
 
-class FormImage extends HookConsumerWidget {
+class FormImage extends StatelessWidget {
   const FormImage({
     this.image,
     this.size = Size.infinite,
@@ -18,7 +16,7 @@ class FormImage extends HookConsumerWidget {
   final void Function()? onTap;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
