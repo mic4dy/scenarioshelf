@@ -13,6 +13,7 @@ analyzer:
   plugins:
     - custom_lint
   exclude:
+    - "!lib/**"
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "**/oss_licenses.dart"
