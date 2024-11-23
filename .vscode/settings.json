@@ -14,9 +14,6 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": "off"
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
-  },
   "cSpell.words": [
     "dotenv",
     "etags",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
@@ -16,6 +17,8 @@ class SplashPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     useMemoized(
       () async {
+        await GoogleFonts.pendingFonts();
+
         WidgetsBinding.instance.addPostFrameCallback((_) {
           final client = Supabase.instance.client;
           if (client.auth.currentUser == null) {
