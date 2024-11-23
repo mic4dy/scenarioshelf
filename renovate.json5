@@ -15,10 +15,14 @@
   packageRules: [
     {
       groupName: 'Flutter/Dart Packages',
-      managers: ['fvm'],
-      packageNames: ['flutter'],
+      matchManagers: [
+        'fvm',
+      ],
+      matchPackageNames: [
+        'flutter',
+      ],
       enabled: true,
-      versioning: 'semver'
+      versioning: 'semver',
     },
     {
       groupName: 'Flutter/Dart Packages',
