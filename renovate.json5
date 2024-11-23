@@ -15,6 +15,13 @@
   packageRules: [
     {
       groupName: 'Flutter/Dart Packages',
+      managers: ['fvm'],
+      packageNames: ['flutter'],
+      enabled: true,
+      versioning: 'semver'
+    },
+    {
+      groupName: 'Flutter/Dart Packages',
       matchPackageNames: [
         'flutter',
         'flutter_localizations',
