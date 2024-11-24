@@ -32,7 +32,7 @@
     "TRPG",
     "upsert"
   ],
-  "dart.flutterSdkPath": ".fvm/versions/3.22.2",
+  "dart.flutterSdkPath": ".fvm/versions/3.24.5",
   "dart.lineLength": 140,
   "deno.enablePaths": [
     "supabase/functions"
