@@ -7,7 +7,7 @@ part of 'scenario_repository.dart';
 // **************************************************************************
 
 String _$scenarioRepositoryHash() =>
-    r'bf9d9bd6a6e45e914be7fd2c1e19db55d9cc5c38';
+    r'6b94b006534824c1e56fcb35d730bb33e18a0f95';
 
 /// See also [scenarioRepository].
 @ProviderFor(scenarioRepository)

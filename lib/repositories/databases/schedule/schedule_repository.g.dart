@@ -7,7 +7,7 @@ part of 'schedule_repository.dart';
 // **************************************************************************
 
 String _$scheduleRepositoryHash() =>
-    r'4f62e972e1a1154232c3807902ea2c694c3e039e';
+    r'772feccc2268fb31a1edc44d7e9548a014b0b855';
 
 /// See also [scheduleRepository].
 @ProviderFor(scheduleRepository)
